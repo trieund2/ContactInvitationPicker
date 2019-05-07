@@ -1,0 +1,13 @@
+use_frameworks!
+platform :ios, '9.0'
+
+target 'ContactInvitationPicker' do
+  
+  # Pods for ContactInvitationPicker
+
+  target 'ContactInvitationPickerTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

@@ -21,12 +21,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     contacts = [NSArray array];
+    [self setupContactTableView];
     [ContactScan scanContact:^(NSArray * _Nonnull contacts) {
         self->contacts = contacts;
         [self->_contactTableView reloadData];
     } notGranted:^{
         NSLog(@"Not grant access contact");
     }];
+}
+
+- (void)setupContactTableView {
+    
 }
 
 @end

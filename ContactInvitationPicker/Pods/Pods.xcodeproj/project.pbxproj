@@ -1,0 +1,586 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		290FD6AAE53004BE517E926E769743DC /* Pods-ContactInvitationPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE2EABF0ADB2C7001D487706C32F655 /* Pods-ContactInvitationPicker-dummy.m */; };
+		4FC2AC161CD43CC14C053C0F735C53D7 /* Pods-ContactInvitationPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D1AB68FD5DCE4704ACBC8AB8EBE870D /* Pods-ContactInvitationPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6A794DD426DF484B2C87EF92D352207B /* Pods-ContactInvitationPickerTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BF81DD901EC306F6A80EC52AB569BCDB /* Pods-ContactInvitationPickerTests-dummy.m */; };
+		8519BFD638BD418296C9FFEFA8A02B06 /* Pods-ContactInvitationPickerTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 52951AE4B84B629E64427C0E2DDA8CF7 /* Pods-ContactInvitationPickerTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2C172364E21C2562FFC20AE425F0D58 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		B1B45A32CF58EE66B9F3F8E105890001 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		35E07E7CC1B971D57A1263ED2E44A292 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1FBDDBD0FB4D3538239D205FBB503B3;
+			remoteInfo = "Pods-ContactInvitationPicker";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2CED743AD5BD126C9F2EAA6AFCD0D232 /* Pods-ContactInvitationPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ContactInvitationPicker.modulemap"; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3348FED5BD61A27298CF00F9C856AC98 /* Pods-ContactInvitationPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactInvitationPicker.debug.xcconfig"; sourceTree = "<group>"; };
+		47B73B5B2336D8FA53160BB70A857A2D /* Pods_ContactInvitationPickerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ContactInvitationPickerTests.framework; path = "Pods-ContactInvitationPickerTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AFBEDBC28EF4D88E3A7104373425786 /* Pods-ContactInvitationPicker-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactInvitationPicker-acknowledgements.plist"; sourceTree = "<group>"; };
+		4C6CDAD7BAA7DCC952A5A9F7BE5227D0 /* Pods-ContactInvitationPickerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactInvitationPickerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		52951AE4B84B629E64427C0E2DDA8CF7 /* Pods-ContactInvitationPickerTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ContactInvitationPickerTests-umbrella.h"; sourceTree = "<group>"; };
+		69B88EBC8A392A889BEB8EA81ECE5F33 /* Pods-ContactInvitationPickerTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactInvitationPickerTests-Info.plist"; sourceTree = "<group>"; };
+		797DA4597CC2827A67AD6DCEA3966F9B /* Pods-ContactInvitationPickerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactInvitationPickerTests.release.xcconfig"; sourceTree = "<group>"; };
+		7D1AB68FD5DCE4704ACBC8AB8EBE870D /* Pods-ContactInvitationPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ContactInvitationPicker-umbrella.h"; sourceTree = "<group>"; };
+		81B5BA451CCE05972929C93C3184C2C7 /* Pods-ContactInvitationPickerTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactInvitationPickerTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		847B63B1925242C211FD218C51FEBAFE /* Pods-ContactInvitationPickerTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ContactInvitationPickerTests.modulemap"; sourceTree = "<group>"; };
+		8CE2EABF0ADB2C7001D487706C32F655 /* Pods-ContactInvitationPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ContactInvitationPicker-dummy.m"; sourceTree = "<group>"; };
+		9021962740876DE22496B3E6EE9E0924 /* Pods-ContactInvitationPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactInvitationPicker.release.xcconfig"; sourceTree = "<group>"; };
+		97D5C97BB1D6D68284541B4FF809ED5D /* Pods-ContactInvitationPicker-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ContactInvitationPicker-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BF81DD901EC306F6A80EC52AB569BCDB /* Pods-ContactInvitationPickerTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ContactInvitationPickerTests-dummy.m"; sourceTree = "<group>"; };
+		E425ED9991A027848D1764CCF5DE292F /* Pods-ContactInvitationPicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactInvitationPicker-Info.plist"; sourceTree = "<group>"; };
+		F1D24B45219487279C15AC4328E800DC /* Pods-ContactInvitationPickerTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ContactInvitationPickerTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F8C7DF3C600F6999946D1225D04C8B1F /* Pods_ContactInvitationPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ContactInvitationPicker.framework; path = "Pods-ContactInvitationPicker.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6EB2B60956C9264BC9159B1DE85EF60C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2C172364E21C2562FFC20AE425F0D58 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5996D86FDEB337D09DE0E293431384B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B45A32CF58EE66B9F3F8E105890001 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08E7976B438567A048EED3E13F8C81E5 /* Pods-ContactInvitationPickerTests */ = {
+			isa = PBXGroup;
+			children = (
+				847B63B1925242C211FD218C51FEBAFE /* Pods-ContactInvitationPickerTests.modulemap */,
+				F1D24B45219487279C15AC4328E800DC /* Pods-ContactInvitationPickerTests-acknowledgements.markdown */,
+				81B5BA451CCE05972929C93C3184C2C7 /* Pods-ContactInvitationPickerTests-acknowledgements.plist */,
+				BF81DD901EC306F6A80EC52AB569BCDB /* Pods-ContactInvitationPickerTests-dummy.m */,
+				69B88EBC8A392A889BEB8EA81ECE5F33 /* Pods-ContactInvitationPickerTests-Info.plist */,
+				52951AE4B84B629E64427C0E2DDA8CF7 /* Pods-ContactInvitationPickerTests-umbrella.h */,
+				4C6CDAD7BAA7DCC952A5A9F7BE5227D0 /* Pods-ContactInvitationPickerTests.debug.xcconfig */,
+				797DA4597CC2827A67AD6DCEA3966F9B /* Pods-ContactInvitationPickerTests.release.xcconfig */,
+			);
+			name = "Pods-ContactInvitationPickerTests";
+			path = "Target Support Files/Pods-ContactInvitationPickerTests";
+			sourceTree = "<group>";
+		};
+		6106F0B32DDEE65C35EE1122F9171524 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C3CE919E1595857731CFE0C7C5A79CDA /* Pods-ContactInvitationPicker */,
+				08E7976B438567A048EED3E13F8C81E5 /* Pods-ContactInvitationPickerTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		B6124C175670800247C68363BF36DCAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F8C7DF3C600F6999946D1225D04C8B1F /* Pods_ContactInvitationPicker.framework */,
+				47B73B5B2336D8FA53160BB70A857A2D /* Pods_ContactInvitationPickerTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C3CE919E1595857731CFE0C7C5A79CDA /* Pods-ContactInvitationPicker */ = {
+			isa = PBXGroup;
+			children = (
+				2CED743AD5BD126C9F2EAA6AFCD0D232 /* Pods-ContactInvitationPicker.modulemap */,
+				97D5C97BB1D6D68284541B4FF809ED5D /* Pods-ContactInvitationPicker-acknowledgements.markdown */,
+				4AFBEDBC28EF4D88E3A7104373425786 /* Pods-ContactInvitationPicker-acknowledgements.plist */,
+				8CE2EABF0ADB2C7001D487706C32F655 /* Pods-ContactInvitationPicker-dummy.m */,
+				E425ED9991A027848D1764CCF5DE292F /* Pods-ContactInvitationPicker-Info.plist */,
+				7D1AB68FD5DCE4704ACBC8AB8EBE870D /* Pods-ContactInvitationPicker-umbrella.h */,
+				3348FED5BD61A27298CF00F9C856AC98 /* Pods-ContactInvitationPicker.debug.xcconfig */,
+				9021962740876DE22496B3E6EE9E0924 /* Pods-ContactInvitationPicker.release.xcconfig */,
+			);
+			name = "Pods-ContactInvitationPicker";
+			path = "Target Support Files/Pods-ContactInvitationPicker";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				B6124C175670800247C68363BF36DCAC /* Products */,
+				6106F0B32DDEE65C35EE1122F9171524 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		4892A984DFADD1F3058D80918D863D22 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FC2AC161CD43CC14C053C0F735C53D7 /* Pods-ContactInvitationPicker-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A85EF4D51F21AD667C3A22ACC05EDEC3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8519BFD638BD418296C9FFEFA8A02B06 /* Pods-ContactInvitationPickerTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		82D0C1FCAC3532780E17E5BEC3732580 /* Pods-ContactInvitationPickerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 012EAD2654FC9772929B093993B208DC /* Build configuration list for PBXNativeTarget "Pods-ContactInvitationPickerTests" */;
+			buildPhases = (
+				A85EF4D51F21AD667C3A22ACC05EDEC3 /* Headers */,
+				05FFE2A5240862242E949B09F2071B6A /* Sources */,
+				6EB2B60956C9264BC9159B1DE85EF60C /* Frameworks */,
+				D45A9CC694D4E27DB43D163374CDEBD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A344E5B40F24233B4F3E272F015590B2 /* PBXTargetDependency */,
+			);
+			name = "Pods-ContactInvitationPickerTests";
+			productName = "Pods-ContactInvitationPickerTests";
+			productReference = 47B73B5B2336D8FA53160BB70A857A2D /* Pods_ContactInvitationPickerTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D1FBDDBD0FB4D3538239D205FBB503B3 /* Pods-ContactInvitationPicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA0356162521B739CDD809E096C162F4 /* Build configuration list for PBXNativeTarget "Pods-ContactInvitationPicker" */;
+			buildPhases = (
+				4892A984DFADD1F3058D80918D863D22 /* Headers */,
+				ED961CDB5EF2ACF209B02926F4552EC7 /* Sources */,
+				D5996D86FDEB337D09DE0E293431384B /* Frameworks */,
+				0CA120D38291C569CCEA401445F1D812 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-ContactInvitationPicker";
+			productName = "Pods-ContactInvitationPicker";
+			productReference = F8C7DF3C600F6999946D1225D04C8B1F /* Pods_ContactInvitationPicker.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = B6124C175670800247C68363BF36DCAC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D1FBDDBD0FB4D3538239D205FBB503B3 /* Pods-ContactInvitationPicker */,
+				82D0C1FCAC3532780E17E5BEC3732580 /* Pods-ContactInvitationPickerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0CA120D38291C569CCEA401445F1D812 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D45A9CC694D4E27DB43D163374CDEBD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		05FFE2A5240862242E949B09F2071B6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A794DD426DF484B2C87EF92D352207B /* Pods-ContactInvitationPickerTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED961CDB5EF2ACF209B02926F4552EC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				290FD6AAE53004BE517E926E769743DC /* Pods-ContactInvitationPicker-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A344E5B40F24233B4F3E272F015590B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-ContactInvitationPicker";
+			target = D1FBDDBD0FB4D3538239D205FBB503B3 /* Pods-ContactInvitationPicker */;
+			targetProxy = 35E07E7CC1B971D57A1263ED2E44A292 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6914C4E7B3FBDDA0BF3BB04EA3790332 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9021962740876DE22496B3E6EE9E0924 /* Pods-ContactInvitationPicker.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8F17DC3A99F99FBAD606CE6963886315 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		916E0404255105F480DC4950B7625F7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		B2E73FFA709F9F118359AEBADAF56AC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 797DA4597CC2827A67AD6DCEA3966F9B /* Pods-ContactInvitationPickerTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ContactInvitationPickerTests/Pods-ContactInvitationPickerTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ContactInvitationPickerTests/Pods-ContactInvitationPickerTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CC0571E1452A7D3E9C933CF84067C66D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C6CDAD7BAA7DCC952A5A9F7BE5227D0 /* Pods-ContactInvitationPickerTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ContactInvitationPickerTests/Pods-ContactInvitationPickerTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ContactInvitationPickerTests/Pods-ContactInvitationPickerTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F0C06494BC782EB114BFA99D624088FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3348FED5BD61A27298CF00F9C856AC98 /* Pods-ContactInvitationPicker.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		012EAD2654FC9772929B093993B208DC /* Build configuration list for PBXNativeTarget "Pods-ContactInvitationPickerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC0571E1452A7D3E9C933CF84067C66D /* Debug */,
+				B2E73FFA709F9F118359AEBADAF56AC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				916E0404255105F480DC4950B7625F7A /* Debug */,
+				8F17DC3A99F99FBAD606CE6963886315 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA0356162521B739CDD809E096C162F4 /* Build configuration list for PBXNativeTarget "Pods-ContactInvitationPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0C06494BC782EB114BFA99D624088FE /* Debug */,
+				6914C4E7B3FBDDA0BF3BB04EA3790332 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

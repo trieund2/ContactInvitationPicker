@@ -1,0 +1,6 @@
+framework module Pods_ContactInvitationPicker {
+  umbrella header "Pods-ContactInvitationPicker-umbrella.h"
+
+  export *
+  module * { export * }
+}
