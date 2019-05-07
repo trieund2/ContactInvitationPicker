@@ -63,10 +63,15 @@
 
 + (Contact *)parseContactWithContact:(CNContact* )contact
 {
+    NSMutableDictionary *titlesDict = [NSMutableDictionary new];
     NSString *firstName = contact.givenName;
     NSString *lastName = contact.familyName;
     NSString *phone = [[contact.phoneNumbers.firstObject valueForKey:@"value"] valueForKey:@"digits"];
     if (phone != nil && [phone length] != 0) {
+        NSString *prefixCharacter = [firstName substringToIndex:1];
+        if ([titlesDict objectForKey:prefixCharacter]) {
+            [titlesDict setObject:prefixCharacter forKey:prefixCharacter];
+        }
         return [Contact contactWithFirstName:firstName lastName:lastName phoneNumber:phone];
     } else {
         return nil;

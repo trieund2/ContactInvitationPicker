@@ -11,7 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ContactScan : NSObject
+
 + (void)scanContact:(void (^)(NSArray * _Nonnull contacts))completion notGranted:(void (^)(void))notGranted;
+
 @end
 
 NS_ASSUME_NONNULL_END

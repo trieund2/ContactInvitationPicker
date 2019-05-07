@@ -36,18 +36,6 @@
 		A160AC4B228193150024BB49 /* NIBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AAD5228193100024BB49 /* NIBadgeView.m */; };
 		A160AC4F228193150024BB49 /* NIPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AADF228193100024BB49 /* NIPagingScrollView.m */; };
 		A160AC50228193150024BB49 /* NIPagingScrollViewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AAE0228193100024BB49 /* NIPagingScrollViewPage.m */; };
-		A160AC51228193150024BB49 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A160AAE5228193100024BB49 /* Icon.png */; };
-		A160AC52228193150024BB49 /* lib.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A160AAE6228193100024BB49 /* lib.xcconfig */; };
-		A160AC53228193150024BB49 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = A160AAE7228193100024BB49 /* Icon-Small.png */; };
-		A160AC54228193150024BB49 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A160AAE8228193100024BB49 /* Default@2x.png */; };
-		A160AC55228193150024BB49 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = A160AAE9228193100024BB49 /* Icon-72.png */; };
-		A160AC56228193150024BB49 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A160AAEA228193100024BB49 /* Icon@2x.png */; };
-		A160AC57228193150024BB49 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A160AAEB228193100024BB49 /* Default-568h@2x.png */; };
-		A160AC58228193150024BB49 /* unittest.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A160AAEC228193100024BB49 /* unittest.xcconfig */; };
-		A160AC59228193150024BB49 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = A160AAED228193100024BB49 /* Icon-Small-50.png */; };
-		A160AC5A228193150024BB49 /* nimbus64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = A160AAEE228193100024BB49 /* nimbus64x64.png */; };
-		A160AC5B228193150024BB49 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A160AAEF228193100024BB49 /* Default.png */; };
-		A160AC5C228193150024BB49 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A160AAF0228193100024BB49 /* Icon-Small@2x.png */; };
 		A160AC60228193150024BB49 /* NILauncherButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AB5A228193120024BB49 /* NILauncherButtonView.m */; };
 		A160AC61228193150024BB49 /* NILauncherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AB5B228193120024BB49 /* NILauncherViewController.m */; };
 		A160AC62228193150024BB49 /* NILauncherViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AB5D228193120024BB49 /* NILauncherViewModel.m */; };
@@ -210,18 +198,6 @@
 		A160AAE1228193100024BB49 /* NIPagingScrollViewPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPagingScrollViewPage.h; sourceTree = "<group>"; };
 		A160AAE2228193100024BB49 /* NIPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIPagingScrollView.h; sourceTree = "<group>"; };
 		A160AAE3228193100024BB49 /* NIPagingScrollView+Subclassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NIPagingScrollView+Subclassing.h"; sourceTree = "<group>"; };
-		A160AAE5228193100024BB49 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		A160AAE6228193100024BB49 /* lib.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = lib.xcconfig; sourceTree = "<group>"; };
-		A160AAE7228193100024BB49 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
-		A160AAE8228193100024BB49 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		A160AAE9228193100024BB49 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		A160AAEA228193100024BB49 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		A160AAEB228193100024BB49 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		A160AAEC228193100024BB49 /* unittest.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = unittest.xcconfig; sourceTree = "<group>"; };
-		A160AAED228193100024BB49 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
-		A160AAEE228193100024BB49 /* nimbus64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nimbus64x64.png; sourceTree = "<group>"; };
-		A160AAEF228193100024BB49 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		A160AAF0228193100024BB49 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		A160AB54228193120024BB49 /* NILauncherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NILauncherViewController.h; sourceTree = "<group>"; };
 		A160AB55228193120024BB49 /* NILauncherButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NILauncherButtonView.h; sourceTree = "<group>"; };
 		A160AB56228193120024BB49 /* NILauncherViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NILauncherViewModel.h; sourceTree = "<group>"; };
@@ -442,7 +418,6 @@
 				A160AAB92281930F0024BB49 /* networkimage */,
 				A160AAD8228193100024BB49 /* pagingscrollview */,
 				A160AA742281930F0024BB49 /* photos */,
-				A160AAE4228193100024BB49 /* resources */,
 				A160AAAB2281930F0024BB49 /* textfield */,
 				A160AB7A228193130024BB49 /* webcontroller */,
 			);
@@ -580,25 +555,6 @@
 				A160AAE3228193100024BB49 /* NIPagingScrollView+Subclassing.h */,
 			);
 			path = pagingscrollview;
-			sourceTree = "<group>";
-		};
-		A160AAE4228193100024BB49 /* resources */ = {
-			isa = PBXGroup;
-			children = (
-				A160AAE5228193100024BB49 /* Icon.png */,
-				A160AAE6228193100024BB49 /* lib.xcconfig */,
-				A160AAE7228193100024BB49 /* Icon-Small.png */,
-				A160AAE8228193100024BB49 /* Default@2x.png */,
-				A160AAE9228193100024BB49 /* Icon-72.png */,
-				A160AAEA228193100024BB49 /* Icon@2x.png */,
-				A160AAEB228193100024BB49 /* Default-568h@2x.png */,
-				A160AAEC228193100024BB49 /* unittest.xcconfig */,
-				A160AAED228193100024BB49 /* Icon-Small-50.png */,
-				A160AAEE228193100024BB49 /* nimbus64x64.png */,
-				A160AAEF228193100024BB49 /* Default.png */,
-				A160AAF0228193100024BB49 /* Icon-Small@2x.png */,
-			);
-			path = resources;
 			sourceTree = "<group>";
 		};
 		A160AB4E228193120024BB49 /* launcher */ = {
@@ -955,20 +911,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A160AC5B228193150024BB49 /* Default.png in Resources */,
-				A160AC57228193150024BB49 /* Default-568h@2x.png in Resources */,
-				A160AC53228193150024BB49 /* Icon-Small.png in Resources */,
-				A160AC55228193150024BB49 /* Icon-72.png in Resources */,
-				A160AC56228193150024BB49 /* Icon@2x.png in Resources */,
-				A160AC51228193150024BB49 /* Icon.png in Resources */,
 				A1FAF6772281452A006E024B /* LaunchScreen.storyboard in Resources */,
-				A160AC54228193150024BB49 /* Default@2x.png in Resources */,
-				A160AC5C228193150024BB49 /* Icon-Small@2x.png in Resources */,
-				A160AC58228193150024BB49 /* unittest.xcconfig in Resources */,
 				A1FAF6742281452A006E024B /* Assets.xcassets in Resources */,
-				A160AC52228193150024BB49 /* lib.xcconfig in Resources */,
-				A160AC59228193150024BB49 /* Icon-Small-50.png in Resources */,
-				A160AC5A228193150024BB49 /* nimbus64x64.png in Resources */,
 				A1FAF67222814529006E024B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
