@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ContactScan.h"
 
 @interface AppDelegate ()
 

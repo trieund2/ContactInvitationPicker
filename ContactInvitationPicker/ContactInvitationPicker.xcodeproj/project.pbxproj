@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A160A4F222817E6D0024BB49 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = A160A4F122817E6D0024BB49 /* Contact.m */; };
 		A1FAF66C22814529006E024B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF66B22814529006E024B /* AppDelegate.m */; };
-		A1FAF66F22814529006E024B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF66E22814529006E024B /* ViewController.m */; };
+		A1FAF66F22814529006E024B /* ContactInvitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF66E22814529006E024B /* ContactInvitationViewController.m */; };
 		A1FAF67222814529006E024B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1FAF67022814529006E024B /* Main.storyboard */; };
 		A1FAF6742281452A006E024B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1FAF6732281452A006E024B /* Assets.xcassets */; };
 		A1FAF6772281452A006E024B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1FAF6752281452A006E024B /* LaunchScreen.storyboard */; };
 		A1FAF67A2281452A006E024B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF6792281452A006E024B /* main.m */; };
 		A1FAF6842281452B006E024B /* ContactInvitationPickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF6832281452B006E024B /* ContactInvitationPickerTests.m */; };
+		A1FAF69222816304006E024B /* ContactScan.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF69122816304006E024B /* ContactScan.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,11 +29,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A160A4F022817E6D0024BB49 /* Contact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		A160A4F122817E6D0024BB49 /* Contact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		A1FAF66722814529006E024B /* ContactInvitationPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactInvitationPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FAF66A22814529006E024B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A1FAF66B22814529006E024B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A1FAF66D22814529006E024B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A1FAF66E22814529006E024B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A1FAF66D22814529006E024B /* ContactInvitationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactInvitationViewController.h; sourceTree = "<group>"; };
+		A1FAF66E22814529006E024B /* ContactInvitationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactInvitationViewController.m; sourceTree = "<group>"; };
 		A1FAF67122814529006E024B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A1FAF6732281452A006E024B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1FAF6762281452A006E024B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +44,8 @@
 		A1FAF67F2281452B006E024B /* ContactInvitationPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactInvitationPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FAF6832281452B006E024B /* ContactInvitationPickerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactInvitationPickerTests.m; sourceTree = "<group>"; };
 		A1FAF6852281452B006E024B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1FAF69022816304006E024B /* ContactScan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactScan.h; sourceTree = "<group>"; };
+		A1FAF69122816304006E024B /* ContactScan.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactScan.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,15 +87,12 @@
 		A1FAF66922814529006E024B /* ContactInvitationPicker */ = {
 			isa = PBXGroup;
 			children = (
+				A1FAF68E228146BE006E024B /* Supports */,
+				A1FAF68F228146DE006E024B /* ContactInvitation */,
 				A1FAF66A22814529006E024B /* AppDelegate.h */,
 				A1FAF66B22814529006E024B /* AppDelegate.m */,
-				A1FAF66D22814529006E024B /* ViewController.h */,
-				A1FAF66E22814529006E024B /* ViewController.m */,
 				A1FAF67022814529006E024B /* Main.storyboard */,
-				A1FAF6732281452A006E024B /* Assets.xcassets */,
 				A1FAF6752281452A006E024B /* LaunchScreen.storyboard */,
-				A1FAF6782281452A006E024B /* Info.plist */,
-				A1FAF6792281452A006E024B /* main.m */,
 			);
 			path = ContactInvitationPicker;
 			sourceTree = "<group>";
@@ -101,6 +104,29 @@
 				A1FAF6852281452B006E024B /* Info.plist */,
 			);
 			path = ContactInvitationPickerTests;
+			sourceTree = "<group>";
+		};
+		A1FAF68E228146BE006E024B /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				A1FAF6732281452A006E024B /* Assets.xcassets */,
+				A1FAF6792281452A006E024B /* main.m */,
+				A1FAF6782281452A006E024B /* Info.plist */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
+		A1FAF68F228146DE006E024B /* ContactInvitation */ = {
+			isa = PBXGroup;
+			children = (
+				A1FAF66D22814529006E024B /* ContactInvitationViewController.h */,
+				A1FAF66E22814529006E024B /* ContactInvitationViewController.m */,
+				A1FAF69022816304006E024B /* ContactScan.h */,
+				A1FAF69122816304006E024B /* ContactScan.m */,
+				A160A4F022817E6D0024BB49 /* Contact.h */,
+				A160A4F122817E6D0024BB49 /* Contact.m */,
+			);
+			path = ContactInvitation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,7 +229,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1FAF66F22814529006E024B /* ViewController.m in Sources */,
+				A1FAF66F22814529006E024B /* ContactInvitationViewController.m in Sources */,
+				A1FAF69222816304006E024B /* ContactScan.m in Sources */,
+				A160A4F222817E6D0024BB49 /* Contact.m in Sources */,
 				A1FAF67A2281452A006E024B /* main.m in Sources */,
 				A1FAF66C22814529006E024B /* AppDelegate.m in Sources */,
 			);
@@ -363,14 +391,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ContactInvitationPicker/Info.plist;
+				DEVELOPMENT_TEAM = DAA47P5N57;
+				INFOPLIST_FILE = "$(SRCROOT)/ContactInvitationPicker/Supports/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.trieund.ContactInvitationPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -379,14 +411,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ContactInvitationPicker/Info.plist;
+				DEVELOPMENT_TEAM = DAA47P5N57;
+				INFOPLIST_FILE = "$(SRCROOT)/ContactInvitationPicker/Supports/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.trieund.ContactInvitationPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -396,6 +432,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DAA47P5N57;
 				INFOPLIST_FILE = ContactInvitationPickerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -414,6 +451,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DAA47P5N57;
 				INFOPLIST_FILE = ContactInvitationPickerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
