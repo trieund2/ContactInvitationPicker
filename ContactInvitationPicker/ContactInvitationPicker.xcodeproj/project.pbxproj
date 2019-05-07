@@ -415,7 +415,6 @@
 				082EAB65DF099E82AD525937 /* Pods-ContactInvitationPickerTests.debug.xcconfig */,
 				6963FF30EFB8273DBDB9BA88 /* Pods-ContactInvitationPickerTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -491,28 +490,28 @@
 		A160AA8A2281930F0024BB49 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				A160AA952281930F0024BB49 /* NIMutableTableViewModel.h */,
-				A160AA962281930F0024BB49 /* NICellFactory.h */,
-				A160AA972281930F0024BB49 /* NICellCatalog.m */,
-				A160AA982281930F0024BB49 /* NITableViewActions.m */,
-				A160AA992281930F0024BB49 /* NIRadioGroupController.m */,
-				A160AA9A2281930F0024BB49 /* NICellFactory+Private.h */,
-				A160AA9B2281930F0024BB49 /* NITableViewModel.h */,
-				A160AA9C2281930F0024BB49 /* NITableViewModel+Private.h */,
-				A160AA9D2281930F0024BB49 /* NIRadioGroup.m */,
-				A160AA9E2281930F0024BB49 /* NIFormCellCatalog.h */,
-				A160AA9F2281930F0024BB49 /* NimbusModels.h */,
 				A160AAA02281930F0024BB49 /* NICellBackgrounds.h */,
-				A160AAA12281930F0024BB49 /* NITableViewActions.h */,
-				A160AAA22281930F0024BB49 /* NICellCatalog.h */,
-				A160AAA32281930F0024BB49 /* NICellFactory.m */,
-				A160AAA42281930F0024BB49 /* NIMutableTableViewModel.m */,
-				A160AAA52281930F0024BB49 /* NIRadioGroupController.h */,
-				A160AAA62281930F0024BB49 /* NIMutableTableViewModel+Private.h */,
-				A160AAA72281930F0024BB49 /* NITableViewModel.m */,
 				A160AAA82281930F0024BB49 /* NICellBackgrounds.m */,
+				A160AAA22281930F0024BB49 /* NICellCatalog.h */,
+				A160AA972281930F0024BB49 /* NICellCatalog.m */,
+				A160AA962281930F0024BB49 /* NICellFactory.h */,
+				A160AAA32281930F0024BB49 /* NICellFactory.m */,
+				A160AA9A2281930F0024BB49 /* NICellFactory+Private.h */,
+				A160AA9E2281930F0024BB49 /* NIFormCellCatalog.h */,
 				A160AAA92281930F0024BB49 /* NIFormCellCatalog.m */,
+				A160AA9F2281930F0024BB49 /* NimbusModels.h */,
+				A160AA952281930F0024BB49 /* NIMutableTableViewModel.h */,
+				A160AAA42281930F0024BB49 /* NIMutableTableViewModel.m */,
+				A160AAA62281930F0024BB49 /* NIMutableTableViewModel+Private.h */,
 				A160AAAA2281930F0024BB49 /* NIRadioGroup.h */,
+				A160AA9D2281930F0024BB49 /* NIRadioGroup.m */,
+				A160AAA52281930F0024BB49 /* NIRadioGroupController.h */,
+				A160AA992281930F0024BB49 /* NIRadioGroupController.m */,
+				A160AAA12281930F0024BB49 /* NITableViewActions.h */,
+				A160AA982281930F0024BB49 /* NITableViewActions.m */,
+				A160AA9B2281930F0024BB49 /* NITableViewModel.h */,
+				A160AAA72281930F0024BB49 /* NITableViewModel.m */,
+				A160AA9C2281930F0024BB49 /* NITableViewModel+Private.h */,
 			);
 			path = models;
 			sourceTree = "<group>";

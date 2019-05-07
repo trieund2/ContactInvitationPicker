@@ -15,6 +15,7 @@
     contact.firstName = firstName;
     contact.lastName = lastName;
     contact.phoneNumber = phoneNumber;
+    contact.fullName = [NSString stringWithFormat:@"%@ %@", lastName, firstName];
     return contact;
 }
 

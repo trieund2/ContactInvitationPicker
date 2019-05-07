@@ -9,29 +9,42 @@
 #import "ContactInvitationViewController.h"
 #import "ContactScan.h"
 #import "Contact.h"
+#import "NimbusModels.h"
 
 @interface ContactInvitationViewController ()
 
 @end
 
 @implementation ContactInvitationViewController {
-    NSArray<Contact *> *contacts;
+    NSArray<Contact *> *_contacts;
+    NITableViewModel *_model;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    _model = [[NITableViewModel alloc] initWithDelegate:(id)[NICellFactory class]];
+    _contacts = [NSArray array];
+    return [super initWithCoder:aDecoder];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    contacts = [NSArray array];
-    [self setupContactTableView];
     [ContactScan scanContact:^(NSArray * _Nonnull contacts) {
-        self->contacts = contacts;
-        [self->_contactTableView reloadData];
+        self->_contacts = contacts;
+        [self initTableViewModel];
     } notGranted:^{
         NSLog(@"Not grant access contact");
     }];
 }
 
-- (void)setupContactTableView {
+- (void)initTableViewModel {
+    NSMutableArray *arrayContact = [NSMutableArray array];
+    for (Contact *contact in _contacts) {
+        [arrayContact addObject:[NITitleCellObject objectWithTitle:contact.fullName]];
+    }
+    _model = [[NITableViewModel alloc] initWithListArray:arrayContact
+                                                delegate:(id)[NICellFactory class]];
     
+    _contactTableView.dataSource = _model;
 }
 
 @end

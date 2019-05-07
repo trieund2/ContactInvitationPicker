@@ -24,6 +24,8 @@
     }];
 }
 
+#pragma mark Private methods
+
 + (void)requestAccessContact:(void (^)(BOOL granted))completion {
     CNEntityType entityType = CNEntityTypeContacts;
     CNAuthorizationStatus authorizationStatus = [CNContactStore authorizationStatusForEntityType:entityType];
