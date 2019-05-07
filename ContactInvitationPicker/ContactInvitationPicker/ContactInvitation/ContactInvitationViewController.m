@@ -16,7 +16,8 @@
 @end
 
 @implementation ContactInvitationViewController {
-    NSArray<Contact *> *_contacts;
+    NSArray *_contacts;
+    NSArray *_titles;
     NITableViewModel *_model;
 }
 
@@ -30,8 +31,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [ContactScan scanContact:^(NSArray * _Nonnull contacts) {
+    [ContactScan scanContact:^(NSArray * _Nonnull contacts, NSArray * _Nonnull titles) {
         self->_contacts = contacts;
+        self->_titles = titles;
         [self configContactTableViewDataSource];
     } notGranted:^{
         NSLog(@"Not grant access contact");
@@ -41,14 +43,21 @@
 #pragma mark Private methods
 
 - (void)configContactTableViewDataSource {
-    NSMutableArray *arrayContact = [NSMutableArray array];
-    for (Contact *contact in _contacts) {
-        [arrayContact addObject:[NITitleCellObject objectWithTitle:contact.fullName]];
+    if (_titles.count != _contacts.count) { return; };
+    NSMutableArray *arrayContact = [NSMutableArray new];
+    
+    for (int i = 0; i < _titles.count; i++) {
+        NSArray *contacts = [_contacts objectAtIndex:i];
+        [arrayContact addObject:[_titles objectAtIndex:i]];
+        for (Contact *contact in contacts) {
+            [arrayContact addObject:[NITitleCellObject objectWithTitle:contact.fullName]];
+        }
     }
-    _model = [[NITableViewModel alloc] initWithListArray:arrayContact
-                                                delegate:(id)[NICellFactory class]];
+    
+    _model = [[NITableViewModel alloc] initWithSectionedArray:arrayContact
+                                                     delegate:(id)[NICellFactory class]];
     _contactTableView.dataSource = _model;
-    [_model setSectionIndexType:NITableViewModelSectionIndexAlphabetical
+    [_model setSectionIndexType:NITableViewModelSectionIndexDynamic
                     showsSearch:YES
                    showsSummary:YES];
 }

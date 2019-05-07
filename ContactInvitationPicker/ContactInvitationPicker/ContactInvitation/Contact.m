@@ -15,7 +15,12 @@
     contact.firstName = firstName;
     contact.lastName = lastName;
     contact.phoneNumber = phoneNumber;
-    contact.fullName = [NSString stringWithFormat:@"%@ %@", lastName, firstName];
+    if ([lastName length] == 0) {
+        contact.fullName = firstName;
+    } else {
+        contact.fullName = [NSString stringWithFormat:@"%@ %@", lastName, firstName];
+    }
+    
     return contact;
 }
 

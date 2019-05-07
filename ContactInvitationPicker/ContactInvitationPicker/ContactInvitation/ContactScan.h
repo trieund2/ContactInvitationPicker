@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ContactScan : NSObject
 
-+ (void)scanContact:(void (^)(NSArray * _Nonnull contacts))completion notGranted:(void (^)(void))notGranted;
++ (void)scanContact:(void (^)(NSArray * _Nonnull contacts, NSArray *titles))completion notGranted:(void (^)(void))notGranted;
 
 @end
 
