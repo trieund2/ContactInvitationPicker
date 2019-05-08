@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *shortName;
 @property (nonatomic, copy) NSString *phoneNumber;
 @property (nonatomic) BOOL isSelected;
+
 - (id)initWithTitle:(NSString *)title shortName:(NSString *)shortName;
 + (id)objectWithTitle:(NSString *)title shortName:(NSString *)shortName;
 

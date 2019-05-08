@@ -104,6 +104,8 @@
 		A1FAF67A2281452A006E024B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF6792281452A006E024B /* main.m */; };
 		A1FAF6842281452B006E024B /* ContactInvitationPickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF6832281452B006E024B /* ContactInvitationPickerTests.m */; };
 		A1FAF69222816304006E024B /* ContactScan.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF69122816304006E024B /* ContactScan.m */; };
+		C56FBAF422831FAA007E8A0E /* NibSelectedContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C56FBAF322831FAA007E8A0E /* NibSelectedContactCell.m */; };
+		C56FBAF92283275D007E8A0E /* NISelectedContactCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C56FBAF82283275D007E8A0E /* NISelectedContactCellObject.m */; };
 		C5EEFA022281CAA100044ED9 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EEF9F02281CAA000044ED9 /* UIProgressView+AFNetworking.m */; };
 		C5EEFA032281CAA100044ED9 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EEF9F22281CAA000044ED9 /* UIWebView+AFNetworking.m */; };
 		C5EEFA042281CAA100044ED9 /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EEF9F52281CAA000044ED9 /* UIAlertView+AFNetworking.m */; };
@@ -349,6 +351,10 @@
 		A1FAF69122816304006E024B /* ContactScan.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactScan.m; sourceTree = "<group>"; };
 		BDEE8D9D48694F4FFEBBE222 /* Pods-ContactInvitationPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPicker.release.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker.release.xcconfig"; sourceTree = "<group>"; };
 		BF6427FB7F1EADD16AD32BFD /* Pods-ContactInvitationPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPicker.debug.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker.debug.xcconfig"; sourceTree = "<group>"; };
+		C56FBAF222831FAA007E8A0E /* NibSelectedContactCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NibSelectedContactCell.h; sourceTree = "<group>"; };
+		C56FBAF322831FAA007E8A0E /* NibSelectedContactCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NibSelectedContactCell.m; sourceTree = "<group>"; };
+		C56FBAF72283275D007E8A0E /* NISelectedContactCellObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NISelectedContactCellObject.h; sourceTree = "<group>"; };
+		C56FBAF82283275D007E8A0E /* NISelectedContactCellObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NISelectedContactCellObject.m; sourceTree = "<group>"; };
 		C5EEF9F02281CAA000044ED9 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		C5EEF9F12281CAA000044ED9 /* UIAlertView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+AFNetworking.h"; sourceTree = "<group>"; };
 		C5EEF9F22281CAA000044ED9 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
@@ -443,17 +449,17 @@
 		A160AA632281930E0024BB49 /* collections */ = {
 			isa = PBXGroup;
 			children = (
-				A160AA692281930E0024BB49 /* NIMutableCollectionViewModel.m */,
-				A160AA6A2281930E0024BB49 /* NICollectionViewModel.h */,
-				A160AA6B2281930E0024BB49 /* NICollectionViewActions.m */,
-				A160AA6C2281930E0024BB49 /* NICollectionViewModel+Private.h */,
-				A160AA6D2281930E0024BB49 /* NICollectionViewCellFactory.m */,
-				A160AA6E2281930E0024BB49 /* NIMutableCollectionViewModel+Private.h */,
-				A160AA6F2281930E0024BB49 /* NimbusCollections.h */,
-				A160AA702281930E0024BB49 /* NICollectionViewCellFactory.h */,
 				A160AA712281930F0024BB49 /* NICollectionViewActions.h */,
+				A160AA6B2281930E0024BB49 /* NICollectionViewActions.m */,
+				A160AA702281930E0024BB49 /* NICollectionViewCellFactory.h */,
+				A160AA6D2281930E0024BB49 /* NICollectionViewCellFactory.m */,
+				A160AA6A2281930E0024BB49 /* NICollectionViewModel.h */,
 				A160AA722281930F0024BB49 /* NICollectionViewModel.m */,
+				A160AA6C2281930E0024BB49 /* NICollectionViewModel+Private.h */,
+				A160AA6F2281930E0024BB49 /* NimbusCollections.h */,
 				A160AA732281930F0024BB49 /* NIMutableCollectionViewModel.h */,
+				A160AA692281930E0024BB49 /* NIMutableCollectionViewModel.m */,
+				A160AA6E2281930E0024BB49 /* NIMutableCollectionViewModel+Private.h */,
 			);
 			path = collections;
 			sourceTree = "<group>";
@@ -750,6 +756,7 @@
 				A160A9E22281926C0024BB49 /* Frameworks */,
 				A1FAF68E228146BE006E024B /* Supports */,
 				A15B474F2282E8330049BAC1 /* Extensions */,
+				C56FBAF022831E9B007E8A0E /* Commons */,
 				A1DBA182228292D40036FD95 /* Features */,
 				A1FAF66A22814529006E024B /* AppDelegate.h */,
 				A1FAF66B22814529006E024B /* AppDelegate.m */,
@@ -782,16 +789,51 @@
 			children = (
 				A1FAF66D22814529006E024B /* ContactInvitationViewController.h */,
 				A1FAF66E22814529006E024B /* ContactInvitationViewController.m */,
+				C56FBAF5228320CF007E8A0E /* NIContactCell */,
+				C56FBAF6228320DF007E8A0E /* NISelectedContactCell */,
+			);
+			path = ContactInvitation;
+			sourceTree = "<group>";
+		};
+		C56FBAF022831E9B007E8A0E /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				C56FBAF122831EAA007E8A0E /* ContactScan */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		C56FBAF122831EAA007E8A0E /* ContactScan */ = {
+			isa = PBXGroup;
+			children = (
 				A1FAF69022816304006E024B /* ContactScan.h */,
 				A1FAF69122816304006E024B /* ContactScan.m */,
 				A160A4F022817E6D0024BB49 /* Contact.h */,
 				A160A4F122817E6D0024BB49 /* Contact.m */,
+			);
+			path = ContactScan;
+			sourceTree = "<group>";
+		};
+		C56FBAF5228320CF007E8A0E /* NIContactCell */ = {
+			isa = PBXGroup;
+			children = (
 				A1DBA1BC228294960036FD95 /* NIContactCellObject.h */,
 				A1DBA1BD228294960036FD95 /* NIContactCellObject.m */,
 				A1DBA1BF228297230036FD95 /* NIContactCell.h */,
 				A1DBA1C0228297230036FD95 /* NIContactCell.m */,
 			);
-			path = ContactInvitation;
+			path = NIContactCell;
+			sourceTree = "<group>";
+		};
+		C56FBAF6228320DF007E8A0E /* NISelectedContactCell */ = {
+			isa = PBXGroup;
+			children = (
+				C56FBAF222831FAA007E8A0E /* NibSelectedContactCell.h */,
+				C56FBAF322831FAA007E8A0E /* NibSelectedContactCell.m */,
+				C56FBAF72283275D007E8A0E /* NISelectedContactCellObject.h */,
+				C56FBAF82283275D007E8A0E /* NISelectedContactCellObject.m */,
+			);
+			path = NISelectedContactCell;
 			sourceTree = "<group>";
 		};
 		C5EEF9D12281CA5100044ED9 /* AFNetworking */ = {
@@ -1011,6 +1053,7 @@
 				A1DBA1B5228294330036FD95 /* AFURLConnectionOperation.m in Sources */,
 				C5EEFA022281CAA100044ED9 /* UIProgressView+AFNetworking.m in Sources */,
 				A160ACC2228193150024BB49 /* NIImageUtilities.m in Sources */,
+				C56FBAF92283275D007E8A0E /* NISelectedContactCellObject.m in Sources */,
 				A1FAF66F22814529006E024B /* ContactInvitationViewController.m in Sources */,
 				A160ACA0228193150024BB49 /* NIDOM.m in Sources */,
 				A160AC2F228193150024BB49 /* NICellCatalog.m in Sources */,
@@ -1091,6 +1134,7 @@
 				A1DBA1B3228294330036FD95 /* AFURLResponseSerialization.m in Sources */,
 				A160ACB9228193150024BB49 /* NINetworkActivity.m in Sources */,
 				A1DBA1B9228294330036FD95 /* AFURLSessionManager.m in Sources */,
+				C56FBAF422831FAA007E8A0E /* NibSelectedContactCell.m in Sources */,
 				A160ACC3228193150024BB49 /* NIPaths.m in Sources */,
 				A160ACBA228193150024BB49 /* NIDeviceOrientation.m in Sources */,
 				A1DBA1BB228294330036FD95 /* AFHTTPSessionManager.m in Sources */,
