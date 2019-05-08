@@ -394,13 +394,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		A160A9E22281926C0024BB49 /* Framework */ = {
+		A160A9E22281926C0024BB49 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				C5EEF9D12281CA5100044ED9 /* AFNetworking */,
 				A160A9E3228192770024BB49 /* Nimbus */,
 			);
-			path = Framework;
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		A160A9E3228192770024BB49 /* Nimbus */ = {
@@ -700,6 +700,14 @@
 			path = core;
 			sourceTree = "<group>";
 		};
+		A1DBA182228292D40036FD95 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				A1FAF68F228146DE006E024B /* ContactInvitation */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
 		A1FAF65E22814529006E024B = {
 			isa = PBXGroup;
 			children = (
@@ -723,9 +731,9 @@
 		A1FAF66922814529006E024B /* ContactInvitationPicker */ = {
 			isa = PBXGroup;
 			children = (
-				A160A9E22281926C0024BB49 /* Framework */,
+				A160A9E22281926C0024BB49 /* Frameworks */,
 				A1FAF68E228146BE006E024B /* Supports */,
-				A1FAF68F228146DE006E024B /* ContactInvitation */,
+				A1DBA182228292D40036FD95 /* Features */,
 				A1FAF66A22814529006E024B /* AppDelegate.h */,
 				A1FAF66B22814529006E024B /* AppDelegate.m */,
 				A1FAF67022814529006E024B /* Main.storyboard */,

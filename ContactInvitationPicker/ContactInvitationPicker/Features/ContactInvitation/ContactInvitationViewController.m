@@ -44,22 +44,24 @@
 
 - (void)configContactTableViewDataSource {
     if (_titles.count != _contacts.count) { return; };
-    NSMutableArray *arrayContact = [NSMutableArray new];
+    NSMutableArray *sectionContacts = [NSMutableArray new];
     
     for (int i = 0; i < _titles.count; i++) {
+        [sectionContacts addObject:[_titles objectAtIndex:i]];
         NSArray *contacts = [_contacts objectAtIndex:i];
-        [arrayContact addObject:[_titles objectAtIndex:i]];
+        
         for (Contact *contact in contacts) {
-            [arrayContact addObject:[NITitleCellObject objectWithTitle:contact.fullName]];
+            [sectionContacts addObject:[NITitleCellObject objectWithTitle:contact.fullName]];
         }
     }
     
-    _model = [[NITableViewModel alloc] initWithSectionedArray:arrayContact
+    _model = [[NITableViewModel alloc] initWithSectionedArray:sectionContacts
                                                      delegate:(id)[NICellFactory class]];
     _contactTableView.dataSource = _model;
     [_model setSectionIndexType:NITableViewModelSectionIndexDynamic
                     showsSearch:YES
                    showsSummary:YES];
+    [_contactTableView reloadData];
 }
 
 @end
