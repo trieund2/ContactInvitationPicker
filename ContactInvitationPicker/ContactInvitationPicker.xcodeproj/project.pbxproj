@@ -94,6 +94,8 @@
 		A1DBA1B9228294330036FD95 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1AD228294320036FD95 /* AFURLSessionManager.m */; };
 		A1DBA1BA228294330036FD95 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1B1228294330036FD95 /* AFNetworkReachabilityManager.m */; };
 		A1DBA1BB228294330036FD95 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1B2228294330036FD95 /* AFHTTPSessionManager.m */; };
+		A1DBA1BE228294960036FD95 /* NIContactCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1BD228294960036FD95 /* NIContactCellObject.m */; };
+		A1DBA1C2228297230036FD95 /* NINibContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1C0228297230036FD95 /* NINibContactCell.m */; };
 		A1FAF66C22814529006E024B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF66B22814529006E024B /* AppDelegate.m */; };
 		A1FAF66F22814529006E024B /* ContactInvitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF66E22814529006E024B /* ContactInvitationViewController.m */; };
 		A1FAF67222814529006E024B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1FAF67022814529006E024B /* Main.storyboard */; };
@@ -325,6 +327,10 @@
 		A1DBA1B0228294330036FD95 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = ContactInvitationPicker/Frameworks/AFNetworking/AFURLSessionManager.h; sourceTree = SOURCE_ROOT; };
 		A1DBA1B1228294330036FD95 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = ContactInvitationPicker/Frameworks/AFNetworking/AFNetworkReachabilityManager.m; sourceTree = SOURCE_ROOT; };
 		A1DBA1B2228294330036FD95 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = ContactInvitationPicker/Frameworks/AFNetworking/AFHTTPSessionManager.m; sourceTree = SOURCE_ROOT; };
+		A1DBA1BC228294960036FD95 /* NIContactCellObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIContactCellObject.h; sourceTree = "<group>"; };
+		A1DBA1BD228294960036FD95 /* NIContactCellObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCellObject.m; sourceTree = "<group>"; };
+		A1DBA1BF228297230036FD95 /* NINibContactCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NINibContactCell.h; sourceTree = "<group>"; };
+		A1DBA1C0228297230036FD95 /* NINibContactCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NINibContactCell.m; sourceTree = "<group>"; };
 		A1FAF66722814529006E024B /* ContactInvitationPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactInvitationPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FAF66A22814529006E024B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A1FAF66B22814529006E024B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -770,6 +776,10 @@
 				A1FAF69122816304006E024B /* ContactScan.m */,
 				A160A4F022817E6D0024BB49 /* Contact.h */,
 				A160A4F122817E6D0024BB49 /* Contact.m */,
+				A1DBA1BC228294960036FD95 /* NIContactCellObject.h */,
+				A1DBA1BD228294960036FD95 /* NIContactCellObject.m */,
+				A1DBA1BF228297230036FD95 /* NINibContactCell.h */,
+				A1DBA1C0228297230036FD95 /* NINibContactCell.m */,
 			);
 			path = ContactInvitation;
 			sourceTree = "<group>";
@@ -1039,6 +1049,7 @@
 				A160ACA6228193150024BB49 /* UINavigationBar+NIStyleable.m in Sources */,
 				A1DBA1B4228294330036FD95 /* AFHTTPRequestOperation.m in Sources */,
 				A1FAF67A2281452A006E024B /* main.m in Sources */,
+				A1DBA1BE228294960036FD95 /* NIContactCellObject.m in Sources */,
 				A160AC25228193150024BB49 /* NIPhotoScrollView.m in Sources */,
 				A160ACC5228193150024BB49 /* NIDebuggingTools.m in Sources */,
 				C5EEFA062281CAA100044ED9 /* UIImageView+AFNetworking.m in Sources */,
@@ -1060,6 +1071,7 @@
 				C5EEFA042281CAA100044ED9 /* UIAlertView+AFNetworking.m in Sources */,
 				A160AC32228193150024BB49 /* NIRadioGroup.m in Sources */,
 				A160ACBF228193150024BB49 /* NIButtonUtilities.m in Sources */,
+				A1DBA1C2228297230036FD95 /* NINibContactCell.m in Sources */,
 				A160AC7A228193150024BB49 /* NIAttributedLabel.m in Sources */,
 				A160AC9B228193150024BB49 /* NITextField+NIStyleable.m in Sources */,
 				C5EEFA032281CAA100044ED9 /* UIWebView+AFNetworking.m in Sources */,
