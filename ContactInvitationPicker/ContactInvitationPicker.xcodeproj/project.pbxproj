@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35E46660562C3A49B80657EA /* Pods_ContactInvitationPickerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD0CF92641251A2A7FD88B9 /* Pods_ContactInvitationPickerTests.framework */; };
 		415B122D192C42E64F993789 /* Pods_ContactInvitationPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70E88E72B63E1DB8BBBBBA3 /* Pods_ContactInvitationPicker.framework */; };
+		A15B47542282E87B0049BAC1 /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = A15B47532282E87B0049BAC1 /* UIViewController+Alert.m */; };
 		A160A4F222817E6D0024BB49 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = A160A4F122817E6D0024BB49 /* Contact.m */; };
 		A160AC1C228193150024BB49 /* NIMutableCollectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AA692281930E0024BB49 /* NIMutableCollectionViewModel.m */; };
 		A160AC1D228193150024BB49 /* NICollectionViewActions.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AA6B2281930E0024BB49 /* NICollectionViewActions.m */; };
@@ -95,10 +96,9 @@
 		A1DBA1BA228294330036FD95 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1B1228294330036FD95 /* AFNetworkReachabilityManager.m */; };
 		A1DBA1BB228294330036FD95 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1B2228294330036FD95 /* AFHTTPSessionManager.m */; };
 		A1DBA1BE228294960036FD95 /* NIContactCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1BD228294960036FD95 /* NIContactCellObject.m */; };
-		A1DBA1C2228297230036FD95 /* NINibContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1C0228297230036FD95 /* NINibContactCell.m */; };
+		A1DBA1C2228297230036FD95 /* NIContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1C0228297230036FD95 /* NIContactCell.m */; };
 		A1FAF66C22814529006E024B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF66B22814529006E024B /* AppDelegate.m */; };
 		A1FAF66F22814529006E024B /* ContactInvitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF66E22814529006E024B /* ContactInvitationViewController.m */; };
-		A1FAF67222814529006E024B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1FAF67022814529006E024B /* Main.storyboard */; };
 		A1FAF6742281452A006E024B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1FAF6732281452A006E024B /* Assets.xcassets */; };
 		A1FAF6772281452A006E024B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1FAF6752281452A006E024B /* LaunchScreen.storyboard */; };
 		A1FAF67A2281452A006E024B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF6792281452A006E024B /* main.m */; };
@@ -128,6 +128,8 @@
 		082EAB65DF099E82AD525937 /* Pods-ContactInvitationPickerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPickerTests.debug.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPickerTests/Pods-ContactInvitationPickerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6963FF30EFB8273DBDB9BA88 /* Pods-ContactInvitationPickerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPickerTests.release.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPickerTests/Pods-ContactInvitationPickerTests.release.xcconfig"; sourceTree = "<group>"; };
 		8FD0CF92641251A2A7FD88B9 /* Pods_ContactInvitationPickerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContactInvitationPickerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A15B47522282E87B0049BAC1 /* UIViewController+Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
+		A15B47532282E87B0049BAC1 /* UIViewController+Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
 		A160A4F022817E6D0024BB49 /* Contact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		A160A4F122817E6D0024BB49 /* Contact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		A160AA692281930E0024BB49 /* NIMutableCollectionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMutableCollectionViewModel.m; sourceTree = "<group>"; };
@@ -329,14 +331,13 @@
 		A1DBA1B2228294330036FD95 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = ContactInvitationPicker/Frameworks/AFNetworking/AFHTTPSessionManager.m; sourceTree = SOURCE_ROOT; };
 		A1DBA1BC228294960036FD95 /* NIContactCellObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIContactCellObject.h; sourceTree = "<group>"; };
 		A1DBA1BD228294960036FD95 /* NIContactCellObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCellObject.m; sourceTree = "<group>"; };
-		A1DBA1BF228297230036FD95 /* NINibContactCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NINibContactCell.h; sourceTree = "<group>"; };
-		A1DBA1C0228297230036FD95 /* NINibContactCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NINibContactCell.m; sourceTree = "<group>"; };
+		A1DBA1BF228297230036FD95 /* NIContactCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIContactCell.h; sourceTree = "<group>"; };
+		A1DBA1C0228297230036FD95 /* NIContactCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCell.m; sourceTree = "<group>"; };
 		A1FAF66722814529006E024B /* ContactInvitationPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactInvitationPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FAF66A22814529006E024B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A1FAF66B22814529006E024B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A1FAF66D22814529006E024B /* ContactInvitationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactInvitationViewController.h; sourceTree = "<group>"; };
 		A1FAF66E22814529006E024B /* ContactInvitationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactInvitationViewController.m; sourceTree = "<group>"; };
-		A1FAF67122814529006E024B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A1FAF6732281452A006E024B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1FAF6762281452A006E024B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1FAF6782281452A006E024B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -398,6 +399,15 @@
 				6963FF30EFB8273DBDB9BA88 /* Pods-ContactInvitationPickerTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A15B474F2282E8330049BAC1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A15B47522282E87B0049BAC1 /* UIViewController+Alert.h */,
+				A15B47532282E87B0049BAC1 /* UIViewController+Alert.m */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A160A9E22281926C0024BB49 /* Frameworks */ = {
@@ -739,10 +749,10 @@
 			children = (
 				A160A9E22281926C0024BB49 /* Frameworks */,
 				A1FAF68E228146BE006E024B /* Supports */,
+				A15B474F2282E8330049BAC1 /* Extensions */,
 				A1DBA182228292D40036FD95 /* Features */,
 				A1FAF66A22814529006E024B /* AppDelegate.h */,
 				A1FAF66B22814529006E024B /* AppDelegate.m */,
-				A1FAF67022814529006E024B /* Main.storyboard */,
 				A1FAF6752281452A006E024B /* LaunchScreen.storyboard */,
 			);
 			path = ContactInvitationPicker;
@@ -778,8 +788,8 @@
 				A160A4F122817E6D0024BB49 /* Contact.m */,
 				A1DBA1BC228294960036FD95 /* NIContactCellObject.h */,
 				A1DBA1BD228294960036FD95 /* NIContactCellObject.m */,
-				A1DBA1BF228297230036FD95 /* NINibContactCell.h */,
-				A1DBA1C0228297230036FD95 /* NINibContactCell.m */,
+				A1DBA1BF228297230036FD95 /* NIContactCell.h */,
+				A1DBA1C0228297230036FD95 /* NIContactCell.m */,
 			);
 			path = ContactInvitation;
 			sourceTree = "<group>";
@@ -930,7 +940,6 @@
 			files = (
 				A1FAF6772281452A006E024B /* LaunchScreen.storyboard in Resources */,
 				A1FAF6742281452A006E024B /* Assets.xcassets in Resources */,
-				A1FAF67222814529006E024B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1018,6 +1027,7 @@
 				A160AC43228193150024BB49 /* NINetworkImageView.m in Sources */,
 				C5EEFA082281CAA100044ED9 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				A160ACA5228193150024BB49 /* NIStylesheet.m in Sources */,
+				A15B47542282E87B0049BAC1 /* UIViewController+Alert.m in Sources */,
 				A160ACBD228193150024BB49 /* NINonRetainingCollections.m in Sources */,
 				A160AC30228193150024BB49 /* NITableViewActions.m in Sources */,
 				A160AC9F228193150024BB49 /* UIScrollView+NIStyleable.m in Sources */,
@@ -1071,7 +1081,7 @@
 				C5EEFA042281CAA100044ED9 /* UIAlertView+AFNetworking.m in Sources */,
 				A160AC32228193150024BB49 /* NIRadioGroup.m in Sources */,
 				A160ACBF228193150024BB49 /* NIButtonUtilities.m in Sources */,
-				A1DBA1C2228297230036FD95 /* NINibContactCell.m in Sources */,
+				A1DBA1C2228297230036FD95 /* NIContactCell.m in Sources */,
 				A160AC7A228193150024BB49 /* NIAttributedLabel.m in Sources */,
 				A160AC9B228193150024BB49 /* NITextField+NIStyleable.m in Sources */,
 				C5EEFA032281CAA100044ED9 /* UIWebView+AFNetworking.m in Sources */,
@@ -1116,14 +1126,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A1FAF67022814529006E024B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A1FAF67122814529006E024B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A1FAF6752281452A006E024B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

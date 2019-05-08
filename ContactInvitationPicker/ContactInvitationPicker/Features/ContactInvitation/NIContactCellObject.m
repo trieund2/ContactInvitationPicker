@@ -7,14 +7,15 @@
 //
 
 #import "NIContactCellObject.h"
-#import "NINibContactCell.h"
+#import "NIContactCell.h"
 
 @implementation NIContactCellObject
 
 - (id)initWithTitle:(NSString *)title shortName:(NSString *)shortName {
-    if (self = [super initWithCellClass:[NINibContactCell class]]) {
-        _title = [title copy];
-        _shortName = [shortName copy];
+    if (self = [super initWithCellClass:[NIContactCell class]]) {
+        self.title = [title copy];
+        self.shortName = [shortName copy];
+        self.isSelected = NO;
     }
     return self;
 }
@@ -24,7 +25,7 @@
 }
 
 - (Class)cellClass {
-    return [NINibContactCell class];
+    return [NIContactCell class];
 }
 
 @end

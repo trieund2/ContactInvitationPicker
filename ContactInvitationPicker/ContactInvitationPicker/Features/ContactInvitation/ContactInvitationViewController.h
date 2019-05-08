@@ -10,7 +10,9 @@
 
 @interface ContactInvitationViewController : UIViewController <UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *contactTableView;
+@property (nonatomic) UICollectionView *selectContactCollectionView;
+@property (nonatomic) UISearchBar *searchBar;
+@property (nonatomic) UITableView *contactTableView;
 
 @end
 

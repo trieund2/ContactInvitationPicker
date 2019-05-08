@@ -12,8 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NIContactCellObject : NICellObject
 
-@property (nonatomic, copy) NSString* title;
-@property (nonatomic, copy) NSString* shortName;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *shortName;
+@property (nonatomic, copy) NSString *phoneNumber;
+@property (nonatomic) BOOL isSelected;
 - (id)initWithTitle:(NSString *)title shortName:(NSString *)shortName;
 + (id)objectWithTitle:(NSString *)title shortName:(NSString *)shortName;
 
