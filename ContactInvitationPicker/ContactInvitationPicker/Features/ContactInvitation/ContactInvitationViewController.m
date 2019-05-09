@@ -104,7 +104,7 @@
     layout.itemSize = CGSizeMake(40, 40);
     layout.minimumInteritemSpacing = 4;
     _selectContactCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
-                                                          collectionViewLayout:layout];
+                                                      collectionViewLayout:layout];
     self.selectContactCollectionView.backgroundColor = UIColor.clearColor;
     
     
@@ -314,10 +314,8 @@
     
     [self.selectContactCollectionView reloadData];
     [self performAnimateSelectedContactCollectionView];
-    if (tableView == self.contactTableView) {
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                         withRowAnimation:UITableViewRowAnimationNone];
-    }
+    [self.contactTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:selectedIndexPath]
+                                 withRowAnimation:UITableViewRowAnimationNone];
     [self updateSendButtonState];
     [self.titleView updateSubTitleWithNumberSelecContacts:selectedContacts.count];
 }
