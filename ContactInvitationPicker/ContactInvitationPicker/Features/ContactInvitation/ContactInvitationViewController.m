@@ -30,6 +30,7 @@
     NITableViewModel *searchResultTableViewModel;
     NICollectionViewModel *collectionViewModel;
     NSLayoutConstraint *selectContactCollectionViewHeightConst;
+    NSLayoutConstraint *searchBarTopConst;
     UIButton *sendButton;
 }
 
@@ -70,8 +71,9 @@
     messageViewController.messageComposeDelegate = self;
     messageViewController.recipients = recipients;
     messageViewController.body = @"Moi ban cai dat zalo mien phi";
+    __weak ContactInvitationViewController *weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self presentViewController:messageViewController animated:YES completion:NULL];
+        [weakSelf presentViewController:messageViewController animated:YES completion:NULL];
     });
 }
 
@@ -161,14 +163,19 @@
 }
 
 - (void)performAnimateSelectedContactCollectionView {
-    CGFloat height = 0;
+    CGFloat selectedContactCollectionViewHeight = 0;
+    CGFloat searchBarTopConstValue = 0;
     if (selectedContacts.count != 0) {
-        height = 50;
+        selectedContactCollectionViewHeight = 40;
+        searchBarTopConstValue = 4;
     }
-    if (selectContactCollectionViewHeightConst.constant == height) { return; }
-    selectContactCollectionViewHeightConst.constant = height;
+    if (selectContactCollectionViewHeightConst.constant == selectedContactCollectionViewHeight) { return; }
+    selectContactCollectionViewHeightConst.constant = selectedContactCollectionViewHeight;
+    searchBarTopConst.constant = searchBarTopConstValue;
+    
+    __weak ContactInvitationViewController *weakSelf = self;
     [UIView animateWithDuration:0.2 delay:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        [self.view layoutIfNeeded];
+        [weakSelf.view layoutIfNeeded];
     } completion:^(BOOL finished) {}];
 }
 
@@ -208,7 +215,7 @@
     self.selectContactCollectionView.delegate = self;
     self.selectContactCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.selectContactCollectionView];
-    [self.selectContactCollectionView.topAnchor constraintEqualToAnchor:self.topLayoutGuide.bottomAnchor].active = YES;
+    [self.selectContactCollectionView.topAnchor constraintEqualToAnchor:self.topLayoutGuide.bottomAnchor constant:4].active = YES;
     [self.selectContactCollectionView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:8].active = YES;
     [self.selectContactCollectionView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
     selectContactCollectionViewHeightConst = [self.selectContactCollectionView.heightAnchor constraintEqualToConstant:0];
@@ -218,10 +225,11 @@
 - (void)layoutSearchBar {
     self.searchBar.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.searchBar];
-    [self.searchBar.topAnchor constraintEqualToAnchor:self.selectContactCollectionView.bottomAnchor constant:4].active = YES;
+    searchBarTopConst = [self.searchBar.topAnchor constraintEqualToAnchor:self.selectContactCollectionView.bottomAnchor];
     [self.searchBar.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
     [self.searchBar.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
     [self.searchBar.heightAnchor constraintEqualToConstant:40].active = YES;
+    searchBarTopConst.active = YES;
 }
 
 - (void)layoutContactTableView {
@@ -253,6 +261,24 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view = [UIView new];
+    view.frame = CGRectMake(0, 0, tableView.frame.size.width, 30);
+    view.backgroundColor = UIColor.whiteColor;
+    NSString *title = [contactTableViewModel tableView:tableView titleForHeaderInSection:section];
+    UILabel *label = [UILabel new];
+    label.text = title;
+    [label setFont:[UIFont systemFontOfSize:14]];
+    label.textColor = UIColorFromRGB(0x79848F);
+    label.frame = CGRectMake(6, 0, 100, 30);
+    [view addSubview:label];
+    return view;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
