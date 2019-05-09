@@ -14,11 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *phoneNumber;
 @property (nonatomic, copy) NSString *shortName;
-@property (nonatomic) BOOL isSelected;
 @property (nonatomic) NSIndexPath *indexPath;
 
-- (id)initWithPhoneNumber:(NSString *)phoneNumber shortName:(NSString *)shortName;
-+ (id)objectWithPhoneNumber:(NSString *)phoneNumber shortName:(NSString *)shortName;
+- (id)initWithPhoneNumber:(NSString *)phoneNumber shortName:(NSString *)shortName indexPath:(NSIndexPath *)indexPath;
++ (id)objectWithPhoneNumber:(NSString *)phoneNumber shortName:(NSString *)shortName indexPath:(NSIndexPath *)indexPath;
 
 @end
 

@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContactInvitationViewController : UIViewController <UITableViewDelegate>
+@interface ContactInvitationViewController : UIViewController <UITableViewDelegate, UICollectionViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic) UICollectionView *selectContactCollectionView;
 @property (nonatomic) UISearchBar *searchBar;
 @property (nonatomic) UITableView *contactTableView;
+@property (nonatomic) UITableView *searchResultTableView;
+@property (nonatomic) UILabel *emptySearchResultLabel;
 
 @end
 

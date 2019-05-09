@@ -43,9 +43,8 @@ alpha:1.0]
     [self initSelectContactCollectionView];
     [self initSearchBar];
     [self initContactsTableView];
-    [self layoutSelectContactCollectionView];
-    [self layoutSearchBar];
-    [self layoutContactTableView];
+    [self initSearchReultTableView];
+    [self initEmptySearchResultLabel];
     
     [ContactScan scanContact:^(NSArray * _Nonnull contacts, NSArray * _Nonnull titles) {
         [self configContactTableViewDataSourceWithContacts:contacts titles:titles];
@@ -71,22 +70,43 @@ alpha:1.0]
                            delegate:(id)[NICollectionViewCellFactory class]];
     self.selectContactCollectionView.dataSource = collectionViewModel;
     [self.selectContactCollectionView reloadData];
+    [self layoutSelectContactCollectionView];
 }
 
 - (void)initSearchBar {
     self.searchBar = [UISearchBar new];
+    self.searchBar.delegate = self;
+    self.searchBar.placeholder = @"Nhập tên bạn bè";
     [self.searchBar setBackgroundImage:[UIImage new]];
+    [self layoutSearchBar];
 }
 
 - (void)initContactsTableView {
     self.contactTableView = [UITableView new];
     self.contactTableView.delegate = self;
     self.contactTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    [self layoutContactTableView];
+}
+
+- (void)initSearchReultTableView {
+    self.searchResultTableView = [UITableView new];
+    self.searchResultTableView.delegate = self;
+    [self.searchResultTableView setHidden:YES];
+    self.searchResultTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    [self layoutSearchResultTableView];
+}
+
+- (void)initEmptySearchResultLabel {
+    self.emptySearchResultLabel = [UILabel new];
+    self.emptySearchResultLabel.text = @"Không tìm thầy kết quả phù hợp";
+    [self.emptySearchResultLabel setHighlighted:YES];
+    [self layoutEmptySearchResultLabel];
 }
 
 #pragma mark Setup layouts
 
 - (void)layoutSelectContactCollectionView {
+    self.selectContactCollectionView.delegate = self;
     self.selectContactCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.selectContactCollectionView];
     [self.selectContactCollectionView.topAnchor constraintEqualToAnchor:self.topLayoutGuide.bottomAnchor].active = YES;
@@ -114,6 +134,22 @@ alpha:1.0]
     [self.contactTableView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
 }
 
+- (void)layoutSearchResultTableView {
+    self.searchResultTableView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.searchResultTableView];
+    [self.searchResultTableView.topAnchor constraintEqualToAnchor:self.contactTableView.topAnchor].active = YES;
+    [self.searchResultTableView.leftAnchor constraintEqualToAnchor:self.contactTableView.leftAnchor].active = YES;
+    [self.searchResultTableView.rightAnchor constraintEqualToAnchor:self.contactTableView.rightAnchor].active = YES;
+    [self.searchResultTableView.bottomAnchor constraintEqualToAnchor:self.contactTableView.bottomAnchor].active = YES;
+}
+
+- (void)layoutEmptySearchResultLabel {
+    self.emptySearchResultLabel.translatesAutoresizingMaskIntoConstraints = YES;
+    [self.searchResultTableView addSubview:self.emptySearchResultLabel];
+    [self.emptySearchResultLabel.centerXAnchor constraintEqualToAnchor:self.searchResultTableView.centerXAnchor].active = YES;
+    [self.emptySearchResultLabel.topAnchor constraintEqualToAnchor:self.searchResultTableView.topAnchor constant:60].active = YES;
+}
+
 #pragma mark Helper methods
 
 - (void)configContactTableViewDataSourceWithContacts:(NSArray *)contacts titles:(NSArray *)titles {
@@ -125,15 +161,17 @@ alpha:1.0]
         NSArray *groupContacts = [contacts objectAtIndex:i];
         
         for (Contact *contact in groupContacts) {
-            [sectionContacts addObject:[NIContactCellObject objectWithTitle:contact.fullName shortName:contact.shortName]];
+            [sectionContacts addObject:[NIContactCellObject objectWithTitle:contact.fullName
+                                                                  shortName:contact.shortName
+                                                                phoneNumber:contact.phoneNumber]];
         }
     }
     
     contactTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:sectionContacts delegate:(id)[NICellFactory class]];
     self.contactTableView.dataSource = contactTableViewModel;
     [contactTableViewModel setSectionIndexType:NITableViewModelSectionIndexDynamic
-                   showsSearch:YES
-                  showsSummary:YES];
+                                   showsSearch:YES
+                                  showsSummary:YES];
     [self.contactTableView reloadData];
 }
 
@@ -149,6 +187,10 @@ alpha:1.0]
     } completion:^(BOOL finished) {}];
 }
 
+- (void)performSearchWithSearchText:(NSString *)searchText {
+    
+}
+
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -157,8 +199,9 @@ alpha:1.0]
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NIContactCellObject *contactObject = [contactTableViewModel objectAtIndexPath:indexPath];
-    NISelectedContactCellObject *selectContactObject = [NISelectedContactCellObject objectWithPhoneNumber:contactObject.phoneNumber shortName:contactObject.shortName];
-    
+    NISelectedContactCellObject *selectContactObject = [NISelectedContactCellObject objectWithPhoneNumber:contactObject.phoneNumber
+                                                                                                shortName:contactObject.shortName
+                                                                                                indexPath:indexPath];
     if ([selectedContacts containsObject:selectContactObject]) {
         [selectedContacts removeObject:selectContactObject];
         contactObject.isSelected = NO;
@@ -173,6 +216,20 @@ alpha:1.0]
     [self performAnimateSelectedContactCollectionView];
     [self.contactTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                                  withRowAnimation:UITableViewRowAnimationNone];
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NISelectedContactCellObject *selectedObject = [collectionViewModel objectAtIndexPath:indexPath];
+    [self.contactTableView scrollToRowAtIndexPath:selectedObject.indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self.searchResultTableView setHidden:([searchText isEqualToString:@""])];
+    [self performSearchWithSearchText:searchText];
 }
 
 @end

@@ -312,6 +312,7 @@
 		A160AC15228193140024BB49 /* UIResponder+NimbusCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+NimbusCore.h"; sourceTree = "<group>"; };
 		A160AC16228193140024BB49 /* NIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIError.h; sourceTree = "<group>"; };
 		A160AC17228193140024BB49 /* NIActions+Subclassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NIActions+Subclassing.h"; sourceTree = "<group>"; };
+		A1A837B92283C81500C353C9 /* ContactCellObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactCellObject.h; sourceTree = "<group>"; };
 		A1DBA1A0228294310036FD95 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = ContactInvitationPicker/Frameworks/AFNetworking/AFHTTPRequestOperation.h; sourceTree = SOURCE_ROOT; };
 		A1DBA1A1228294310036FD95 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = ContactInvitationPicker/Frameworks/AFNetworking/AFURLResponseSerialization.m; sourceTree = SOURCE_ROOT; };
 		A1DBA1A2228294320036FD95 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = ContactInvitationPicker/Frameworks/AFNetworking/AFHTTPRequestOperation.m; sourceTree = SOURCE_ROOT; };
@@ -791,6 +792,7 @@
 				A1FAF66E22814529006E024B /* ContactInvitationViewController.m */,
 				C56FBAF5228320CF007E8A0E /* NIContactCell */,
 				C56FBAF6228320DF007E8A0E /* NISelectedContactCell */,
+				A1A837B92283C81500C353C9 /* ContactCellObject.h */,
 			);
 			path = ContactInvitation;
 			sourceTree = "<group>";

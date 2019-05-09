@@ -11,17 +11,18 @@
 
 @implementation NIContactCellObject
 
-- (id)initWithTitle:(NSString *)title shortName:(NSString *)shortName {
+- (id)initWithTitle:(NSString *)title shortName:(NSString *)shortName phoneNumber:(NSString *)phoneNumber {
     if (self = [super initWithCellClass:[NIContactCell class]]) {
         self.title = [title copy];
         self.shortName = [shortName copy];
+        self.phoneNumber = [phoneNumber copy];
         self.isSelected = NO;
     }
     return self;
 }
 
-+ (id)objectWithTitle:(NSString *)title shortName:(NSString *)shortName {
-    return [[self alloc] initWithTitle:title shortName:shortName];
++ (id)objectWithTitle:(NSString *)title shortName:(NSString *)shortName phoneNumber:(NSString *)phoneNumber {
+    return [[self alloc] initWithTitle:title shortName:shortName phoneNumber:phoneNumber];
 }
 
 - (Class)cellClass {
