@@ -15,6 +15,7 @@
 #import "NISelectedContactCellObject.h"
 #import "UIColorFromRGB.h"
 #import "UIViewController+Alert.h"
+#import "NSString+Extension.h"
 
 #define MAX_CONTACT_SELECT 5
 
@@ -179,7 +180,7 @@
             return NO;
         } else if ([object isKindOfClass:[NIContactCellObject class]]) {
             NIContactCellObject *contactCellObject = (NIContactCellObject *)object;
-            return [contactCellObject.displayName containsString:searchText];
+            return [contactCellObject.displayNameIgnoreUnicode.lowercaseString containsString:[NSString ignoreUnicode:searchText].lowercaseString];
         } else {
             return NO;
         }

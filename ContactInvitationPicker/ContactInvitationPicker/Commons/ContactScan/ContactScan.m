@@ -9,6 +9,7 @@
 #import "ContactScan.h"
 #import <Contacts/Contacts.h>
 #import "NIContactCellObject.h"
+#import "NSString+Extension.h"
 
 @implementation ContactScan
 
@@ -56,6 +57,7 @@
     CNContactFetchRequest *request = [[CNContactFetchRequest alloc]initWithKeysToFetch:keysToFetch];
     request.sortOrder = CNContactSortOrderFamilyName;
     
+    NSMutableArray *nonAlphabetContacts = [NSMutableArray new];
     NSMutableArray *contacts = [NSMutableArray new];
     __block NSString *previousTitle = nil;
     
@@ -66,15 +68,26 @@
          NIContactCellObject *object = [NIContactCellObject objectFromContact:contact];
          if (object) {
              NSString *currentTitle = [object.displayName substringToIndex:1];
-             if (![currentTitle isEqualToString:previousTitle]) {
+             currentTitle = [NSString ignoreUnicode:currentTitle].uppercaseString;
+             NSString *allAlphabet = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+             bool isAlphabet = [allAlphabet containsString:currentTitle];
+             
+             if (![currentTitle isEqualToString:previousTitle] && isAlphabet) {
                  [contacts addObject:currentTitle];
                  previousTitle = currentTitle;
              }
-             [contacts addObject:object];
+             if (isAlphabet) {
+                 [contacts addObject:object];
+             } else {
+                 [nonAlphabetContacts addObject:object];
+             }
+             
          }
      }];
-    
-    completion(contacts);
+    if (nonAlphabetContacts.count > 0) {
+        [nonAlphabetContacts insertObject:@"#" atIndex:0];
+    }
+    completion([nonAlphabetContacts arrayByAddingObjectsFromArray:contacts]);
 }
 
 @end

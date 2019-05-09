@@ -86,6 +86,7 @@
 		A160ACC8228193150024BB49 /* NISnapshotRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AC13228193140024BB49 /* NISnapshotRotation.m */; };
 		A160ACC9228193150024BB49 /* NISDKAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AC14228193140024BB49 /* NISDKAvailability.m */; };
 		A1A837C9228418F900C353C9 /* ContactInviNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */; };
+		A1A8382F228434D200C353C9 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A8382E228434D200C353C9 /* NSString+Extension.m */; };
 		A1DBA1B3228294330036FD95 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1A1228294310036FD95 /* AFURLResponseSerialization.m */; };
 		A1DBA1B4228294330036FD95 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1A2228294320036FD95 /* AFHTTPRequestOperation.m */; };
 		A1DBA1B5228294330036FD95 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1A3228294320036FD95 /* AFURLConnectionOperation.m */; };
@@ -315,6 +316,8 @@
 		A1A837C122840A3A00C353C9 /* UIColorFromRGB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIColorFromRGB.h; sourceTree = "<group>"; };
 		A1A837C7228418F900C353C9 /* ContactInviNavigationTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactInviNavigationTitleView.h; sourceTree = "<group>"; };
 		A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactInviNavigationTitleView.m; sourceTree = "<group>"; };
+		A1A8382D228434D200C353C9 /* NSString+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		A1A8382E228434D200C353C9 /* NSString+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		A1DBA1A0228294310036FD95 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = ContactInvitationPicker/Frameworks/AFNetworking/AFHTTPRequestOperation.h; sourceTree = SOURCE_ROOT; };
 		A1DBA1A1228294310036FD95 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = ContactInvitationPicker/Frameworks/AFNetworking/AFURLResponseSerialization.m; sourceTree = SOURCE_ROOT; };
 		A1DBA1A2228294320036FD95 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = ContactInvitationPicker/Frameworks/AFNetworking/AFHTTPRequestOperation.m; sourceTree = SOURCE_ROOT; };
@@ -415,6 +418,8 @@
 			children = (
 				A15B47522282E87B0049BAC1 /* UIViewController+Alert.h */,
 				A15B47532282E87B0049BAC1 /* UIViewController+Alert.m */,
+				A1A8382D228434D200C353C9 /* NSString+Extension.h */,
+				A1A8382E228434D200C353C9 /* NSString+Extension.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1092,6 +1097,7 @@
 				A160AC4B228193150024BB49 /* NIBadgeView.m in Sources */,
 				C5EEFA052281CAA100044ED9 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				A160AC61228193150024BB49 /* NILauncherViewController.m in Sources */,
+				A1A8382F228434D200C353C9 /* NSString+Extension.m in Sources */,
 				A160ACBE228193150024BB49 /* NIRuntimeClassModifications.m in Sources */,
 				A160ACBC228193150024BB49 /* UIResponder+NimbusCore.m in Sources */,
 				A160ACA4228193150024BB49 /* UITextField+NIStyleable.m in Sources */,

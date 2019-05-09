@@ -9,6 +9,7 @@
 #import "NIContactCellObject.h"
 #import "NIContactCell.h"
 #import "UIColorFromRGB.h"
+#import "NSString+Extension.h"
 
 @implementation NIContactCellObject
 
@@ -26,9 +27,10 @@
                 self.displayName = [NSString stringWithFormat:@"%@ %@", lastName, firstName];
             }
             
+            self.displayNameIgnoreUnicode = [NSString ignoreUnicode:self.displayName];
             NSMutableArray *words = [NSMutableArray new];
             
-            [self.displayName enumerateSubstringsInRange:NSMakeRange(0, [self.displayName length])
+            [self.displayNameIgnoreUnicode enumerateSubstringsInRange:NSMakeRange(0, [self.displayNameIgnoreUnicode length])
                                            options:NSStringEnumerationByWords
                                         usingBlock:^(NSString *substring, NSRange subrange, NSRange enclosingRange, BOOL *stop) {
                                             [words addObject:substring];
@@ -43,7 +45,7 @@
             }
             
             NSArray *colors = [NSArray arrayWithObjects:UIColorFromRGB(0xB6B8EA), UIColorFromRGB(0x97D3C4), UIColorFromRGB(0xCBAEA0), UIColorFromRGB(0xB4B9C8), UIColorFromRGB(0xF1A5A5), UIColorFromRGB(0xA2C8DA), UIColorFromRGB(0x85CBDD), nil];
-            int index = (int)([self.displayName length] % colors.count);
+            int index = (int)([self.displayNameIgnoreUnicode length] % colors.count);
             self.color = [colors objectAtIndex:index];
         } else {
             return nil;
