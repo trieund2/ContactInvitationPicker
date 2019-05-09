@@ -8,8 +8,11 @@
 
 #import "NIContactCell.h"
 #import "NIContactCellObject.h"
+#import "UIColorFromRGB.h"
 
 @implementation NIContactCell
+
+#pragma mark Init
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -19,14 +22,27 @@
         [self layoutCheckBoxImageView];
         [self layoutShortNameLabel];
         [self layoutFullNameLabel];
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        UIView *view = [UIView new];
+        view.backgroundColor = UIColorFromRGB(0xE7E9EB);
+        self.selectedBackgroundView = view;
     }
     return self;
 }
 
+- (void)initShortNameLabel {
+    _shortNameLabel = [UILabel new];
+    self.shortNameLabel.textColor = UIColor.whiteColor;
+    self.shortNameLabel.layer.cornerRadius = 23;
+    self.shortNameLabel.layer.masksToBounds = true;
+    self.shortNameLabel.textAlignment = NSTextAlignmentCenter;
+}
+
+#pragma mark Instance methods
+
 - (BOOL)shouldUpdateCellWithObject:(NIContactCellObject *)object {
     self.shortNameLabel.text = object.shortName;
-    self.fullNameLabel.text = object.title;
+    self.fullNameLabel.text = object.displayName;
+    self.shortNameLabel.backgroundColor = object.color;
     if (object.isSelected) {
         self.checkBoxImageView.image = [UIImage imageNamed:@"Checked"];
     } else {
@@ -35,17 +51,10 @@
     return YES;
 }
 
-- (void)initShortNameLabel {
-    _shortNameLabel = [UILabel new];
-    self.shortNameLabel.backgroundColor = UIColor.grayColor;
-    self.shortNameLabel.textColor = UIColor.whiteColor;
-    self.shortNameLabel.layer.cornerRadius = 20;
-    self.shortNameLabel.layer.masksToBounds = true;
-    self.shortNameLabel.textAlignment = NSTextAlignmentCenter;
-}
+#pragma mark Setup layouts
 
 - (void)layoutCheckBoxImageView {
-    [self addSubview:self.checkBoxImageView];
+    [self.contentView addSubview:self.checkBoxImageView];
     self.checkBoxImageView.translatesAutoresizingMaskIntoConstraints = NO;;
     [self.checkBoxImageView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
     [self.checkBoxImageView.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:12].active = YES;
@@ -54,16 +63,16 @@
 }
 
 - (void)layoutShortNameLabel {
-    [self addSubview:self.shortNameLabel];
+    [self.contentView addSubview:self.shortNameLabel];
     self.shortNameLabel.translatesAutoresizingMaskIntoConstraints = NO;;
     [self.shortNameLabel.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
     [self.shortNameLabel.leftAnchor constraintEqualToAnchor:self.checkBoxImageView.rightAnchor constant:14].active = YES;
-    [self.shortNameLabel.heightAnchor constraintEqualToConstant:40].active = YES;
-    [self.shortNameLabel.widthAnchor constraintEqualToConstant:40].active = YES;
+    [self.shortNameLabel.heightAnchor constraintEqualToConstant:46].active = YES;
+    [self.shortNameLabel.widthAnchor constraintEqualToConstant:46].active = YES;
 }
 
 - (void)layoutFullNameLabel {
-    [self addSubview:self.fullNameLabel];
+    [self.contentView addSubview:self.fullNameLabel];
     self.fullNameLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.fullNameLabel.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
     [self.fullNameLabel.leftAnchor constraintEqualToAnchor:self.shortNameLabel.rightAnchor constant:14].active = YES;

@@ -21,6 +21,7 @@
 
 - (BOOL)shouldUpdateCellWithObject:(NISelectedContactCellObject *)object {
     self.shortNameLabel.text = object.shortName;
+    self.shortNameLabel.backgroundColor = object.color;
     return YES;
 }
 

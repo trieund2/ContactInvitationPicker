@@ -8,28 +8,25 @@
 
 #import "ContactInvitationViewController.h"
 #import "ContactScan.h"
-#import "Contact.h"
 #import "NimbusModels.h"
 #import "NIContactCellObject.h"
 #import "NICollectionViewModel.h"
 #import "NICollectionViewCellFactory.h"
 #import "NISelectedContactCellObject.h"
+#import "UIColorFromRGB.h"
+#import "UIViewController+Alert.h"
 
 #define MAX_CONTACT_SELECT 5
-
-#define UIColorFromRGB(rgbValue) \
-[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
-green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
-blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
-alpha:1.0]
 
 @interface ContactInvitationViewController ()
 
 @end
 
 @implementation ContactInvitationViewController {
+    NSArray *listContact;
     NSMutableArray *selectedContacts;
     NITableViewModel *contactTableViewModel;
+    NITableViewModel *searchResultTableViewModel;
     NICollectionViewModel *collectionViewModel;
     NSLayoutConstraint *selectContactCollectionViewHeightConst;
 }
@@ -40,14 +37,16 @@ alpha:1.0]
     [super viewDidLoad];
     self.view.backgroundColor = UIColorFromRGB(0xE9E9E9);
     selectedContacts = [NSMutableArray new];
+    listContact = [NSArray new];
     [self initSelectContactCollectionView];
     [self initSearchBar];
     [self initContactsTableView];
     [self initSearchReultTableView];
     [self initEmptySearchResultLabel];
     
-    [ContactScan scanContact:^(NSArray * _Nonnull contacts, NSArray * _Nonnull titles) {
-        [self configContactTableViewDataSourceWithContacts:contacts titles:titles];
+    [ContactScan scanContact:^(NSArray * _Nonnull contacts) {
+        self->listContact = contacts;
+        [self configContactTableViewDataSource];
     } notGranted:^{
         NSLog(@"Not grant access contact");
     }];
@@ -152,22 +151,8 @@ alpha:1.0]
 
 #pragma mark Helper methods
 
-- (void)configContactTableViewDataSourceWithContacts:(NSArray *)contacts titles:(NSArray *)titles {
-    if (titles.count != contacts.count) { return; }
-    NSMutableArray *sectionContacts = [NSMutableArray new];
-    
-    for (int i = 0; i < titles.count; i++) {
-        [sectionContacts addObject:[titles objectAtIndex:i]];
-        NSArray *groupContacts = [contacts objectAtIndex:i];
-        
-        for (Contact *contact in groupContacts) {
-            [sectionContacts addObject:[NIContactCellObject objectWithTitle:contact.fullName
-                                                                  shortName:contact.shortName
-                                                                phoneNumber:contact.phoneNumber]];
-        }
-    }
-    
-    contactTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:sectionContacts delegate:(id)[NICellFactory class]];
+- (void)configContactTableViewDataSource {
+    contactTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:listContact delegate:(id)[NICellFactory class]];
     self.contactTableView.dataSource = contactTableViewModel;
     [contactTableViewModel setSectionIndexType:NITableViewModelSectionIndexDynamic
                                    showsSearch:YES
@@ -188,7 +173,22 @@ alpha:1.0]
 }
 
 - (void)performSearchWithSearchText:(NSString *)searchText {
+    if ([searchText isEqualToString:@""]) { return; }
     
+    NSArray *filteredArray = [listContact filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id object, NSDictionary *bindings) {
+        if ([object isKindOfClass:[NSString class]]) {
+            return NO;
+        } else if ([object isKindOfClass:[NIContactCellObject class]]) {
+            NIContactCellObject *contactCellObject = (NIContactCellObject *)object;
+            return [contactCellObject.displayName containsString:searchText];
+        } else {
+            return NO;
+        }
+    }]];
+    
+    searchResultTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:filteredArray delegate:(id)[NICellFactory class]];
+    self.searchResultTableView.dataSource = searchResultTableViewModel;
+    [self.searchResultTableView reloadData];
 }
 
 #pragma mark - UITableViewDelegate
@@ -198,10 +198,25 @@ alpha:1.0]
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NIContactCellObject *contactObject = [contactTableViewModel objectAtIndexPath:indexPath];
+    NIContactCellObject *contactObject;
+    NSIndexPath *selectedIndexPath = indexPath;
+    
+    if (tableView == self.contactTableView) {
+        contactObject = [contactTableViewModel objectAtIndexPath:indexPath];
+    } else if (tableView == self.searchResultTableView) {
+        contactObject = [searchResultTableViewModel objectAtIndexPath:indexPath];
+        selectedIndexPath = [contactTableViewModel indexPathForObject:contactObject];
+        self.searchBar.text = @"";
+        [self.searchResultTableView setHidden:YES];
+    } else {
+        return;
+    }
+    
     NISelectedContactCellObject *selectContactObject = [NISelectedContactCellObject objectWithPhoneNumber:contactObject.phoneNumber
                                                                                                 shortName:contactObject.shortName
-                                                                                                indexPath:indexPath];
+                                                                                                indexPath:selectedIndexPath
+                                                                                                    color:contactObject.color];
+    
     if ([selectedContacts containsObject:selectContactObject]) {
         [selectedContacts removeObject:selectContactObject];
         contactObject.isSelected = NO;
@@ -209,19 +224,23 @@ alpha:1.0]
         [selectedContacts addObject:selectContactObject];
         contactObject.isSelected = YES;
     } else {
-        return;
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        [self presentAlertWithTitle:@"Thông báo" message:@"Bạn không được chọn quá 5 người" actions:nil];
     }
     
     [self.selectContactCollectionView reloadData];
     [self performAnimateSelectedContactCollectionView];
-    [self.contactTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                                 withRowAnimation:UITableViewRowAnimationNone];
+    if (tableView == self.contactTableView) {
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                         withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NISelectedContactCellObject *selectedObject = [collectionViewModel objectAtIndexPath:indexPath];
+    [self.contactTableView selectRowAtIndexPath:selectedObject.indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
     [self.contactTableView scrollToRowAtIndexPath:selectedObject.indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 

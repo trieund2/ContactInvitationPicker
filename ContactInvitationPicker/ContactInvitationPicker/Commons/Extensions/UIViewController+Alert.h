@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (Alert)
 
-- (void)presentAlertWithMessage:(NSString *)message;
+- (void)presentAlertWithTitle:(NSString * _Nullable)title message:(NSString *)message actions:(NSArray * _Nullable)actions;
 
 @end
 

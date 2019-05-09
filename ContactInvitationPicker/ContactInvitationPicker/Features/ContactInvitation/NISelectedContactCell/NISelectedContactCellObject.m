@@ -11,17 +11,18 @@
 
 @implementation NISelectedContactCellObject
 
-- (id)initWithPhoneNumber:(NSString *)phoneNumber shortName:(NSString *)shortName indexPath:(NSIndexPath *)indexPath {
+- (id)initWithPhoneNumber:(NSString *)phoneNumber shortName:(NSString *)shortName indexPath:(NSIndexPath *)indexPath color:(UIColor *)color {
     if (self = [super initWithCellClass:[NibSelectedContactCell class]]) {
         self.shortName = [shortName copy];
         self.phoneNumber = [phoneNumber copy];
         self.indexPath = indexPath;
+        self.color = color;
     }
     return self;
 }
 
-+ (id)objectWithPhoneNumber:(NSString *)phoneNumber shortName:(NSString *)shortName indexPath:(NSIndexPath *)indexPath {
-    return [[self alloc] initWithPhoneNumber:phoneNumber shortName:shortName indexPath:indexPath];
++ (id)objectWithPhoneNumber:(NSString *)phoneNumber shortName:(NSString *)shortName indexPath:(NSIndexPath *)indexPath color:(UIColor *)color {
+    return [[self alloc] initWithPhoneNumber:phoneNumber shortName:shortName indexPath:indexPath color:color];
 }
 
 - (Class)cellClass {

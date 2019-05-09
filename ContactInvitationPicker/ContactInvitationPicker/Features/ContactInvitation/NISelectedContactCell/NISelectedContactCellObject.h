@@ -15,9 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *phoneNumber;
 @property (nonatomic, copy) NSString *shortName;
 @property (nonatomic) NSIndexPath *indexPath;
+@property (nonatomic) UIColor *color;
 
-- (id)initWithPhoneNumber:(NSString *)phoneNumber shortName:(NSString *)shortName indexPath:(NSIndexPath *)indexPath;
-+ (id)objectWithPhoneNumber:(NSString *)phoneNumber shortName:(NSString *)shortName indexPath:(NSIndexPath *)indexPath;
+- (id)initWithPhoneNumber:(NSString *)phoneNumber
+                shortName:(NSString *)shortName
+                indexPath:(NSIndexPath *)indexPath
+                    color:(UIColor *)color;
++ (id)objectWithPhoneNumber:(NSString *)phoneNumber
+                  shortName:(NSString *)shortName
+                  indexPath:(NSIndexPath *)indexPath
+                      color:(UIColor *)color;
 
 @end
 

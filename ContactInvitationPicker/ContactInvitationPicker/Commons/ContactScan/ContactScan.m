@@ -8,19 +8,19 @@
 
 #import "ContactScan.h"
 #import <Contacts/Contacts.h>
-#import "Contact.h"
+#import "NIContactCellObject.h"
 
 @implementation ContactScan
 
 #pragma mark Interface methods
 
-+ (void)scanContact:(void (^)(NSArray * _Nonnull contacts, NSArray * _Nonnull titles))completion
++ (void)scanContact:(void (^)(NSArray * _Nonnull contacts))completion
          notGranted:(void (^)(void))notGranted {
     [self requestAccessContact:^(BOOL granted) {
         if (granted) {
-            [self getAllContact:^(NSArray *contacts, NSArray *titles) {
+            [self getAllContact:^(NSArray *contacts) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(contacts, titles);
+                    completion(contacts);
                 });
             }];
         } else {
@@ -49,54 +49,32 @@
     }
 }
 
-+ (void)getAllContact:(void (^)(NSArray *contacts, NSArray *titles))completion {
++ (void)getAllContact:(void (^)(NSArray *contacts))completion {
     NSError *contactError;
     CNContactStore *contactStore = [CNContactStore new];
     NSArray * keysToFetch =@[CNContactPhoneNumbersKey, CNContactFamilyNameKey, CNContactGivenNameKey];
     CNContactFetchRequest *request = [[CNContactFetchRequest alloc]initWithKeysToFetch:keysToFetch];
     request.sortOrder = CNContactSortOrderFamilyName;
     
-    NSMutableArray *returnContacts = [NSMutableArray new];
-    NSMutableArray *currentContacts = [NSMutableArray new];
-    NSMutableArray *titles = [NSMutableArray new];
+    NSMutableArray *contacts = [NSMutableArray new];
     __block NSString *previousTitle = nil;
     
     [contactStore
      enumerateContactsWithFetchRequest:request
      error:&contactError
-     usingBlock:^(CNContact * __nonnull cnContact, BOOL * __nonnull stop) {
-         Contact *contact = [self mapContactFromContact:cnContact];
-         if (contact) {
-             NSString *currentTitle = [contact.fullName substringToIndex:1];
+     usingBlock:^(CNContact * __nonnull contact, BOOL * __nonnull stop) {
+         NIContactCellObject *object = [NIContactCellObject objectFromContact:contact];
+         if (object) {
+             NSString *currentTitle = [object.displayName substringToIndex:1];
              if (![currentTitle isEqualToString:previousTitle]) {
-                 if (previousTitle != nil) {
-                     [returnContacts addObject:[currentContacts copy]];
-                     [currentContacts removeAllObjects];
-                 }
+                 [contacts addObject:currentTitle];
                  previousTitle = currentTitle;
-                 [titles addObject:currentTitle];
              }
-             [currentContacts addObject:contact];
+             [contacts addObject:object];
          }
      }];
     
-    if (currentContacts.count > 0) {
-        [returnContacts addObject:currentContacts];
-    }
-    
-    completion(returnContacts, titles);
-}
-
-+ (Contact *)mapContactFromContact:(CNContact *)contact {
-    NSString *firstName = contact.givenName;
-    NSString *lastName = contact.familyName;
-    NSString *phone = [[contact.phoneNumbers.firstObject valueForKey:@"value"] valueForKey:@"digits"];
-    if (phone != nil
-        && [phone length] != 0
-        && ([firstName length] != 0 || [lastName length] != 0)) {
-        return [Contact contactWithFirstName:firstName lastName:lastName phoneNumber:phone];
-    }
-    return nil;
+    completion(contacts);
 }
 
 @end

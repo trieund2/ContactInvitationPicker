@@ -7,18 +7,17 @@
 //
 
 #import "NICellFactory.h"
+#import "ContactObjectProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NIContactCellObject : NICellObject
+@interface NIContactCellObject : NICellObject <ContactObjectProtocol>
 
-@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *displayName;
 @property (nonatomic, copy) NSString *shortName;
 @property (nonatomic, copy) NSString *phoneNumber;
+@property (nonatomic) UIColor *color;
 @property (nonatomic) BOOL isSelected;
-
-- (id)initWithTitle:(NSString *)title shortName:(NSString *)shortName phoneNumber:(NSString *)phoneNumber;
-+ (id)objectWithTitle:(NSString *)title shortName:(NSString *)shortName phoneNumber:(NSString *)phoneNumber;
 
 @end
 
