@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ContactInviNavigationTitleView : UIView
 
-@property (nonatomic) UILabel *titleLabel;
-@property (nonatomic) UILabel *subTitleLabel;
+@property (nonatomic, readonly) UILabel *titleLabel;
+@property (nonatomic, readonly) UILabel *subTitleLabel;
 
 - (void)updateSubTitleWithNumberSelecContacts:(NSUInteger)number;
 

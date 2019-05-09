@@ -12,12 +12,12 @@
 
 @interface ContactInvitationViewController : UIViewController <UITableViewDelegate, UICollectionViewDelegate, UISearchBarDelegate, MFMessageComposeViewControllerDelegate>
 
-@property (nonatomic) ContactInviNavigationTitleView *titleView;
-@property (nonatomic) UICollectionView *selectContactCollectionView;
-@property (nonatomic) UISearchBar *searchBar;
-@property (nonatomic) UITableView *contactTableView;
-@property (nonatomic) UITableView *searchResultTableView;
-@property (nonatomic) UILabel *emptySearchResultLabel;
+@property (nonatomic, readonly) ContactInviNavigationTitleView *titleView;
+@property (nonatomic, readonly) UICollectionView *selectContactCollectionView;
+@property (nonatomic, readonly) UISearchBar *searchBar;
+@property (nonatomic, readonly) UITableView *contactTableView;
+@property (nonatomic, readonly) UITableView *searchResultTableView;
+@property (nonatomic, readonly) UILabel *emptySearchResultLabel;
 
 @end
 

@@ -103,10 +103,13 @@
 		A1FAF6742281452A006E024B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1FAF6732281452A006E024B /* Assets.xcassets */; };
 		A1FAF6772281452A006E024B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1FAF6752281452A006E024B /* LaunchScreen.storyboard */; };
 		A1FAF67A2281452A006E024B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF6792281452A006E024B /* main.m */; };
-		A1FAF6842281452B006E024B /* ContactInvitationPickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF6832281452B006E024B /* ContactInvitationPickerTests.m */; };
 		A1FAF69222816304006E024B /* ContactScan.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF69122816304006E024B /* ContactScan.m */; };
+		C51D5A0222847A3700C09868 /* CNMutableContact+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = C51D5A0122847A3700C09868 /* CNMutableContact+Init.m */; };
+		C55A3E502284729200E8CC55 /* NIContactCellTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */; };
+		C55A3E522284782F00E8CC55 /* NIContactCellObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A3E512284782F00E8CC55 /* NIContactCellObjectTest.m */; };
 		C56FBAF422831FAA007E8A0E /* NibSelectedContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C56FBAF322831FAA007E8A0E /* NibSelectedContactCell.m */; };
 		C56FBAF92283275D007E8A0E /* NISelectedContactCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C56FBAF82283275D007E8A0E /* NISelectedContactCellObject.m */; };
+		C5990514228480320033F7C5 /* ContactInviNavigationTitleViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C5990513228480320033F7C5 /* ContactInviNavigationTitleViewTest.m */; };
 		C5EEFA022281CAA100044ED9 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EEF9F02281CAA000044ED9 /* UIProgressView+AFNetworking.m */; };
 		C5EEFA032281CAA100044ED9 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EEF9F22281CAA000044ED9 /* UIWebView+AFNetworking.m */; };
 		C5EEFA042281CAA100044ED9 /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EEF9F52281CAA000044ED9 /* UIAlertView+AFNetworking.m */; };
@@ -311,7 +314,6 @@
 		A160AC15228193140024BB49 /* UIResponder+NimbusCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+NimbusCore.h"; sourceTree = "<group>"; };
 		A160AC16228193140024BB49 /* NIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIError.h; sourceTree = "<group>"; };
 		A160AC17228193140024BB49 /* NIActions+Subclassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NIActions+Subclassing.h"; sourceTree = "<group>"; };
-		A1A837B92283C81500C353C9 /* ContactCellObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactCellObject.h; sourceTree = "<group>"; };
 		A1A837BA2283D56C00C353C9 /* ContactObjectProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactObjectProtocol.h; sourceTree = "<group>"; };
 		A1A837C122840A3A00C353C9 /* UIColorFromRGB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIColorFromRGB.h; sourceTree = "<group>"; };
 		A1A837C7228418F900C353C9 /* ContactInviNavigationTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactInviNavigationTitleView.h; sourceTree = "<group>"; };
@@ -351,16 +353,20 @@
 		A1FAF6782281452A006E024B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1FAF6792281452A006E024B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A1FAF67F2281452B006E024B /* ContactInvitationPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactInvitationPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1FAF6832281452B006E024B /* ContactInvitationPickerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactInvitationPickerTests.m; sourceTree = "<group>"; };
 		A1FAF6852281452B006E024B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1FAF69022816304006E024B /* ContactScan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactScan.h; sourceTree = "<group>"; };
 		A1FAF69122816304006E024B /* ContactScan.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactScan.m; sourceTree = "<group>"; };
 		BDEE8D9D48694F4FFEBBE222 /* Pods-ContactInvitationPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPicker.release.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker.release.xcconfig"; sourceTree = "<group>"; };
 		BF6427FB7F1EADD16AD32BFD /* Pods-ContactInvitationPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPicker.debug.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker.debug.xcconfig"; sourceTree = "<group>"; };
+		C51D5A0022847A3700C09868 /* CNMutableContact+Init.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CNMutableContact+Init.h"; sourceTree = "<group>"; };
+		C51D5A0122847A3700C09868 /* CNMutableContact+Init.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNMutableContact+Init.m"; sourceTree = "<group>"; };
+		C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCellTest.m; sourceTree = "<group>"; };
+		C55A3E512284782F00E8CC55 /* NIContactCellObjectTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCellObjectTest.m; sourceTree = "<group>"; };
 		C56FBAF222831FAA007E8A0E /* NibSelectedContactCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NibSelectedContactCell.h; sourceTree = "<group>"; };
 		C56FBAF322831FAA007E8A0E /* NibSelectedContactCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NibSelectedContactCell.m; sourceTree = "<group>"; };
 		C56FBAF72283275D007E8A0E /* NISelectedContactCellObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NISelectedContactCellObject.h; sourceTree = "<group>"; };
 		C56FBAF82283275D007E8A0E /* NISelectedContactCellObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NISelectedContactCellObject.m; sourceTree = "<group>"; };
+		C5990513228480320033F7C5 /* ContactInviNavigationTitleViewTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactInviNavigationTitleViewTest.m; sourceTree = "<group>"; };
 		C5EEF9F02281CAA000044ED9 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		C5EEF9F12281CAA000044ED9 /* UIAlertView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+AFNetworking.h"; sourceTree = "<group>"; };
 		C5EEF9F22281CAA000044ED9 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
@@ -775,8 +781,12 @@
 		A1FAF6822281452B006E024B /* ContactInvitationPickerTests */ = {
 			isa = PBXGroup;
 			children = (
-				A1FAF6832281452B006E024B /* ContactInvitationPickerTests.m */,
 				A1FAF6852281452B006E024B /* Info.plist */,
+				C51D5A0022847A3700C09868 /* CNMutableContact+Init.h */,
+				C51D5A0122847A3700C09868 /* CNMutableContact+Init.m */,
+				C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */,
+				C55A3E512284782F00E8CC55 /* NIContactCellObjectTest.m */,
+				C5990513228480320033F7C5 /* ContactInviNavigationTitleViewTest.m */,
 			);
 			path = ContactInvitationPickerTests;
 			sourceTree = "<group>";
@@ -798,7 +808,6 @@
 				A1FAF66E22814529006E024B /* ContactInvitationViewController.m */,
 				C56FBAF5228320CF007E8A0E /* NIContactCell */,
 				C56FBAF6228320DF007E8A0E /* NISelectedContactCell */,
-				A1A837B92283C81500C353C9 /* ContactCellObject.h */,
 				A1A837C7228418F900C353C9 /* ContactInviNavigationTitleView.h */,
 				A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */,
 			);
@@ -1168,7 +1177,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1FAF6842281452B006E024B /* ContactInvitationPickerTests.m in Sources */,
+				C55A3E522284782F00E8CC55 /* NIContactCellObjectTest.m in Sources */,
+				C55A3E502284729200E8CC55 /* NIContactCellTest.m in Sources */,
+				C5990514228480320033F7C5 /* ContactInviNavigationTitleViewTest.m in Sources */,
+				C51D5A0222847A3700C09868 /* CNMutableContact+Init.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,13 +43,13 @@
 }
 
 - (void)updateSubTitleWithNumberSelecContacts:(NSUInteger)number {
+    NSString *title = [@"Đã chọn: " stringByAppendingString:[NSString stringWithFormat:@"%li", number]];
+    self.subTitleLabel.text = title;
     __weak ContactInviNavigationTitleView *weakSelf = self;
     
     [UIView animateWithDuration:0.2 animations:^{
         weakSelf.subTitleLabel.transform = CGAffineTransformMakeScale(1.2, 1.2);
     } completion:^(BOOL finished) {
-        NSString *title = [@"Đã chọn: " stringByAppendingString:[NSString stringWithFormat:@"%li", number]];
-        weakSelf.subTitleLabel.text = title;
         [UIView animateWithDuration:0.2 animations:^{
             weakSelf.subTitleLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
         }];

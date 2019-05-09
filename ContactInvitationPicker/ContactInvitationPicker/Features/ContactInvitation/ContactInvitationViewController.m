@@ -71,10 +71,7 @@
     messageViewController.messageComposeDelegate = self;
     messageViewController.recipients = recipients;
     messageViewController.body = @"Moi ban cai dat zalo mien phi";
-    __weak ContactInvitationViewController *weakSelf = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [weakSelf presentViewController:messageViewController animated:YES completion:NULL];
-    });
+    [self presentViewController:messageViewController animated:YES completion:^{}];
 }
 
 #pragma mark Init layouts
@@ -84,7 +81,8 @@
     [cancelButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [cancelButton setTitle:@"Huỷ" forState:(UIControlStateNormal)];
     [cancelButton setTitleColor:UIColorFromRGB(0x595D64) forState:(UIControlStateNormal)];
-    [cancelButton addTarget:self action:@selector(touchInCancelButton) forControlEvents:(UIControlEventTouchUpInside)];
+    [cancelButton addTarget:self action:@selector(touchInCancelButton)
+           forControlEvents:(UIControlEventTouchUpInside)];
     UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cancelButton];
     self.navigationItem.leftBarButtonItem = cancelBarButtonItem;
     
@@ -95,7 +93,7 @@
     UIBarButtonItem *sendBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:sendButton];
     self.navigationItem.rightBarButtonItem = sendBarButtonItem;
     
-    self.titleView = [ContactInviNavigationTitleView new];
+    _titleView = [ContactInviNavigationTitleView new];
     self.titleView.frame = CGRectMake(0, 0, 100, 100);
     self.navigationItem.titleView = self.titleView;
 }
@@ -105,7 +103,7 @@
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.itemSize = CGSizeMake(40, 40);
     layout.minimumInteritemSpacing = 4;
-    self.selectContactCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
+    _selectContactCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
                                                           collectionViewLayout:layout];
     self.selectContactCollectionView.backgroundColor = UIColor.clearColor;
     
@@ -119,7 +117,7 @@
 }
 
 - (void)initSearchBar {
-    self.searchBar = [UISearchBar new];
+    _searchBar = [UISearchBar new];
     self.searchBar.delegate = self;
     self.searchBar.placeholder = @"Nhập tên bạn bè";
     [self.searchBar setBackgroundImage:[UIImage new]];
@@ -127,7 +125,7 @@
 }
 
 - (void)initContactsTableView {
-    self.contactTableView = [UITableView new];
+    _contactTableView = [UITableView new];
     self.contactTableView.delegate = self;
     self.contactTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.contactTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -135,7 +133,7 @@
 }
 
 - (void)initSearchReultTableView {
-    self.searchResultTableView = [UITableView new];
+    _searchResultTableView = [UITableView new];
     self.searchResultTableView.delegate = self;
     self.searchResultTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.searchResultTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -144,7 +142,7 @@
 }
 
 - (void)initEmptySearchResultLabel {
-    self.emptySearchResultLabel = [UILabel new];
+    _emptySearchResultLabel = [UILabel new];
     self.emptySearchResultLabel.text = @"Không tìm thầy kết quả phù hợp";
     [self.emptySearchResultLabel setFont:[UIFont systemFontOfSize:15]];
     [self.emptySearchResultLabel setHidden:YES];
@@ -296,11 +294,11 @@
         return;
     }
     
-    NISelectedContactCellObject *selectContactObject = [NISelectedContactCellObject objectWithPhoneNumber:contactObject.phoneNumber
-                                                                                                shortName:contactObject.shortName
-                                                                                                indexPath:selectedIndexPath
-                                                                                                    color:contactObject.color];
-    
+    NISelectedContactCellObject *selectContactObject = [NISelectedContactCellObject
+                                                        objectWithPhoneNumber:contactObject.phoneNumber
+                                                        shortName:contactObject.shortName
+                                                        indexPath:selectedIndexPath
+                                                        color:contactObject.color];
     if ([selectedContacts containsObject:selectContactObject]) {
         [selectedContacts removeObject:selectContactObject];
         contactObject.isSelected = NO;

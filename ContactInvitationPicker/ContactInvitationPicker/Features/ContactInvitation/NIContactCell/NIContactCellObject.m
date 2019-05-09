@@ -23,6 +23,8 @@
             self.phoneNumber = [phone copy];
             if ([lastName length] == 0) {
                 self.displayName = firstName;
+            } else if ([firstName length] == 0) {
+                self.displayName = lastName;
             } else {
                 self.displayName = [NSString stringWithFormat:@"%@ %@", lastName, firstName];
             }
