@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic) UIImageView *checkBoxImageView;
 @property (readonly, nonatomic) UILabel *shortNameLabel;
 @property (readonly, nonatomic) UILabel *fullNameLabel;
+@property (readonly, nonatomic) UIView *separatorLine;
 
 @end
 

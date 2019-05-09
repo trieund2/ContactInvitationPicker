@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import "ContactInviNavigationTitleView.h"
 
-@interface ContactInvitationViewController : UIViewController <UITableViewDelegate, UICollectionViewDelegate, UISearchBarDelegate>
+@interface ContactInvitationViewController : UIViewController <UITableViewDelegate, UICollectionViewDelegate, UISearchBarDelegate, MFMessageComposeViewControllerDelegate>
 
+@property (nonatomic) ContactInviNavigationTitleView *titleView;
 @property (nonatomic) UICollectionView *selectContactCollectionView;
 @property (nonatomic) UISearchBar *searchBar;
 @property (nonatomic) UITableView *contactTableView;

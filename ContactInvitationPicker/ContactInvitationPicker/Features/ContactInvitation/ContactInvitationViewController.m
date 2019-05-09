@@ -29,6 +29,7 @@
     NITableViewModel *searchResultTableViewModel;
     NICollectionViewModel *collectionViewModel;
     NSLayoutConstraint *selectContactCollectionViewHeightConst;
+    UIButton *sendButton;
 }
 
 #pragma mark Lifecycle
@@ -38,6 +39,7 @@
     self.view.backgroundColor = UIColorFromRGB(0xE9E9E9);
     selectedContacts = [NSMutableArray new];
     listContact = [NSArray new];
+    [self addNavigationBarItems];
     [self initSelectContactCollectionView];
     [self initSearchBar];
     [self initContactsTableView];
@@ -52,7 +54,48 @@
     }];
 }
 
+#pragma mark UI actions
+
+- (void)touchInCancelButton {
+    NSLog(@"Did select cancel barbutton");
+}
+
+- (void)touchInSendButton {
+    NSMutableArray *recipients = [NSMutableArray new];
+    for (NISelectedContactCellObject *object in selectedContacts) {
+        [recipients addObject:object.phoneNumber];
+    }
+    MFMessageComposeViewController *messageViewController = [MFMessageComposeViewController new];
+    messageViewController.messageComposeDelegate = self;
+    messageViewController.recipients = recipients;
+    messageViewController.body = @"Moi ban cai dat zalo mien phi";
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:messageViewController animated:YES completion:NULL];
+    });
+}
+
 #pragma mark Init layouts
+
+- (void)addNavigationBarItems {
+    UIButton *cancelButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [cancelButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [cancelButton setTitle:@"Huỷ" forState:(UIControlStateNormal)];
+    [cancelButton setTitleColor:UIColorFromRGB(0x595D64) forState:(UIControlStateNormal)];
+    [cancelButton addTarget:self action:@selector(touchInCancelButton) forControlEvents:(UIControlEventTouchUpInside)];
+    UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cancelButton];
+    self.navigationItem.leftBarButtonItem = cancelBarButtonItem;
+    
+    sendButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [sendButton setUserInteractionEnabled:NO];
+    [sendButton setImage:[UIImage imageNamed:@"SendDisable"] forState:(UIControlStateNormal)];
+    [sendButton addTarget:self action:@selector(touchInSendButton) forControlEvents:(UIControlEventTouchUpInside)];
+    UIBarButtonItem *sendBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:sendButton];
+    self.navigationItem.rightBarButtonItem = sendBarButtonItem;
+    
+    self.titleView = [ContactInviNavigationTitleView new];
+    self.titleView.frame = CGRectMake(0, 0, 100, 100);
+    self.navigationItem.titleView = self.titleView;
+}
 
 - (void)initSelectContactCollectionView {
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
@@ -84,22 +127,78 @@
     self.contactTableView = [UITableView new];
     self.contactTableView.delegate = self;
     self.contactTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    self.contactTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self layoutContactTableView];
 }
 
 - (void)initSearchReultTableView {
     self.searchResultTableView = [UITableView new];
     self.searchResultTableView.delegate = self;
-    [self.searchResultTableView setHidden:YES];
     self.searchResultTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    self.searchResultTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.searchResultTableView setHidden:YES];
     [self layoutSearchResultTableView];
 }
 
 - (void)initEmptySearchResultLabel {
     self.emptySearchResultLabel = [UILabel new];
     self.emptySearchResultLabel.text = @"Không tìm thầy kết quả phù hợp";
-    [self.emptySearchResultLabel setHighlighted:YES];
+    [self.emptySearchResultLabel setFont:[UIFont systemFontOfSize:15]];
+    [self.emptySearchResultLabel setHidden:YES];
     [self layoutEmptySearchResultLabel];
+}
+
+#pragma mark Helper methods
+
+- (void)configContactTableViewDataSource {
+    contactTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:listContact delegate:(id)[NICellFactory class]];
+    self.contactTableView.dataSource = contactTableViewModel;
+    [contactTableViewModel setSectionIndexType:NITableViewModelSectionIndexDynamic
+                                   showsSearch:YES
+                                  showsSummary:YES];
+    [self.contactTableView reloadData];
+}
+
+- (void)performAnimateSelectedContactCollectionView {
+    CGFloat height = 0;
+    if (selectedContacts.count != 0) {
+        height = 50;
+    }
+    if (selectContactCollectionViewHeightConst.constant == height) { return; }
+    selectContactCollectionViewHeightConst.constant = height;
+    [UIView animateWithDuration:0.2 delay:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {}];
+}
+
+- (void)performSearchWithSearchText:(NSString *)searchText {
+    if ([searchText isEqualToString:@""]) { return; }
+    
+    NSArray *filteredArray = [listContact filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id object, NSDictionary *bindings) {
+        if ([object isKindOfClass:[NSString class]]) {
+            return NO;
+        } else if ([object isKindOfClass:[NIContactCellObject class]]) {
+            NIContactCellObject *contactCellObject = (NIContactCellObject *)object;
+            return [contactCellObject.displayName containsString:searchText];
+        } else {
+            return NO;
+        }
+    }]];
+    
+    searchResultTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:filteredArray delegate:(id)[NICellFactory class]];
+    self.searchResultTableView.dataSource = searchResultTableViewModel;
+    [self.searchResultTableView reloadData];
+    [self.emptySearchResultLabel setHidden:(filteredArray.count != 0)];
+}
+
+- (void)updateSendButtonState {
+    if (selectedContacts.count == 0) {
+        [sendButton setImage:[UIImage imageNamed:@"SendDisable"] forState:(UIControlStateNormal)];
+        [sendButton setUserInteractionEnabled:NO];
+    } else {
+        [sendButton setImage:[UIImage imageNamed:@"Send"] forState:(UIControlStateNormal)];
+        [sendButton setUserInteractionEnabled:YES];
+    }
 }
 
 #pragma mark Setup layouts
@@ -143,52 +242,10 @@
 }
 
 - (void)layoutEmptySearchResultLabel {
-    self.emptySearchResultLabel.translatesAutoresizingMaskIntoConstraints = YES;
+    self.emptySearchResultLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.searchResultTableView addSubview:self.emptySearchResultLabel];
     [self.emptySearchResultLabel.centerXAnchor constraintEqualToAnchor:self.searchResultTableView.centerXAnchor].active = YES;
-    [self.emptySearchResultLabel.topAnchor constraintEqualToAnchor:self.searchResultTableView.topAnchor constant:60].active = YES;
-}
-
-#pragma mark Helper methods
-
-- (void)configContactTableViewDataSource {
-    contactTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:listContact delegate:(id)[NICellFactory class]];
-    self.contactTableView.dataSource = contactTableViewModel;
-    [contactTableViewModel setSectionIndexType:NITableViewModelSectionIndexDynamic
-                                   showsSearch:YES
-                                  showsSummary:YES];
-    [self.contactTableView reloadData];
-}
-
-- (void)performAnimateSelectedContactCollectionView {
-    CGFloat height = 0;
-    if (selectedContacts.count != 0) {
-        height = 50;
-    }
-    if (selectContactCollectionViewHeightConst.constant == height) { return; }
-    selectContactCollectionViewHeightConst.constant = height;
-    [UIView animateWithDuration:0.2 delay:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {}];
-}
-
-- (void)performSearchWithSearchText:(NSString *)searchText {
-    if ([searchText isEqualToString:@""]) { return; }
-    
-    NSArray *filteredArray = [listContact filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id object, NSDictionary *bindings) {
-        if ([object isKindOfClass:[NSString class]]) {
-            return NO;
-        } else if ([object isKindOfClass:[NIContactCellObject class]]) {
-            NIContactCellObject *contactCellObject = (NIContactCellObject *)object;
-            return [contactCellObject.displayName containsString:searchText];
-        } else {
-            return NO;
-        }
-    }]];
-    
-    searchResultTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:filteredArray delegate:(id)[NICellFactory class]];
-    self.searchResultTableView.dataSource = searchResultTableViewModel;
-    [self.searchResultTableView reloadData];
+    [self.emptySearchResultLabel.topAnchor constraintEqualToAnchor:self.searchResultTableView.topAnchor constant:70].active = YES;
 }
 
 #pragma mark - UITableViewDelegate
@@ -225,7 +282,9 @@
         contactObject.isSelected = YES;
     } else {
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
-        [self presentAlertWithTitle:@"Thông báo" message:@"Bạn không được chọn quá 5 người" actions:nil];
+        NSString *message = [NSString stringWithFormat:@"%@ %i %@", @"Bạn không được chọn quá", MAX_CONTACT_SELECT, @"người"];
+        [self presentAlertWithTitle:@"Thông báo" message:message actions:nil];
+        return;
     }
     
     [self.selectContactCollectionView reloadData];
@@ -234,6 +293,8 @@
         [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                          withRowAnimation:UITableViewRowAnimationNone];
     }
+    [self updateSendButtonState];
+    [self.titleView updateSubTitleWithNumberSelecContacts:selectedContacts.count];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -249,6 +310,12 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     [self.searchResultTableView setHidden:([searchText isEqualToString:@""])];
     [self performSearchWithSearchText:searchText];
+}
+
+#pragma mark - MFMessageComposeViewControllerDelegate
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+    [controller dismissViewControllerAnimated:YES completion:^{}];
 }
 
 @end

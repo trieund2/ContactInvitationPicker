@@ -16,15 +16,18 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        UIView *view = [UIView new];
+        view.backgroundColor = UIColorFromRGB(0xE7E9EB);
+        self.selectedBackgroundView = view;
         _checkBoxImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"UnCheck"]];
         _fullNameLabel = [UILabel new];
+        _separatorLine = [UIView new];
+        self.separatorLine.backgroundColor = UIColorFromRGB(0xF4F5F5);
         [self initShortNameLabel];
         [self layoutCheckBoxImageView];
         [self layoutShortNameLabel];
         [self layoutFullNameLabel];
-        UIView *view = [UIView new];
-        view.backgroundColor = UIColorFromRGB(0xE7E9EB);
-        self.selectedBackgroundView = view;
+        [self layoutSeparatorLine];
     }
     return self;
 }
@@ -76,6 +79,15 @@
     self.fullNameLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.fullNameLabel.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
     [self.fullNameLabel.leftAnchor constraintEqualToAnchor:self.shortNameLabel.rightAnchor constant:14].active = YES;
+}
+
+- (void)layoutSeparatorLine {
+    [self.contentView addSubview:self.separatorLine];
+    self.separatorLine.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.separatorLine.leftAnchor constraintEqualToAnchor:self.fullNameLabel.leftAnchor].active = YES;
+    [self.separatorLine.rightAnchor constraintEqualToAnchor:self.rightAnchor].active = YES;
+    [self.separatorLine.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
+    [self.separatorLine.heightAnchor constraintEqualToConstant:1].active = YES;
 }
 
 @end

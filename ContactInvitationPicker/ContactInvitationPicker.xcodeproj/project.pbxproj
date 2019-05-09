@@ -85,6 +85,7 @@
 		A160ACC7228193150024BB49 /* NIActions.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AC12228193140024BB49 /* NIActions.m */; };
 		A160ACC8228193150024BB49 /* NISnapshotRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AC13228193140024BB49 /* NISnapshotRotation.m */; };
 		A160ACC9228193150024BB49 /* NISDKAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AC14228193140024BB49 /* NISDKAvailability.m */; };
+		A1A837C9228418F900C353C9 /* ContactInviNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */; };
 		A1DBA1B3228294330036FD95 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1A1228294310036FD95 /* AFURLResponseSerialization.m */; };
 		A1DBA1B4228294330036FD95 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1A2228294320036FD95 /* AFHTTPRequestOperation.m */; };
 		A1DBA1B5228294330036FD95 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1A3228294320036FD95 /* AFURLConnectionOperation.m */; };
@@ -312,6 +313,8 @@
 		A1A837B92283C81500C353C9 /* ContactCellObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactCellObject.h; sourceTree = "<group>"; };
 		A1A837BA2283D56C00C353C9 /* ContactObjectProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactObjectProtocol.h; sourceTree = "<group>"; };
 		A1A837C122840A3A00C353C9 /* UIColorFromRGB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIColorFromRGB.h; sourceTree = "<group>"; };
+		A1A837C7228418F900C353C9 /* ContactInviNavigationTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactInviNavigationTitleView.h; sourceTree = "<group>"; };
+		A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactInviNavigationTitleView.m; sourceTree = "<group>"; };
 		A1DBA1A0228294310036FD95 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = ContactInvitationPicker/Frameworks/AFNetworking/AFHTTPRequestOperation.h; sourceTree = SOURCE_ROOT; };
 		A1DBA1A1228294310036FD95 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = ContactInvitationPicker/Frameworks/AFNetworking/AFURLResponseSerialization.m; sourceTree = SOURCE_ROOT; };
 		A1DBA1A2228294320036FD95 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = ContactInvitationPicker/Frameworks/AFNetworking/AFHTTPRequestOperation.m; sourceTree = SOURCE_ROOT; };
@@ -791,6 +794,8 @@
 				C56FBAF5228320CF007E8A0E /* NIContactCell */,
 				C56FBAF6228320DF007E8A0E /* NISelectedContactCell */,
 				A1A837B92283C81500C353C9 /* ContactCellObject.h */,
+				A1A837C7228418F900C353C9 /* ContactInviNavigationTitleView.h */,
+				A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */,
 			);
 			path = ContactInvitation;
 			sourceTree = "<group>";
@@ -1106,6 +1111,7 @@
 				A1DBA1BE228294960036FD95 /* NIContactCellObject.m in Sources */,
 				A160AC25228193150024BB49 /* NIPhotoScrollView.m in Sources */,
 				A160ACC5228193150024BB49 /* NIDebuggingTools.m in Sources */,
+				A1A837C9228418F900C353C9 /* ContactInviNavigationTitleView.m in Sources */,
 				C5EEFA062281CAA100044ED9 /* UIImageView+AFNetworking.m in Sources */,
 				A160AC94228193150024BB49 /* UITableView+NIStyleable.m in Sources */,
 				A1DBA1B6228294330036FD95 /* AFSecurityPolicy.m in Sources */,
