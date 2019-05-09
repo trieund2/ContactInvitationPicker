@@ -1,15 +1,15 @@
 //
-//  NibSelectedContactCell.m
+//  NISelectedContactCell.m
 //  ContactInvitationPicker
 //
 //  Created by MACOS on 5/8/19.
 //  Copyright © 2019 com.trieund. All rights reserved.
 //
 
-#import "NibSelectedContactCell.h"
+#import "NISelectedContactCell.h"
 #import "NISelectedContactCellObject.h"
 
-@implementation NibSelectedContactCell
+@implementation NISelectedContactCell
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {

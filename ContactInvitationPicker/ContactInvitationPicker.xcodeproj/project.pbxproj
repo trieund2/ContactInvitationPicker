@@ -107,9 +107,11 @@
 		C51D5A0222847A3700C09868 /* CNMutableContact+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = C51D5A0122847A3700C09868 /* CNMutableContact+Init.m */; };
 		C55A3E502284729200E8CC55 /* NIContactCellTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */; };
 		C55A3E522284782F00E8CC55 /* NIContactCellObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A3E512284782F00E8CC55 /* NIContactCellObjectTest.m */; };
-		C56FBAF422831FAA007E8A0E /* NibSelectedContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C56FBAF322831FAA007E8A0E /* NibSelectedContactCell.m */; };
+		C56FBAF422831FAA007E8A0E /* NISelectedContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C56FBAF322831FAA007E8A0E /* NISelectedContactCell.m */; };
 		C56FBAF92283275D007E8A0E /* NISelectedContactCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C56FBAF82283275D007E8A0E /* NISelectedContactCellObject.m */; };
 		C5990514228480320033F7C5 /* ContactInviNavigationTitleViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C5990513228480320033F7C5 /* ContactInviNavigationTitleViewTest.m */; };
+		C5B9D7B22284839A00CB70AD /* NISelectedContactCellTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B9D7B12284839A00CB70AD /* NISelectedContactCellTest.m */; };
+		C5B9D7B42284841600CB70AD /* NISelectedContactCellObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B9D7B32284841600CB70AD /* NISelectedContactCellObjectTest.m */; };
 		C5EEFA022281CAA100044ED9 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EEF9F02281CAA000044ED9 /* UIProgressView+AFNetworking.m */; };
 		C5EEFA032281CAA100044ED9 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EEF9F22281CAA000044ED9 /* UIWebView+AFNetworking.m */; };
 		C5EEFA042281CAA100044ED9 /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EEF9F52281CAA000044ED9 /* UIAlertView+AFNetworking.m */; };
@@ -362,11 +364,13 @@
 		C51D5A0122847A3700C09868 /* CNMutableContact+Init.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNMutableContact+Init.m"; sourceTree = "<group>"; };
 		C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCellTest.m; sourceTree = "<group>"; };
 		C55A3E512284782F00E8CC55 /* NIContactCellObjectTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCellObjectTest.m; sourceTree = "<group>"; };
-		C56FBAF222831FAA007E8A0E /* NibSelectedContactCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NibSelectedContactCell.h; sourceTree = "<group>"; };
-		C56FBAF322831FAA007E8A0E /* NibSelectedContactCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NibSelectedContactCell.m; sourceTree = "<group>"; };
+		C56FBAF222831FAA007E8A0E /* NISelectedContactCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NISelectedContactCell.h; sourceTree = "<group>"; };
+		C56FBAF322831FAA007E8A0E /* NISelectedContactCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NISelectedContactCell.m; sourceTree = "<group>"; };
 		C56FBAF72283275D007E8A0E /* NISelectedContactCellObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NISelectedContactCellObject.h; sourceTree = "<group>"; };
 		C56FBAF82283275D007E8A0E /* NISelectedContactCellObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NISelectedContactCellObject.m; sourceTree = "<group>"; };
 		C5990513228480320033F7C5 /* ContactInviNavigationTitleViewTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactInviNavigationTitleViewTest.m; sourceTree = "<group>"; };
+		C5B9D7B12284839A00CB70AD /* NISelectedContactCellTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NISelectedContactCellTest.m; sourceTree = "<group>"; };
+		C5B9D7B32284841600CB70AD /* NISelectedContactCellObjectTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NISelectedContactCellObjectTest.m; sourceTree = "<group>"; };
 		C5EEF9F02281CAA000044ED9 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		C5EEF9F12281CAA000044ED9 /* UIAlertView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+AFNetworking.h"; sourceTree = "<group>"; };
 		C5EEF9F22281CAA000044ED9 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
@@ -787,6 +791,8 @@
 				C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */,
 				C55A3E512284782F00E8CC55 /* NIContactCellObjectTest.m */,
 				C5990513228480320033F7C5 /* ContactInviNavigationTitleViewTest.m */,
+				C5B9D7B12284839A00CB70AD /* NISelectedContactCellTest.m */,
+				C5B9D7B32284841600CB70AD /* NISelectedContactCellObjectTest.m */,
 			);
 			path = ContactInvitationPickerTests;
 			sourceTree = "<group>";
@@ -848,8 +854,8 @@
 		C56FBAF6228320DF007E8A0E /* NISelectedContactCell */ = {
 			isa = PBXGroup;
 			children = (
-				C56FBAF222831FAA007E8A0E /* NibSelectedContactCell.h */,
-				C56FBAF322831FAA007E8A0E /* NibSelectedContactCell.m */,
+				C56FBAF222831FAA007E8A0E /* NISelectedContactCell.h */,
+				C56FBAF322831FAA007E8A0E /* NISelectedContactCell.m */,
 				C56FBAF72283275D007E8A0E /* NISelectedContactCellObject.h */,
 				C56FBAF82283275D007E8A0E /* NISelectedContactCellObject.m */,
 			);
@@ -1156,7 +1162,7 @@
 				A1DBA1B3228294330036FD95 /* AFURLResponseSerialization.m in Sources */,
 				A160ACB9228193150024BB49 /* NINetworkActivity.m in Sources */,
 				A1DBA1B9228294330036FD95 /* AFURLSessionManager.m in Sources */,
-				C56FBAF422831FAA007E8A0E /* NibSelectedContactCell.m in Sources */,
+				C56FBAF422831FAA007E8A0E /* NISelectedContactCell.m in Sources */,
 				A160ACC3228193150024BB49 /* NIPaths.m in Sources */,
 				A160ACBA228193150024BB49 /* NIDeviceOrientation.m in Sources */,
 				A1DBA1BB228294330036FD95 /* AFHTTPSessionManager.m in Sources */,
@@ -1181,6 +1187,8 @@
 				C55A3E502284729200E8CC55 /* NIContactCellTest.m in Sources */,
 				C5990514228480320033F7C5 /* ContactInviNavigationTitleViewTest.m in Sources */,
 				C51D5A0222847A3700C09868 /* CNMutableContact+Init.m in Sources */,
+				C5B9D7B22284839A00CB70AD /* NISelectedContactCellTest.m in Sources */,
+				C5B9D7B42284841600CB70AD /* NISelectedContactCellObjectTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
