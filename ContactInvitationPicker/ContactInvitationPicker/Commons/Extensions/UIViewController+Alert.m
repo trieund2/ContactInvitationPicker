@@ -19,7 +19,7 @@
         UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Đồng ý"
                                                                 style:UIAlertActionStyleCancel
                                                               handler:^(UIAlertAction * _Nonnull action) {
-                                                                  [self dismissViewControllerAnimated:YES completion:^{}];
+                                                                  [alert dismissViewControllerAnimated:YES completion:^{}];
                                                               }];
         [alert addAction:defaultAction];
     } else {

@@ -53,9 +53,10 @@
 + (void)getAllContact:(void (^)(NSArray *contacts))completion {
     NSError *contactError;
     CNContactStore *contactStore = [CNContactStore new];
-    NSArray * keysToFetch =@[CNContactPhoneNumbersKey, CNContactFamilyNameKey, CNContactGivenNameKey];
+    NSArray * keysToFetch =@[CNContactPhoneNumbersKey,
+                             [CNContactFormatter descriptorForRequiredKeysForStyle:(CNContactFormatterStyleFullName)]];
     CNContactFetchRequest *request = [[CNContactFetchRequest alloc]initWithKeysToFetch:keysToFetch];
-    request.sortOrder = CNContactSortOrderFamilyName;
+    request.sortOrder = CNContactSortOrderUserDefault;
     
     NSMutableArray *nonAlphabetContacts = [NSMutableArray new];
     NSMutableArray *contacts = [NSMutableArray new];
@@ -67,11 +68,12 @@
      usingBlock:^(CNContact * __nonnull contact, BOOL * __nonnull stop) {
          NIContactCellObject *object = [NIContactCellObject objectFromContact:contact];
          if (object) {
-             NSString *currentTitle = [object.displayName substringToIndex:1];
-             currentTitle = [NSString ignoreUnicode:currentTitle].uppercaseString;
+             NSString *currentTitle = [object.fullNameIgnoreUnicode substringToIndex:1];
              NSString *allAlphabet = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
              bool isAlphabet = [allAlphabet containsString:currentTitle];
-             
+             if (![currentTitle isEqualToString:previousTitle]) {
+                 NSLog(@"%@ -- %@", currentTitle, previousTitle);
+             }
              if (![currentTitle isEqualToString:previousTitle] && isAlphabet) {
                  [contacts addObject:currentTitle];
                  previousTitle = currentTitle;
@@ -89,47 +91,5 @@
     }
     completion([nonAlphabetContacts arrayByAddingObjectsFromArray:contacts]);
 }
-
-//+ (void)getAllContact:(void (^)(NSArray *contacts))completion {
-//    __block NSError *contactError;
-//    CNContactStore *contactStore = [CNContactStore new];
-//    NSArray * keysToFetch =@[CNContactPhoneNumbersKey, CNContactFamilyNameKey, CNContactGivenNameKey];
-//    CNContactFetchRequest *request = [[CNContactFetchRequest alloc]initWithKeysToFetch:keysToFetch];
-//    request.sortOrder = CNContactSortOrderFamilyName;
-//
-//    NSMutableArray *nonAlphabetContacts = [NSMutableArray new];
-//    NSMutableArray *contacts = [NSMutableArray new];
-//    __block NSString *previousTitle = nil;
-//
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-//        [contactStore
-//         enumerateContactsWithFetchRequest:request
-//         error:&contactError
-//         usingBlock:^(CNContact * __nonnull contact, BOOL * __nonnull stop) {
-//             NIContactCellObject *object = [NIContactCellObject objectFromContact:contact];
-//             if (object) {
-//                 NSString *currentTitle = [object.displayName substringToIndex:1];
-//                 currentTitle = [NSString ignoreUnicode:currentTitle].uppercaseString;
-//                 NSString *allAlphabet = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-//                 bool isAlphabet = [allAlphabet containsString:currentTitle];
-//
-//                 if (![currentTitle isEqualToString:previousTitle] && isAlphabet) {
-//                     [contacts addObject:currentTitle];
-//                     previousTitle = currentTitle;
-//                 }
-//                 if (isAlphabet) {
-//                     [contacts addObject:object];
-//                 } else {
-//                     [nonAlphabetContacts addObject:object];
-//                 }
-//             }
-//         }];
-//
-//        if (nonAlphabetContacts.count > 0) {
-//            [nonAlphabetContacts insertObject:@"#" atIndex:0];
-//        }
-//        completion([nonAlphabetContacts arrayByAddingObjectsFromArray:contacts]);
-//    });
-//}
 
 @end

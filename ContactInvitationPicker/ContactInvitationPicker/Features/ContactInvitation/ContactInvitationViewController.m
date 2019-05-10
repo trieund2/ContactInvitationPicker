@@ -213,7 +213,7 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
             return NO;
         } else if ([object isKindOfClass:[NIContactCellObject class]]) {
             NIContactCellObject *contactCellObject = (NIContactCellObject *)object;
-            return [contactCellObject.displayNameIgnoreUnicode.lowercaseString containsString:[NSString ignoreUnicode:searchText].lowercaseString];
+            return [contactCellObject.fullNameIgnoreUnicode.lowercaseString containsString:[NSString stringIgnoreUnicodeFromString:searchText].lowercaseString];
         } else {
             return NO;
         }

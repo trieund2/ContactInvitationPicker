@@ -18,7 +18,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
     _contactInvitationPickerButton = [UIButton new];
-    self.contactInvitationPickerButton.backgroundColor = UIColorFromRGB(0xB6B8EA);
+    self.contactInvitationPickerButton.backgroundColor = UIColorFromRGB(0x2294FF);
     [self.contactInvitationPickerButton addTarget:self
                                            action:@selector(touchInContactInviationPickerButton)
                                  forControlEvents:(UIControlEventTouchUpInside)];

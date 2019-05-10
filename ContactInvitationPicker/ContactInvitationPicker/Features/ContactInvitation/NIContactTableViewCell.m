@@ -47,7 +47,7 @@
 - (BOOL)shouldUpdateCellWithObject:(NIContactCellObject *)object {
     shortNamebackgroundColor = object.shortNameBackgroundColor;
     self.shortNameLabel.text = object.shortName;
-    self.fullNameLabel.text = object.displayName;
+    self.fullNameLabel.text = object.fullName;
     self.shortNameLabel.backgroundColor = object.shortNameBackgroundColor;
     if (object.isSelected) {
         self.checkBoxImageView.image = [UIImage imageNamed:@"Checked"];
