@@ -8,18 +8,18 @@
 
 #import <XCTest/XCTest.h>
 #import "NISelectedContactCellObject.h"
-#import "NISelectedContactCell.h"
+#import "NISelectedContactCollectionViewCell.h"
 
 @interface NISelectedContactCellTest : XCTestCase
 
 @end
 
 @implementation NISelectedContactCellTest {
-    NISelectedContactCell *sut;
+    NISelectedContactCollectionViewCell *sut;
 }
 
 - (void)setUp {
-   sut = [[NISelectedContactCell alloc] initWithFrame:(CGRectZero)];
+   sut = [[NISelectedContactCollectionViewCell alloc] initWithFrame:(CGRectZero)];
 }
 
 - (void)tearDown {

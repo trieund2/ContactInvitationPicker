@@ -7,14 +7,14 @@
 //
 
 #import "NIContactCellObject.h"
-#import "NIContactCell.h"
+#import "NIContactTableViewCell.h"
 #import "UIColorFromRGB.h"
 #import "NSString+Extension.h"
 
 @implementation NIContactCellObject
 
 - (id)initFromContact:(CNContact *)contact {
-    if (self = [super initWithCellClass:[NIContactCell class]]) {
+    if (self = [super initWithCellClass:[NIContactTableViewCell class]]) {
         NSString *firstName = contact.givenName;
         NSString *lastName = contact.familyName;
         NSString *phone = [[contact.phoneNumbers.firstObject valueForKey:@"value"] valueForKey:@"digits"];
@@ -48,7 +48,7 @@
             
             NSArray *colors = [NSArray arrayWithObjects:UIColorFromRGB(0xB6B8EA), UIColorFromRGB(0x97D3C4), UIColorFromRGB(0xCBAEA0), UIColorFromRGB(0xB4B9C8), UIColorFromRGB(0xF1A5A5), UIColorFromRGB(0xA2C8DA), UIColorFromRGB(0x85CBDD), nil];
             int index = (int)([self.displayNameIgnoreUnicode length] % colors.count);
-            self.color = [colors objectAtIndex:index];
+            self.shortNameBackgroundColor = [colors objectAtIndex:index];
         } else {
             return nil;
         }
@@ -61,7 +61,7 @@
 }
 
 - (Class)cellClass {
-    return [NIContactCell class];
+    return [NIContactTableViewCell class];
 }
 
 @end

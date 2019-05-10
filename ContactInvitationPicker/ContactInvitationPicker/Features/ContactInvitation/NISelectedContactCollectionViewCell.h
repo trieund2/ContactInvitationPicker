@@ -1,5 +1,5 @@
 //
-//  NISelectedContactCell.h
+//  NISelectedContactCollectionViewCell.h
 //  ContactInvitationPicker
 //
 //  Created by MACOS on 5/8/19.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NISelectedContactCell : UICollectionViewCell <NICell>
+@interface NISelectedContactCollectionViewCell : UICollectionViewCell <NICell>
 
 @property (readonly, nonatomic) UILabel *shortNameLabel;
 

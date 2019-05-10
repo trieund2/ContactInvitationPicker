@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *displayName;
 @property (nonatomic, copy) NSString *shortName;
 @property (nonatomic, copy) NSString *phoneNumber;
-@property (nonatomic) UIColor *color;
+@property (nonatomic) UIColor *shortNameBackgroundColor;
 @property (nonatomic) BOOL isSelected;
 
 @end

@@ -97,7 +97,7 @@
 		A1DBA1BA228294330036FD95 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1B1228294330036FD95 /* AFNetworkReachabilityManager.m */; };
 		A1DBA1BB228294330036FD95 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1B2228294330036FD95 /* AFHTTPSessionManager.m */; };
 		A1DBA1BE228294960036FD95 /* NIContactCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1BD228294960036FD95 /* NIContactCellObject.m */; };
-		A1DBA1C2228297230036FD95 /* NIContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1C0228297230036FD95 /* NIContactCell.m */; };
+		A1DBA1C2228297230036FD95 /* NIContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1C0228297230036FD95 /* NIContactTableViewCell.m */; };
 		A1FAF66C22814529006E024B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF66B22814529006E024B /* AppDelegate.m */; };
 		A1FAF66F22814529006E024B /* ContactInvitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF66E22814529006E024B /* ContactInvitationViewController.m */; };
 		A1FAF6742281452A006E024B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1FAF6732281452A006E024B /* Assets.xcassets */; };
@@ -107,7 +107,7 @@
 		C51D5A0222847A3700C09868 /* CNMutableContact+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = C51D5A0122847A3700C09868 /* CNMutableContact+Init.m */; };
 		C55A3E502284729200E8CC55 /* NIContactCellTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */; };
 		C55A3E522284782F00E8CC55 /* NIContactCellObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A3E512284782F00E8CC55 /* NIContactCellObjectTest.m */; };
-		C56FBAF422831FAA007E8A0E /* NISelectedContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C56FBAF322831FAA007E8A0E /* NISelectedContactCell.m */; };
+		C56FBAF422831FAA007E8A0E /* NISelectedContactCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C56FBAF322831FAA007E8A0E /* NISelectedContactCollectionViewCell.m */; };
 		C56FBAF92283275D007E8A0E /* NISelectedContactCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C56FBAF82283275D007E8A0E /* NISelectedContactCellObject.m */; };
 		C5990514228480320033F7C5 /* ContactInviNavigationTitleViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C5990513228480320033F7C5 /* ContactInviNavigationTitleViewTest.m */; };
 		C5B9D7B22284839A00CB70AD /* NISelectedContactCellTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B9D7B12284839A00CB70AD /* NISelectedContactCellTest.m */; };
@@ -343,8 +343,8 @@
 		A1DBA1B2228294330036FD95 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = ContactInvitationPicker/Frameworks/AFNetworking/AFHTTPSessionManager.m; sourceTree = SOURCE_ROOT; };
 		A1DBA1BC228294960036FD95 /* NIContactCellObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIContactCellObject.h; sourceTree = "<group>"; };
 		A1DBA1BD228294960036FD95 /* NIContactCellObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCellObject.m; sourceTree = "<group>"; };
-		A1DBA1BF228297230036FD95 /* NIContactCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIContactCell.h; sourceTree = "<group>"; };
-		A1DBA1C0228297230036FD95 /* NIContactCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCell.m; sourceTree = "<group>"; };
+		A1DBA1BF228297230036FD95 /* NIContactTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIContactTableViewCell.h; sourceTree = "<group>"; };
+		A1DBA1C0228297230036FD95 /* NIContactTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactTableViewCell.m; sourceTree = "<group>"; };
 		A1FAF66722814529006E024B /* ContactInvitationPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactInvitationPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FAF66A22814529006E024B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A1FAF66B22814529006E024B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -364,8 +364,8 @@
 		C51D5A0122847A3700C09868 /* CNMutableContact+Init.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNMutableContact+Init.m"; sourceTree = "<group>"; };
 		C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCellTest.m; sourceTree = "<group>"; };
 		C55A3E512284782F00E8CC55 /* NIContactCellObjectTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCellObjectTest.m; sourceTree = "<group>"; };
-		C56FBAF222831FAA007E8A0E /* NISelectedContactCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NISelectedContactCell.h; sourceTree = "<group>"; };
-		C56FBAF322831FAA007E8A0E /* NISelectedContactCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NISelectedContactCell.m; sourceTree = "<group>"; };
+		C56FBAF222831FAA007E8A0E /* NISelectedContactCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NISelectedContactCollectionViewCell.h; sourceTree = "<group>"; };
+		C56FBAF322831FAA007E8A0E /* NISelectedContactCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NISelectedContactCollectionViewCell.m; sourceTree = "<group>"; };
 		C56FBAF72283275D007E8A0E /* NISelectedContactCellObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NISelectedContactCellObject.h; sourceTree = "<group>"; };
 		C56FBAF82283275D007E8A0E /* NISelectedContactCellObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NISelectedContactCellObject.m; sourceTree = "<group>"; };
 		C5990513228480320033F7C5 /* ContactInviNavigationTitleViewTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactInviNavigationTitleViewTest.m; sourceTree = "<group>"; };
@@ -814,10 +814,10 @@
 				A1FAF66E22814529006E024B /* ContactInvitationViewController.m */,
 				A1DBA1BC228294960036FD95 /* NIContactCellObject.h */,
 				A1DBA1BD228294960036FD95 /* NIContactCellObject.m */,
-				A1DBA1BF228297230036FD95 /* NIContactCell.h */,
-				A1DBA1C0228297230036FD95 /* NIContactCell.m */,
-				C56FBAF222831FAA007E8A0E /* NISelectedContactCell.h */,
-				C56FBAF322831FAA007E8A0E /* NISelectedContactCell.m */,
+				A1DBA1BF228297230036FD95 /* NIContactTableViewCell.h */,
+				A1DBA1C0228297230036FD95 /* NIContactTableViewCell.m */,
+				C56FBAF222831FAA007E8A0E /* NISelectedContactCollectionViewCell.h */,
+				C56FBAF322831FAA007E8A0E /* NISelectedContactCollectionViewCell.m */,
 				C56FBAF72283275D007E8A0E /* NISelectedContactCellObject.h */,
 				C56FBAF82283275D007E8A0E /* NISelectedContactCellObject.m */,
 				A1A837C7228418F900C353C9 /* ContactInviNavigationTitleView.h */,
@@ -1136,7 +1136,7 @@
 				C5EEFA042281CAA100044ED9 /* UIAlertView+AFNetworking.m in Sources */,
 				A160AC32228193150024BB49 /* NIRadioGroup.m in Sources */,
 				A160ACBF228193150024BB49 /* NIButtonUtilities.m in Sources */,
-				A1DBA1C2228297230036FD95 /* NIContactCell.m in Sources */,
+				A1DBA1C2228297230036FD95 /* NIContactTableViewCell.m in Sources */,
 				A160AC7A228193150024BB49 /* NIAttributedLabel.m in Sources */,
 				A160AC9B228193150024BB49 /* NITextField+NIStyleable.m in Sources */,
 				C5EEFA032281CAA100044ED9 /* UIWebView+AFNetworking.m in Sources */,
@@ -1146,7 +1146,7 @@
 				A1DBA1B3228294330036FD95 /* AFURLResponseSerialization.m in Sources */,
 				A160ACB9228193150024BB49 /* NINetworkActivity.m in Sources */,
 				A1DBA1B9228294330036FD95 /* AFURLSessionManager.m in Sources */,
-				C56FBAF422831FAA007E8A0E /* NISelectedContactCell.m in Sources */,
+				C56FBAF422831FAA007E8A0E /* NISelectedContactCollectionViewCell.m in Sources */,
 				A160ACC3228193150024BB49 /* NIPaths.m in Sources */,
 				A160ACBA228193150024BB49 /* NIDeviceOrientation.m in Sources */,
 				A1DBA1BB228294330036FD95 /* AFHTTPSessionManager.m in Sources */,

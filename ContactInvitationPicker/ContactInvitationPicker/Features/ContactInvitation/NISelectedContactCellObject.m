@@ -7,12 +7,12 @@
 //
 
 #import "NISelectedContactCellObject.h"
-#import "NISelectedContactCell.h"
+#import "NISelectedContactCollectionViewCell.h"
 
 @implementation NISelectedContactCellObject
 
 - (id)initWithPhoneNumber:(NSString *)phoneNumber shortName:(NSString *)shortName indexPath:(NSIndexPath *)indexPath color:(UIColor *)color {
-    if (self = [super initWithCellClass:[NISelectedContactCell class]]) {
+    if (self = [super initWithCellClass:[NISelectedContactCollectionViewCell class]]) {
         self.shortName = [shortName copy];
         self.phoneNumber = [phoneNumber copy];
         self.indexPath = indexPath;
@@ -26,7 +26,7 @@
 }
 
 - (Class)cellClass {
-    return [NISelectedContactCell class];
+    return [NISelectedContactCollectionViewCell class];
 }
 
 - (BOOL)isEqual:(NISelectedContactCellObject *)object {

@@ -6,11 +6,11 @@
 //  Copyright © 2019 com.trieund. All rights reserved.
 //
 
-#import "NIContactCell.h"
+#import "NIContactTableViewCell.h"
 #import "NIContactCellObject.h"
 #import "UIColorFromRGB.h"
 
-@implementation NIContactCell {
+@implementation NIContactTableViewCell {
     UIColor *shortNamebackgroundColor;
 }
 
@@ -45,10 +45,10 @@
 #pragma mark Instance methods
 
 - (BOOL)shouldUpdateCellWithObject:(NIContactCellObject *)object {
-    shortNamebackgroundColor = object.color;
+    shortNamebackgroundColor = object.shortNameBackgroundColor;
     self.shortNameLabel.text = object.shortName;
     self.fullNameLabel.text = object.displayName;
-    self.shortNameLabel.backgroundColor = object.color;
+    self.shortNameLabel.backgroundColor = object.shortNameBackgroundColor;
     if (object.isSelected) {
         self.checkBoxImageView.image = [UIImage imageNamed:@"Checked"];
     } else {

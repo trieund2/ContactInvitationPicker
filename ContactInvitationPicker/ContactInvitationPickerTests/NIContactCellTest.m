@@ -43,7 +43,7 @@
     
     XCTAssertTrue([sut.shortNameLabel.text isEqual:object.shortName]);
     XCTAssertTrue([sut.fullNameLabel.text isEqual:object.displayName]);
-    XCTAssertTrue([sut.shortNameLabel.backgroundColor isEqual:object.color]);
+    XCTAssertTrue([sut.shortNameLabel.backgroundColor isEqual:object.shortNameBackgroundColor]);
 }
 
 @end
