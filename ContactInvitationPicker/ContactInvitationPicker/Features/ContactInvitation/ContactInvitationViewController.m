@@ -103,11 +103,8 @@
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.itemSize = CGSizeMake(40, 40);
     layout.minimumInteritemSpacing = 4;
-    _selectContactCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
-                                                      collectionViewLayout:layout];
+    _selectContactCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     self.selectContactCollectionView.backgroundColor = UIColor.clearColor;
-    
-    
     collectionViewModel = [[NICollectionViewModel alloc]
                            initWithListArray:selectedContacts
                            delegate:(id)[NICollectionViewCellFactory class]];

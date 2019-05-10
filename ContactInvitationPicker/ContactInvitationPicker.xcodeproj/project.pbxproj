@@ -812,8 +812,14 @@
 			children = (
 				A1FAF66D22814529006E024B /* ContactInvitationViewController.h */,
 				A1FAF66E22814529006E024B /* ContactInvitationViewController.m */,
-				C56FBAF5228320CF007E8A0E /* NIContactCell */,
-				C56FBAF6228320DF007E8A0E /* NISelectedContactCell */,
+				A1DBA1BC228294960036FD95 /* NIContactCellObject.h */,
+				A1DBA1BD228294960036FD95 /* NIContactCellObject.m */,
+				A1DBA1BF228297230036FD95 /* NIContactCell.h */,
+				A1DBA1C0228297230036FD95 /* NIContactCell.m */,
+				C56FBAF222831FAA007E8A0E /* NISelectedContactCell.h */,
+				C56FBAF322831FAA007E8A0E /* NISelectedContactCell.m */,
+				C56FBAF72283275D007E8A0E /* NISelectedContactCellObject.h */,
+				C56FBAF82283275D007E8A0E /* NISelectedContactCellObject.m */,
 				A1A837C7228418F900C353C9 /* ContactInviNavigationTitleView.h */,
 				A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */,
 			);
@@ -838,28 +844,6 @@
 				A1FAF69122816304006E024B /* ContactScan.m */,
 			);
 			path = ContactScan;
-			sourceTree = "<group>";
-		};
-		C56FBAF5228320CF007E8A0E /* NIContactCell */ = {
-			isa = PBXGroup;
-			children = (
-				A1DBA1BC228294960036FD95 /* NIContactCellObject.h */,
-				A1DBA1BD228294960036FD95 /* NIContactCellObject.m */,
-				A1DBA1BF228297230036FD95 /* NIContactCell.h */,
-				A1DBA1C0228297230036FD95 /* NIContactCell.m */,
-			);
-			path = NIContactCell;
-			sourceTree = "<group>";
-		};
-		C56FBAF6228320DF007E8A0E /* NISelectedContactCell */ = {
-			isa = PBXGroup;
-			children = (
-				C56FBAF222831FAA007E8A0E /* NISelectedContactCell.h */,
-				C56FBAF322831FAA007E8A0E /* NISelectedContactCell.m */,
-				C56FBAF72283275D007E8A0E /* NISelectedContactCellObject.h */,
-				C56FBAF82283275D007E8A0E /* NISelectedContactCellObject.m */,
-			);
-			path = NISelectedContactCell;
 			sourceTree = "<group>";
 		};
 		C5EEF9D12281CA5100044ED9 /* AFNetworking */ = {
