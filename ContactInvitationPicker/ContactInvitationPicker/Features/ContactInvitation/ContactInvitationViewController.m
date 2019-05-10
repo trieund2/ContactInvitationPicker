@@ -308,11 +308,11 @@
         return;
     }
     
-    [self.selectContactCollectionView reloadData];
-    [self performAnimateSelectedContactCollectionView];
     [self.contactTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:selectedIndexPath]
                                  withRowAnimation:UITableViewRowAnimationNone];
+    [self.selectContactCollectionView reloadData];
     [self updateSendButtonState];
+    [self performAnimateSelectedContactCollectionView];
     [self.titleView updateSubTitleWithNumberSelecContacts:selectedContacts.count];
 }
 
