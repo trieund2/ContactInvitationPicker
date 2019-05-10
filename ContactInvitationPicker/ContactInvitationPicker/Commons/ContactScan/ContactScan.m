@@ -81,9 +81,9 @@
              } else {
                  [nonAlphabetContacts addObject:object];
              }
-             
          }
      }];
+    
     if (nonAlphabetContacts.count > 0) {
         [nonAlphabetContacts insertObject:@"#" atIndex:0];
     }
