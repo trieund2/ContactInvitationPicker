@@ -53,7 +53,7 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
 #pragma mark UI actions
 
 - (void)touchInCancelButton {
-    NSLog(@"Did select cancel barbutton");
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (void)touchInSendButton {

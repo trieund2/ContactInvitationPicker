@@ -87,6 +87,7 @@
 		A160ACC9228193150024BB49 /* NISDKAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AC14228193140024BB49 /* NISDKAvailability.m */; };
 		A1A837C9228418F900C353C9 /* ContactInviNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */; };
 		A1A8382F228434D200C353C9 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A8382E228434D200C353C9 /* NSString+Extension.m */; };
+		A1B863E522857AF2001DA0C1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B863E422857AF2001DA0C1 /* RootViewController.m */; };
 		A1DBA1B3228294330036FD95 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1A1228294310036FD95 /* AFURLResponseSerialization.m */; };
 		A1DBA1B4228294330036FD95 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1A2228294320036FD95 /* AFHTTPRequestOperation.m */; };
 		A1DBA1B5228294330036FD95 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1A3228294320036FD95 /* AFURLConnectionOperation.m */; };
@@ -322,6 +323,8 @@
 		A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactInviNavigationTitleView.m; sourceTree = "<group>"; };
 		A1A8382D228434D200C353C9 /* NSString+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		A1A8382E228434D200C353C9 /* NSString+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		A1B863E322857AF2001DA0C1 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A1B863E422857AF2001DA0C1 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		A1DBA1A0228294310036FD95 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = ContactInvitationPicker/Frameworks/AFNetworking/AFHTTPRequestOperation.h; sourceTree = SOURCE_ROOT; };
 		A1DBA1A1228294310036FD95 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = ContactInvitationPicker/Frameworks/AFNetworking/AFURLResponseSerialization.m; sourceTree = SOURCE_ROOT; };
 		A1DBA1A2228294320036FD95 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = ContactInvitationPicker/Frameworks/AFNetworking/AFHTTPRequestOperation.m; sourceTree = SOURCE_ROOT; };
@@ -740,9 +743,19 @@
 			path = core;
 			sourceTree = "<group>";
 		};
+		A1B863E222857ADA001DA0C1 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				A1B863E322857AF2001DA0C1 /* RootViewController.h */,
+				A1B863E422857AF2001DA0C1 /* RootViewController.m */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
 		A1DBA182228292D40036FD95 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				A1B863E222857ADA001DA0C1 /* Root */,
 				A1FAF68F228146DE006E024B /* ContactInvitation */,
 			);
 			path = Features;
@@ -1067,6 +1080,7 @@
 				C56FBAF92283275D007E8A0E /* NISelectedContactCellObject.m in Sources */,
 				A1FAF66F22814529006E024B /* ContactInvitationViewController.m in Sources */,
 				A160ACA0228193150024BB49 /* NIDOM.m in Sources */,
+				A1B863E522857AF2001DA0C1 /* RootViewController.m in Sources */,
 				A160AC2F228193150024BB49 /* NICellCatalog.m in Sources */,
 				A160AC31228193150024BB49 /* NIRadioGroupController.m in Sources */,
 				A160ACB6228193150024BB49 /* NICommonMetrics.m in Sources */,

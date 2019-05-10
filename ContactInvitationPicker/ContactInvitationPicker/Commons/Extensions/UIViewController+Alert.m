@@ -16,7 +16,8 @@
                                                                    message:message
                                                             preferredStyle:UIAlertControllerStyleAlert];
     if (actions == nil || actions.count == 0) {
-        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Đồng ý" style:UIAlertActionStyleCancel
+        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Đồng ý"
+                                                                style:UIAlertActionStyleCancel
                                                               handler:^(UIAlertAction * _Nonnull action) {
                                                                   [self dismissViewControllerAnimated:YES completion:^{}];
                                                               }];
