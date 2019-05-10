@@ -10,7 +10,9 @@
 #import "NIContactCellObject.h"
 #import "UIColorFromRGB.h"
 
-@implementation NIContactCell
+@implementation NIContactCell {
+    UIColor *shortNamebackgroundColor;
+}
 
 #pragma mark Init
 
@@ -43,6 +45,7 @@
 #pragma mark Instance methods
 
 - (BOOL)shouldUpdateCellWithObject:(NIContactCellObject *)object {
+    shortNamebackgroundColor = object.color;
     self.shortNameLabel.text = object.shortName;
     self.fullNameLabel.text = object.displayName;
     self.shortNameLabel.backgroundColor = object.color;
@@ -52,6 +55,22 @@
         self.checkBoxImageView.image = [UIImage imageNamed:@"UnCheck"];
     }
     return YES;
+}
+
+#pragma mark Override methods
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    if (selected) {
+        self.shortNameLabel.backgroundColor = shortNamebackgroundColor;
+    }
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    [super setHighlighted:highlighted animated:animated];
+    if (highlighted) {
+        self.shortNameLabel.backgroundColor = shortNamebackgroundColor;
+    }
 }
 
 #pragma mark Setup layouts

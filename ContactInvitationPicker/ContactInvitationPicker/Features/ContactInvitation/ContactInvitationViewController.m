@@ -24,8 +24,8 @@
 @end
 
 @implementation ContactInvitationViewController {
-    NSArray *listContact;
-    NSMutableArray *selectedContacts;
+    NSArray<NIContactCellObject *> *listContact;
+    NSMutableArray<NISelectedContactCellObject *> *selectedContacts;
     NITableViewModel *contactTableViewModel;
     NITableViewModel *searchResultTableViewModel;
     NICollectionViewModel *collectionViewModel;
@@ -109,7 +109,6 @@
                            initWithListArray:selectedContacts
                            delegate:(id)[NICollectionViewCellFactory class]];
     self.selectContactCollectionView.dataSource = collectionViewModel;
-    [self.selectContactCollectionView reloadData];
     [self layoutSelectContactCollectionView];
 }
 
