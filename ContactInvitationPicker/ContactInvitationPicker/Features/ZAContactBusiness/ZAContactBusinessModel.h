@@ -18,9 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, copy) NSString *middleName;
 @property (nonatomic, readonly, copy) NSString *familyName;
 @property (nonatomic, readonly, copy) NSString *fullName;
-@property (nonatomic, readonly, copy) NSString *shortName;
 @property (nonatomic, readonly, copy) NSString *fullNameIgnoreUnicode;
-@property (nonatomic, readonly) NSData *imageData;
+@property (nonatomic, readonly, copy) NSString *shortName;
 @property (nonatomic, readonly) NSArray *phoneNumbers;
 
 - (nullable id)initWithZaContact:(ZAContact *)zaContact;

@@ -31,7 +31,7 @@
                                                   errorHandler:(void (^)(NSError * _Nonnull))errorHandler {
     __weak ZAContactBusiness *weakSelf = self;
     
-    [ZAContactScaner getAllContactsWithCompletionHandler:^(NSArray<ZAContact *> * _Nonnull contacts) {
+    [ZAContactScaner getAllContactsWithSortType:(ZAContactSortTypeFamilyName) CompletionHandler:^(NSArray<ZAContact *> * _Nonnull contacts) {
         for (ZAContact* contact in contacts) {
             ZAContactBusinessModel *contactBusinessModel = [ZAContactBusinessModel objectWithZaContact:contact];
             if (contactBusinessModel != nil) {

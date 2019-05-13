@@ -88,6 +88,8 @@
 		A1A837C9228418F900C353C9 /* ContactInviNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */; };
 		A1A8382F228434D200C353C9 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A8382E228434D200C353C9 /* NSString+Extension.m */; };
 		A1B863E522857AF2001DA0C1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B863E422857AF2001DA0C1 /* RootViewController.m */; };
+		A1D6B52022896B3F00B8385A /* UILabel+UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D6B51F22896B3F00B8385A /* UILabel+UIImage.m */; };
+		A1D6B52322896CF300B8385A /* UIImage+Draw.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D6B52222896CF300B8385A /* UIImage+Draw.m */; };
 		A1DBA1B3228294330036FD95 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1A1228294310036FD95 /* AFURLResponseSerialization.m */; };
 		A1DBA1B4228294330036FD95 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1A2228294320036FD95 /* AFHTTPRequestOperation.m */; };
 		A1DBA1B5228294330036FD95 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA1A3228294320036FD95 /* AFURLConnectionOperation.m */; };
@@ -327,6 +329,10 @@
 		A1A8382E228434D200C353C9 /* NSString+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		A1B863E322857AF2001DA0C1 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		A1B863E422857AF2001DA0C1 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A1D6B51E22896B3F00B8385A /* UILabel+UIImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+UIImage.h"; sourceTree = "<group>"; };
+		A1D6B51F22896B3F00B8385A /* UILabel+UIImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+UIImage.m"; sourceTree = "<group>"; };
+		A1D6B52122896CF300B8385A /* UIImage+Draw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Draw.h"; sourceTree = "<group>"; };
+		A1D6B52222896CF300B8385A /* UIImage+Draw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Draw.m"; sourceTree = "<group>"; };
 		A1DBA1A0228294310036FD95 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = ContactInvitationPicker/Frameworks/AFNetworking/AFHTTPRequestOperation.h; sourceTree = SOURCE_ROOT; };
 		A1DBA1A1228294310036FD95 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = ContactInvitationPicker/Frameworks/AFNetworking/AFURLResponseSerialization.m; sourceTree = SOURCE_ROOT; };
 		A1DBA1A2228294320036FD95 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = ContactInvitationPicker/Frameworks/AFNetworking/AFHTTPRequestOperation.m; sourceTree = SOURCE_ROOT; };
@@ -441,6 +447,10 @@
 				A15B47532282E87B0049BAC1 /* UIViewController+Alert.m */,
 				A1A8382D228434D200C353C9 /* NSString+Extension.h */,
 				A1A8382E228434D200C353C9 /* NSString+Extension.m */,
+				A1D6B51E22896B3F00B8385A /* UILabel+UIImage.h */,
+				A1D6B51F22896B3F00B8385A /* UILabel+UIImage.m */,
+				A1D6B52122896CF300B8385A /* UIImage+Draw.h */,
+				A1D6B52222896CF300B8385A /* UIImage+Draw.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1093,6 +1103,7 @@
 			files = (
 				A160AC36228193150024BB49 /* NICellBackgrounds.m in Sources */,
 				A160ACA2228193150024BB49 /* UIView+NIStyleable.m in Sources */,
+				A1D6B52022896B3F00B8385A /* UILabel+UIImage.m in Sources */,
 				A160ACB7228193150024BB49 /* NIViewRecycler.m in Sources */,
 				A160AC3D228193150024BB49 /* NINetworkTableViewController.m in Sources */,
 				A1DBA1B5228294330036FD95 /* AFURLConnectionOperation.m in Sources */,
@@ -1141,6 +1152,7 @@
 				A160AC1C228193150024BB49 /* NIMutableCollectionViewModel.m in Sources */,
 				A160AC96228193150024BB49 /* CSSTokens.m in Sources */,
 				A160AC9E228193150024BB49 /* NIStylesheetCache.m in Sources */,
+				A1D6B52322896CF300B8385A /* UIImage+Draw.m in Sources */,
 				A160ACC1228193150024BB49 /* NIState.m in Sources */,
 				A160ACC0228193150024BB49 /* NINonEmptyCollectionTesting.m in Sources */,
 				C5BF73862286F38A0058E89D /* ZAContact.m in Sources */,

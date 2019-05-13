@@ -14,13 +14,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, ZAContactSortType) {
+    ZAContactSortTypeNone,
+    ZAContactSortTypeFamilyName,
+    ZAContactSortTypeGivenName
+};
+
 @interface ZAContactScaner : NSObject
 
 + (void)requestAccessContactWithCompletionHandler:(void (^)(BOOL granted)) completionHandler
                                      errorHandler:(void (^)(NSError * _Nonnull error)) errorHandler;
 
-+ (void)getAllContactsWithCompletionHandler:(void (^)(NSArray<ZAContact *>* contacts))completionHandler
-                               errorHandler:(void (^)(NSError * _Nonnull error)) errorHandler;
++ (void)getAllContactsWithSortType:(ZAContactSortType)sortType
+                 CompletionHandler:(void (^)(NSArray<ZAContact *>* contacts))completionHandler
+                      errorHandler:(void (^)(NSError * _Nonnull error)) errorHandler;
 
 @end
 

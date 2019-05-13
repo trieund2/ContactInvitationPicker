@@ -11,7 +11,7 @@
 @implementation ZAContactScaner
 
 + (void)requestAccessContactWithCompletionHandler:(void (^)(BOOL))completionHandler
-                                 errorHandler:(void (^)(NSError * _Nonnull))errorHandler {
+                                     errorHandler:(void (^)(NSError * _Nonnull))errorHandler {
     if (@available(iOS 9.0, *)) {
         CNEntityType entityType = CNEntityTypeContacts;
         CNAuthorizationStatus authorizationStatus = [CNContactStore authorizationStatusForEntityType:entityType];
@@ -49,8 +49,9 @@
     }
 }
 
-+ (void)getAllContactsWithCompletionHandler:(void (^)(NSArray<ZAContact *> * _Nonnull))completionHandler
-                               errorHandler:(void (^)(NSError * _Nonnull))errorHandler {
++ (void)getAllContactsWithSortType:(ZAContactSortType)sortType
+                 CompletionHandler:(void (^)(NSArray<ZAContact *> * _Nonnull))completionHandler
+                      errorHandler:(void (^)(NSError * _Nonnull))errorHandler {
     if (@available(iOS 9.0,*)) {
         NSError *contactError;
         CNContactStore *contactStore = [CNContactStore new];
@@ -60,7 +61,17 @@
                                  CNContactMiddleNameKey,
                                  CNContactImageDataKey];
         CNContactFetchRequest *request = [[CNContactFetchRequest alloc]initWithKeysToFetch:keysToFetch];
-        request.sortOrder = CNContactSortOrderFamilyName;
+        switch (sortType) {
+            case ZAContactSortTypeNone:
+                request.sortOrder = CNContactSortOrderNone;
+                break;
+            case ZAContactSortTypeGivenName:
+                request.sortOrder = CNContactSortOrderGivenName;
+                break;
+            case ZAContactSortTypeFamilyName:
+                request.sortOrder = CNContactSortOrderFamilyName;
+                break;
+        };
         
         NSMutableArray<ZAContact *> *zaContacts = [NSMutableArray new];
         
@@ -69,28 +80,50 @@
          error:&contactError
          usingBlock:^(CNContact * __nonnull contact, BOOL * __nonnull stop) {
              ZAContact *zaContact = [ZAContact objectFromContact:contact];
-             if (zaContact != NULL) {
+             if (zaContact) {
                  [zaContacts addObject:zaContact];
              }
          }];
-        if (contactError != NULL) {
+        if (contactError) {
             errorHandler(contactError);
         } else {
             completionHandler(zaContacts);
         }
     } else {
         CFErrorRef error = NULL;
-        ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, &error);
-        NSArray *allContacts = (__bridge NSArray *)(ABAddressBookCopyArrayOfAllGroups(addressBookRef));
-        NSMutableArray<ZAContact*> *zaContacts = [NSMutableArray new];
+        ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
+        ABRecordRef source = ABAddressBookCopyDefaultSource(addressBook);
+        NSArray *allContacts;
+        switch (sortType) {
+            case ZAContactSortTypeNone:
+                allContacts = (__bridge NSArray *)(ABAddressBookCopyArrayOfAllPeople(addressBook));
+                break;
+            case ZAContactSortTypeGivenName:
+                allContacts = (__bridge NSArray *)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(addressBook,
+                                                                                                            source,
+                                                                                                            kABPersonSortByFirstName);
+                break;
+            case ZAContactSortTypeFamilyName:
+                allContacts = (__bridge NSArray *)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(addressBook,
+                                                                                                            source,
+                                                                                                            kABPersonSortByFirstName);
+                break;
+        };
         
-        for (NSUInteger i = 0; i < [allContacts count]; i++) {
-            ABRecordRef recordRef = (__bridge ABRecordRef)([allContacts objectAtIndex:i]);
-            ZAContact *contact = [ZAContact objectFromABRecordRef:recordRef];
-            [zaContacts addObject:contact];
+        if (error) {
+            NSMutableArray<ZAContact*> *zaContacts = [NSMutableArray new];
+            
+            for (NSUInteger i = 0; i < [allContacts count]; i++) {
+                ABRecordRef recordRef = (__bridge ABRecordRef)([allContacts objectAtIndex:i]);
+                ZAContact *contact = [ZAContact objectFromABRecordRef:recordRef];
+                [zaContacts addObject:contact];
+            }
+            completionHandler(zaContacts);
+        } else {
+            errorHandler((__bridge NSError * _Nonnull)(error));
         }
-        CFRelease(addressBookRef);
-        completionHandler(zaContacts);
+        
+        CFRelease(addressBook);
     }
 }
 

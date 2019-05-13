@@ -39,10 +39,20 @@
 - (id)initFromABRecordRef:(ABRecordRef)recordRef {
     if (self = [super init]) {
         _phoneNumbers = [NSMutableArray new];
-        // map phone numbers
+        ABMultiValueRef phonesRef = ABRecordCopyValue(recordRef, kABPersonPhoneProperty);
+        if (phonesRef) {
+            for(int i = 0; i < ABMultiValueGetCount(phonesRef); i++){
+                NSString *phoneNumber = (__bridge NSString *)ABMultiValueCopyValueAtIndex(phonesRef, i);
+                if (phoneNumber) {
+                    [self.phoneNumbers addObject:phoneNumber];
+                }
+            }
+            CFRelease(phonesRef);
+        }
         if (self.phoneNumbers.count == 0) {
             return NULL;
         }
+        
         _givenName = (__bridge NSString * _Nonnull)(ABRecordCopyValue(recordRef, kABPersonFirstNameProperty));
         _familyName = (__bridge NSString * _Nonnull)(ABRecordCopyValue(recordRef, kABPersonLastNameProperty));
         _middleName = (__bridge NSString * _Nonnull)(ABRecordCopyValue(recordRef, kABPersonMiddleNameProperty));
