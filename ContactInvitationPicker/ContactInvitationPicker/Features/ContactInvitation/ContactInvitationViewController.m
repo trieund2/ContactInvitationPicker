@@ -7,7 +7,7 @@
 //
 
 #import "ContactInvitationViewController.h"
-#import "ContactScan.h"
+#import "ZAContactScaner.h"
 #import "NimbusModels.h"
 #import "NIContactCellObject.h"
 #import "NICollectionViewModel.h"
@@ -174,18 +174,18 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
 
 - (void)getAllContacts {
     __weak ContactInvitationViewController *weakSelf = self;
-    [ContactScan scanContact:^(NSArray * _Nonnull contacts) {
-        self->listContactCellObject = contacts;
-        self->contactTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:self->listContactCellObject
-                                                                              delegate:(id)[NICellFactory class]];
-        self.contactTableView.dataSource = self->contactTableViewModel;
-        [self->contactTableViewModel setSectionIndexType:NITableViewModelSectionIndexDynamic
-                                       showsSearch:YES
-                                      showsSummary:YES];
-        [weakSelf.contactTableView reloadData];;
-    } notGranted:^{
-        NSLog(@"Not grant access contact");
-    }];
+//    [ZAContactScaner scanContact:^(NSArray * _Nonnull contacts) {
+//        self->listContactCellObject = contacts;
+//        self->contactTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:self->listContactCellObject
+//                                                                              delegate:(id)[NICellFactory class]];
+//        self.contactTableView.dataSource = self->contactTableViewModel;
+//        [self->contactTableViewModel setSectionIndexType:NITableViewModelSectionIndexDynamic
+//                                       showsSearch:YES
+//                                      showsSummary:YES];
+//        [weakSelf.contactTableView reloadData];;
+//    } notGranted:^{
+//        NSLog(@"Not grant access contact");
+//    }];
 }
 
 - (void)performAnimateSelectedContactCollectionView {
