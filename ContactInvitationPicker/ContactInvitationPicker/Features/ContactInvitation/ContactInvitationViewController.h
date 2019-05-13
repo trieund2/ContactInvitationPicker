@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "ContactInviNavigationTitleView.h"
+#import "ZAContactBusiness.h"
 
 extern NSUInteger const kMAX_CONTACT_SELECT;
 
 @interface ContactInvitationViewController : UIViewController <UITableViewDelegate, UICollectionViewDelegate, UISearchBarDelegate, MFMessageComposeViewControllerDelegate>
 
+@property (nonatomic, readonly) ZAContactBusiness *zaContactBusiness;
 @property (nonatomic, readonly) ContactInviNavigationTitleView *contactInvitationNavigationTitleView;
 @property (nonatomic, readonly) UICollectionView *selectContactCollectionView;
 @property (nonatomic, readonly) UISearchBar *searchBar;

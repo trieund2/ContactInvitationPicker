@@ -7,18 +7,22 @@
 //
 
 #import "NICellFactory.h"
-#import "ContactObjectProtocol.h"
+#import "ZAContactBusinessModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NIContactCellObject : NICellObject <ContactObjectProtocol>
+@interface NIContactCellObject : NICellObject
 
 @property (nonatomic, copy) NSString *fullNameIgnoreUnicode;
 @property (nonatomic, copy) NSString *fullName;
 @property (nonatomic, copy) NSString *shortName;
 @property (nonatomic, copy) NSString *phoneNumber;
 @property (nonatomic) UIColor *shortNameBackgroundColor;
+@property (nonatomic) NSData *imageData;
 @property (nonatomic) BOOL isSelected;
+
+- (id)initFromContact:(ZAContactBusinessModel *)contact;
++ (id)objectFromContact:(ZAContactBusinessModel *)contact;
 
 @end
 

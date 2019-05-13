@@ -13,47 +13,28 @@
 
 @implementation NIContactCellObject
 
-- (id)initFromContact:(CNContact *)contact {
+- (id)initFromContact:(ZAContactBusinessModel *)contact {
     if (self = [super initWithCellClass:[NIContactTableViewCell class]]) {
-        NSString *phoneNumber = [[contact.phoneNumbers.firstObject valueForKey:@"value"] valueForKey:@"digits"];
-        if (phoneNumber != nil && [phoneNumber length] != 0) {
-            self.phoneNumber = phoneNumber;
-            self.fullName = [CNContactFormatter stringFromContact:contact style:(CNContactFormatterStyleFullName)];
-            self.fullNameIgnoreUnicode = [NSString stringIgnoreUnicodeFromString:self.fullName];
-            
-            NSMutableArray *words = [NSMutableArray new];
-            [self.fullNameIgnoreUnicode enumerateSubstringsInRange:NSMakeRange(0, [self.fullNameIgnoreUnicode length])
-                                           options:NSStringEnumerationByWords
-                                        usingBlock:^(NSString *substring, NSRange subrange, NSRange enclosingRange, BOOL *stop) {
-                                            [words addObject:substring];
-                                        }];
-            
-            if (words.count > 1) {
-                NSString *first = [[[words firstObject] substringToIndex:1] uppercaseString];
-                NSString *last = [[[words lastObject] substringToIndex:1] uppercaseString];
-                self.shortName = [NSString stringWithFormat:@"%@%@", first, last];
-            } else {
-                self.shortName = [[[words firstObject] substringToIndex:1] uppercaseString];
-            }
-            
-            NSArray *colors = [NSArray arrayWithObjects:
-                               UIColorFromRGB(0xB6B8EA),
-                               UIColorFromRGB(0x97D3C4),
-                               UIColorFromRGB(0xCBAEA0),
-                               UIColorFromRGB(0xB4B9C8),
-                               UIColorFromRGB(0xF1A5A5),
-                               UIColorFromRGB(0xA2C8DA),
-                               UIColorFromRGB(0x85CBDD), nil];
-            int index = (int)([self.fullNameIgnoreUnicode length] % colors.count);
-            self.shortNameBackgroundColor = [colors objectAtIndex:index];
-        } else {
-            return nil;
-        }
+        self.fullName = contact.fullName;
+        self.fullNameIgnoreUnicode = contact.fullNameIgnoreUnicode;
+        self.shortName = contact.shortName;
+        self.phoneNumber = contact.phoneNumbers.firstObject;
+        
+        NSArray *colors = [NSArray arrayWithObjects:
+                           UIColorFromRGB(0xB6B8EA),
+                           UIColorFromRGB(0x97D3C4),
+                           UIColorFromRGB(0xCBAEA0),
+                           UIColorFromRGB(0xB4B9C8),
+                           UIColorFromRGB(0xF1A5A5),
+                           UIColorFromRGB(0xA2C8DA),
+                           UIColorFromRGB(0x85CBDD), nil];
+        int index = (int)([self.fullNameIgnoreUnicode length] % colors.count);
+        self.shortNameBackgroundColor = [colors objectAtIndex:index];
     }
     return self;
 }
 
-+ (id)objectFromContact:(CNContact *)contact {
++ (id)objectFromContact:(ZAContactBusinessModel *)contact {
     return [[self alloc] initFromContact:contact];
 }
 

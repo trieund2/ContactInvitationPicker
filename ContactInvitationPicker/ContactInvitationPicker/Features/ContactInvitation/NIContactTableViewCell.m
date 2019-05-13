@@ -24,12 +24,14 @@
         _checkBoxImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"UnCheck"]];
         _fullNameLabel = [UILabel new];
         _separatorLine = [UIView new];
+        _avatar = [UIImageView new];
         self.separatorLine.backgroundColor = UIColorFromRGB(0xF4F5F5);
         [self initShortNameLabel];
         [self layoutCheckBoxImageView];
         [self layoutShortNameLabel];
         [self layoutFullNameLabel];
         [self layoutSeparatorLine];
+        [self layoutAvatar];
     }
     return self;
 }
@@ -107,6 +109,15 @@
     [self.separatorLine.rightAnchor constraintEqualToAnchor:self.rightAnchor].active = YES;
     [self.separatorLine.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
     [self.separatorLine.heightAnchor constraintEqualToConstant:1].active = YES;
+}
+
+- (void)layoutAvatar {
+    [self.contentView addSubview:self.avatar];
+    self.avatar.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.avatar.leftAnchor constraintEqualToAnchor:self.shortNameLabel.leftAnchor].active = YES;
+    [self.avatar.rightAnchor constraintEqualToAnchor:self.shortNameLabel.rightAnchor].active = YES;
+    [self.avatar.topAnchor constraintEqualToAnchor:self.shortNameLabel.topAnchor].active = YES;
+    [self.avatar.bottomAnchor constraintEqualToAnchor:self.shortNameLabel.bottomAnchor].active = YES;
 }
 
 @end

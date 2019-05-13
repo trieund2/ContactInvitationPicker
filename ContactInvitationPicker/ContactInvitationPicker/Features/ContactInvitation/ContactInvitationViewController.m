@@ -24,7 +24,7 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
 @end
 
 @implementation ContactInvitationViewController {
-    NSArray<NIContactCellObject *> *listContactCellObject;
+    NSMutableArray<NIContactCellObject *> *listContactCellObject;
     NSMutableArray<NISelectedContactCellObject *> *selectedContactCellObjects;
     NITableViewModel *contactTableViewModel;
     NITableViewModel *searchResultTableViewModel;
@@ -40,7 +40,8 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
     [super viewDidLoad];
     self.view.backgroundColor = UIColorFromRGB(0xE9E9E9);
     selectedContactCellObjects = [NSMutableArray new];
-    listContactCellObject = [NSArray new];
+    listContactCellObject = [NSMutableArray new];
+    _zaContactBusiness = [ZAContactBusiness new];
     [self addNavigationBarItems];
     [self initSelectContactCollectionView];
     [self initSearchBar];
@@ -59,7 +60,9 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
 - (void)touchInSendButton {
     NSMutableArray *recipients = [NSMutableArray new];
     for (NISelectedContactCellObject *object in selectedContactCellObjects) {
-        [recipients addObject:object.phoneNumber];
+        if (object.phoneNumber != NULL) {
+            [recipients addObject:object.phoneNumber];
+        }
     }
     MFMessageComposeViewController *messageComposeViewController = [MFMessageComposeViewController new];
     messageComposeViewController.messageComposeDelegate = self;
@@ -174,18 +177,30 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
 
 - (void)getAllContacts {
     __weak ContactInvitationViewController *weakSelf = self;
-//    [ZAContactScaner scanContact:^(NSArray * _Nonnull contacts) {
-//        self->listContactCellObject = contacts;
-//        self->contactTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:self->listContactCellObject
-//                                                                              delegate:(id)[NICellFactory class]];
-//        self.contactTableView.dataSource = self->contactTableViewModel;
-//        [self->contactTableViewModel setSectionIndexType:NITableViewModelSectionIndexDynamic
-//                                       showsSearch:YES
-//                                      showsSummary:YES];
-//        [weakSelf.contactTableView reloadData];;
-//    } notGranted:^{
-//        NSLog(@"Not grant access contact");
-//    }];
+    [self.zaContactBusiness requestAccessContactWithCompletionHandler:^(BOOL granted) {
+        [self.zaContactBusiness getAllContactsFromLocalWithCompletionHalder:^() {
+            NSArray *results = [self.zaContactBusiness mapContactAndTitles];
+            for (id object in results) {
+                if ([object isKindOfClass:NSString.class]) {
+                    [self->listContactCellObject addObject:object];
+                } else if ([object isKindOfClass:ZAContactBusinessModel.class]) {
+                    [self->listContactCellObject addObject:[NIContactCellObject objectFromContact:(ZAContactBusinessModel *)object]];
+                }
+            }
+            
+            self->contactTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:self->listContactCellObject
+                                                                                  delegate:(id)[NICellFactory class]];
+            weakSelf.contactTableView.dataSource = self->contactTableViewModel;
+            [self->contactTableViewModel setSectionIndexType:(NITableViewModelSectionIndexDynamic)
+                                                 showsSearch:YES
+                                                showsSummary:YES];
+            [weakSelf.contactTableView reloadData];
+        } errorHandler:^(NSError * _Nonnull error) {
+            
+        }];
+    } errorHandler:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 - (void)performAnimateSelectedContactCollectionView {
@@ -312,7 +327,21 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     [self.searchResultTableView setHidden:([searchText isEqualToString:@""])];
-    [self performSearchWithSearchText:searchText];
+    if ([searchText isEqualToString:@""]) { return; }
+    NSArray *searchResultArray = [self.zaContactBusiness searchContactWithSearchText:searchText];
+    NSMutableArray *searchResultContactCellObjectArray = [NSMutableArray new];
+    
+    for (id object in searchResultArray) {
+        if ([object isKindOfClass:ZAContactBusinessModel.class]) {
+            [searchResultContactCellObjectArray addObject:[NIContactCellObject objectFromContact:(ZAContactBusinessModel *)object]];
+        }
+    }
+    
+    searchResultTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:searchResultContactCellObjectArray
+                                                                         delegate:(id)[NICellFactory class]];
+    self.searchResultTableView.dataSource = searchResultTableViewModel;
+    [self.searchResultTableView reloadData];
+    [self.emptySearchResultLabel setHidden:(searchResultArray.count != 0)];
 }
 
 #pragma mark - MFMessageComposeViewControllerDelegate

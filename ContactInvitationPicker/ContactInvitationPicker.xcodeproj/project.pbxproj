@@ -106,7 +106,7 @@
 		A1FAF67A2281452A006E024B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF6792281452A006E024B /* main.m */; };
 		A1FAF69222816304006E024B /* ZAContactScaner.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF69122816304006E024B /* ZAContactScaner.m */; };
 		C51D5A0222847A3700C09868 /* CNMutableContact+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = C51D5A0122847A3700C09868 /* CNMutableContact+Init.m */; };
-		C53AA8132287C56700A1AA22 /* ZAContactBussiness.m in Sources */ = {isa = PBXBuildFile; fileRef = C53AA8122287C56700A1AA22 /* ZAContactBussiness.m */; };
+		C53AA8132287C56700A1AA22 /* ZAContactBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = C53AA8122287C56700A1AA22 /* ZAContactBusiness.m */; };
 		C53AA8162287D54D00A1AA22 /* ZAContactBusinessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C53AA8152287D54D00A1AA22 /* ZAContactBusinessModel.m */; };
 		C55A3E502284729200E8CC55 /* NIContactCellTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */; };
 		C55A3E522284782F00E8CC55 /* NIContactCellObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A3E512284782F00E8CC55 /* NIContactCellObjectTest.m */; };
@@ -320,7 +320,6 @@
 		A160AC15228193140024BB49 /* UIResponder+NimbusCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+NimbusCore.h"; sourceTree = "<group>"; };
 		A160AC16228193140024BB49 /* NIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIError.h; sourceTree = "<group>"; };
 		A160AC17228193140024BB49 /* NIActions+Subclassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NIActions+Subclassing.h"; sourceTree = "<group>"; };
-		A1A837BA2283D56C00C353C9 /* ContactObjectProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactObjectProtocol.h; sourceTree = "<group>"; };
 		A1A837C122840A3A00C353C9 /* UIColorFromRGB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIColorFromRGB.h; sourceTree = "<group>"; };
 		A1A837C7228418F900C353C9 /* ContactInviNavigationTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactInviNavigationTitleView.h; sourceTree = "<group>"; };
 		A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactInviNavigationTitleView.m; sourceTree = "<group>"; };
@@ -368,8 +367,8 @@
 		BF6427FB7F1EADD16AD32BFD /* Pods-ContactInvitationPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPicker.debug.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker.debug.xcconfig"; sourceTree = "<group>"; };
 		C51D5A0022847A3700C09868 /* CNMutableContact+Init.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CNMutableContact+Init.h"; sourceTree = "<group>"; };
 		C51D5A0122847A3700C09868 /* CNMutableContact+Init.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNMutableContact+Init.m"; sourceTree = "<group>"; };
-		C53AA8112287C56700A1AA22 /* ZAContactBussiness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAContactBussiness.h; sourceTree = "<group>"; };
-		C53AA8122287C56700A1AA22 /* ZAContactBussiness.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAContactBussiness.m; sourceTree = "<group>"; };
+		C53AA8112287C56700A1AA22 /* ZAContactBusiness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAContactBusiness.h; sourceTree = "<group>"; };
+		C53AA8122287C56700A1AA22 /* ZAContactBusiness.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAContactBusiness.m; sourceTree = "<group>"; };
 		C53AA8142287D54D00A1AA22 /* ZAContactBusinessModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAContactBusinessModel.h; sourceTree = "<group>"; };
 		C53AA8152287D54D00A1AA22 /* ZAContactBusinessModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAContactBusinessModel.m; sourceTree = "<group>"; };
 		C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCellTest.m; sourceTree = "<group>"; };
@@ -836,7 +835,6 @@
 			children = (
 				A1FAF66D22814529006E024B /* ContactInvitationViewController.h */,
 				A1FAF66E22814529006E024B /* ContactInvitationViewController.m */,
-				A1A837BA2283D56C00C353C9 /* ContactObjectProtocol.h */,
 				A1DBA1BC228294960036FD95 /* NIContactCellObject.h */,
 				A1DBA1BD228294960036FD95 /* NIContactCellObject.m */,
 				A1DBA1BF228297230036FD95 /* NIContactTableViewCell.h */,
@@ -854,10 +852,10 @@
 		C53AA8102287C51B00A1AA22 /* ZAContactBusiness */ = {
 			isa = PBXGroup;
 			children = (
-				C53AA8112287C56700A1AA22 /* ZAContactBussiness.h */,
-				C53AA8122287C56700A1AA22 /* ZAContactBussiness.m */,
 				C53AA8142287D54D00A1AA22 /* ZAContactBusinessModel.h */,
 				C53AA8152287D54D00A1AA22 /* ZAContactBusinessModel.m */,
+				C53AA8112287C56700A1AA22 /* ZAContactBusiness.h */,
+				C53AA8122287C56700A1AA22 /* ZAContactBusiness.m */,
 			);
 			path = ZAContactBusiness;
 			sourceTree = "<group>";
@@ -1182,7 +1180,7 @@
 				A160AC1E228193150024BB49 /* NICollectionViewCellFactory.m in Sources */,
 				A160AC9C228193150024BB49 /* NICSSRuleset.m in Sources */,
 				A1DBA1B3228294330036FD95 /* AFURLResponseSerialization.m in Sources */,
-				C53AA8132287C56700A1AA22 /* ZAContactBussiness.m in Sources */,
+				C53AA8132287C56700A1AA22 /* ZAContactBusiness.m in Sources */,
 				A160ACB9228193150024BB49 /* NINetworkActivity.m in Sources */,
 				A1DBA1B9228294330036FD95 /* AFURLSessionManager.m in Sources */,
 				C53AA8162287D54D00A1AA22 /* ZAContactBusinessModel.m in Sources */,

@@ -37,7 +37,7 @@
             ABAddressBookRequestAccessWithCompletion(ABAddressBookCreate(), ^(bool granted, CFErrorRef error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (error != NULL) {
-                        errorHandler(CFBridgingRelease(error));
+                        errorHandler((__bridge NSError * _Nonnull)(error));
                     } else {
                         completionHandler(granted);
                     }
@@ -55,9 +55,12 @@
         NSError *contactError;
         CNContactStore *contactStore = [CNContactStore new];
         NSArray * keysToFetch =@[CNContactPhoneNumbersKey,
-                                 [CNContactFormatter descriptorForRequiredKeysForStyle:(CNContactFormatterStyleFullName)]];
+                                 CNContactGivenNameKey,
+                                 CNContactFamilyNameKey,
+                                 CNContactMiddleNameKey,
+                                 CNContactImageDataKey];
         CNContactFetchRequest *request = [[CNContactFetchRequest alloc]initWithKeysToFetch:keysToFetch];
-        request.sortOrder = CNContactSortOrderUserDefault;
+        request.sortOrder = CNContactSortOrderFamilyName;
         
         NSMutableArray<ZAContact *> *zaContacts = [NSMutableArray new];
         
