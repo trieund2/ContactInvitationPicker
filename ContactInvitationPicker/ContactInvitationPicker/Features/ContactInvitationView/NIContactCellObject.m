@@ -17,7 +17,6 @@
     if (self = [super initWithCellClass:[NIContactTableViewCell class]]) {
         self.fullName = contact.fullName;
         self.fullNameIgnoreUnicode = contact.fullNameIgnoreUnicode;
-        self.shortName = contact.shortName;
         self.phoneNumber = contact.phoneNumbers.firstObject;
         
         NSArray *colors = [NSArray arrayWithObjects:
@@ -40,6 +39,19 @@
 
 - (Class)cellClass {
     return [NIContactTableViewCell class];
+}
+
+- (BOOL)isEqual:(NIContactCellObject *)contactCellObject
+{
+    if ([self.fullName isEqual:contactCellObject.fullName]
+        && [self.fullNameIgnoreUnicode isEqual:contactCellObject.fullNameIgnoreUnicode]
+        && [self.shortNameBackgroundColor isEqual:contactCellObject.shortNameBackgroundColor]
+        && [self.phoneNumber isEqual:contactCellObject.phoneNumber]
+        && self.isSelected == contactCellObject.isSelected) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 @end

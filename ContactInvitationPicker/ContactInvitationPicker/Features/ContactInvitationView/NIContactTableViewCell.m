@@ -11,7 +11,7 @@
 #import "UIColorFromRGB.h"
 
 @implementation NIContactTableViewCell {
-    UIColor *shortNamebackgroundColor;
+    NIContactCellObject *contactCellObject;
 }
 
 #pragma mark Init
@@ -24,55 +24,41 @@
         _checkBoxImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"UnCheck"]];
         _fullNameLabel = [UILabel new];
         _separatorLine = [UIView new];
-        _avatar = [UIImageView new];
+        _avatarImageView = [UIImageView new];
         self.separatorLine.backgroundColor = UIColorFromRGB(0xF4F5F5);
-        [self initShortNameLabel];
         [self layoutCheckBoxImageView];
-        [self layoutShortNameLabel];
+        [self layoutAvatarImageView];
         [self layoutFullNameLabel];
         [self layoutSeparatorLine];
-        [self layoutAvatar];
     }
     return self;
 }
 
-- (void)initShortNameLabel {
-    _shortNameLabel = [UILabel new];
-    self.shortNameLabel.textColor = UIColor.whiteColor;
-    self.shortNameLabel.layer.cornerRadius = 23;
-    self.shortNameLabel.layer.masksToBounds = true;
-    self.shortNameLabel.textAlignment = NSTextAlignmentCenter;
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    if (!contactCellObject) { return; }
+    NSDictionary *textAttributes = @{NSForegroundColorAttributeName: UIColor.whiteColor,
+                                     NSFontAttributeName: [UIFont systemFontOfSize:20]
+                                     };
+    [self.avatarImageView setImageWithString:contactCellObject.fullNameIgnoreUnicode
+                                       color:contactCellObject.shortNameBackgroundColor
+                                    circular:YES
+                              textAttributes:textAttributes
+                                        size:CGSizeMake(46, 46)];
 }
 
 #pragma mark Instance methods
 
 - (BOOL)shouldUpdateCellWithObject:(NIContactCellObject *)object {
-    shortNamebackgroundColor = object.shortNameBackgroundColor;
-    self.shortNameLabel.text = object.shortName;
+    contactCellObject = object;
+    [self setNeedsDisplay];
     self.fullNameLabel.text = object.fullName;
-    self.shortNameLabel.backgroundColor = object.shortNameBackgroundColor;
     if (object.isSelected) {
         self.checkBoxImageView.image = [UIImage imageNamed:@"Checked"];
     } else {
         self.checkBoxImageView.image = [UIImage imageNamed:@"UnCheck"];
     }
     return YES;
-}
-
-#pragma mark Override methods
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    if (selected) {
-        self.shortNameLabel.backgroundColor = shortNamebackgroundColor;
-    }
-}
-
-- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-    [super setHighlighted:highlighted animated:animated];
-    if (highlighted) {
-        self.shortNameLabel.backgroundColor = shortNamebackgroundColor;
-    }
 }
 
 #pragma mark Setup layouts
@@ -86,20 +72,20 @@
     [self.checkBoxImageView.heightAnchor constraintEqualToConstant:20].active = YES;
 }
 
-- (void)layoutShortNameLabel {
-    [self.contentView addSubview:self.shortNameLabel];
-    self.shortNameLabel.translatesAutoresizingMaskIntoConstraints = NO;;
-    [self.shortNameLabel.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
-    [self.shortNameLabel.leftAnchor constraintEqualToAnchor:self.checkBoxImageView.rightAnchor constant:14].active = YES;
-    [self.shortNameLabel.heightAnchor constraintEqualToConstant:46].active = YES;
-    [self.shortNameLabel.widthAnchor constraintEqualToConstant:46].active = YES;
+- (void)layoutAvatarImageView {
+    [self.contentView addSubview:self.avatarImageView];
+    self.avatarImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.avatarImageView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
+    [self.avatarImageView.leftAnchor constraintEqualToAnchor:self.checkBoxImageView.rightAnchor constant:14].active = YES;
+    [self.avatarImageView.heightAnchor constraintEqualToConstant:46].active = YES;
+    [self.avatarImageView.widthAnchor constraintEqualToConstant:46].active = YES;
 }
 
 - (void)layoutFullNameLabel {
     [self.contentView addSubview:self.fullNameLabel];
     self.fullNameLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.fullNameLabel.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
-    [self.fullNameLabel.leftAnchor constraintEqualToAnchor:self.shortNameLabel.rightAnchor constant:14].active = YES;
+    [self.fullNameLabel.leftAnchor constraintEqualToAnchor:self.avatarImageView.rightAnchor constant:14].active = YES;
 }
 
 - (void)layoutSeparatorLine {
@@ -108,16 +94,7 @@
     [self.separatorLine.leftAnchor constraintEqualToAnchor:self.fullNameLabel.leftAnchor].active = YES;
     [self.separatorLine.rightAnchor constraintEqualToAnchor:self.rightAnchor].active = YES;
     [self.separatorLine.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
-    [self.separatorLine.heightAnchor constraintEqualToConstant:1].active = YES;
-}
-
-- (void)layoutAvatar {
-    [self.contentView addSubview:self.avatar];
-    self.avatar.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.avatar.leftAnchor constraintEqualToAnchor:self.shortNameLabel.leftAnchor].active = YES;
-    [self.avatar.rightAnchor constraintEqualToAnchor:self.shortNameLabel.rightAnchor].active = YES;
-    [self.avatar.topAnchor constraintEqualToAnchor:self.shortNameLabel.topAnchor].active = YES;
-    [self.avatar.bottomAnchor constraintEqualToAnchor:self.shortNameLabel.bottomAnchor].active = YES;
+    [self.separatorLine.heightAnchor constraintEqualToConstant:0.5].active = YES;
 }
 
 @end

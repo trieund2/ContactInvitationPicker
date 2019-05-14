@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "NICellFactory.h"
+#import "UIImageView+Letters.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NISelectedContactCollectionViewCell : UICollectionViewCell <NICell>
 
-@property (readonly, nonatomic) UILabel *shortNameLabel;
+@property (readonly, nonatomic) UIImageView *avatarImageView;
 
 @end
 

@@ -11,9 +11,12 @@
 
 @implementation NISelectedContactCellObject
 
-- (id)initWithPhoneNumber:(NSString *)phoneNumber shortName:(NSString *)shortName indexPath:(NSIndexPath *)indexPath color:(UIColor *)color {
+- (id)initWithPhoneNumber:(NSString *)phoneNumber
+                fullName:(NSString *)fullName
+                indexPath:(NSIndexPath *)indexPath
+                    color:(UIColor *)color {
     if (self = [super initWithCellClass:[NISelectedContactCollectionViewCell class]]) {
-        self.shortName = [shortName copy];
+        self.fullName = [fullName copy];
         self.phoneNumber = [phoneNumber copy];
         self.indexPath = indexPath;
         self.color = color;
@@ -21,8 +24,11 @@
     return self;
 }
 
-+ (id)objectWithPhoneNumber:(NSString *)phoneNumber shortName:(NSString *)shortName indexPath:(NSIndexPath *)indexPath color:(UIColor *)color {
-    return [[self alloc] initWithPhoneNumber:phoneNumber shortName:shortName indexPath:indexPath color:color];
++ (id)objectWithPhoneNumber:(NSString *)phoneNumber
+                  fullName:(NSString *)fullName
+                  indexPath:(NSIndexPath *)indexPath
+                      color:(UIColor *)color {
+    return [[self alloc] initWithPhoneNumber:phoneNumber fullName:fullName indexPath:indexPath color:color];
 }
 
 - (Class)cellClass {
@@ -30,7 +36,7 @@
 }
 
 - (BOOL)isEqual:(NISelectedContactCellObject *)object {
-    if ([self.shortName isEqual:object.shortName]
+    if ([self.fullName isEqual:object.fullName]
         && [self.phoneNumber isEqual:object.phoneNumber]
         && [self.indexPath isEqual:object.indexPath]) {
         return YES;

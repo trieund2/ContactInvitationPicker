@@ -15,10 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *fullNameIgnoreUnicode;
 @property (nonatomic, copy) NSString *fullName;
-@property (nonatomic, copy) NSString *shortName;
 @property (nonatomic, copy) NSString *phoneNumber;
 @property (nonatomic) UIColor *shortNameBackgroundColor;
-@property (nonatomic) NSData *imageData;
 @property (nonatomic) BOOL isSelected;
 
 - (id)initFromContact:(ZAContactBusinessModel *)contact;

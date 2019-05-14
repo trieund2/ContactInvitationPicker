@@ -220,26 +220,6 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
     } completion:^(BOOL finished) {}];
 }
 
-- (void)performSearchWithSearchText:(NSString *)searchText {
-    if ([searchText isEqualToString:@""]) { return; }
-    
-    NSArray *filteredArray = [listContactCellObject filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id object, NSDictionary *bindings) {
-        if ([object isKindOfClass:[NSString class]]) {
-            return NO;
-        } else if ([object isKindOfClass:[NIContactCellObject class]]) {
-            NIContactCellObject *contactCellObject = (NIContactCellObject *)object;
-            return [contactCellObject.fullNameIgnoreUnicode.lowercaseString containsString:[NSString stringIgnoreUnicodeFromString:searchText].lowercaseString];
-        } else {
-            return NO;
-        }
-    }]];
-    
-    searchResultTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:filteredArray delegate:(id)[NICellFactory class]];
-    self.searchResultTableView.dataSource = searchResultTableViewModel;
-    [self.searchResultTableView reloadData];
-    [self.emptySearchResultLabel setHidden:(filteredArray.count != 0)];
-}
-
 - (void)updateSendButtonState {
     if (selectedContactCellObjects.count == 0) {
         [sendButton setImage:[UIImage imageNamed:@"SendDisable"] forState:(UIControlStateNormal)];
@@ -275,14 +255,14 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NIContactCellObject *contactObject;
+    NIContactCellObject *contactCellObject;
     NSIndexPath *selectedIndexPath = indexPath;
     
     if (tableView == self.contactTableView) {
-        contactObject = [contactTableViewModel objectAtIndexPath:indexPath];
+        contactCellObject = [contactTableViewModel objectAtIndexPath:indexPath];
     } else if (tableView == self.searchResultTableView) {
-        contactObject = [searchResultTableViewModel objectAtIndexPath:indexPath];
-        selectedIndexPath = [contactTableViewModel indexPathForObject:contactObject];
+        contactCellObject = [searchResultTableViewModel objectAtIndexPath:indexPath];
+        selectedIndexPath = [contactTableViewModel indexPathForObject:contactCellObject];
         self.searchBar.text = @"";
         [self.searchResultTableView setHidden:YES];
     } else {
@@ -290,16 +270,16 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
     }
     
     NISelectedContactCellObject *selectContactObject = [NISelectedContactCellObject
-                                                        objectWithPhoneNumber:contactObject.phoneNumber
-                                                        shortName:contactObject.shortName
+                                                        objectWithPhoneNumber:contactCellObject.phoneNumber
+                                                        fullName:contactCellObject.fullNameIgnoreUnicode
                                                         indexPath:selectedIndexPath
-                                                        color:contactObject.shortNameBackgroundColor];
+                                                        color:contactCellObject.shortNameBackgroundColor];
     if ([selectedContactCellObjects containsObject:selectContactObject]) {
         [selectedContactCellObjects removeObject:selectContactObject];
-        contactObject.isSelected = NO;
+        contactCellObject.isSelected = NO;
     } else if (selectedContactCellObjects.count < kMAX_CONTACT_SELECT) {
         [selectedContactCellObjects addObject:selectContactObject];
-        contactObject.isSelected = YES;
+        contactCellObject.isSelected = YES;
     } else {
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
         NSString *message = [NSString stringWithFormat:@"%@ %lu %@", @"Bạn không được chọn quá", (unsigned long)kMAX_CONTACT_SELECT, @"người"];
@@ -307,8 +287,10 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
         return;
     }
     
-    [self.contactTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:selectedIndexPath]
-                                 withRowAnimation:UITableViewRowAnimationNone];
+    if (selectedIndexPath) {
+        [self.contactTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:selectedIndexPath]
+                                     withRowAnimation:UITableViewRowAnimationNone];
+    }
     [self.selectContactCollectionView reloadData];
     [self updateSendButtonState];
     [self performAnimateSelectedContactCollectionView];
@@ -319,8 +301,12 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NISelectedContactCellObject *selectedObject = [collectionViewModel objectAtIndexPath:indexPath];
-    [self.contactTableView selectRowAtIndexPath:selectedObject.indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-    [self.contactTableView scrollToRowAtIndexPath:selectedObject.indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    [self.contactTableView selectRowAtIndexPath:selectedObject.indexPath
+                                       animated:YES
+                                 scrollPosition:UITableViewScrollPositionNone];
+    [self.contactTableView scrollToRowAtIndexPath:selectedObject.indexPath
+                                 atScrollPosition:UITableViewScrollPositionTop
+                                         animated:YES];
 }
 
 #pragma mark - UISearchBarDelegate

@@ -13,16 +13,16 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NISelectedContactCellObject : NICollectionViewCellObject
 
 @property (nonatomic, copy) NSString *phoneNumber;
-@property (nonatomic, copy) NSString *shortName;
+@property (nonatomic, copy) NSString *fullName;
 @property (nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) UIColor *color;
 
 - (id)initWithPhoneNumber:(NSString *)phoneNumber
-                shortName:(NSString *)shortName
+                 fullName:(NSString *)fullName
                 indexPath:(NSIndexPath *)indexPath
                     color:(UIColor *)color;
 + (id)objectWithPhoneNumber:(NSString *)phoneNumber
-                  shortName:(NSString *)shortName
+                   fullName:(NSString *)fullName
                   indexPath:(NSIndexPath *)indexPath
                       color:(UIColor *)color;
 
