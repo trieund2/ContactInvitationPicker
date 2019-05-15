@@ -7,19 +7,19 @@
 //
 
 #import "NICollectionViewCellFactory.h"
-#import "NIContactCellObject.h"
+#import "ContactCellObject.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NISelectedContactCellObject : NICollectionViewCellObject
+@interface SelectedContactCellObject : NICollectionViewCellObject
 
 @property (nonatomic, copy) NSString *phoneNumber;
 @property (nonatomic, copy) NSString *fullNameRemoveDiacritics;
 @property (nonatomic) NSIndexPath *contactIndexPath;
 @property (nonatomic) UIColor *color;
 
-- (id)initWithContactCellObject:(NIContactCellObject*)contactCellObject indexPath:(NSIndexPath*)indexPath;
-+ (id)objectWithContactCellObject:(NIContactCellObject*)contactCellObject indexPath:(NSIndexPath*)indexPath;
+- (id)initWithContactCellObject:(ContactCellObject*)contactCellObject contactIndexPath:(NSIndexPath*)contactIndexPath;
++ (id)objectWithContactCellObject:(ContactCellObject*)contactCellObject contactIndexPath:(NSIndexPath*)contactIndexPath;
 
 @end
 

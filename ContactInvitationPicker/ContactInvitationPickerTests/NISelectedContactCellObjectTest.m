@@ -14,7 +14,7 @@
 @end
 
 @implementation NISelectedContactCellObjectTest {
-    NISelectedContactCellObject *sut;
+    SelectedContactCellObject *sut;
 }
 
 - (void)setUp {
@@ -24,7 +24,7 @@
 }
 
 - (void)testInitWithValidParams {
-    sut = [[NISelectedContactCellObject alloc] initWithPhoneNumber:@"0386616446"
+    sut = [[SelectedContactCellObject alloc] initWithPhoneNumber:@"0386616446"
                                                          shortName:@"NT"
                                                          indexPath:[NSIndexPath indexPathForRow:0 inSection:0]
                                                              color:UIColor.whiteColor];
@@ -35,7 +35,7 @@
 }
 
 - (void)testObjectWithValidParams{
-    sut = [NISelectedContactCellObject objectWithPhoneNumber:@"0386616446"
+    sut = [SelectedContactCellObject objectWithPhoneNumber:@"0386616446"
                                                    shortName:@"NT"
                                                    indexPath:[NSIndexPath indexPathForRow:0 inSection:0]
                                                        color:UIColor.whiteColor];

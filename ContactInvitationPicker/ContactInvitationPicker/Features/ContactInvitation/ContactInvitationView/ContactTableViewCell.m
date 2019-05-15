@@ -1,17 +1,17 @@
 //
-//  NIContactCell.m
+//  ContactTableViewCell.m
 //  ContactInvitationPicker
 //
 //  Created by CPU12202 on 5/8/19.
 //  Copyright © 2019 com.trieund. All rights reserved.
 //
 
-#import "NIContactTableViewCell.h"
-#import "NIContactCellObject.h"
+#import "ContactTableViewCell.h"
+#import "ContactCellObject.h"
 #import "UIColorFromRGB.h"
 
-@implementation NIContactTableViewCell {
-    NIContactCellObject *contactCellObject;
+@implementation ContactTableViewCell {
+    ContactCellObject *contactCellObject;
 }
 
 #pragma mark Init
@@ -21,22 +21,17 @@
         UIView *view = [UIView new];
         view.backgroundColor = UIColorFromRGB(0xE7E9EB);
         self.selectedBackgroundView = view;
-        _checkBoxImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"UnCheck"]];
-        _fullNameLabel = [UILabel new];
-        _separatorLine = [UIView new];
-        _avatarImageView = [UIImageView new];
-        self.separatorLine.backgroundColor = UIColorFromRGB(0xF4F5F5);
-        [self layoutCheckBoxImageView];
-        [self layoutAvatarImageView];
-        [self layoutFullNameLabel];
-        [self layoutSeparatorLine];
+        [self initCheckBoxImageView];
+        [self initAvatarImageView];
+        [self initFullNameLabel];
+        [self initSeparatorView];
     }
     return self;
 }
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    UIImage *avatarImage = [[AvatarCacheManager shared] getImageWithKey:contactCellObject.fullNameRemoveDiacritics];
+    UIImage *avatarImage = [[AvatarCacheManager sharedInstance] getImageWithKey:contactCellObject.fullNameRemoveDiacritics];
     if (avatarImage) {
         [self.avatarImageView setImage:avatarImage];
     } else if (contactCellObject) {
@@ -48,13 +43,13 @@
                                         circular:YES
                                   textAttributes:textAttributes
                                             size:CGSizeMake(46, 46)];
-        [[AvatarCacheManager shared] storeImage:self.avatarImageView.image withKey:contactCellObject.fullNameRemoveDiacritics];
+        [[AvatarCacheManager sharedInstance] storeImage:self.avatarImageView.image withKey:contactCellObject.fullNameRemoveDiacritics];
     }
 }
 
 #pragma mark Instance methods
 
-- (BOOL)shouldUpdateCellWithObject:(NIContactCellObject *)object {
+- (BOOL)shouldUpdateCellWithObject:(ContactCellObject *)object {
     contactCellObject = object;
     [self setNeedsDisplay];
     self.fullNameLabel.text = object.fullName;
@@ -68,7 +63,8 @@
 
 #pragma mark Setup layouts
 
-- (void)layoutCheckBoxImageView {
+- (void)initCheckBoxImageView {
+    _checkBoxImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"UnCheck"]];
     [self.contentView addSubview:self.checkBoxImageView];
     self.checkBoxImageView.translatesAutoresizingMaskIntoConstraints = NO;;
     [self addConstraints:[NSArray arrayWithObjects:
@@ -103,7 +99,9 @@
                           nil]];
 }
 
-- (void)layoutAvatarImageView {
+- (void)initAvatarImageView {
+    _avatarImageView = [UIImageView new];
+    [self.avatarImageView setContentMode:(UIViewContentModeScaleAspectFit)];
     [self.contentView addSubview:self.avatarImageView];
     self.avatarImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addConstraints:[NSArray arrayWithObjects:
@@ -138,7 +136,8 @@
                           nil]];
 }
 
-- (void)layoutFullNameLabel {
+- (void)initFullNameLabel {
+    _fullNameLabel = [UILabel new];
     [self.contentView addSubview:self.fullNameLabel];
     self.fullNameLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self addConstraints:[NSArray arrayWithObjects:
@@ -159,32 +158,34 @@
                           nil]];
 }
 
-- (void)layoutSeparatorLine {
-    [self.contentView addSubview:self.separatorLine];
-    self.separatorLine.translatesAutoresizingMaskIntoConstraints = NO;
+- (void)initSeparatorView {
+    _separatorView = [UIView new];
+    self.separatorView.backgroundColor = UIColorFromRGB(0xF4F5F5);
+    [self.contentView addSubview:self.separatorView];
+    self.separatorView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addConstraints:[NSArray arrayWithObjects:
-                          [NSLayoutConstraint constraintWithItem:self.separatorLine
+                          [NSLayoutConstraint constraintWithItem:self.separatorView
                                                        attribute:(NSLayoutAttributeLeft)
                                                        relatedBy:(NSLayoutRelationEqual)
                                                           toItem:self.fullNameLabel
                                                        attribute:(NSLayoutAttributeLeft)
                                                       multiplier:1
                                                         constant:0],
-                          [NSLayoutConstraint constraintWithItem:self.separatorLine
+                          [NSLayoutConstraint constraintWithItem:self.separatorView
                                                        attribute:(NSLayoutAttributeRight)
                                                        relatedBy:(NSLayoutRelationEqual)
                                                           toItem:self
                                                        attribute:(NSLayoutAttributeRight)
                                                       multiplier:1
                                                         constant:0],
-                          [NSLayoutConstraint constraintWithItem:self.separatorLine
+                          [NSLayoutConstraint constraintWithItem:self.separatorView
                                                        attribute:(NSLayoutAttributeBottom)
                                                        relatedBy:(NSLayoutRelationEqual)
                                                           toItem:self
                                                        attribute:(NSLayoutAttributeBottom)
                                                       multiplier:1
                                                         constant:0],
-                          [NSLayoutConstraint constraintWithItem:self.separatorLine
+                          [NSLayoutConstraint constraintWithItem:self.separatorView
                                                        attribute:(NSLayoutAttributeHeight)
                                                        relatedBy:(NSLayoutRelationEqual)
                                                           toItem:nil

@@ -1,20 +1,20 @@
 //
-//  NIContactCellObject.m
+//  ContactCellObject.m
 //  ContactInvitationPicker
 //
 //  Created by CPU12202 on 5/8/19.
 //  Copyright © 2019 com.trieund. All rights reserved.
 //
 
-#import "NIContactCellObject.h"
-#import "NIContactTableViewCell.h"
+#import "ContactCellObject.h"
+#import "ContactTableViewCell.h"
 #import "UIColorFromRGB.h"
 #import "NSString+Extension.h"
 
-@implementation NIContactCellObject
+@implementation ContactCellObject
 
 - (id)initFromContact:(ZAContactBusinessModel *)contact {
-    if (self = [super initWithCellClass:[NIContactTableViewCell class]]) {
+    if (self = [super initWithCellClass:[ContactTableViewCell class]]) {
         self.fullName = contact.fullName;
         self.fullNameRemoveDiacritics = contact.fullNameRemoveDiacritics;
         self.phoneNumber = contact.phoneNumbers.firstObject;
@@ -38,20 +38,7 @@
 }
 
 - (Class)cellClass {
-    return [NIContactTableViewCell class];
-}
-
-- (BOOL)isEqual:(NIContactCellObject *)contactCellObject
-{
-    if ([self.fullName isEqual:contactCellObject.fullName]
-        && [self.fullNameRemoveDiacritics isEqual:contactCellObject.fullNameRemoveDiacritics]
-        && [self.shortNameBackgroundColor isEqual:contactCellObject.shortNameBackgroundColor]
-        && [self.phoneNumber isEqual:contactCellObject.phoneNumber]
-        && self.isSelected == contactCellObject.isSelected) {
-        return YES;
-    } else {
-        return NO;
-    }
+    return [ContactTableViewCell class];
 }
 
 @end

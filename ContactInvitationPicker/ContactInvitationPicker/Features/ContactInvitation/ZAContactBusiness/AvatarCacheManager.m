@@ -26,7 +26,7 @@ static AvatarCacheManager *avatarCacheManager = nil;
     return self;
 }
 
-+ (id)shared {
++ (id)sharedInstance {
     if (avatarCacheManager == nil) {
         avatarCacheManager = [AvatarCacheManager new];
     }

@@ -1,16 +1,16 @@
 //
-//  NISelectedContactCollectionViewCell.m
+//  SelectedContactCollectionViewCell.m
 //  ContactInvitationPicker
 //
 //  Created by MACOS on 5/8/19.
 //  Copyright © 2019 com.trieund. All rights reserved.
 //
 
-#import "NISelectedContactCollectionViewCell.h"
-#import "NISelectedContactCellObject.h"
+#import "SelectedContactCollectionViewCell.h"
+#import "SelectedContactCellObject.h"
 
-@implementation NISelectedContactCollectionViewCell {
-    NISelectedContactCellObject *selectedContactCellObject;
+@implementation SelectedContactCollectionViewCell {
+    SelectedContactCellObject *selectedContactCellObject;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -21,7 +21,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    UIImage *avatarImage = [[AvatarCacheManager shared] getImageWithKey:selectedContactCellObject.fullNameRemoveDiacritics];
+    UIImage *avatarImage = [[AvatarCacheManager sharedInstance] getImageWithKey:selectedContactCellObject.fullNameRemoveDiacritics];
     if (avatarImage) {
         [self.avatarImageView setImage:avatarImage];
     } else if (selectedContactCellObject) {
@@ -36,15 +36,18 @@
     }
 }
 
-- (BOOL)shouldUpdateCellWithObject:(NISelectedContactCellObject *)object {
+- (BOOL)shouldUpdateCellWithObject:(SelectedContactCellObject *)object {
     selectedContactCellObject = object;
     [self setNeedsDisplay];
     return YES;
 }
+
 - (void)initAvatarImageView {
     _avatarImageView = [UIImageView new];
+    [self.avatarImageView setContentMode:(UIViewContentModeScaleAspectFit)];
     [self addSubview:self.avatarImageView];
     self.avatarImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    
     [self addConstraints:[NSArray arrayWithObjects:
                           [NSLayoutConstraint constraintWithItem:self.avatarImageView
                                                        attribute:(NSLayoutAttributeCenterX)

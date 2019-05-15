@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NISelectedContactCollectionViewCell : UICollectionViewCell <NICell>
+@interface SelectedContactCollectionViewCell : UICollectionViewCell <NICell>
 
 @property (readonly, nonatomic) UIImageView *avatarImageView;
 

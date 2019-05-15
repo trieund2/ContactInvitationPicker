@@ -26,8 +26,22 @@
     self.titleLabel.text = @"Chọn bạn";
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.titleLabel];
-    [self.titleLabel.topAnchor constraintEqualToAnchor:self.topAnchor constant:2].active = YES;
-    [self.titleLabel.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
+    [self addConstraints:[NSArray arrayWithObjects:
+                          [NSLayoutConstraint constraintWithItem:self.titleLabel
+                                                       attribute:(NSLayoutAttributeTop)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self
+                                                       attribute:(NSLayoutAttributeTop)
+                                                      multiplier:1
+                                                        constant:2],
+                          [NSLayoutConstraint constraintWithItem:self.titleLabel
+                                                       attribute:(NSLayoutAttributeCenterX)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self
+                                                       attribute:(NSLayoutAttributeCenterX)
+                                                      multiplier:1
+                                                        constant:0],
+                          nil]];
 }
 
 - (void)initSubTitleLabel {
@@ -36,10 +50,23 @@
     self.subTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.subTitleLabel setFont:[UIFont systemFontOfSize:11]];
     self.subTitleLabel.textColor = UIColorFromRGB(0x9AA5AC);
-    
     [self addSubview:self.subTitleLabel];
-    [self.subTitleLabel.topAnchor constraintEqualToAnchor:self.titleLabel.bottomAnchor].active = YES;
-    [self.subTitleLabel.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
+    [self addConstraints:[NSArray arrayWithObjects:
+                          [NSLayoutConstraint constraintWithItem:self.subTitleLabel
+                                                       attribute:(NSLayoutAttributeTop)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self.titleLabel
+                                                       attribute:(NSLayoutAttributeBottom)
+                                                      multiplier:1
+                                                        constant:0],
+                          [NSLayoutConstraint constraintWithItem:self.subTitleLabel
+                                                       attribute:(NSLayoutAttributeCenterX)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self
+                                                       attribute:(NSLayoutAttributeCenterX)
+                                                      multiplier:1
+                                                        constant:0],
+                          nil]];
 }
 
 - (void)updateSubTitleWithNumberSelecContacts:(NSUInteger)number {

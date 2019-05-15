@@ -15,6 +15,11 @@
     self = [super init];
     if (self) {
         _contactBusinessModels = [NSMutableArray new];
+        if (@available(iOS 9.0, *)) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contactStoreDidChange:) name:CNContactStoreDidChangeNotification object:nil];
+        } else {
+            
+        }
     }
     return self;
 }
@@ -46,7 +51,7 @@
     NSMutableArray *titleAndContacts = [NSMutableArray new];
     NSMutableArray *nonAlphabetContacts = [NSMutableArray new];
     NSString *previousTitle;
-    NSString *allAlphabets = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";;
+    NSString *allAlphabets = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     for (ZAContactBusinessModel *zaContactBusinessModel in self.contactBusinessModels) {
         if ([zaContactBusinessModel.fullNameRemoveDiacritics length] > 0) {
             NSString *currentTitle = [[zaContactBusinessModel.fullNameRemoveDiacritics substringToIndex:1] uppercaseString];
@@ -69,6 +74,10 @@
     } else {
         return titleAndContacts;
     }
+}
+
+- (void)contactStoreDidChange:(NSNotification *)notification {
+    
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  NIContactCellObject.h
+//  ContactCellObject.h
 //  ContactInvitationPicker
 //
 //  Created by CPU12202 on 5/8/19.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NIContactCellObject : NICellObject
+@interface ContactCellObject : NICellObject
 
 @property (nonatomic, copy) NSString *fullNameRemoveDiacritics;
 @property (nonatomic, copy) NSString *fullName;

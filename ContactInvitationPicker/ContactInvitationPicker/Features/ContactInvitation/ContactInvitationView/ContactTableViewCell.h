@@ -1,5 +1,5 @@
 //
-//  NIContactTableViewCell.h
+//  ContactTableViewCell.h
 //  ContactInvitationPicker
 //
 //  Created by CPU12202 on 5/8/19.
@@ -13,11 +13,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NIContactTableViewCell : UITableViewCell <NICell>
+@interface ContactTableViewCell : UITableViewCell <NICell>
 
 @property (readonly, nonatomic) UIImageView *checkBoxImageView;
 @property (readonly, nonatomic) UILabel *fullNameLabel;
-@property (readonly, nonatomic) UIView *separatorLine;
+@property (readonly, nonatomic) UIView *separatorView;
 @property (readonly, nonatomic) UIImageView *avatarImageView;
 
 @end

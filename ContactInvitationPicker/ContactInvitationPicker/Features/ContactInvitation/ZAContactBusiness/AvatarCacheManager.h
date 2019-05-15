@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AvatarCacheManager : NSObject
 
-+ (id)shared;
++ (id)sharedInstance;
 - (void)storeImage:(UIImage*)image withKey:(NSString*)key;
 - (UIImage*)getImageWithKey:(NSString*)key;
 
