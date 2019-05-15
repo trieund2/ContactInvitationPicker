@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-static const CGFloat kFontResizingProportion = 0.42f;
+extern CGFloat const kFontResizingProportion;
 
 @interface UIImageView (Letters)
 

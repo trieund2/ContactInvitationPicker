@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSString (Extension)
 
-+ (NSString *)stringIgnoreUnicodeFromString:(NSString *)string;
++ (NSString *)stringRemoveDiacriticsFromString:(NSString *)string;
 
 @end
 

@@ -10,7 +10,7 @@
 
 @implementation NSString (Extension)
 
-+ (NSString *)stringIgnoreUnicodeFromString:(NSString *)string {
++ (NSString *)stringRemoveDiacriticsFromString:(NSString *)string {
     NSString *result = [string stringByFoldingWithOptions:(NSDiacriticInsensitiveSearch) locale:NSLocale.currentLocale];
     result = [result stringByReplacingOccurrencesOfString:@"đ" withString:@"d"];
     result = [result stringByReplacingOccurrencesOfString:@"Đ" withString:@"D"];

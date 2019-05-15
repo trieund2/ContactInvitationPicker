@@ -8,6 +8,8 @@
 
 #import "UIImageView+Letters.h"
 
+CGFloat const kFontResizingProportion = 0.42f;
+
 @implementation UIImageView (Letters)
 
 - (void)setImageWithString:(NSString *)string

@@ -11,7 +11,7 @@
 
 @implementation UIViewController (Alert)
 
-- (void)presentAlertWithTitle:(NSString * _Nullable)title message:(NSString *)message actions:(NSArray * _Nullable)actions {
+- (void)presentAlertWithTitle:(NSString *)title message:(NSString * _Nullable)message actions:(NSArray * _Nullable)actions {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
                                                                    message:message
                                                             preferredStyle:UIAlertControllerStyleAlert];

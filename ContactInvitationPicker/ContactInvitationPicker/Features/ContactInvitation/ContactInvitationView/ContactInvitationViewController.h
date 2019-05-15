@@ -11,7 +11,7 @@
 #import "ContactInviNavigationTitleView.h"
 #import "ZAContactBusiness.h"
 
-extern NSUInteger const kMAX_CONTACT_SELECT;
+extern NSUInteger const kMaxContactSelect;
 
 @interface ContactInvitationViewController : UIViewController <UITableViewDelegate, UICollectionViewDelegate, UISearchBarDelegate, MFMessageComposeViewControllerDelegate>
 

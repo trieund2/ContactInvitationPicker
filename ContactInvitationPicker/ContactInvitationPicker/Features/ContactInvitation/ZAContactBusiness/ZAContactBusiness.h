@@ -17,13 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) NSMutableArray *contactBusinessModels;
 
-- (void)requestAccessContactWithCompletionHandler:(void (^)(BOOL granted)) completionHandler
-                                     errorHandler:(void (^)(NSError *error)) errorHandler;
+- (void)getAllContactsFromLocalWithSortType:(ZAContactSortType)sortType
+                          completionHandler:(void (^)(void)) completionHandler
+                               errorHandler:(void (^)(ZAContactError error)) errorHandler;
 
-- (void)getAllContactsFromLocalWithCompletionHalder:(void (^)(void)) completionHalder
-                                                  errorHandler:(void (^)(NSError *error)) errorHandler;
-
-- (NSArray *)mapContactAndTitles;
+- (NSArray *)mapTitleAndContacts;
 
 - (NSArray *)searchContactWithSearchText:(NSString *)searchText;
 

@@ -10,8 +10,8 @@
 
 @implementation ZAContactScaner
 
-+ (void)requestAccessContactWithCompletionHandler:(void (^)(BOOL))completionHandler
-                                     errorHandler:(void (^)(NSError * _Nonnull))errorHandler {
++ (void)requestAccessContactWithAccessGranted:(void (^)(void))accessGranted
+                                 accessDenied:(void (^)(void))accessDenied {
     if (@available(iOS 9.0, *)) {
         CNEntityType entityType = CNEntityTypeContacts;
         CNAuthorizationStatus authorizationStatus = [CNContactStore authorizationStatusForEntityType:entityType];
@@ -21,37 +21,42 @@
             [contactStore requestAccessForEntityType:entityType completionHandler:^(BOOL granted,
                                                                                     NSError * _Nullable error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if (error != NULL) {
-                        errorHandler(error);
+                    if (error == NULL && granted) {
+                        accessGranted();
                     } else {
-                        completionHandler(granted);
+                        accessDenied();
                     }
                 });
             }];
+        } else if (authorizationStatus == CNAuthorizationStatusAuthorized) {
+            accessGranted();
         } else {
-            completionHandler(authorizationStatus == CNAuthorizationStatusAuthorized);
+            accessDenied();
         }
     } else {
         ABAuthorizationStatus addressBookAthorStatus = ABAddressBookGetAuthorizationStatus();
         if (addressBookAthorStatus == kABAuthorizationStatusNotDetermined) {
             ABAddressBookRequestAccessWithCompletion(ABAddressBookCreate(), ^(bool granted, CFErrorRef error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if (error != NULL) {
-                        errorHandler((__bridge NSError * _Nonnull)(error));
+                    if (error == NULL && granted) {
+                        accessGranted();
                     } else {
-                        completionHandler(granted);
+                        accessDenied();
                     }
                 });
             });
+        } else if (addressBookAthorStatus == kABAuthorizationStatusAuthorized) {
+            accessGranted();
         } else {
-            completionHandler(addressBookAthorStatus == kABAuthorizationStatusAuthorized);
+            accessDenied();
         }
     }
 }
 
 + (void)getAllContactsWithSortType:(ZAContactSortType)sortType
                  CompletionHandler:(void (^)(NSArray<ZAContact *> * _Nonnull))completionHandler
-                      errorHandler:(void (^)(NSError * _Nonnull))errorHandler {
+                      errorHandler:(void (^)(ZAContactError))errorHandler {
+    
     if (@available(iOS 9.0,*)) {
         NSError *contactError;
         CNContactStore *contactStore = [CNContactStore new];
@@ -85,15 +90,21 @@
              }
          }];
         if (contactError) {
-            errorHandler(contactError);
+            if (contactError.code == CNErrorCodeAuthorizationDenied) {
+                errorHandler(ZAContactErrorNotPermitterByUser);
+            } else if (contactError.code == CNErrorCodePolicyViolation) {
+                errorHandler(ZAContactErrorNotPermittedByStore);
+            }
         } else {
             completionHandler(zaContacts);
         }
     } else {
-        CFErrorRef error = NULL;
-        ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
+        
+        CFErrorRef contactError = NULL;
+        ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &contactError);
         ABRecordRef source = ABAddressBookCopyDefaultSource(addressBook);
         NSArray *allContacts;
+        
         switch (sortType) {
             case ZAContactSortTypeNone:
                 allContacts = (__bridge NSArray *)(ABAddressBookCopyArrayOfAllPeople(addressBook));
@@ -106,21 +117,25 @@
             case ZAContactSortTypeFamilyName:
                 allContacts = (__bridge NSArray *)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(addressBook,
                                                                                                             source,
-                                                                                                            kABPersonSortByFirstName);
+                                                                                                            kABPersonSortByLastName);
                 break;
         };
         
-        if (error) {
+        if (contactError) {
+            NSError *error = (__bridge NSError *)(contactError);
+            if (error.code == kABOperationNotPermittedByUserError) {
+                errorHandler(ZAContactErrorNotPermittedByStore);
+            } else if (error.code == kABOperationNotPermittedByStoreError) {
+                errorHandler(ZAContactErrorNotPermitterByUser);
+            }
+        } else {
             NSMutableArray<ZAContact*> *zaContacts = [NSMutableArray new];
-            
             for (NSUInteger i = 0; i < [allContacts count]; i++) {
                 ABRecordRef recordRef = (__bridge ABRecordRef)([allContacts objectAtIndex:i]);
                 ZAContact *contact = [ZAContact objectFromABRecordRef:recordRef];
                 [zaContacts addObject:contact];
             }
             completionHandler(zaContacts);
-        } else {
-            errorHandler((__bridge NSError * _Nonnull)(error));
         }
         
         CFRelease(addressBook);

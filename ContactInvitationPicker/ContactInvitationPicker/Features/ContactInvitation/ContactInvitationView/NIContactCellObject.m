@@ -16,7 +16,7 @@
 - (id)initFromContact:(ZAContactBusinessModel *)contact {
     if (self = [super initWithCellClass:[NIContactTableViewCell class]]) {
         self.fullName = contact.fullName;
-        self.fullNameIgnoreUnicode = contact.fullNameIgnoreUnicode;
+        self.fullNameIgnoreUnicode = contact.fullNameRemoveDiacritics;
         self.phoneNumber = contact.phoneNumbers.firstObject;
         
         NSArray *colors = [NSArray arrayWithObjects:

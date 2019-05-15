@@ -759,6 +759,16 @@
 			path = core;
 			sourceTree = "<group>";
 		};
+		A183CC3A228BC1E300E1F322 /* ContactInvitation */ = {
+			isa = PBXGroup;
+			children = (
+				C56FBAF122831EAA007E8A0E /* ZAContactScaner */,
+				C53AA8102287C51B00A1AA22 /* ZAContactBusiness */,
+				A1FAF68F228146DE006E024B /* ContactInvitationView */,
+			);
+			path = ContactInvitation;
+			sourceTree = "<group>";
+		};
 		A1B863E222857ADA001DA0C1 /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -772,9 +782,7 @@
 			isa = PBXGroup;
 			children = (
 				A1B863E222857ADA001DA0C1 /* Root */,
-				C56FBAF122831EAA007E8A0E /* ZAContactScaner */,
-				C53AA8102287C51B00A1AA22 /* ZAContactBusiness */,
-				A1FAF68F228146DE006E024B /* ContactInvitationView */,
+				A183CC3A228BC1E300E1F322 /* ContactInvitation */,
 			);
 			path = Features;
 			sourceTree = "<group>";

@@ -17,7 +17,7 @@
 #import "UIViewController+Alert.h"
 #import "NSString+Extension.h"
 
-NSUInteger const kMAX_CONTACT_SELECT = 5;
+NSUInteger const kMaxContactSelect = 5;
 
 @interface ContactInvitationViewController ()
 
@@ -177,29 +177,33 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
 
 - (void)getAllContacts {
     __weak ContactInvitationViewController *weakSelf = self;
-    [self.zaContactBusiness requestAccessContactWithCompletionHandler:^(BOOL granted) {
-        [self.zaContactBusiness getAllContactsFromLocalWithCompletionHalder:^() {
-            NSArray *results = [self.zaContactBusiness mapContactAndTitles];
-            for (id object in results) {
-                if ([object isKindOfClass:NSString.class]) {
-                    [self->listContactCellObject addObject:object];
-                } else if ([object isKindOfClass:ZAContactBusinessModel.class]) {
-                    [self->listContactCellObject addObject:[NIContactCellObject objectFromContact:(ZAContactBusinessModel *)object]];
-                }
+    [self.zaContactBusiness getAllContactsFromLocalWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^{
+        NSArray *results = [weakSelf.zaContactBusiness mapTitleAndContacts];
+        for (id object in results) {
+            if ([object isKindOfClass:NSString.class]) {
+                [self->listContactCellObject addObject:object];
+            } else if ([object isKindOfClass:ZAContactBusinessModel.class]) {
+                [self->listContactCellObject addObject:[NIContactCellObject objectFromContact:(ZAContactBusinessModel *)object]];
             }
-            
-            self->contactTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:self->listContactCellObject
-                                                                                  delegate:(id)[NICellFactory class]];
-            weakSelf.contactTableView.dataSource = self->contactTableViewModel;
-            [self->contactTableViewModel setSectionIndexType:(NITableViewModelSectionIndexDynamic)
-                                                 showsSearch:YES
-                                                showsSummary:YES];
-            [weakSelf.contactTableView reloadData];
-        } errorHandler:^(NSError * _Nonnull error) {
-            
-        }];
-    } errorHandler:^(NSError * _Nonnull error) {
+        }
         
+        self->contactTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:self->listContactCellObject
+                                                                              delegate:(id)[NICellFactory class]];
+        weakSelf.contactTableView.dataSource = self->contactTableViewModel;
+        [self->contactTableViewModel setSectionIndexType:(NITableViewModelSectionIndexDynamic)
+                                             showsSearch:YES
+                                            showsSummary:YES];
+        [weakSelf.contactTableView reloadData];
+    } errorHandler:^(ZAContactError error) {
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Đồng ý" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }];
+        UIAlertAction *remindLaterAction = [UIAlertAction actionWithTitle:@"Để sau" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+            [self dismissViewControllerAnimated:YES completion:NULL];
+        }];
+        [weakSelf presentAlertWithTitle:@"Ứng dụng không thể truy cập danh bạ"
+                                message:@"Chúng tôi cần truy cập danh bạ của bạn để tìm bạn qua danh bạ"
+                                actions:[NSArray arrayWithObjects:okAction, remindLaterAction, nil]];
     }];
 }
 
@@ -277,12 +281,12 @@ NSUInteger const kMAX_CONTACT_SELECT = 5;
     if ([selectedContactCellObjects containsObject:selectContactObject]) {
         [selectedContactCellObjects removeObject:selectContactObject];
         contactCellObject.isSelected = NO;
-    } else if (selectedContactCellObjects.count < kMAX_CONTACT_SELECT) {
+    } else if (selectedContactCellObjects.count < kMaxContactSelect) {
         [selectedContactCellObjects addObject:selectContactObject];
         contactCellObject.isSelected = YES;
     } else {
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
-        NSString *message = [NSString stringWithFormat:@"%@ %lu %@", @"Bạn không được chọn quá", (unsigned long)kMAX_CONTACT_SELECT, @"người"];
+        NSString *message = [NSString stringWithFormat:@"%@ %lu %@", @"Bạn không được chọn quá", (unsigned long)kMaxContactSelect, @"người"];
         [self presentAlertWithTitle:@"Thông báo" message:message actions:nil];
         return;
     }

@@ -17,8 +17,8 @@
         _familyName = zaContact.familyName;
         _phoneNumbers = zaContact.phoneNumbers;
         _fullName = [NSString stringWithFormat:@"%@ %@ %@", self.familyName, self.middleName, self.givenName];
-        _fullName = [_fullName stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceCharacterSet];
-        _fullNameIgnoreUnicode = [NSString stringIgnoreUnicodeFromString:self.fullName];
+        _fullName = [self.fullName stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceCharacterSet];
+        _fullNameRemoveDiacritics = [NSString stringRemoveDiacriticsFromString:self.fullName];
     }
     return self;
 }
