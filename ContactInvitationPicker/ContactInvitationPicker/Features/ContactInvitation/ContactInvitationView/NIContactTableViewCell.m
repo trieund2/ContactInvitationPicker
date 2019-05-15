@@ -36,19 +36,19 @@
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    UIImage *avatarImage = [[AvatarCacheManager shared] getImageWithKey:contactCellObject.fullNameIgnoreUnicode];
+    UIImage *avatarImage = [[AvatarCacheManager shared] getImageWithKey:contactCellObject.fullNameRemoveDiacritics];
     if (avatarImage) {
         [self.avatarImageView setImage:avatarImage];
     } else if (contactCellObject) {
         NSDictionary *textAttributes = @{NSForegroundColorAttributeName: UIColor.whiteColor,
                                          NSFontAttributeName: [UIFont systemFontOfSize:20]
                                          };
-        [self.avatarImageView setImageWithString:contactCellObject.fullNameIgnoreUnicode
+        [self.avatarImageView setImageWithString:contactCellObject.fullNameRemoveDiacritics
                                            color:contactCellObject.shortNameBackgroundColor
                                         circular:YES
                                   textAttributes:textAttributes
                                             size:CGSizeMake(46, 46)];
-        [[AvatarCacheManager shared] storeImage:self.avatarImageView.image withKey:contactCellObject.fullNameIgnoreUnicode];
+        [[AvatarCacheManager shared] storeImage:self.avatarImageView.image withKey:contactCellObject.fullNameRemoveDiacritics];
     }
 }
 

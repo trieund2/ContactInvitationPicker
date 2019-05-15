@@ -23,8 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSArray *)mapTitleAndContacts;
 
-- (NSArray *)searchContactWithSearchText:(NSString *)searchText;
-
 @end
 
 NS_ASSUME_NONNULL_END

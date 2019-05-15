@@ -16,7 +16,7 @@
 - (id)initFromContact:(ZAContactBusinessModel *)contact {
     if (self = [super initWithCellClass:[NIContactTableViewCell class]]) {
         self.fullName = contact.fullName;
-        self.fullNameIgnoreUnicode = contact.fullNameRemoveDiacritics;
+        self.fullNameRemoveDiacritics = contact.fullNameRemoveDiacritics;
         self.phoneNumber = contact.phoneNumbers.firstObject;
         
         NSArray *colors = [NSArray arrayWithObjects:
@@ -27,7 +27,7 @@
                            UIColorFromRGB(0xF1A5A5),
                            UIColorFromRGB(0xA2C8DA),
                            UIColorFromRGB(0x85CBDD), nil];
-        int index = (int)([self.fullNameIgnoreUnicode length] % colors.count);
+        int index = (int)([self.fullNameRemoveDiacritics length] % colors.count);
         self.shortNameBackgroundColor = [colors objectAtIndex:index];
     }
     return self;
@@ -44,7 +44,7 @@
 - (BOOL)isEqual:(NIContactCellObject *)contactCellObject
 {
     if ([self.fullName isEqual:contactCellObject.fullName]
-        && [self.fullNameIgnoreUnicode isEqual:contactCellObject.fullNameIgnoreUnicode]
+        && [self.fullNameRemoveDiacritics isEqual:contactCellObject.fullNameRemoveDiacritics]
         && [self.shortNameBackgroundColor isEqual:contactCellObject.shortNameBackgroundColor]
         && [self.phoneNumber isEqual:contactCellObject.phoneNumber]
         && self.isSelected == contactCellObject.isSelected) {

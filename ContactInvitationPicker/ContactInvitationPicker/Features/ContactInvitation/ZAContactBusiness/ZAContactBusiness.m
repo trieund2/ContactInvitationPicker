@@ -58,16 +58,4 @@
     return titleAndContacts;
 }
 
-- (NSArray *)searchContactWithSearchText:(NSString *)searchText {
-    NSArray *contactSearchResults = [self.contactBusinessModels filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id object, NSDictionary *bindings) {
-        if (object != NULL && [object isKindOfClass:[ZAContactBusinessModel class]]) {
-            ZAContactBusinessModel *contactBussinessModel = (ZAContactBusinessModel *)object;
-            return [contactBussinessModel.fullNameRemoveDiacritics.lowercaseString containsString:[NSString stringRemoveDiacriticsFromString:searchText].lowercaseString];
-        } else {
-            return NO;
-        }
-    }]];
-    return contactSearchResults;
-}
-
 @end
