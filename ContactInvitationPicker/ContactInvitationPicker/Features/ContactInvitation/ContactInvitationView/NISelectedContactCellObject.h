@@ -7,6 +7,7 @@
 //
 
 #import "NICollectionViewCellFactory.h"
+#import "NIContactCellObject.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,17 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *phoneNumber;
 @property (nonatomic, copy) NSString *fullNameRemoveDiacritics;
-@property (nonatomic) NSIndexPath *indexPath;
+@property (nonatomic) NSIndexPath *contactIndexPath;
 @property (nonatomic) UIColor *color;
 
-- (id)initWithPhoneNumber:(NSString *)phoneNumber
-                 fullName:(NSString *)fullName
-                indexPath:(NSIndexPath *)indexPath
-                    color:(UIColor *)color;
-+ (id)objectWithPhoneNumber:(NSString *)phoneNumber
-                   fullName:(NSString *)fullName
-                  indexPath:(NSIndexPath *)indexPath
-                      color:(UIColor *)color;
+- (id)initWithContactCellObject:(NIContactCellObject*)contactCellObject indexPath:(NSIndexPath*)indexPath;
++ (id)objectWithContactCellObject:(NIContactCellObject*)contactCellObject indexPath:(NSIndexPath*)indexPath;
 
 @end
 

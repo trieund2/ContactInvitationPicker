@@ -30,7 +30,7 @@
                                                              color:UIColor.whiteColor];
     XCTAssertTrue([sut.phoneNumber isEqualToString:@"0386616446"]);
     XCTAssertTrue([sut.shortName isEqualToString:@"NT"]);
-    XCTAssertTrue([sut.indexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:0]]);
+    XCTAssertTrue([sut.contactIndexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:0]]);
     XCTAssertTrue([sut.color isEqual:UIColor.whiteColor]);
 }
 
@@ -41,7 +41,7 @@
                                                        color:UIColor.whiteColor];
     XCTAssertTrue([sut.phoneNumber isEqualToString:@"0386616446"]);
     XCTAssertTrue([sut.shortName isEqualToString:@"NT"]);
-    XCTAssertTrue([sut.indexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:0]]);
+    XCTAssertTrue([sut.contactIndexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:0]]);
     XCTAssertTrue([sut.color isEqual:UIColor.whiteColor]);
 }
 

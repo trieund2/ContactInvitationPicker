@@ -11,24 +11,18 @@
 
 @implementation NISelectedContactCellObject
 
-- (id)initWithPhoneNumber:(NSString *)phoneNumber
-                fullName:(NSString *)fullName
-                indexPath:(NSIndexPath *)indexPath
-                    color:(UIColor *)color {
+- (id)initWithContactCellObject:(NIContactCellObject *)contactCellObject indexPath:(NSIndexPath*)indexPath {
     if (self = [super initWithCellClass:[NISelectedContactCollectionViewCell class]]) {
-        self.fullNameRemoveDiacritics = [fullName copy];
-        self.phoneNumber = [phoneNumber copy];
-        self.indexPath = indexPath;
-        self.color = color;
+        self.fullNameRemoveDiacritics = contactCellObject.fullNameRemoveDiacritics;
+        self.phoneNumber = contactCellObject.phoneNumber;
+        self.contactIndexPath = indexPath;
+        self.color = contactCellObject.shortNameBackgroundColor;
     }
     return self;
 }
 
-+ (id)objectWithPhoneNumber:(NSString *)phoneNumber
-                  fullName:(NSString *)fullName
-                  indexPath:(NSIndexPath *)indexPath
-                      color:(UIColor *)color {
-    return [[self alloc] initWithPhoneNumber:phoneNumber fullName:fullName indexPath:indexPath color:color];
++ (id)objectWithContactCellObject:(NIContactCellObject *)contactCellObject indexPath:(NSIndexPath*)indexPath {
+    return [[self alloc] initWithContactCellObject:contactCellObject indexPath:indexPath];
 }
 
 - (Class)cellClass {
@@ -38,7 +32,7 @@
 - (BOOL)isEqual:(NISelectedContactCellObject *)object {
     if ([self.fullNameRemoveDiacritics isEqual:object.fullNameRemoveDiacritics]
         && [self.phoneNumber isEqual:object.phoneNumber]
-        && [self.indexPath isEqual:object.indexPath]) {
+        && [self.contactIndexPath isEqual:object.contactIndexPath]) {
         return YES;
     } else {
         return NO;

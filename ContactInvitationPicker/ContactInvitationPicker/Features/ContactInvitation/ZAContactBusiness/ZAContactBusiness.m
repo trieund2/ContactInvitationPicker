@@ -44,18 +44,31 @@
 
 - (NSArray *)mapTitleAndContacts {
     NSMutableArray *titleAndContacts = [NSMutableArray new];
+    NSMutableArray *nonAlphabetContacts = [NSMutableArray new];
     NSString *previousTitle;
+    NSString *allAlphabets = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";;
     for (ZAContactBusinessModel *zaContactBusinessModel in self.contactBusinessModels) {
         if ([zaContactBusinessModel.fullNameRemoveDiacritics length] > 0) {
-            NSString *currentTitle = [zaContactBusinessModel.fullNameRemoveDiacritics substringToIndex:1];
-            if (currentTitle != previousTitle) {
+            NSString *currentTitle = [[zaContactBusinessModel.fullNameRemoveDiacritics substringToIndex:1] uppercaseString];
+            bool isAlphabet = [allAlphabets containsString:currentTitle];
+            if (![currentTitle isEqualToString:previousTitle] && isAlphabet) {
                 [titleAndContacts addObject:currentTitle];
                 previousTitle = currentTitle;
             }
-            [titleAndContacts addObject:zaContactBusinessModel];
+            if (isAlphabet) {
+                [titleAndContacts addObject:zaContactBusinessModel];
+            } else {
+                [nonAlphabetContacts addObject:zaContactBusinessModel];
+            }
         }
     }
-    return titleAndContacts;
+    if ([nonAlphabetContacts count] > 0) {
+        [nonAlphabetContacts insertObject:@"#" atIndex:0];
+        [nonAlphabetContacts addObjectsFromArray:titleAndContacts];
+        return nonAlphabetContacts;
+    } else {
+        return titleAndContacts;
+    }
 }
 
 @end

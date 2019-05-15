@@ -387,11 +387,7 @@ NSUInteger const kMaxContactSelect = 5;
         return;
     }
     
-    NISelectedContactCellObject *selectContactObject = [NISelectedContactCellObject
-                                                        objectWithPhoneNumber:contactCellObject.phoneNumber
-                                                        fullName:contactCellObject.fullNameRemoveDiacritics
-                                                        indexPath:selectedIndexPath
-                                                        color:contactCellObject.shortNameBackgroundColor];
+    NISelectedContactCellObject *selectContactObject = [NISelectedContactCellObject objectWithContactCellObject:contactCellObject indexPath:selectedIndexPath];
     if ([selectedContactCellObjects containsObject:selectContactObject]) {
         [selectedContactCellObjects removeObject:selectContactObject];
         contactCellObject.isSelected = NO;
@@ -418,11 +414,11 @@ NSUInteger const kMaxContactSelect = 5;
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NISelectedContactCellObject *selectedObject = [collectionViewModel objectAtIndexPath:indexPath];
-    [self.contactTableView selectRowAtIndexPath:selectedObject.indexPath
-                                       animated:YES
+    NISelectedContactCellObject *selectedContactCellObject = [collectionViewModel objectAtIndexPath:indexPath];
+    [self.contactTableView selectRowAtIndexPath:selectedContactCellObject.contactIndexPath
+                                       animated:NO
                                  scrollPosition:UITableViewScrollPositionNone];
-    [self.contactTableView scrollToRowAtIndexPath:selectedObject.indexPath
+    [self.contactTableView scrollToRowAtIndexPath:selectedContactCellObject.contactIndexPath
                                  atScrollPosition:UITableViewScrollPositionTop
                                          animated:YES];
 }

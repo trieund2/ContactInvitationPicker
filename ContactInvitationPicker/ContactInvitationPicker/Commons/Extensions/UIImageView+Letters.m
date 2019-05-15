@@ -104,10 +104,21 @@ CGFloat const kFontResizingProportion = 0.42f;
                    backgroundColor:(UIColor *)color
                           circular:(BOOL)isCircular
                     textAttributes:(NSDictionary *)textAttributes
-                              size: (CGSize)size {
+                              size:(CGSize)size {
     
     CGFloat scale = [UIScreen mainScreen].scale;
-    UIGraphicsBeginImageContextWithOptions(size, NO, scale);
+    
+    CGSize scaleSize = size;
+    if (self.contentMode == UIViewContentModeScaleToFill ||
+        self.contentMode == UIViewContentModeScaleAspectFill ||
+        self.contentMode == UIViewContentModeScaleAspectFit ||
+        self.contentMode == UIViewContentModeRedraw)
+    {
+        scaleSize.width = floorf(size.width * scale) / scale;
+        scaleSize.height = floorf(size.height * scale) / scale;
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(scaleSize, NO, scale);
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     

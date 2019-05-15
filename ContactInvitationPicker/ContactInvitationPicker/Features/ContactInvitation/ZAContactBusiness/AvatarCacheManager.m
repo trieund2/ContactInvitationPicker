@@ -19,7 +19,9 @@ static AvatarCacheManager *avatarCacheManager = nil;
     self = [super init];
     if (self) {
         imageMemoryCache = [[NIImageMemoryCache alloc] init];
-        [imageMemoryCache setMaxNumberOfPixels:1024L*1024L*10L];
+        long cacheSize = 20 * 1024 * 1024 * 8;
+        int numberBitColor = 32;
+        [imageMemoryCache setMaxNumberOfPixels:cacheSize/numberBitColor];
     }
     return self;
 }
