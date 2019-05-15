@@ -1,16 +1,42 @@
 //
-//  ZAContactScaner.m
+//  ZAContactScanner.m
 //  ContactInvitationPicker
 //
 //  Created by CPU12202 on 5/7/19.
 //  Copyright © 2019 com.trieund. All rights reserved.
 //
 
-#import "ZAContactScaner.h"
+#import "ZAContactScanner.h"
 
-@implementation ZAContactScaner
+@implementation ZAContactScanner
 
-+ (void)requestAccessContactWithAccessGranted:(void (^)(void))accessGranted
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        if (@available(iOS 9.0, *)) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contactStoreDidChange:) name:CNContactStoreDidChangeNotification object:nil];
+        } else {
+            ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
+            ABAddressBookRegisterExternalChangeCallback(addressBook, addressBookContactsExtenalChangeCallback, (__bridge void *)(self));
+        }
+    }
+    return self;
+}
+
+- (void)contactStoreDidChange:(NSNotification *)notification {
+    if (self.onContactChange) {
+        self.onContactChange();
+    }
+}
+
+void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDictionaryRef info,void *context) {
+    
+}
+
+#pragma mark Interface methods
+
+- (void)requestAccessContactWithAccessGranted:(void (^)(void))accessGranted
                                  accessDenied:(void (^)(void))accessDenied {
     if (@available(iOS 9.0, *)) {
         CNEntityType entityType = CNEntityTypeContacts;
@@ -53,7 +79,7 @@
     }
 }
 
-+ (void)getAllContactsWithSortType:(ZAContactSortType)sortType
+- (void)getAllContactsWithSortType:(ZAContactSortType)sortType
                  CompletionHandler:(void (^)(NSArray<ZAContact *> * _Nonnull))completionHandler
                       errorHandler:(void (^)(ZAContactError))errorHandler {
     

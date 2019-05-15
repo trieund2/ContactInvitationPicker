@@ -15,7 +15,7 @@ extern NSUInteger const kMaxContactSelect;
 
 @interface ContactInvitationViewController : UIViewController <UITableViewDelegate, UICollectionViewDelegate, UISearchBarDelegate, MFMessageComposeViewControllerDelegate>
 
-@property (nonatomic, readonly) ZAContactBusiness *zaContactBusiness;
+@property (nonatomic, readonly) ZAContactBusiness *contactBusiness;
 @property (nonatomic, readonly) ContactInviNavigationTitleView *contactInvitationNavigationTitleView;
 @property (nonatomic, readonly) UICollectionView *selectContactCollectionView;
 @property (nonatomic, readonly) UISearchBar *searchBar;

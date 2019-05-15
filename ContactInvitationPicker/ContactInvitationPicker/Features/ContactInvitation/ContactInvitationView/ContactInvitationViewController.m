@@ -7,7 +7,7 @@
 //
 
 #import "ContactInvitationViewController.h"
-#import "ZAContactScaner.h"
+#import "ZAContactScanner.h"
 #import "NimbusModels.h"
 #import "ContactCellObject.h"
 #import "NICollectionViewModel.h"
@@ -41,7 +41,7 @@ NSUInteger const kMaxContactSelect = 5;
     self.view.backgroundColor = UIColorFromRGB(0xE9E9E9);
     listContactCellObject = [NSMutableArray new];
     selectedContactCellObjects = [NSMutableArray new];
-    _zaContactBusiness = [ZAContactBusiness new];
+    _contactBusiness = [ZAContactBusiness new];
     [self addNavigationBarItems];
     [self initSelectContactCollectionView];
     [self initSearchBar];
@@ -49,6 +49,11 @@ NSUInteger const kMaxContactSelect = 5;
     [self initSearchResultTableView];
     [self initEmptySearchResultLabel];
     [self getAllContacts];
+    
+    __weak ContactInvitationViewController *weakSelf = self;
+    self.contactBusiness.onContactChange = ^{
+        [weakSelf getAllContacts];
+    };
 }
 
 #pragma mark UI actions
@@ -291,13 +296,14 @@ NSUInteger const kMaxContactSelect = 5;
 
 - (void)getAllContacts {
     __weak ContactInvitationViewController *weakSelf = self;
-    [self.zaContactBusiness getAllContactsFromLocalWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^{
-        if ([weakSelf.zaContactBusiness.contactBusinessModels count] == 0) {
+    [self.contactBusiness getAllContactsFromLocalWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^{
+        if ([weakSelf.contactBusiness.contactBusinessModels count] == 0) {
             [weakSelf presentAlertWithTitle:@"Không có liên hệ nào trong danh bạ" message:@"Thêm bạn bè vào danh bạ để bắt đầu sử dụng" actions:NULL];
             return;
         }
         
-        NSArray *results = [weakSelf.zaContactBusiness mapTitleAndContacts];
+        [self->listContactCellObject removeAllObjects];
+        NSArray *results = [weakSelf.contactBusiness mapTitleAndContacts];
         for (id object in results) {
             if ([object isKindOfClass:NSString.class]) {
                 [self->listContactCellObject addObject:object];

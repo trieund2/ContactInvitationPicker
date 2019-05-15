@@ -15,23 +15,25 @@
     self = [super init];
     if (self) {
         _contactBusinessModels = [NSMutableArray new];
-        if (@available(iOS 9.0, *)) {
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contactStoreDidChange:) name:CNContactStoreDidChangeNotification object:nil];
-        } else {
-            
-        }
+        _contactScanner = [ZAContactScanner new];
     }
     return self;
+}
+
+- (void)setOnContactChange:(void (^)(void))onContactChange {
+    _onContactChange = onContactChange;
+    self.contactScanner.onContactChange = self.onContactChange;
 }
 
 - (void)getAllContactsFromLocalWithSortType:(ZAContactSortType)sortType
                           completionHandler:(void (^)(void))completionHandler
                                errorHandler:(void (^)(ZAContactError error))errorHandler {
     
+    [self.contactBusinessModels removeAllObjects];
     __weak ZAContactBusiness *weakSelf = self;
     
-    [ZAContactScaner requestAccessContactWithAccessGranted:^{
-        [ZAContactScaner getAllContactsWithSortType:sortType CompletionHandler:^(NSArray<ZAContact *> * _Nonnull contacts) {
+    [self.contactScanner requestAccessContactWithAccessGranted:^{
+        [weakSelf.contactScanner getAllContactsWithSortType:sortType CompletionHandler:^(NSArray<ZAContact *> * _Nonnull contacts) {
             for (ZAContact* contact in contacts) {
                 ZAContactBusinessModel *contactBusinessModel = [ZAContactBusinessModel objectWithZaContact:contact];
                 if (contactBusinessModel != nil) {
@@ -74,10 +76,6 @@
     } else {
         return titleAndContacts;
     }
-}
-
-- (void)contactStoreDidChange:(NSNotification *)notification {
-    
 }
 
 @end

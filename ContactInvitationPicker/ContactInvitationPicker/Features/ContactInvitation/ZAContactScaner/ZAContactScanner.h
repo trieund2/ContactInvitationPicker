@@ -25,12 +25,14 @@ typedef NS_ENUM(NSInteger, ZAContactError) {
     ZAContactErrorNotPermitterByUser  = 1
 };
 
-@interface ZAContactScaner : NSObject
+@interface ZAContactScanner : NSObject
 
-+ (void)requestAccessContactWithAccessGranted:(void (^)(void)) accessGranted
+@property (nonatomic) void (^onContactChange)(void);
+
+- (void)requestAccessContactWithAccessGranted:(void (^)(void)) accessGranted
                                  accessDenied:(void (^)(void)) accessDenied;
 
-+ (void)getAllContactsWithSortType:(ZAContactSortType)sortType
+- (void)getAllContactsWithSortType:(ZAContactSortType)sortType
                  CompletionHandler:(void (^)(NSArray<ZAContact *>* contacts))completionHandler
                       errorHandler:(void (^)(ZAContactError error)) errorHandler;
 

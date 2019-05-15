@@ -106,7 +106,7 @@
 		A1FAF6742281452A006E024B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1FAF6732281452A006E024B /* Assets.xcassets */; };
 		A1FAF6772281452A006E024B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1FAF6752281452A006E024B /* LaunchScreen.storyboard */; };
 		A1FAF67A2281452A006E024B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF6792281452A006E024B /* main.m */; };
-		A1FAF69222816304006E024B /* ZAContactScaner.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF69122816304006E024B /* ZAContactScaner.m */; };
+		A1FAF69222816304006E024B /* ZAContactScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF69122816304006E024B /* ZAContactScanner.m */; };
 		C51D5A0222847A3700C09868 /* CNMutableContact+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = C51D5A0122847A3700C09868 /* CNMutableContact+Init.m */; };
 		C53AA8132287C56700A1AA22 /* ZAContactBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = C53AA8122287C56700A1AA22 /* ZAContactBusiness.m */; };
 		C53AA8162287D54D00A1AA22 /* ZAContactBusinessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C53AA8152287D54D00A1AA22 /* ZAContactBusinessModel.m */; };
@@ -366,8 +366,8 @@
 		A1FAF6792281452A006E024B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A1FAF67F2281452B006E024B /* ContactInvitationPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactInvitationPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FAF6852281452B006E024B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1FAF69022816304006E024B /* ZAContactScaner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAContactScaner.h; sourceTree = "<group>"; };
-		A1FAF69122816304006E024B /* ZAContactScaner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAContactScaner.m; sourceTree = "<group>"; };
+		A1FAF69022816304006E024B /* ZAContactScanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAContactScanner.h; sourceTree = "<group>"; };
+		A1FAF69122816304006E024B /* ZAContactScanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAContactScanner.m; sourceTree = "<group>"; };
 		BDEE8D9D48694F4FFEBBE222 /* Pods-ContactInvitationPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPicker.release.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker.release.xcconfig"; sourceTree = "<group>"; };
 		BF6427FB7F1EADD16AD32BFD /* Pods-ContactInvitationPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPicker.debug.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker.debug.xcconfig"; sourceTree = "<group>"; };
 		C51D5A0022847A3700C09868 /* CNMutableContact+Init.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CNMutableContact+Init.h"; sourceTree = "<group>"; };
@@ -892,8 +892,8 @@
 			children = (
 				C5BF73842286F38A0058E89D /* ZAContact.h */,
 				C5BF73852286F38A0058E89D /* ZAContact.m */,
-				A1FAF69022816304006E024B /* ZAContactScaner.h */,
-				A1FAF69122816304006E024B /* ZAContactScaner.m */,
+				A1FAF69022816304006E024B /* ZAContactScanner.h */,
+				A1FAF69122816304006E024B /* ZAContactScanner.m */,
 			);
 			path = ZAContactScaner;
 			sourceTree = "<group>";
@@ -1127,7 +1127,7 @@
 				A160AC98228193150024BB49 /* UIButton+NIStyleable.m in Sources */,
 				A160AC33228193150024BB49 /* NICellFactory.m in Sources */,
 				A160ACC8228193150024BB49 /* NISnapshotRotation.m in Sources */,
-				A1FAF69222816304006E024B /* ZAContactScaner.m in Sources */,
+				A1FAF69222816304006E024B /* ZAContactScanner.m in Sources */,
 				A160AC27228193150024BB49 /* NIToolbarPhotoViewController.m in Sources */,
 				A160ACA3228193150024BB49 /* CSSTokenizer.m in Sources */,
 				A160ACC4228193150024BB49 /* NIFoundationMethods.m in Sources */,

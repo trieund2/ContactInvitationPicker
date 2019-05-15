@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ZAContactScaner.h"
+#import "ZAContactScanner.h"
 #import "ZAContactBusinessModel.h"
 #import "NSString+Extension.h"
 
@@ -15,7 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZAContactBusiness : NSObject
 
+@property (nonatomic, readonly) ZAContactScanner *contactScanner;
 @property (nonatomic, readonly) NSMutableArray *contactBusinessModels;
+@property (nonatomic) void (^onContactChange)(void);
 
 - (void)getAllContactsFromLocalWithSortType:(ZAContactSortType)sortType
                           completionHandler:(void (^)(void)) completionHandler

@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AvatarCacheManager : NSObject
 
+@property (nonatomic) void (^onContactChange)(void);
+
 + (id)sharedInstance;
 - (void)storeImage:(UIImage*)image withKey:(NSString*)key;
 - (UIImage*)getImageWithKey:(NSString*)key;
