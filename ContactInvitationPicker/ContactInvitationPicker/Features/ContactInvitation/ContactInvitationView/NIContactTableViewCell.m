@@ -71,35 +71,127 @@
 - (void)layoutCheckBoxImageView {
     [self.contentView addSubview:self.checkBoxImageView];
     self.checkBoxImageView.translatesAutoresizingMaskIntoConstraints = NO;;
-    [self.checkBoxImageView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
-    [self.checkBoxImageView.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:12].active = YES;
-    [self.checkBoxImageView.widthAnchor constraintEqualToConstant:20].active = YES;
-    [self.checkBoxImageView.heightAnchor constraintEqualToConstant:20].active = YES;
+    [self addConstraints:[NSArray arrayWithObjects:
+                          [NSLayoutConstraint constraintWithItem:self.checkBoxImageView
+                                                       attribute:(NSLayoutAttributeCenterY)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self
+                                                       attribute:(NSLayoutAttributeCenterY)
+                                                      multiplier:1
+                                                        constant:0],
+                          [NSLayoutConstraint constraintWithItem:self.checkBoxImageView
+                                                       attribute:(NSLayoutAttributeLeft)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self
+                                                       attribute:(NSLayoutAttributeLeft)
+                                                      multiplier:1
+                                                        constant:12],
+                          [NSLayoutConstraint constraintWithItem:self.checkBoxImageView
+                                                       attribute:(NSLayoutAttributeWidth)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:nil
+                                                       attribute:(NSLayoutAttributeWidth)
+                                                      multiplier:1
+                                                        constant:20],
+                          [NSLayoutConstraint constraintWithItem:self.checkBoxImageView
+                                                       attribute:(NSLayoutAttributeHeight)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:nil
+                                                       attribute:(NSLayoutAttributeHeight)
+                                                      multiplier:1
+                                                        constant:20],
+                          nil]];
 }
 
 - (void)layoutAvatarImageView {
     [self.contentView addSubview:self.avatarImageView];
     self.avatarImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.avatarImageView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
-    [self.avatarImageView.leftAnchor constraintEqualToAnchor:self.checkBoxImageView.rightAnchor constant:14].active = YES;
-    [self.avatarImageView.heightAnchor constraintEqualToConstant:46].active = YES;
-    [self.avatarImageView.widthAnchor constraintEqualToConstant:46].active = YES;
+    [self addConstraints:[NSArray arrayWithObjects:
+                          [NSLayoutConstraint constraintWithItem:self.avatarImageView
+                                                       attribute:(NSLayoutAttributeCenterY)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self
+                                                       attribute:(NSLayoutAttributeCenterY)
+                                                      multiplier:1
+                                                        constant:0],
+                          [NSLayoutConstraint constraintWithItem:self.avatarImageView
+                                                       attribute:(NSLayoutAttributeLeft)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self.checkBoxImageView
+                                                       attribute:(NSLayoutAttributeRight)
+                                                      multiplier:1
+                                                        constant:14],
+                          [NSLayoutConstraint constraintWithItem:self.avatarImageView
+                                                       attribute:(NSLayoutAttributeWidth)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:nil
+                                                       attribute:(NSLayoutAttributeWidth)
+                                                      multiplier:1
+                                                        constant:46],
+                          [NSLayoutConstraint constraintWithItem:self.avatarImageView
+                                                       attribute:(NSLayoutAttributeHeight)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:nil
+                                                       attribute:(NSLayoutAttributeHeight)
+                                                      multiplier:1
+                                                        constant:46],
+                          nil]];
 }
 
 - (void)layoutFullNameLabel {
     [self.contentView addSubview:self.fullNameLabel];
     self.fullNameLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.fullNameLabel.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
-    [self.fullNameLabel.leftAnchor constraintEqualToAnchor:self.avatarImageView.rightAnchor constant:14].active = YES;
+    [self addConstraints:[NSArray arrayWithObjects:
+                          [NSLayoutConstraint constraintWithItem:self.fullNameLabel
+                                                       attribute:(NSLayoutAttributeCenterY)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self
+                                                       attribute:(NSLayoutAttributeCenterY)
+                                                      multiplier:1
+                                                        constant:0],
+                          [NSLayoutConstraint constraintWithItem:self.fullNameLabel
+                                                       attribute:(NSLayoutAttributeLeft)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self.avatarImageView
+                                                       attribute:(NSLayoutAttributeRight)
+                                                      multiplier:1
+                                                        constant:14],
+                          nil]];
 }
 
 - (void)layoutSeparatorLine {
     [self.contentView addSubview:self.separatorLine];
     self.separatorLine.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.separatorLine.leftAnchor constraintEqualToAnchor:self.fullNameLabel.leftAnchor].active = YES;
-    [self.separatorLine.rightAnchor constraintEqualToAnchor:self.rightAnchor].active = YES;
-    [self.separatorLine.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
-    [self.separatorLine.heightAnchor constraintEqualToConstant:0.5].active = YES;
+    [self addConstraints:[NSArray arrayWithObjects:
+                          [NSLayoutConstraint constraintWithItem:self.separatorLine
+                                                       attribute:(NSLayoutAttributeLeft)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self.fullNameLabel
+                                                       attribute:(NSLayoutAttributeLeft)
+                                                      multiplier:1
+                                                        constant:0],
+                          [NSLayoutConstraint constraintWithItem:self.separatorLine
+                                                       attribute:(NSLayoutAttributeRight)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self
+                                                       attribute:(NSLayoutAttributeRight)
+                                                      multiplier:1
+                                                        constant:0],
+                          [NSLayoutConstraint constraintWithItem:self.separatorLine
+                                                       attribute:(NSLayoutAttributeBottom)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self
+                                                       attribute:(NSLayoutAttributeBottom)
+                                                      multiplier:1
+                                                        constant:0],
+                          [NSLayoutConstraint constraintWithItem:self.separatorLine
+                                                       attribute:(NSLayoutAttributeHeight)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:nil
+                                                       attribute:(NSLayoutAttributeHeight)
+                                                      multiplier:1
+                                                        constant:0.5],
+                          nil]];
 }
 
 @end

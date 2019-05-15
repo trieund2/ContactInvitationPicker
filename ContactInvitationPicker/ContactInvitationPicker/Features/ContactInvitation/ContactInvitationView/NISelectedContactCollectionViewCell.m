@@ -44,11 +44,37 @@
 - (void)initAvatarImageView {
     _avatarImageView = [UIImageView new];
     [self addSubview:self.avatarImageView];
-    self.avatarImageView.translatesAutoresizingMaskIntoConstraints = NO;;
-    [self.avatarImageView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
-    [self.avatarImageView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
-    [self.avatarImageView.heightAnchor constraintEqualToAnchor:self.heightAnchor].active = YES;
-    [self.avatarImageView.widthAnchor constraintEqualToAnchor:self.widthAnchor].active = YES;
+    self.avatarImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addConstraints:[NSArray arrayWithObjects:
+                          [NSLayoutConstraint constraintWithItem:self.avatarImageView
+                                                       attribute:(NSLayoutAttributeCenterX)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self
+                                                       attribute:(NSLayoutAttributeCenterX)
+                                                      multiplier:1
+                                                        constant:0],
+                          [NSLayoutConstraint constraintWithItem:self.avatarImageView
+                                                       attribute:(NSLayoutAttributeCenterY)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self
+                                                       attribute:(NSLayoutAttributeCenterY)
+                                                      multiplier:1
+                                                        constant:0],
+                          [NSLayoutConstraint constraintWithItem:self.avatarImageView
+                                                       attribute:(NSLayoutAttributeWidth)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self
+                                                       attribute:(NSLayoutAttributeWidth)
+                                                      multiplier:1
+                                                        constant:0],
+                          [NSLayoutConstraint constraintWithItem:self.avatarImageView
+                                                       attribute:(NSLayoutAttributeHeight)
+                                                       relatedBy:(NSLayoutRelationEqual)
+                                                          toItem:self
+                                                       attribute:(NSLayoutAttributeHeight)
+                                                      multiplier:1
+                                                        constant:0],
+                          nil]];
 }
 
 @end
