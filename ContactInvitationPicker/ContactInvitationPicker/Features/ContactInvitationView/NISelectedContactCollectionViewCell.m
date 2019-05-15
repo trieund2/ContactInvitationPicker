@@ -21,15 +21,19 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    if (!selectedContactCellObject) { return; }
-    NSDictionary *textAttributes = @{NSForegroundColorAttributeName: UIColor.whiteColor,
-                                     NSFontAttributeName: [UIFont systemFontOfSize:16]
-                                     };
-    [self.avatarImageView setImageWithString:selectedContactCellObject.fullName
-                                       color:selectedContactCellObject.color
-                                    circular:YES
-                              textAttributes:textAttributes
-                                        size:CGSizeMake(40, 40)];
+    UIImage *avatarImage = [[AvatarCacheManager shared] getImageWithKey:selectedContactCellObject.fullNameIgnoreUnicode];
+    if (avatarImage) {
+        [self.avatarImageView setImage:avatarImage];
+    } else if (selectedContactCellObject) {
+        NSDictionary *textAttributes = @{NSForegroundColorAttributeName: UIColor.whiteColor,
+                                         NSFontAttributeName: [UIFont systemFontOfSize:16]
+                                         };
+        [self.avatarImageView setImageWithString:selectedContactCellObject.fullNameIgnoreUnicode
+                                           color:selectedContactCellObject.color
+                                        circular:YES
+                                  textAttributes:textAttributes
+                                            size:CGSizeMake(40, 40)];
+    }
 }
 
 - (BOOL)shouldUpdateCellWithObject:(NISelectedContactCellObject *)object {

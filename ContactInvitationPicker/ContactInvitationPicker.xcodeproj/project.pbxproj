@@ -85,6 +85,7 @@
 		A160ACC7228193150024BB49 /* NIActions.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AC12228193140024BB49 /* NIActions.m */; };
 		A160ACC8228193150024BB49 /* NISnapshotRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AC13228193140024BB49 /* NISnapshotRotation.m */; };
 		A160ACC9228193150024BB49 /* NISDKAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AC14228193140024BB49 /* NISDKAvailability.m */; };
+		A183CC36228BB3F500E1F322 /* AvatarCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A183CC35228BB3F500E1F322 /* AvatarCacheManager.m */; };
 		A1A837C9228418F900C353C9 /* ContactInviNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */; };
 		A1A8382F228434D200C353C9 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A8382E228434D200C353C9 /* NSString+Extension.m */; };
 		A1B863E522857AF2001DA0C1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B863E422857AF2001DA0C1 /* RootViewController.m */; };
@@ -321,6 +322,8 @@
 		A160AC15228193140024BB49 /* UIResponder+NimbusCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+NimbusCore.h"; sourceTree = "<group>"; };
 		A160AC16228193140024BB49 /* NIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIError.h; sourceTree = "<group>"; };
 		A160AC17228193140024BB49 /* NIActions+Subclassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NIActions+Subclassing.h"; sourceTree = "<group>"; };
+		A183CC34228BB3F500E1F322 /* AvatarCacheManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvatarCacheManager.h; sourceTree = "<group>"; };
+		A183CC35228BB3F500E1F322 /* AvatarCacheManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AvatarCacheManager.m; sourceTree = "<group>"; };
 		A1A837C122840A3A00C353C9 /* UIColorFromRGB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIColorFromRGB.h; sourceTree = "<group>"; };
 		A1A837C7228418F900C353C9 /* ContactInviNavigationTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactInviNavigationTitleView.h; sourceTree = "<group>"; };
 		A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactInviNavigationTitleView.m; sourceTree = "<group>"; };
@@ -861,6 +864,8 @@
 				C53AA8152287D54D00A1AA22 /* ZAContactBusinessModel.m */,
 				C53AA8112287C56700A1AA22 /* ZAContactBusiness.h */,
 				C53AA8122287C56700A1AA22 /* ZAContactBusiness.m */,
+				A183CC34228BB3F500E1F322 /* AvatarCacheManager.h */,
+				A183CC35228BB3F500E1F322 /* AvatarCacheManager.m */,
 			);
 			path = ZAContactBusiness;
 			sourceTree = "<group>";
@@ -1187,6 +1192,7 @@
 				A160AC9C228193150024BB49 /* NICSSRuleset.m in Sources */,
 				A1DBA1B3228294330036FD95 /* AFURLResponseSerialization.m in Sources */,
 				C53AA8132287C56700A1AA22 /* ZAContactBusiness.m in Sources */,
+				A183CC36228BB3F500E1F322 /* AvatarCacheManager.m in Sources */,
 				A160ACB9228193150024BB49 /* NINetworkActivity.m in Sources */,
 				A1DBA1B9228294330036FD95 /* AFURLSessionManager.m in Sources */,
 				C53AA8162287D54D00A1AA22 /* ZAContactBusinessModel.m in Sources */,

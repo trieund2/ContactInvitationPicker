@@ -16,7 +16,7 @@
                 indexPath:(NSIndexPath *)indexPath
                     color:(UIColor *)color {
     if (self = [super initWithCellClass:[NISelectedContactCollectionViewCell class]]) {
-        self.fullName = [fullName copy];
+        self.fullNameIgnoreUnicode = [fullName copy];
         self.phoneNumber = [phoneNumber copy];
         self.indexPath = indexPath;
         self.color = color;
@@ -36,7 +36,7 @@
 }
 
 - (BOOL)isEqual:(NISelectedContactCellObject *)object {
-    if ([self.fullName isEqual:object.fullName]
+    if ([self.fullNameIgnoreUnicode isEqual:object.fullNameIgnoreUnicode]
         && [self.phoneNumber isEqual:object.phoneNumber]
         && [self.indexPath isEqual:object.indexPath]) {
         return YES;

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NICellFactory.h"
 #import "UIImageView+Letters.h"
+#import "AvatarCacheManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
