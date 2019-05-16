@@ -12,8 +12,6 @@
 @private NIImageMemoryCache *imageMemoryCache;
 }
 
-static AvatarCacheManager *avatarCacheManager = nil;
-
 - (instancetype)init
 {
     self = [super init];
@@ -26,10 +24,12 @@ static AvatarCacheManager *avatarCacheManager = nil;
     return self;
 }
 
-+ (id)sharedInstance {
-    if (avatarCacheManager == nil) {
++ (instancetype)sharedInstance {
+    static AvatarCacheManager *avatarCacheManager;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
         avatarCacheManager = [AvatarCacheManager new];
-    }
+    });
     return avatarCacheManager;
 }
 

@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) void (^onContactChange)(void);
 
-+ (id)sharedInstance;
++ (instancetype)sharedInstance;
 - (void)storeImage:(UIImage*)image withKey:(NSString*)key;
 - (UIImage*)getImageWithKey:(NSString*)key;
 

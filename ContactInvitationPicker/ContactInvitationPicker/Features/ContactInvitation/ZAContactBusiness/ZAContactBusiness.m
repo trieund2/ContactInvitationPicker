@@ -10,6 +10,15 @@
 
 @implementation ZAContactBusiness
 
++ (instancetype)sharedInstance {
+    static ZAContactBusiness *zaContactBusiness;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        zaContactBusiness = [ZAContactBusiness new];
+    });
+    return zaContactBusiness;
+}
+
 - (instancetype)init
 {
     self = [super init];

@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZAContactBusiness : NSObject
 
++ (instancetype)sharedInstance;
+
 @property (nonatomic, readonly) ZAContactScanner *contactScanner;
 @property (nonatomic, readonly) NSMutableArray *contactBusinessModels;
 @property (nonatomic) void (^onContactChange)(void);
