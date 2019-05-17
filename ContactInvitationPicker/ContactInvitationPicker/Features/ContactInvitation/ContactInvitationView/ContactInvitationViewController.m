@@ -20,15 +20,15 @@
 NSUInteger const kMaxContactSelect = 5;
 
 @interface ContactInvitationViewController ()
-@property (nonatomic, readonly) NSMutableArray<ContactCellObject *> *listContactCellObject;
-@property (nonatomic, readonly) NSMutableArray<SelectedContactCellObject *> *selectedContactCellObjects;
-@property (nonatomic, readonly) NITableViewModel *contactTableViewModel;
-@property (nonatomic, readonly) NITableViewModel *searchResultTableViewModel;
-@property (nonatomic, readonly) NICollectionViewModel *collectionViewModel;
-@property (nonatomic, readonly) NSLayoutConstraint *selectContactCollectionViewHeightConst;
-@property (nonatomic, readonly) NSLayoutConstraint *searchBarTopConst;
-@property (nonatomic, readonly) UIButton *sendButton;
-@property (nonatomic, readonly) ZAContactBusiness *contactBusiness;
+@property (nonatomic) NSMutableArray<ContactCellObject *> *listContactCellObject;
+@property (nonatomic) NSMutableArray<SelectedContactCellObject *> *selectedContactCellObjects;
+@property (nonatomic) NITableViewModel *contactTableViewModel;
+@property (nonatomic) NITableViewModel *searchResultTableViewModel;
+@property (nonatomic) NICollectionViewModel *collectionViewModel;
+@property (nonatomic) NSLayoutConstraint *selectContactCollectionViewHeightConst;
+@property (nonatomic) NSLayoutConstraint *searchBarTopConst;
+@property (nonatomic) UIButton *sendButton;
+@property (nonatomic) ZAContactBusiness *contactBusiness;
 @end
 
 @implementation ContactInvitationViewController

@@ -24,7 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
                           completionHandler:(void (^)(NSArray* contacts)) completionHandler
                                errorHandler:(void (^)(ZAContactError error)) errorHandler;
 
-- (void)clearAllContacts;
 
 @end
 

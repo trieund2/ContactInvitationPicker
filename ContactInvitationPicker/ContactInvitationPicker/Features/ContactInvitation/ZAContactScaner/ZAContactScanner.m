@@ -25,6 +25,14 @@
     return self;
 }
 
+- (instancetype)initWithDelegate:(id<ZAContactScannerDelegate>)delegate {
+    self = [self init];
+    if (self) {
+        _delegate = delegate;
+    }
+    return self;
+}
+
 - (void)contactStoreDidChange:(NSNotification *)notification {
     [self.delegate contactDidChange];
 }
