@@ -20,15 +20,17 @@
 NSUInteger const kMaxContactSelect = 5;
 
 @interface ContactInvitationViewController ()
-@property (nonatomic) NSMutableArray<ContactCellObject *> *listContactCellObject;
+
+@property (nonatomic) NSMutableArray<ContactCellObject *> *listContactCellObjects;
 @property (nonatomic) NSMutableArray<SelectedContactCellObject *> *selectedContactCellObjects;
 @property (nonatomic) NITableViewModel *contactTableViewModel;
 @property (nonatomic) NITableViewModel *searchResultTableViewModel;
-@property (nonatomic) NICollectionViewModel *collectionViewModel;
+@property (nonatomic) NICollectionViewModel *selectedContactCollectionViewModel;
 @property (nonatomic) NSLayoutConstraint *selectContactCollectionViewHeightConst;
 @property (nonatomic) NSLayoutConstraint *searchBarTopConst;
 @property (nonatomic) UIButton *sendButton;
 @property (nonatomic) ZAContactBusiness *contactBusiness;
+
 @end
 
 @implementation ContactInvitationViewController
@@ -38,7 +40,7 @@ NSUInteger const kMaxContactSelect = 5;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = UIColorFromRGB(0xE9E9E9);
-    _listContactCellObject = [NSMutableArray new];
+    _listContactCellObjects = [NSMutableArray new];
     _selectedContactCellObjects = [NSMutableArray new];
     _contactBusiness = [[ZAContactBusiness alloc] initWithDelegate:self];
     
@@ -60,7 +62,7 @@ NSUInteger const kMaxContactSelect = 5;
 - (void)touchInSendButton {
     NSMutableArray *recipients = [NSMutableArray new];
     for (SelectedContactCellObject *object in self.selectedContactCellObjects) {
-        if (object.phoneNumber != NULL) {
+        if (object.phoneNumber != NULL && [object.phoneNumber isKindOfClass:NSString.class]) {
             [recipients addObject:object.phoneNumber];
         }
     }
@@ -102,10 +104,10 @@ NSUInteger const kMaxContactSelect = 5;
     layout.minimumInteritemSpacing = 4;
     _selectContactCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     self.selectContactCollectionView.backgroundColor = UIColor.clearColor;
-    _collectionViewModel = [[NICollectionViewModel alloc]
-                           initWithListArray:self.selectedContactCellObjects
-                           delegate:(id)[NICollectionViewCellFactory class]];
-    self.selectContactCollectionView.dataSource = self.collectionViewModel;
+    _selectedContactCollectionViewModel = [[NICollectionViewModel alloc]
+                            initWithListArray:self.selectedContactCellObjects
+                            delegate:(id)[NICollectionViewCellFactory class]];
+    self.selectContactCollectionView.dataSource = self.selectedContactCollectionViewModel;
     self.selectContactCollectionView.delegate = self;
     
     self.selectContactCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -131,11 +133,11 @@ NSUInteger const kMaxContactSelect = 5;
                                                              constant:0],
                                nil]];
     self.selectContactCollectionViewHeightConst = [NSLayoutConstraint constraintWithItem:self.selectContactCollectionView attribute:(NSLayoutAttributeHeight)
-                                                                          relatedBy:(NSLayoutRelationEqual)
-                                                                             toItem:nil
-                                                                          attribute:(NSLayoutAttributeHeight)
-                                                                         multiplier:1
-                                                                           constant:0];
+                                                                               relatedBy:(NSLayoutRelationEqual)
+                                                                                  toItem:nil
+                                                                               attribute:(NSLayoutAttributeHeight)
+                                                                              multiplier:1
+                                                                                constant:0];
     [self.view addConstraint:self.selectContactCollectionViewHeightConst];
 }
 
@@ -148,12 +150,12 @@ NSUInteger const kMaxContactSelect = 5;
     self.searchBar.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.searchBar];
     self.searchBarTopConst = [NSLayoutConstraint constraintWithItem:self.searchBar
-                                                     attribute:(NSLayoutAttributeTop)
-                                                     relatedBy:(NSLayoutRelationEqual)
-                                                        toItem:self.selectContactCollectionView
-                                                     attribute:(NSLayoutAttributeBottom)
-                                                    multiplier:1
-                                                      constant:0];
+                                                          attribute:(NSLayoutAttributeTop)
+                                                          relatedBy:(NSLayoutRelationEqual)
+                                                             toItem:self.selectContactCollectionView
+                                                          attribute:(NSLayoutAttributeBottom)
+                                                         multiplier:1
+                                                           constant:0];
     [self.view addConstraint:self.searchBarTopConst];
     [self.view addConstraints:[NSArray arrayWithObjects:
                                [NSLayoutConstraint constraintWithItem:self.searchBar
@@ -291,27 +293,27 @@ NSUInteger const kMaxContactSelect = 5;
 
 - (void)getAllContacts {
     __weak ContactInvitationViewController *weakSelf = self;
-    [self.contactBusiness getContactsAndMapTitlesWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^(NSArray * _Nonnull contacts) {
+    [self.contactBusiness getOrderContactsWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^(NSArray * _Nonnull contacts) {
         if (contacts.count == 0) {
             [weakSelf presentAlertWithTitle:@"Không có liên hệ nào trong danh bạ" message:@"Thêm bạn bè vào danh bạ để bắt đầu sử dụng" actions:NULL];
             return;
         }
         
-        [self.listContactCellObject removeAllObjects];
+        [self.listContactCellObjects removeAllObjects];
         for (id object in contacts) {
             if ([object isKindOfClass:NSString.class]) {
-                [weakSelf.listContactCellObject addObject:object];
+                [weakSelf.listContactCellObjects addObject:object];
             } else if ([object isKindOfClass:ZAContactBusinessModel.class]) {
-                [weakSelf.listContactCellObject addObject:[ContactCellObject objectFromContact:(ZAContactBusinessModel *)object]];
+                [weakSelf.listContactCellObjects addObject:[ContactCellObject objectFromContact:(ZAContactBusinessModel *)object]];
             }
         }
         
-        weakSelf.contactTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:weakSelf.listContactCellObject
-                                                                              delegate:(id)[NICellFactory class]];
+        weakSelf.contactTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:weakSelf.listContactCellObjects
+                                                                                 delegate:(id)[NICellFactory class]];
         weakSelf.contactTableView.dataSource = weakSelf.contactTableViewModel;
         [weakSelf.contactTableViewModel setSectionIndexType:(NITableViewModelSectionIndexDynamic)
-                                             showsSearch:YES
-                                            showsSummary:YES];
+                                                showsSearch:YES
+                                               showsSummary:YES];
         [weakSelf.contactTableView reloadData];
     } errorHandler:^(ZAContactError error) {
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Đồng ý" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
@@ -419,7 +421,7 @@ NSUInteger const kMaxContactSelect = 5;
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    SelectedContactCellObject *selectedContactCellObject = [self.collectionViewModel objectAtIndexPath:indexPath];
+    SelectedContactCellObject *selectedContactCellObject = [self.selectedContactCollectionViewModel objectAtIndexPath:indexPath];
     [self.contactTableView selectRowAtIndexPath:selectedContactCellObject.contactIndexPath
                                        animated:NO
                                  scrollPosition:UITableViewScrollPositionNone];
@@ -436,7 +438,7 @@ NSUInteger const kMaxContactSelect = 5;
         return;
     }
     
-    NSArray *searchContactResults = [self.listContactCellObject filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+    NSArray *searchContactResults = [self.listContactCellObjects filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
         if (evaluatedObject && [evaluatedObject isKindOfClass:ContactCellObject.class] && ![evaluatedObject isKindOfClass:NSString.class]) {
             ContactCellObject *contactCellObject = (ContactCellObject *)evaluatedObject;
             return ([contactCellObject.fullNameRemoveDiacritics.lowercaseString containsString:[NSString stringRemoveDiacriticsFromString:searchText].lowercaseString]);

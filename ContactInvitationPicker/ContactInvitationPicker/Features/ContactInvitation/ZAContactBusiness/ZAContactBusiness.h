@@ -15,14 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZAContactBusiness : NSObject
 
-@property (nonatomic, readonly) ZAContactScanner *contactScanner;
 @property (weak, nonatomic) id<ZAContactScannerDelegate> delegate;
 
 - (instancetype)initWithDelegate:(id<ZAContactScannerDelegate>)delegate;
 
-- (void)getContactsAndMapTitlesWithSortType:(ZAContactSortType)sortType
-                          completionHandler:(void (^)(NSArray* contacts)) completionHandler
-                               errorHandler:(void (^)(ZAContactError error)) errorHandler;
+- (void)getOrderContactsWithSortType:(ZAContactSortType)sortType
+                   completionHandler:(void (^)(NSArray* contacts)) completionHandler
+                        errorHandler:(void (^)(ZAContactError error)) errorHandler;
 
 
 @end
