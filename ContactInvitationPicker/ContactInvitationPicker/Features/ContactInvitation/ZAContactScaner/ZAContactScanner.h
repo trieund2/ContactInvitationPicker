@@ -40,7 +40,7 @@ typedef NS_ENUM(NSInteger, ZAContactError) {
                                  accessDenied:(void (^)(void)) accessDenied;
 
 - (void)getContactsWithSortType:(ZAContactSortType)sortType
-              completionHandler:(void (^)(NSArray<ZAContact *>* contacts))completionHandler
+              completionHandler:(void (^)(ZAContact * contact))completionHandler
                    errorHandler:(void (^)(ZAContactError error)) errorHandler;
 
 @end

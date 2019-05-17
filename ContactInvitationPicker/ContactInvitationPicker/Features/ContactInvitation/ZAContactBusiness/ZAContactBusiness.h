@@ -18,14 +18,16 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)sharedInstance;
 
 @property (nonatomic, readonly) ZAContactScanner *contactScanner;
-@property (nonatomic, readonly) NSMutableArray *contactBusinessModels;
 @property (weak, nonatomic) id<ZAContactScannerDelegate> delegate;
 
 - (void)getContactsWithSortType:(ZAContactSortType)sortType
-              completionHandler:(void (^)(void)) completionHandler
+              completionHandler:(void (^)(NSArray<ZAContactBusinessModel *>* contacts)) completionHandler
                    errorHandler:(void (^)(ZAContactError error)) errorHandler;
 
-- (NSArray *)mapTitleAndContacts;
+- (void)getContactsAndMapTitleWithSortType:(ZAContactSortType)sortType
+                         completionHandler:(void (^)(NSArray* contacts)) completionHandler
+                              errorHandler:(void (^)(ZAContactError error)) errorHandler;
+
 - (void)clearAllContacts;
 
 @end

@@ -82,8 +82,8 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
 }
 
 - (void)getContactsWithSortType:(ZAContactSortType)sortType
-               completionHandler:(void (^)(NSArray<ZAContact *> * _Nonnull))completionHandler
-                    errorHandler:(void (^)(ZAContactError))errorHandler {
+              completionHandler:(void (^)(ZAContact * _Nonnull))completionHandler
+                   errorHandler:(void (^)(ZAContactError))errorHandler {
     
     if (@available(iOS 9.0,*)) {
         NSError *contactError;
@@ -106,34 +106,25 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
                 break;
         };
         
-        NSMutableArray<ZAContact *> *zaContacts = [NSMutableArray new];
-        
         [contactStore
          enumerateContactsWithFetchRequest:request
          error:&contactError
          usingBlock:^(CNContact * __nonnull contact, BOOL * __nonnull stop) {
-             ZAContact *zaContact = [ZAContact objectFromContact:contact];
-             if (zaContact) {
-                 [zaContacts addObject:zaContact];
+             if (contactError) {
+                 if (contactError.code == CNErrorCodeAuthorizationDenied) {
+                     errorHandler(ZAContactErrorNotPermitterByUser);
+                 } else if (contactError.code == CNErrorCodePolicyViolation) {
+                     errorHandler(ZAContactErrorNotPermittedByStore);
+                 }
+             } else {
+                 ZAContact *zaContact = [ZAContact objectFromContact:contact];
+                 if (zaContact) {
+                     completionHandler(zaContact);
+                 }
              }
+             
          }];
-        if (contactError) {
-            if (contactError.code == CNErrorCodeAuthorizationDenied) {
-                errorHandler(ZAContactErrorNotPermitterByUser);
-            } else if (contactError.code == CNErrorCodePolicyViolation) {
-                errorHandler(ZAContactErrorNotPermittedByStore);
-            }
-        } else {
-//            NSArray *arr = [NSArray new];
-//            for (int i = 0; i < 1000; ++i) {
-//                arr = [arr arrayByAddingObjectsFromArray:zaContacts];
-//            }
-//
-//            completionHandler(arr);
-            completionHandler(zaContacts);
-        }
     } else {
-        
         CFErrorRef contactError = NULL;
         ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &contactError);
         ABRecordRef source = ABAddressBookCopyDefaultSource(addressBook);
@@ -163,13 +154,13 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
                 errorHandler(ZAContactErrorNotPermitterByUser);
             }
         } else {
-            NSMutableArray<ZAContact*> *zaContacts = [NSMutableArray new];
             for (NSUInteger i = 0; i < [allContacts count]; i++) {
                 ABRecordRef recordRef = (__bridge ABRecordRef)([allContacts objectAtIndex:i]);
                 ZAContact *contact = [ZAContact objectFromABRecordRef:recordRef];
-                [zaContacts addObject:contact];
+                if (contact != NULL) {
+                    completionHandler(contact);
+                }
             }
-            completionHandler(zaContacts);
         }
     }
 }

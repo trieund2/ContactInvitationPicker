@@ -292,15 +292,14 @@ NSUInteger const kMaxContactSelect = 5;
 
 - (void)getAllContacts {
     __weak ContactInvitationViewController *weakSelf = self;
-    [[ZAContactBusiness sharedInstance] getContactsWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^{
-        if ([[ZAContactBusiness sharedInstance].contactBusinessModels count] == 0) {
+    [[ZAContactBusiness sharedInstance] getContactsAndMapTitleWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^(NSArray * _Nonnull contacts) {
+        if (contacts.count == 0) {
             [weakSelf presentAlertWithTitle:@"Không có liên hệ nào trong danh bạ" message:@"Thêm bạn bè vào danh bạ để bắt đầu sử dụng" actions:NULL];
             return;
         }
         
         [self->listContactCellObject removeAllObjects];
-        NSArray *results = [[ZAContactBusiness sharedInstance] mapTitleAndContacts];
-        for (id object in results) {
+        for (id object in contacts) {
             if ([object isKindOfClass:NSString.class]) {
                 [self->listContactCellObject addObject:object];
             } else if ([object isKindOfClass:ZAContactBusinessModel.class]) {
@@ -381,20 +380,20 @@ NSUInteger const kMaxContactSelect = 5;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ContactCellObject *contactCellObject;
-    NSIndexPath *selectedIndexPath = indexPath;
+    NSIndexPath *contactIndexPath = indexPath;
     
     if (tableView == self.contactTableView) {
         contactCellObject = [contactTableViewModel objectAtIndexPath:indexPath];
     } else if (tableView == self.searchResultTableView) {
         contactCellObject = [searchResultTableViewModel objectAtIndexPath:indexPath];
-        selectedIndexPath = [contactTableViewModel indexPathForObject:contactCellObject];
+        contactIndexPath = [contactTableViewModel indexPathForObject:contactCellObject];
         self.searchBar.text = @"";
         [self.searchResultTableView setHidden:YES];
     } else {
         return;
     }
     
-    SelectedContactCellObject *selectContactObject = [SelectedContactCellObject objectWithContactCellObject:contactCellObject contactIndexPath:selectedIndexPath];
+    SelectedContactCellObject *selectContactObject = [SelectedContactCellObject objectWithContactCellObject:contactCellObject contactIndexPath:contactIndexPath];
     if ([selectedContactCellObjects containsObject:selectContactObject]) {
         [selectedContactCellObjects removeObject:selectContactObject];
         contactCellObject.isSelected = NO;
@@ -408,8 +407,8 @@ NSUInteger const kMaxContactSelect = 5;
         return;
     }
     
-    if (selectedIndexPath) {
-        [self.contactTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:selectedIndexPath]
+    if (contactIndexPath) {
+        [self.contactTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:contactIndexPath]
                                      withRowAnimation:UITableViewRowAnimationNone];
     }
     [self.selectContactCollectionView reloadData];

@@ -8,7 +8,9 @@
 
 #import "ZAContactBusiness.h"
 
-@implementation ZAContactBusiness
+@implementation ZAContactBusiness {
+    NSMutableArray *contactBusinessModels;
+}
 
 + (instancetype)sharedInstance {
     static ZAContactBusiness *zaContactBusiness;
@@ -23,7 +25,7 @@
 {
     self = [super init];
     if (self) {
-        _contactBusinessModels = [NSMutableArray new];
+        contactBusinessModels = [NSMutableArray new];
         _contactScanner = [ZAContactScanner new];
     }
     return self;
@@ -35,10 +37,11 @@
 }
 
 - (void)getContactsWithSortType:(ZAContactSortType)sortType
-                          completionHandler:(void (^)(void))completionHandler
-                               errorHandler:(void (^)(ZAContactError error))errorHandler {
-    if (self.contactBusinessModels.count > 0) {
-        completionHandler();
+              completionHandler:(void (^)(NSArray<ZAContactBusinessModel *> * _Nonnull))completionHandler
+                   errorHandler:(void (^)(ZAContactError))errorHandler {
+
+    if (contactBusinessModels.count > 0) {
+        completionHandler(contactBusinessModels);
         return;
     }
     
@@ -47,58 +50,72 @@
     [self.contactScanner requestAccessContactWithAccessGranted:^{
         dispatch_queue_t queue = dispatch_queue_create("getContacts", nil);
         dispatch_async(queue, ^{
-            [weakSelf.contactScanner getContactsWithSortType:sortType completionHandler:^(NSArray<ZAContact *> * _Nonnull contacts) {
-                for (ZAContact* contact in contacts) {
-                    ZAContactBusinessModel *contactBusinessModel = [ZAContactBusinessModel objectWithZaContact:contact];
-                    if (contactBusinessModel != nil) {
-                        [weakSelf.contactBusinessModels addObject:contactBusinessModel];
-                    }
+            [weakSelf.contactScanner getContactsWithSortType:sortType completionHandler:^(ZAContact * _Nonnull contact) {
+                ZAContactBusinessModel *contactBusinessModel = [ZAContactBusinessModel objectWithZaContact:contact];
+                if (contactBusinessModel != nil) {
+                    [self->contactBusinessModels addObject:contactBusinessModel];
                 }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completionHandler();
-                });
             } errorHandler:^(ZAContactError error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     errorHandler(error);
                 });
             }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionHandler(self->contactBusinessModels);
+            });
         });
     } accessDenied:^{
         errorHandler(ZAContactErrorNotPermitterByUser);
     }];
 }
 
-- (NSArray *)mapTitleAndContacts {
-    NSMutableArray *titleAndContacts = [NSMutableArray new];
-    NSMutableArray *nonAlphabetContacts = [NSMutableArray new];
-    NSString *previousTitle;
-    NSString *allAlphabets = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    for (ZAContactBusinessModel *zaContactBusinessModel in self.contactBusinessModels) {
-        if ([zaContactBusinessModel.fullNameRemoveDiacritics length] > 0) {
-            NSString *currentTitle = [[zaContactBusinessModel.fullNameRemoveDiacritics substringToIndex:1] uppercaseString];
-            bool isAlphabet = [allAlphabets containsString:currentTitle];
-            if (![currentTitle isEqualToString:previousTitle] && isAlphabet) {
-                [titleAndContacts addObject:currentTitle];
-                previousTitle = currentTitle;
+- (void)getContactsAndMapTitleWithSortType:(ZAContactSortType)sortType
+                         completionHandler:(void (^)(NSArray * _Nonnull))completionHandler
+                              errorHandler:(void (^)(ZAContactError))errorHandler {
+    
+    [self getContactsWithSortType:sortType completionHandler:^(NSArray<ZAContactBusinessModel *> * _Nonnull contacts) {
+        dispatch_queue_t queue = dispatch_queue_create("getContactsAndMapTitle", nil);
+        dispatch_async(queue, ^{
+            NSMutableArray *titleAndContacts = [NSMutableArray new];
+            NSMutableArray *nonAlphabetContacts = [NSMutableArray new];
+            NSString *previousTitle;
+            NSString * regexA = @"^[A-Z]$";
+            NSPredicate *predA = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexA];
+            
+            for (ZAContactBusinessModel *zaContactBusinessModel in contacts) {
+                if ([zaContactBusinessModel.fullNameRemoveDiacritics length] > 0) {
+                    NSString *currentTitle = [[zaContactBusinessModel.fullNameRemoveDiacritics substringToIndex:1] uppercaseString];
+                    bool isAlphabet = [predA evaluateWithObject:currentTitle];
+                    
+                    if (![currentTitle isEqualToString:previousTitle] && isAlphabet) {
+                        [titleAndContacts addObject:currentTitle];
+                        previousTitle = currentTitle;
+                    }
+                    if (isAlphabet) {
+                        [titleAndContacts addObject:zaContactBusinessModel];
+                    } else {
+                        [nonAlphabetContacts addObject:zaContactBusinessModel];
+                    }
+                }
             }
-            if (isAlphabet) {
-                [titleAndContacts addObject:zaContactBusinessModel];
+            
+            if ([nonAlphabetContacts count] > 0) {
+                [nonAlphabetContacts insertObject:@"#" atIndex:0];
+                [nonAlphabetContacts addObjectsFromArray:titleAndContacts];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionHandler(nonAlphabetContacts);
+                });
             } else {
-                [nonAlphabetContacts addObject:zaContactBusinessModel];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                   completionHandler(titleAndContacts);
+                });
             }
-        }
-    }
-    if ([nonAlphabetContacts count] > 0) {
-        [nonAlphabetContacts insertObject:@"#" atIndex:0];
-        [nonAlphabetContacts addObjectsFromArray:titleAndContacts];
-        return nonAlphabetContacts;
-    } else {
-        return titleAndContacts;
-    }
+        });
+    } errorHandler:errorHandler];
 }
 
 - (void)clearAllContacts {
-    [self.contactBusinessModels removeAllObjects];
+    [contactBusinessModels removeAllObjects];
 }
 
 @end
