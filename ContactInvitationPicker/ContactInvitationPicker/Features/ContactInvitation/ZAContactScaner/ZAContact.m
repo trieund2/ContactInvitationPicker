@@ -26,6 +26,7 @@
         _identifier = contact.identifier;
         _givenName = contact.givenName;
         _familyName = contact.familyName;
+        _middleName = contact.middleName;
     }
     return self;
 }
@@ -45,6 +46,7 @@
                     [self.phoneNumbers addObject:phoneNumber];
                 }
             }
+            CFRelease(phonesRef);
         }
         if (self.phoneNumbers.count == 0) {
             return NULL;

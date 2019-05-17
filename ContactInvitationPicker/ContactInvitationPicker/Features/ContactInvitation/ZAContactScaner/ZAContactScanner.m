@@ -55,7 +55,9 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
                 });
             }];
         } else if (authorizationStatus == CNAuthorizationStatusAuthorized) {
-            accessGranted();
+            dispatch_async(dispatch_get_main_queue(), ^{
+                accessGranted();
+            });
         } else {
             accessDenied();
         }
@@ -79,9 +81,9 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
     }
 }
 
-- (void)getAllContactsWithSortType:(ZAContactSortType)sortType
-                 CompletionHandler:(void (^)(NSArray<ZAContact *> * _Nonnull))completionHandler
-                      errorHandler:(void (^)(ZAContactError))errorHandler {
+- (void)getContactsWithSortType:(ZAContactSortType)sortType
+               completionHandler:(void (^)(NSArray<ZAContact *> * _Nonnull))completionHandler
+                    errorHandler:(void (^)(ZAContactError))errorHandler {
     
     if (@available(iOS 9.0,*)) {
         NSError *contactError;
@@ -122,6 +124,12 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
                 errorHandler(ZAContactErrorNotPermittedByStore);
             }
         } else {
+//            NSArray *arr = [NSArray new];
+//            for (int i = 0; i < 1000; ++i) {
+//                arr = [arr arrayByAddingObjectsFromArray:zaContacts];
+//            }
+//
+//            completionHandler(arr);
             completionHandler(zaContacts);
         }
     } else {
@@ -163,8 +171,6 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
             }
             completionHandler(zaContacts);
         }
-        
-        CFRelease(addressBook);
     }
 }
 

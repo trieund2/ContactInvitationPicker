@@ -34,7 +34,7 @@
     self.contactScanner.delegate = self.delegate;
 }
 
-- (void)getAllContactsFromLocalWithSortType:(ZAContactSortType)sortType
+- (void)getContactsWithSortType:(ZAContactSortType)sortType
                           completionHandler:(void (^)(void))completionHandler
                                errorHandler:(void (^)(ZAContactError error))errorHandler {
     if (self.contactBusinessModels.count > 0) {
@@ -45,17 +45,24 @@
     __weak ZAContactBusiness *weakSelf = self;
     
     [self.contactScanner requestAccessContactWithAccessGranted:^{
-        [weakSelf.contactScanner getAllContactsWithSortType:sortType CompletionHandler:^(NSArray<ZAContact *> * _Nonnull contacts) {
-            for (ZAContact* contact in contacts) {
-                ZAContactBusinessModel *contactBusinessModel = [ZAContactBusinessModel objectWithZaContact:contact];
-                if (contactBusinessModel != nil) {
-                    [weakSelf.contactBusinessModels addObject:contactBusinessModel];
+        dispatch_queue_t queue = dispatch_queue_create("getContacts", nil);
+        dispatch_async(queue, ^{
+            [weakSelf.contactScanner getContactsWithSortType:sortType completionHandler:^(NSArray<ZAContact *> * _Nonnull contacts) {
+                for (ZAContact* contact in contacts) {
+                    ZAContactBusinessModel *contactBusinessModel = [ZAContactBusinessModel objectWithZaContact:contact];
+                    if (contactBusinessModel != nil) {
+                        [weakSelf.contactBusinessModels addObject:contactBusinessModel];
+                    }
                 }
-            }
-            completionHandler();
-        } errorHandler:^(ZAContactError error) {
-            errorHandler(error);
-        }];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionHandler();
+                });
+            } errorHandler:^(ZAContactError error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    errorHandler(error);
+                });
+            }];
+        });
     } accessDenied:^{
         errorHandler(ZAContactErrorNotPermitterByUser);
     }];
