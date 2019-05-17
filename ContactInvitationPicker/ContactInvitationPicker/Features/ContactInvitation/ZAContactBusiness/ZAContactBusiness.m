@@ -69,7 +69,7 @@
     }];
 }
 
-- (void)getContactsAndMapTitleWithSortType:(ZAContactSortType)sortType
+- (void)getContactsAndMapTitlesWithSortType:(ZAContactSortType)sortType
                          completionHandler:(void (^)(NSArray * _Nonnull))completionHandler
                               errorHandler:(void (^)(ZAContactError))errorHandler {
     

@@ -24,9 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
               completionHandler:(void (^)(NSArray<ZAContactBusinessModel *>* contacts)) completionHandler
                    errorHandler:(void (^)(ZAContactError error)) errorHandler;
 
-- (void)getContactsAndMapTitleWithSortType:(ZAContactSortType)sortType
-                         completionHandler:(void (^)(NSArray* contacts)) completionHandler
-                              errorHandler:(void (^)(ZAContactError error)) errorHandler;
+- (void)getContactsAndMapTitlesWithSortType:(ZAContactSortType)sortType
+                          completionHandler:(void (^)(NSArray* contacts)) completionHandler
+                               errorHandler:(void (^)(ZAContactError error)) errorHandler;
 
 - (void)clearAllContacts;
 

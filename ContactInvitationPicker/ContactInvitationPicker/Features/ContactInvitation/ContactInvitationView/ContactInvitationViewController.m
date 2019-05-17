@@ -292,7 +292,7 @@ NSUInteger const kMaxContactSelect = 5;
 
 - (void)getAllContacts {
     __weak ContactInvitationViewController *weakSelf = self;
-    [[ZAContactBusiness sharedInstance] getContactsAndMapTitleWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^(NSArray * _Nonnull contacts) {
+    [[ZAContactBusiness sharedInstance] getContactsAndMapTitlesWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^(NSArray * _Nonnull contacts) {
         if (contacts.count == 0) {
             [weakSelf presentAlertWithTitle:@"Không có liên hệ nào trong danh bạ" message:@"Thêm bạn bè vào danh bạ để bắt đầu sử dụng" actions:NULL];
             return;
