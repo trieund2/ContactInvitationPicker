@@ -55,9 +55,7 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
                 });
             }];
         } else if (authorizationStatus == CNAuthorizationStatusAuthorized) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                accessGranted();
-            });
+            accessGranted();
         } else {
             accessDenied();
         }

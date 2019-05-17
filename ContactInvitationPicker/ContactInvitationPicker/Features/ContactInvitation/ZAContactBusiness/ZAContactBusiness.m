@@ -8,9 +8,13 @@
 
 #import "ZAContactBusiness.h"
 
-@implementation ZAContactBusiness {
-    NSMutableArray *contactBusinessModels;
-}
+@interface ZAContactBusiness ()
+
+@property (nonatomic) NSMutableArray *contactBusinessModels;
+
+@end
+
+@implementation ZAContactBusiness
 
 + (instancetype)sharedInstance {
     static ZAContactBusiness *zaContactBusiness;
@@ -25,8 +29,16 @@
 {
     self = [super init];
     if (self) {
-        contactBusinessModels = [NSMutableArray new];
+        _contactBusinessModels = [NSMutableArray new];
         _contactScanner = [ZAContactScanner new];
+    }
+    return self;
+}
+
+- (instancetype)initWithDelegate:(id<ZAContactScannerDelegate>)delegate {
+    self = [self init];
+    if (self) {
+        _delegate = delegate;
     }
     return self;
 }
@@ -39,29 +51,32 @@
 - (void)getContactsWithSortType:(ZAContactSortType)sortType
               completionHandler:(void (^)(NSArray<ZAContactBusinessModel *> * _Nonnull))completionHandler
                    errorHandler:(void (^)(ZAContactError))errorHandler {
-
-    if (contactBusinessModels.count > 0) {
-        completionHandler(contactBusinessModels);
-        return;
-    }
     
     __weak ZAContactBusiness *weakSelf = self;
     
     [self.contactScanner requestAccessContactWithAccessGranted:^{
-        dispatch_queue_t queue = dispatch_queue_create("getContacts", nil);
+        dispatch_queue_t queue = dispatch_queue_create("getContactsAndTitles", nil);
         dispatch_async(queue, ^{
+            if (self.contactBusinessModels.count > 0) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionHandler(self.contactBusinessModels);
+                });
+                return;
+            }
+            
             [weakSelf.contactScanner getContactsWithSortType:sortType completionHandler:^(ZAContact * _Nonnull contact) {
                 ZAContactBusinessModel *contactBusinessModel = [ZAContactBusinessModel objectWithZaContact:contact];
                 if (contactBusinessModel != nil) {
-                    [self->contactBusinessModels addObject:contactBusinessModel];
+                    [weakSelf.contactBusinessModels addObject:contactBusinessModel];
                 }
             } errorHandler:^(ZAContactError error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     errorHandler(error);
                 });
             }];
+            
             dispatch_async(dispatch_get_main_queue(), ^{
-                completionHandler(self->contactBusinessModels);
+                completionHandler(weakSelf.contactBusinessModels);
             });
         });
     } accessDenied:^{
@@ -73,16 +88,36 @@
                          completionHandler:(void (^)(NSArray * _Nonnull))completionHandler
                               errorHandler:(void (^)(ZAContactError))errorHandler {
     
-    [self getContactsWithSortType:sortType completionHandler:^(NSArray<ZAContactBusinessModel *> * _Nonnull contacts) {
-        dispatch_queue_t queue = dispatch_queue_create("getContactsAndMapTitle", nil);
+    __weak ZAContactBusiness *weakSelf = self;
+    
+    [self.contactScanner requestAccessContactWithAccessGranted:^{
+        dispatch_queue_t queue = dispatch_queue_create("getContacts", nil);
         dispatch_async(queue, ^{
+            if (self.contactBusinessModels.count > 0) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionHandler(self.contactBusinessModels);
+                });
+                return;
+            }
+            
+            [weakSelf.contactScanner getContactsWithSortType:sortType completionHandler:^(ZAContact * _Nonnull contact) {
+                ZAContactBusinessModel *contactBusinessModel = [ZAContactBusinessModel objectWithZaContact:contact];
+                if (contactBusinessModel != nil) {
+                    [weakSelf.contactBusinessModels addObject:contactBusinessModel];
+                }
+            } errorHandler:^(ZAContactError error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    errorHandler(error);
+                });
+            }];
+            
             NSMutableArray *titleAndContacts = [NSMutableArray new];
             NSMutableArray *nonAlphabetContacts = [NSMutableArray new];
             NSString *previousTitle;
             NSString * regexA = @"^[A-Z]$";
             NSPredicate *predA = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexA];
             
-            for (ZAContactBusinessModel *zaContactBusinessModel in contacts) {
+            for (ZAContactBusinessModel *zaContactBusinessModel in self.contactBusinessModels) {
                 if ([zaContactBusinessModel.fullNameRemoveDiacritics length] > 0) {
                     NSString *currentTitle = [[zaContactBusinessModel.fullNameRemoveDiacritics substringToIndex:1] uppercaseString];
                     bool isAlphabet = [predA evaluateWithObject:currentTitle];
@@ -103,19 +138,25 @@
                 [nonAlphabetContacts insertObject:@"#" atIndex:0];
                 [nonAlphabetContacts addObjectsFromArray:titleAndContacts];
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    for (int i = 0; i < 12; ++i) {
+                        [nonAlphabetContacts addObjectsFromArray:nonAlphabetContacts];
+                    }
+                    NSLog(@"contacts size %li", nonAlphabetContacts.count);
                     completionHandler(nonAlphabetContacts);
                 });
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                   completionHandler(titleAndContacts);
+                    completionHandler(titleAndContacts);
                 });
             }
         });
-    } errorHandler:errorHandler];
+    } accessDenied:^{
+        errorHandler(ZAContactErrorNotPermitterByUser);
+    }];
 }
 
 - (void)clearAllContacts {
-    [contactBusinessModels removeAllObjects];
+    [self.contactBusinessModels removeAllObjects];
 }
 
 @end
