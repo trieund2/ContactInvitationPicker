@@ -8,7 +8,8 @@
 
 #import "ZAContactScanner.h"
 
-@implementation ZAContactScanner
+@implementation ZAContactScanner {
+}
 
 - (instancetype)init
 {
@@ -25,13 +26,12 @@
 }
 
 - (void)contactStoreDidChange:(NSNotification *)notification {
-    if (self.onContactChange) {
-        self.onContactChange();
-    }
+    [self.delegate contactDidChange];
 }
 
 void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDictionaryRef info,void *context) {
-    
+    ZAContactScanner *scanner = (__bridge ZAContactScanner *)context;
+    [scanner.delegate contactDidChange];
 }
 
 #pragma mark Interface methods

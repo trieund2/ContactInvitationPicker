@@ -41,7 +41,8 @@ NSUInteger const kMaxContactSelect = 5;
     self.view.backgroundColor = UIColorFromRGB(0xE9E9E9);
     listContactCellObject = [NSMutableArray new];
     selectedContactCellObjects = [NSMutableArray new];
-    _contactBusiness = [ZAContactBusiness new];
+    [ZAContactBusiness sharedInstance].delegate = self;
+    
     [self addNavigationBarItems];
     [self initSelectContactCollectionView];
     [self initSearchBar];
@@ -49,11 +50,6 @@ NSUInteger const kMaxContactSelect = 5;
     [self initSearchResultTableView];
     [self initEmptySearchResultLabel];
     [self getAllContacts];
-    
-    __weak ContactInvitationViewController *weakSelf = self;
-    self.contactBusiness.onContactChange = ^{
-        [weakSelf getAllContacts];
-    };
 }
 
 #pragma mark UI actions
@@ -296,14 +292,14 @@ NSUInteger const kMaxContactSelect = 5;
 
 - (void)getAllContacts {
     __weak ContactInvitationViewController *weakSelf = self;
-    [self.contactBusiness getAllContactsFromLocalWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^{
-        if ([weakSelf.contactBusiness.contactBusinessModels count] == 0) {
+    [[ZAContactBusiness sharedInstance] getAllContactsFromLocalWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^{
+        if ([[ZAContactBusiness sharedInstance].contactBusinessModels count] == 0) {
             [weakSelf presentAlertWithTitle:@"Không có liên hệ nào trong danh bạ" message:@"Thêm bạn bè vào danh bạ để bắt đầu sử dụng" actions:NULL];
             return;
         }
         
         [self->listContactCellObject removeAllObjects];
-        NSArray *results = [weakSelf.contactBusiness mapTitleAndContacts];
+        NSArray *results = [[ZAContactBusiness sharedInstance] mapTitleAndContacts];
         for (id object in results) {
             if ([object isKindOfClass:NSString.class]) {
                 [self->listContactCellObject addObject:object];
@@ -461,6 +457,29 @@ NSUInteger const kMaxContactSelect = 5;
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
     [controller dismissViewControllerAnimated:YES completion:^{}];
+}
+
+#pragma mark - ZAContactScannerDelegate
+
+- (void)contactDidChange {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Danh bạ của bạn thay đổi"
+                                                                             message:@"Bạn có muốn cập nhật danh sách bạn bè?"
+                                                                      preferredStyle:(UIAlertControllerStyleAlert)];
+    __weak ContactInvitationViewController *weakSelf = self;
+    UIAlertAction *okAlertAction = [UIAlertAction actionWithTitle:@"Đồng ý" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        [self->selectedContactCellObjects removeAllObjects];
+        [weakSelf.selectContactCollectionView reloadData];
+        [weakSelf performAnimateSelectedContactCollectionView];
+        [[ZAContactBusiness sharedInstance] clearAllContacts];
+        [weakSelf getAllContacts];
+    }];
+    
+    UIAlertAction *cancelAlertAction = [UIAlertAction actionWithTitle:@"Huỷ" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        [alertController dismissViewControllerAnimated:YES completion:NULL];
+    }];
+    [alertController addAction:okAlertAction];
+    [alertController addAction:cancelAlertAction];
+    [self presentViewController:alertController animated:YES completion:NULL];
 }
 
 @end

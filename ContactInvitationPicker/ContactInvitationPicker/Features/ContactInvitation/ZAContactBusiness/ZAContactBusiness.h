@@ -19,13 +19,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) ZAContactScanner *contactScanner;
 @property (nonatomic, readonly) NSMutableArray *contactBusinessModels;
-@property (nonatomic) void (^onContactChange)(void);
+@property (weak, nonatomic) id<ZAContactScannerDelegate> delegate;
 
 - (void)getAllContactsFromLocalWithSortType:(ZAContactSortType)sortType
                           completionHandler:(void (^)(void)) completionHandler
                                errorHandler:(void (^)(ZAContactError error)) errorHandler;
 
 - (NSArray *)mapTitleAndContacts;
+- (void)clearAllContacts;
 
 @end
 

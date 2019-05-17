@@ -29,16 +29,19 @@
     return self;
 }
 
-- (void)setOnContactChange:(void (^)(void))onContactChange {
-    _onContactChange = onContactChange;
-    self.contactScanner.onContactChange = self.onContactChange;
+- (void)setDelegate:(id<ZAContactScannerDelegate>)delegate {
+    _delegate = delegate;
+    self.contactScanner.delegate = self.delegate;
 }
 
 - (void)getAllContactsFromLocalWithSortType:(ZAContactSortType)sortType
                           completionHandler:(void (^)(void))completionHandler
                                errorHandler:(void (^)(ZAContactError error))errorHandler {
+    if (self.contactBusinessModels.count > 0) {
+        completionHandler();
+        return;
+    }
     
-    [self.contactBusinessModels removeAllObjects];
     __weak ZAContactBusiness *weakSelf = self;
     
     [self.contactScanner requestAccessContactWithAccessGranted:^{
@@ -85,6 +88,10 @@
     } else {
         return titleAndContacts;
     }
+}
+
+- (void)clearAllContacts {
+    [self.contactBusinessModels removeAllObjects];
 }
 
 @end

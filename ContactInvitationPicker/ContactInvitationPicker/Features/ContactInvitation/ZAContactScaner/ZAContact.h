@@ -18,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, copy) NSString *givenName;
 @property (nonatomic, readonly, copy) NSString *middleName;
 @property (nonatomic, readonly, copy) NSString *familyName;
-@property (nonatomic, readonly) NSData *thumnailImageData;
 @property (nonatomic, readonly) NSMutableArray<NSString *> *phoneNumbers;
 
 - (id)initFromContact:(CNContact * _Nullable)contact API_AVAILABLE(ios(9.0));

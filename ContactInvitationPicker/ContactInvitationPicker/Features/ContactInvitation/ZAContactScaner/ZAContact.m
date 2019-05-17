@@ -26,8 +26,6 @@
         _identifier = contact.identifier;
         _givenName = contact.givenName;
         _familyName = contact.familyName;
-        _middleName = contact.middleName;
-        _thumnailImageData = contact.imageData;
     }
     return self;
 }
@@ -47,16 +45,15 @@
                     [self.phoneNumbers addObject:phoneNumber];
                 }
             }
-            CFRelease(phonesRef);
         }
         if (self.phoneNumbers.count == 0) {
             return NULL;
         }
         
+        _identifier = [@(ABRecordGetRecordID(recordRef)) stringValue];
         _givenName = (__bridge NSString * _Nonnull)(ABRecordCopyValue(recordRef, kABPersonFirstNameProperty));
         _familyName = (__bridge NSString * _Nonnull)(ABRecordCopyValue(recordRef, kABPersonLastNameProperty));
         _middleName = (__bridge NSString * _Nonnull)(ABRecordCopyValue(recordRef, kABPersonMiddleNameProperty));
-        _thumnailImageData = (__bridge NSData * _Nonnull)(ABPersonCopyImageData(recordRef));
     }
     return self;
 }

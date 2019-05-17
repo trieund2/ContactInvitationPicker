@@ -25,9 +25,16 @@ typedef NS_ENUM(NSInteger, ZAContactError) {
     ZAContactErrorNotPermitterByUser  = 1
 };
 
+@protocol ZAContactScannerDelegate <NSObject>
+
+@required
+- (void)contactDidChange;
+
+@end
+
 @interface ZAContactScanner : NSObject
 
-@property (nonatomic) void (^onContactChange)(void);
+@property (weak, nonatomic) id<ZAContactScannerDelegate> delegate;
 
 - (void)requestAccessContactWithAccessGranted:(void (^)(void)) accessGranted
                                  accessDenied:(void (^)(void)) accessDenied;

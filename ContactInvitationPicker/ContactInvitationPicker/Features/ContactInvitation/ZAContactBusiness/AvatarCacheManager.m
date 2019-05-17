@@ -12,6 +12,15 @@
 @private NIImageMemoryCache *imageMemoryCache;
 }
 
++ (instancetype)sharedInstance {
+    static AvatarCacheManager *avatarCacheManager;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        avatarCacheManager = [AvatarCacheManager new];
+    });
+    return avatarCacheManager;
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -24,17 +33,10 @@
     return self;
 }
 
-+ (instancetype)sharedInstance {
-    static AvatarCacheManager *avatarCacheManager;
-    static dispatch_once_t once;
-    dispatch_once(&once, ^{
-        avatarCacheManager = [AvatarCacheManager new];
-    });
-    return avatarCacheManager;
-}
-
 - (void)storeImage:(UIImage *)image withKey:(NSString *)key {
-    [imageMemoryCache storeObject:image withName:key];
+    if (![imageMemoryCache containsObjectWithName:key]) {
+        [imageMemoryCache storeObject:image withName:key];
+    }
 }
 
 - (UIImage *)getImageWithKey:(NSString *)key {
