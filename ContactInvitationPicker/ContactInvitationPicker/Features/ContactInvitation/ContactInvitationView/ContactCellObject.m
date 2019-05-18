@@ -13,7 +13,7 @@
 
 @implementation ContactCellObject
 
-- (id)initFromContact:(ZAContactBusinessModel *)contact {
+- (id)initFromContact:(ZAContactAdapterModel *)contact {
     if (self = [super initWithCellClass:[ContactTableViewCell class]]) {
         self.fullName = contact.fullName;
         self.fullNameRemoveDiacritics = contact.fullNameRemoveDiacritics;
@@ -33,7 +33,7 @@
     return self;
 }
 
-+ (id)objectFromContact:(ZAContactBusinessModel *)contact {
++ (id)objectFromContact:(ZAContactAdapterModel *)contact {
     return [[self alloc] initFromContact:contact];
 }
 

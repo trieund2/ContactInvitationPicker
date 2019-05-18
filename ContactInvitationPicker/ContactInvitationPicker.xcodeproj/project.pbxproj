@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35E46660562C3A49B80657EA /* Pods_ContactInvitationPickerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD0CF92641251A2A7FD88B9 /* Pods_ContactInvitationPickerTests.framework */; };
 		415B122D192C42E64F993789 /* Pods_ContactInvitationPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70E88E72B63E1DB8BBBBBA3 /* Pods_ContactInvitationPicker.framework */; };
+		A14FF599228FF8FC00B435B7 /* ZAContactAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A14FF598228FF8FC00B435B7 /* ZAContactAdapter.m */; };
 		A15B47542282E87B0049BAC1 /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = A15B47532282E87B0049BAC1 /* UIViewController+Alert.m */; };
 		A160AC1C228193150024BB49 /* NIMutableCollectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AA692281930E0024BB49 /* NIMutableCollectionViewModel.m */; };
 		A160AC1D228193150024BB49 /* NICollectionViewActions.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AA6B2281930E0024BB49 /* NICollectionViewActions.m */; };
@@ -108,8 +109,7 @@
 		A1FAF67A2281452A006E024B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF6792281452A006E024B /* main.m */; };
 		A1FAF69222816304006E024B /* ZAContactScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF69122816304006E024B /* ZAContactScanner.m */; };
 		C51D5A0222847A3700C09868 /* CNMutableContact+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = C51D5A0122847A3700C09868 /* CNMutableContact+Init.m */; };
-		C53AA8132287C56700A1AA22 /* ZAContactBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = C53AA8122287C56700A1AA22 /* ZAContactBusiness.m */; };
-		C53AA8162287D54D00A1AA22 /* ZAContactBusinessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C53AA8152287D54D00A1AA22 /* ZAContactBusinessModel.m */; };
+		C53AA8162287D54D00A1AA22 /* ZAContactAdapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C53AA8152287D54D00A1AA22 /* ZAContactAdapterModel.m */; };
 		C55A3E502284729200E8CC55 /* NIContactCellTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */; };
 		C55A3E522284782F00E8CC55 /* NIContactCellObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A3E512284782F00E8CC55 /* NIContactCellObjectTest.m */; };
 		C56FBAF92283275D007E8A0E /* SelectedContactCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C56FBAF82283275D007E8A0E /* SelectedContactCellObject.m */; };
@@ -142,6 +142,7 @@
 		082EAB65DF099E82AD525937 /* Pods-ContactInvitationPickerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPickerTests.debug.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPickerTests/Pods-ContactInvitationPickerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6963FF30EFB8273DBDB9BA88 /* Pods-ContactInvitationPickerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPickerTests.release.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPickerTests/Pods-ContactInvitationPickerTests.release.xcconfig"; sourceTree = "<group>"; };
 		8FD0CF92641251A2A7FD88B9 /* Pods_ContactInvitationPickerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContactInvitationPickerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A14FF598228FF8FC00B435B7 /* ZAContactAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZAContactAdapter.m; sourceTree = "<group>"; };
 		A15B47522282E87B0049BAC1 /* UIViewController+Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
 		A15B47532282E87B0049BAC1 /* UIViewController+Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
 		A160AA692281930E0024BB49 /* NIMutableCollectionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMutableCollectionViewModel.m; sourceTree = "<group>"; };
@@ -372,10 +373,9 @@
 		BF6427FB7F1EADD16AD32BFD /* Pods-ContactInvitationPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPicker.debug.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker.debug.xcconfig"; sourceTree = "<group>"; };
 		C51D5A0022847A3700C09868 /* CNMutableContact+Init.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CNMutableContact+Init.h"; sourceTree = "<group>"; };
 		C51D5A0122847A3700C09868 /* CNMutableContact+Init.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNMutableContact+Init.m"; sourceTree = "<group>"; };
-		C53AA8112287C56700A1AA22 /* ZAContactBusiness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAContactBusiness.h; sourceTree = "<group>"; };
-		C53AA8122287C56700A1AA22 /* ZAContactBusiness.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAContactBusiness.m; sourceTree = "<group>"; };
-		C53AA8142287D54D00A1AA22 /* ZAContactBusinessModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAContactBusinessModel.h; sourceTree = "<group>"; };
-		C53AA8152287D54D00A1AA22 /* ZAContactBusinessModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAContactBusinessModel.m; sourceTree = "<group>"; };
+		C53AA8112287C56700A1AA22 /* ZAContactAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAContactAdapter.h; sourceTree = "<group>"; };
+		C53AA8142287D54D00A1AA22 /* ZAContactAdapterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAContactAdapterModel.h; sourceTree = "<group>"; };
+		C53AA8152287D54D00A1AA22 /* ZAContactAdapterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAContactAdapterModel.m; sourceTree = "<group>"; };
 		C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCellTest.m; sourceTree = "<group>"; };
 		C55A3E512284782F00E8CC55 /* NIContactCellObjectTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCellObjectTest.m; sourceTree = "<group>"; };
 		C56FBAF222831FAA007E8A0E /* SelectedContactCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedContactCollectionViewCell.h; sourceTree = "<group>"; };
@@ -868,10 +868,10 @@
 		C53AA8102287C51B00A1AA22 /* ZAContactBusiness */ = {
 			isa = PBXGroup;
 			children = (
-				C53AA8142287D54D00A1AA22 /* ZAContactBusinessModel.h */,
-				C53AA8152287D54D00A1AA22 /* ZAContactBusinessModel.m */,
-				C53AA8112287C56700A1AA22 /* ZAContactBusiness.h */,
-				C53AA8122287C56700A1AA22 /* ZAContactBusiness.m */,
+				C53AA8142287D54D00A1AA22 /* ZAContactAdapterModel.h */,
+				C53AA8152287D54D00A1AA22 /* ZAContactAdapterModel.m */,
+				C53AA8112287C56700A1AA22 /* ZAContactAdapter.h */,
+				A14FF598228FF8FC00B435B7 /* ZAContactAdapter.m */,
 				A183CC34228BB3F500E1F322 /* ZAContactAvatarCache.h */,
 				A183CC35228BB3F500E1F322 /* ZAContactAvatarCache.m */,
 			);
@@ -1112,6 +1112,7 @@
 				A160AC36228193150024BB49 /* NICellBackgrounds.m in Sources */,
 				A160ACA2228193150024BB49 /* UIView+NIStyleable.m in Sources */,
 				A160ACB7228193150024BB49 /* NIViewRecycler.m in Sources */,
+				A14FF599228FF8FC00B435B7 /* ZAContactAdapter.m in Sources */,
 				A160AC3D228193150024BB49 /* NINetworkTableViewController.m in Sources */,
 				A1DBA1B5228294330036FD95 /* AFURLConnectionOperation.m in Sources */,
 				C5EEFA022281CAA100044ED9 /* UIProgressView+AFNetworking.m in Sources */,
@@ -1200,11 +1201,10 @@
 				A160AC1E228193150024BB49 /* NICollectionViewCellFactory.m in Sources */,
 				A160AC9C228193150024BB49 /* NICSSRuleset.m in Sources */,
 				A1DBA1B3228294330036FD95 /* AFURLResponseSerialization.m in Sources */,
-				C53AA8132287C56700A1AA22 /* ZAContactBusiness.m in Sources */,
 				A183CC36228BB3F500E1F322 /* ZAContactAvatarCache.m in Sources */,
 				A160ACB9228193150024BB49 /* NINetworkActivity.m in Sources */,
 				A1DBA1B9228294330036FD95 /* AFURLSessionManager.m in Sources */,
-				C53AA8162287D54D00A1AA22 /* ZAContactBusinessModel.m in Sources */,
+				C53AA8162287D54D00A1AA22 /* ZAContactAdapterModel.m in Sources */,
 				A160ACC3228193150024BB49 /* NIPaths.m in Sources */,
 				A160ACBA228193150024BB49 /* NIDeviceOrientation.m in Sources */,
 				A1DBA1BB228294330036FD95 /* AFHTTPSessionManager.m in Sources */,

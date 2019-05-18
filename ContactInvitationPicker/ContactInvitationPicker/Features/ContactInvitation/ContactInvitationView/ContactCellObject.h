@@ -7,7 +7,7 @@
 //
 
 #import "NICellFactory.h"
-#import "ZAContactBusinessModel.h"
+#import "ZAContactAdapterModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,8 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) UIColor *shortNameBackgroundColor;
 @property (nonatomic) BOOL isSelected;
 
-- (id)initFromContact:(ZAContactBusinessModel *)contact;
-+ (id)objectFromContact:(ZAContactBusinessModel *)contact;
+- (id)initFromContact:(ZAContactAdapterModel *)contact;
++ (id)objectFromContact:(ZAContactAdapterModel *)contact;
 
 @end
 

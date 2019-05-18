@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "ContactInviNavigationTitleView.h"
-#import "ZAContactBusiness.h"
+#import "ZAContactAdapter.h"
 
 extern NSUInteger const kMaxContactSelect;
 

@@ -1,5 +1,5 @@
 //
-//  ZAContactBusinessModel.h
+//  ZAContactAdapterModel.h
 //  ContactInvitationPicker
 //
 //  Created by MACOS on 5/12/19.
@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZAContactBusinessModel : NSObject
+@interface ZAContactAdapterModel : NSObject
 
 @property (nonatomic, readonly, copy) NSString *givenName;
 @property (nonatomic, readonly, copy) NSString *middleName;

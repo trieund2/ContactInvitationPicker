@@ -1,14 +1,14 @@
 //
-//  ZAContactBusinessModel.m
+//  ZAContactAdapterModel.m
 //  ContactInvitationPicker
 //
 //  Created by MACOS on 5/12/19.
 //  Copyright © 2019 com.trieund. All rights reserved.
 //
 
-#import "ZAContactBusinessModel.h"
+#import "ZAContactAdapterModel.h"
 
-@implementation ZAContactBusinessModel
+@implementation ZAContactAdapterModel
 
 - (id)initWithZaContact:(ZAContact *)zaContact {
     if (self = [super init]) {

@@ -1,60 +1,80 @@
 //
-//  ZAContactBusiness.m
+//  ZAContactAdapter.m
 //  ContactInvitationPicker
 //
 //  Created by MACOS on 5/12/19.
 //  Copyright © 2019 com.trieund. All rights reserved.
 //
 
-#import "ZAContactBusiness.h"
+#import "ZAContactAdapter.h"
 
-@interface ZAContactBusiness ()
+@interface ZAContactAdapter ()
 
 @property (nonatomic, readonly) ZAContactScanner *contactScanner;
 @property (nonatomic, readonly) dispatch_queue_t queue;
 
 @end
 
-@implementation ZAContactBusiness
+@implementation ZAContactAdapter
 
-- (instancetype)initWithDelegate:(id<ZAContactScannerDelegate>)delegate {
+#pragma mark - Init
+
++ (instancetype)shareInstance {
+    static ZAContactAdapter *contactAdapter;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        contactAdapter = [ZAContactAdapter new];
+    });
+    return contactAdapter;
+}
+
+- (instancetype)init
+{
     self = [super init];
     if (self) {
-        _delegate = delegate;
-        _contactScanner = [[ZAContactScanner alloc] initWithDelegate:self.delegate];
+        _contactScanner = [ZAContactScanner new];
         _queue = dispatch_queue_create("getContactsAndMapTitles", nil);
     }
     return self;
 }
 
+#pragma mark - Override
+
+- (void)setDelegate:(id<ZAContactScannerDelegate>)delegate {
+    _delegate = delegate;
+    self.contactScanner.delegate = self.delegate;
+}
+
+#pragma mark - Interface methods
+
 - (void)getOrderContactsWithSortType:(ZAContactSortType)sortType
                    completionHandler:(void (^)(NSArray * _Nonnull))completionHandler
                         errorHandler:(void (^)(ZAContactError))errorHandler {
     
-    __weak ZAContactBusiness *weakSelf = self;
+    __weak ZAContactAdapter *weakSelf = self;
     
     [self.contactScanner requestAccessContactWithAccessGranted:^{
         dispatch_async(weakSelf.queue, ^{
-            NSMutableArray *contactBusinessModels = [NSMutableArray new];
+            NSMutableArray *contactAdapterModels = [NSMutableArray new];
             NSMutableArray *nonAlphabetContacts = [NSMutableArray new];
             NSPredicate *predA = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^[A-Z]$"];
             __block NSString *previousTitle;
             
             [weakSelf.contactScanner getContactsWithSortType:sortType completionHandler:^(ZAContact * _Nonnull contact) {
-                ZAContactBusinessModel *contactBusinessModel = [ZAContactBusinessModel objectWithZaContact:contact];
-                if (contactBusinessModel) {
-                    if ([contactBusinessModel.fullNameRemoveDiacritics length] > 0) {
-                        NSString *currentTitle = [[contactBusinessModel.fullNameRemoveDiacritics substringToIndex:1] uppercaseString];
+                ZAContactAdapterModel *contactAdapterModel = [ZAContactAdapterModel objectWithZaContact:contact];
+                if (contactAdapterModel) {
+                    if ([contactAdapterModel.fullNameRemoveDiacritics length] > 0) {
+                        NSString *currentTitle = [[contactAdapterModel.fullNameRemoveDiacritics substringToIndex:1] uppercaseString];
                         bool isAlphabet = [predA evaluateWithObject:currentTitle];
                         
                         if (![currentTitle isEqualToString:previousTitle] && isAlphabet) {
-                            [contactBusinessModels addObject:currentTitle];
+                            [contactAdapterModels addObject:currentTitle];
                             previousTitle = currentTitle;
                         }
                         if (isAlphabet) {
-                            [contactBusinessModels addObject:contactBusinessModel];
+                            [contactAdapterModels addObject:contactAdapterModel];
                         } else {
-                            [nonAlphabetContacts addObject:contactBusinessModel];
+                            [nonAlphabetContacts addObject:contactAdapterModel];
                         }
                     }
                 }
@@ -66,13 +86,13 @@
             
             if ([nonAlphabetContacts count] > 0) {
                 [nonAlphabetContacts insertObject:@"#" atIndex:0];
-                [nonAlphabetContacts addObjectsFromArray:contactBusinessModels];
+                [nonAlphabetContacts addObjectsFromArray:contactAdapterModels];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completionHandler(nonAlphabetContacts);
                 });
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    completionHandler(contactBusinessModels);
+                    completionHandler(contactAdapterModels);
                 });
             }
         });

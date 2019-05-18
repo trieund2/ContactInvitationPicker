@@ -29,7 +29,6 @@ NSUInteger const kMaxContactSelect = 5;
 @property (nonatomic) NSLayoutConstraint *selectContactCollectionViewHeightConst;
 @property (nonatomic) NSLayoutConstraint *searchBarTopConst;
 @property (nonatomic) UIButton *sendButton;
-@property (nonatomic) ZAContactBusiness *contactBusiness;
 
 @end
 
@@ -42,7 +41,7 @@ NSUInteger const kMaxContactSelect = 5;
     self.view.backgroundColor = UIColorFromRGB(0xE9E9E9);
     _listContactCellObjects = [NSMutableArray new];
     _selectedContactCellObjects = [NSMutableArray new];
-    _contactBusiness = [[ZAContactBusiness alloc] initWithDelegate:self];
+    [ZAContactAdapter shareInstance].delegate = self;
     
     [self addNavigationBarItems];
     [self initSelectContactCollectionView];
@@ -293,7 +292,7 @@ NSUInteger const kMaxContactSelect = 5;
 
 - (void)getAllContacts {
     __weak ContactInvitationViewController *weakSelf = self;
-    [self.contactBusiness getOrderContactsWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^(NSArray * _Nonnull contacts) {
+    [[ZAContactAdapter shareInstance] getOrderContactsWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^(NSArray * _Nonnull contacts) {
         if (contacts.count == 0) {
             [weakSelf presentAlertWithTitle:@"Không có liên hệ nào trong danh bạ" message:@"Thêm bạn bè vào danh bạ để bắt đầu sử dụng" actions:NULL];
             return;
@@ -303,8 +302,8 @@ NSUInteger const kMaxContactSelect = 5;
         for (id object in contacts) {
             if ([object isKindOfClass:NSString.class]) {
                 [weakSelf.listContactCellObjects addObject:object];
-            } else if ([object isKindOfClass:ZAContactBusinessModel.class]) {
-                [weakSelf.listContactCellObjects addObject:[ContactCellObject objectFromContact:(ZAContactBusinessModel *)object]];
+            } else if ([object isKindOfClass:ZAContactAdapterModel.class]) {
+                [weakSelf.listContactCellObjects addObject:[ContactCellObject objectFromContact:(ZAContactAdapterModel *)object]];
             }
         }
         

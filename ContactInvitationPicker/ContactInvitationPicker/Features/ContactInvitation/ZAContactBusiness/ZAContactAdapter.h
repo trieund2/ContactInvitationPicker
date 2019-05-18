@@ -1,5 +1,5 @@
 //
-//  ZAContactBusiness.h
+//  ZAContactAdapter.h
 //  ContactInvitationPicker
 //
 //  Created by MACOS on 5/12/19.
@@ -8,16 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "ZAContactScanner.h"
-#import "ZAContactBusinessModel.h"
+#import "ZAContactAdapterModel.h"
 #import "NSString+Extension.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZAContactBusiness : NSObject
+@interface ZAContactAdapter : NSObject
 
 @property (weak, nonatomic) id<ZAContactScannerDelegate> delegate;
 
-- (instancetype)initWithDelegate:(id<ZAContactScannerDelegate>)delegate;
++ (instancetype)shareInstance;
 
 - (void)getOrderContactsWithSortType:(ZAContactSortType)sortType
                    completionHandler:(void (^)(NSArray* contacts)) completionHandler
