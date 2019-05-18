@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZAContactBusinessModel : NSObject
 
-@property (nonatomic, readonly,copy) NSString *givenName;
+@property (nonatomic, readonly, copy) NSString *givenName;
 @property (nonatomic, readonly, copy) NSString *middleName;
 @property (nonatomic, readonly, copy) NSString *familyName;
 @property (nonatomic, readonly, copy) NSString *fullName;

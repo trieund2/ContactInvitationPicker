@@ -1,22 +1,24 @@
 //
-//  AvatarCacheManager.m
+//  ZAContactAvatarCache.m
 //  ContactInvitationPicker
 //
 //  Created by CPU12202 on 5/15/19.
 //  Copyright © 2019 com.trieund. All rights reserved.
 //
 
-#import "AvatarCacheManager.h"
+#import "ZAContactAvatarCache.h"
 
-@implementation AvatarCacheManager {
+@implementation ZAContactAvatarCache {
+    
 @private NIImageMemoryCache *imageMemoryCache;
+    
 }
 
 + (instancetype)sharedInstance {
-    static AvatarCacheManager *avatarCacheManager;
+    static ZAContactAvatarCache *avatarCacheManager;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
-        avatarCacheManager = [AvatarCacheManager new];
+        avatarCacheManager = [ZAContactAvatarCache new];
     });
     return avatarCacheManager;
 }

@@ -21,7 +21,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    UIImage *avatarImage = [[AvatarCacheManager sharedInstance] getImageWithKey:selectedContactCellObject.fullNameRemoveDiacritics];
+    UIImage *avatarImage = [[ZAContactAvatarCache sharedInstance] getImageWithKey:selectedContactCellObject.fullNameRemoveDiacritics];
     if (avatarImage) {
         [self.avatarImageView setImage:avatarImage];
     } else if (selectedContactCellObject) {

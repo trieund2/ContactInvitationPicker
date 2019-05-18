@@ -11,7 +11,7 @@
 @interface ZAContactBusiness ()
 
 @property (nonatomic, readonly) ZAContactScanner *contactScanner;
-@property (nonatomic) dispatch_queue_t queue;
+@property (nonatomic, readonly) dispatch_queue_t queue;
 
 @end
 

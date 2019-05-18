@@ -1,5 +1,5 @@
 //
-//  AvatarCacheManager.h
+//  ZAContactAvatarCache.h
 //  ContactInvitationPicker
 //
 //  Created by CPU12202 on 5/15/19.
@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AvatarCacheManager : NSObject
+@interface ZAContactAvatarCache : NSObject
 
 + (instancetype)sharedInstance;
 - (void)storeImage:(UIImage*)image withKey:(NSString*)key;
