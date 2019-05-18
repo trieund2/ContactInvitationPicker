@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) id<ZAContactScannerDelegate> delegate;
 
-+ (instancetype)shareInstance;
++ (instancetype)sharedInstance;
 
 - (void)getOrderContactsWithSortType:(ZAContactSortType)sortType
                    completionHandler:(void (^)(NSArray* contacts)) completionHandler

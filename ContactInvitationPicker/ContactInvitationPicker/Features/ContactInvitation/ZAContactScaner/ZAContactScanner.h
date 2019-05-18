@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, ZAContactError) {
 
 @property (weak, nonatomic) id<ZAContactScannerDelegate> delegate;
 
-- (instancetype)initWithDelegate:(id<ZAContactScannerDelegate>)delegate;
++ (instancetype)sharedInstance;
 
 - (void)requestAccessContactWithAccessGranted:(void (^)(void)) accessGranted
                                  accessDenied:(void (^)(void)) accessDenied;

@@ -9,6 +9,16 @@
 #import "ZAContactScanner.h"
 
 @implementation ZAContactScanner {
+    
+}
+
++ (instancetype)sharedInstance {
+    static ZAContactScanner *contactScanner;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        contactScanner = [ZAContactScanner new];
+    });
+    return contactScanner;
 }
 
 - (instancetype)init
@@ -21,14 +31,6 @@
             ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
             ABAddressBookRegisterExternalChangeCallback(addressBook, addressBookContactsExtenalChangeCallback, (__bridge void *)(self));
         }
-    }
-    return self;
-}
-
-- (instancetype)initWithDelegate:(id<ZAContactScannerDelegate>)delegate {
-    self = [self init];
-    if (self) {
-        _delegate = delegate;
     }
     return self;
 }

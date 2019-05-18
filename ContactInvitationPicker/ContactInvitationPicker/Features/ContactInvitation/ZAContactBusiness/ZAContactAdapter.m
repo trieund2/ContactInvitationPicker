@@ -10,7 +10,6 @@
 
 @interface ZAContactAdapter ()
 
-@property (nonatomic, readonly) ZAContactScanner *contactScanner;
 @property (nonatomic, readonly) dispatch_queue_t queue;
 
 @end
@@ -19,7 +18,7 @@
 
 #pragma mark - Init
 
-+ (instancetype)shareInstance {
++ (instancetype)sharedInstance {
     static ZAContactAdapter *contactAdapter;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
@@ -32,7 +31,6 @@
 {
     self = [super init];
     if (self) {
-        _contactScanner = [ZAContactScanner new];
         _queue = dispatch_queue_create("getContactsAndMapTitles", nil);
     }
     return self;
@@ -42,7 +40,7 @@
 
 - (void)setDelegate:(id<ZAContactScannerDelegate>)delegate {
     _delegate = delegate;
-    self.contactScanner.delegate = self.delegate;
+    [ZAContactScanner sharedInstance].delegate = self.delegate;
 }
 
 #pragma mark - Interface methods
@@ -53,14 +51,14 @@
     
     __weak ZAContactAdapter *weakSelf = self;
     
-    [self.contactScanner requestAccessContactWithAccessGranted:^{
+    [[ZAContactScanner sharedInstance] requestAccessContactWithAccessGranted:^{
         dispatch_async(weakSelf.queue, ^{
             NSMutableArray *contactAdapterModels = [NSMutableArray new];
             NSMutableArray *nonAlphabetContacts = [NSMutableArray new];
             NSPredicate *predA = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^[A-Z]$"];
             __block NSString *previousTitle;
             
-            [weakSelf.contactScanner getContactsWithSortType:sortType completionHandler:^(ZAContact * _Nonnull contact) {
+            [[ZAContactScanner sharedInstance] getContactsWithSortType:sortType completionHandler:^(ZAContact * _Nonnull contact) {
                 ZAContactAdapterModel *contactAdapterModel = [ZAContactAdapterModel objectWithZaContact:contact];
                 if (contactAdapterModel) {
                     if ([contactAdapterModel.fullNameRemoveDiacritics length] > 0) {

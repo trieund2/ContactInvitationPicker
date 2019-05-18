@@ -41,7 +41,7 @@ NSUInteger const kMaxContactSelect = 5;
     self.view.backgroundColor = UIColorFromRGB(0xE9E9E9);
     _listContactCellObjects = [NSMutableArray new];
     _selectedContactCellObjects = [NSMutableArray new];
-    [ZAContactAdapter shareInstance].delegate = self;
+    [ZAContactAdapter sharedInstance].delegate = self;
     
     [self addNavigationBarItems];
     [self initSelectContactCollectionView];
@@ -292,7 +292,7 @@ NSUInteger const kMaxContactSelect = 5;
 
 - (void)getAllContacts {
     __weak ContactInvitationViewController *weakSelf = self;
-    [[ZAContactAdapter shareInstance] getOrderContactsWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^(NSArray * _Nonnull contacts) {
+    [[ZAContactAdapter sharedInstance] getOrderContactsWithSortType:(ZAContactSortTypeFamilyName) completionHandler:^(NSArray * _Nonnull contacts) {
         if (contacts.count == 0) {
             [weakSelf presentAlertWithTitle:@"Không có liên hệ nào trong danh bạ" message:@"Thêm bạn bè vào danh bạ để bắt đầu sử dụng" actions:NULL];
             return;

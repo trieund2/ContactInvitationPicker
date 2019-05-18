@@ -8,11 +8,14 @@
 
 #import "ZAContactAvatarCache.h"
 
-@implementation ZAContactAvatarCache {
-    
-@private NIImageMemoryCache *imageMemoryCache;
-    
-}
+@interface ZAContactAvatarCache ()
+
+@property (nonatomic) NIImageMemoryCache *imageMemoryCache;
+@property (nonatomic) dispatch_queue_t queue;
+
+@end
+
+@implementation ZAContactAvatarCache
 
 + (instancetype)sharedInstance {
     static ZAContactAvatarCache *avatarCacheManager;
@@ -27,22 +30,31 @@
 {
     self = [super init];
     if (self) {
-        imageMemoryCache = [[NIImageMemoryCache alloc] init];
+        _imageMemoryCache = [[NIImageMemoryCache alloc] init];
         long cacheSize = 20 * 1024 * 1024 * 8;
         int numberBitColor = 32;
-        [imageMemoryCache setMaxNumberOfPixels:cacheSize/numberBitColor];
+        [self.imageMemoryCache setMaxNumberOfPixels:cacheSize/numberBitColor];
+        
+        _queue = dispatch_queue_create("ZAContactAvatarCache", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }
 
 - (void)storeImage:(UIImage *)image withKey:(NSString *)key {
-    if (![imageMemoryCache containsObjectWithName:key]) {
-        [imageMemoryCache storeObject:image withName:key];
-    }
+    dispatch_barrier_async(self.queue, ^{
+        if (![self.imageMemoryCache containsObjectWithName:key]) {
+            [self.imageMemoryCache storeObject:image withName:key];
+        }
+    });
 }
 
 - (UIImage *)getImageWithKey:(NSString *)key {
-    return [imageMemoryCache objectWithName:key];
+    __weak ZAContactAvatarCache *weakSelf = self;
+    __block UIImage *cacheResult;
+    dispatch_sync(self.queue, ^{
+        cacheResult = [weakSelf.imageMemoryCache objectWithName:key];
+    });
+    return cacheResult;
 }
 
 @end
