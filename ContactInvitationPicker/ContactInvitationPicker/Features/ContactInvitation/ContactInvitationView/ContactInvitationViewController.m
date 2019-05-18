@@ -7,15 +7,6 @@
 //
 
 #import "ContactInvitationViewController.h"
-#import "ZAContactScanner.h"
-#import "NimbusModels.h"
-#import "ContactCellObject.h"
-#import "NICollectionViewModel.h"
-#import "NICollectionViewCellFactory.h"
-#import "SelectedContactCellObject.h"
-#import "UIColorFromRGB.h"
-#import "UIViewController+Alert.h"
-#import "NSString+Extension.h"
 
 NSUInteger const kMaxContactSelect = 5;
 
@@ -23,8 +14,6 @@ NSUInteger const kMaxContactSelect = 5;
 
 @property (nonatomic) NSMutableArray<ContactCellObject *> *listContactCellObjects;
 @property (nonatomic) NSMutableArray<SelectedContactCellObject *> *selectedContactCellObjects;
-@property (nonatomic) NITableViewModel *contactTableViewModel;
-@property (nonatomic) NITableViewModel *searchResultTableViewModel;
 @property (nonatomic) NICollectionViewModel *selectedContactCollectionViewModel;
 @property (nonatomic) NSLayoutConstraint *selectContactCollectionViewHeightConst;
 @property (nonatomic) NSLayoutConstraint *searchBarTopConst;
@@ -46,7 +35,7 @@ NSUInteger const kMaxContactSelect = 5;
     [self addNavigationBarItems];
     [self initSelectContactCollectionView];
     [self initSearchBar];
-    [self initContactsTableView];
+    [self initListContactView];
     [self initSearchResultTableView];
     [self initEmptySearchResultLabel];
     [self getAllContacts];
@@ -181,37 +170,35 @@ NSUInteger const kMaxContactSelect = 5;
                                nil]];
 }
 
-- (void)initContactsTableView {
-    _contactTableView = [UITableView new];
-    self.contactTableView.delegate = self;
-    self.contactTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-    self.contactTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+- (void)initListContactView {
+    _listContactView = [ListContactView new];
+    self.listContactView.delegate = self;
     
-    self.contactTableView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:self.contactTableView];
+    self.listContactView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.listContactView];
     [self.view addConstraints:[NSArray arrayWithObjects:
-                               [NSLayoutConstraint constraintWithItem:self.contactTableView
+                               [NSLayoutConstraint constraintWithItem:self.listContactView
                                                             attribute:(NSLayoutAttributeTop)
                                                             relatedBy:(NSLayoutRelationEqual)
                                                                toItem:self.searchBar
                                                             attribute:(NSLayoutAttributeBottom)
                                                            multiplier:1
                                                              constant:4],
-                               [NSLayoutConstraint constraintWithItem:self.contactTableView
+                               [NSLayoutConstraint constraintWithItem:self.listContactView
                                                             attribute:(NSLayoutAttributeRight)
                                                             relatedBy:(NSLayoutRelationEqual)
                                                                toItem:self.view
                                                             attribute:(NSLayoutAttributeRight)
                                                            multiplier:1
                                                              constant:0],
-                               [NSLayoutConstraint constraintWithItem:self.contactTableView
+                               [NSLayoutConstraint constraintWithItem:self.listContactView
                                                             attribute:(NSLayoutAttributeLeft)
                                                             relatedBy:(NSLayoutRelationEqual)
                                                                toItem:self.view
                                                             attribute:(NSLayoutAttributeLeft)
                                                            multiplier:1
                                                              constant:0],
-                               [NSLayoutConstraint constraintWithItem:self.contactTableView
+                               [NSLayoutConstraint constraintWithItem:self.listContactView
                                                             attribute:(NSLayoutAttributeBottom)
                                                             relatedBy:(NSLayoutRelationEqual)
                                                                toItem:self.view
@@ -222,40 +209,38 @@ NSUInteger const kMaxContactSelect = 5;
 }
 
 - (void)initSearchResultTableView {
-    _searchResultTableView = [UITableView new];
-    self.searchResultTableView.delegate = self;
-    self.searchResultTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-    self.searchResultTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.searchResultTableView setHidden:YES];
+    _searchResultListContactView = [ListContactView new];
+    self.searchResultListContactView.delegate = self;
+    [self.searchResultListContactView setHidden:YES];
     
-    self.searchResultTableView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:self.searchResultTableView];
+    self.searchResultListContactView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.searchResultListContactView];
     [self.view addConstraints:[NSArray arrayWithObjects:
-                               [NSLayoutConstraint constraintWithItem:self.searchResultTableView
+                               [NSLayoutConstraint constraintWithItem:self.searchResultListContactView
                                                             attribute:(NSLayoutAttributeTop)
                                                             relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.contactTableView
+                                                               toItem:self.listContactView
                                                             attribute:(NSLayoutAttributeTop)
                                                            multiplier:1
                                                              constant:0],
-                               [NSLayoutConstraint constraintWithItem:self.searchResultTableView
+                               [NSLayoutConstraint constraintWithItem:self.searchResultListContactView
                                                             attribute:(NSLayoutAttributeBottom)
                                                             relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.contactTableView
+                                                               toItem:self.listContactView
                                                             attribute:(NSLayoutAttributeBottom)
                                                            multiplier:1
                                                              constant:0],
-                               [NSLayoutConstraint constraintWithItem:self.searchResultTableView
+                               [NSLayoutConstraint constraintWithItem:self.searchResultListContactView
                                                             attribute:(NSLayoutAttributeLeft)
                                                             relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.contactTableView
+                                                               toItem:self.listContactView
                                                             attribute:(NSLayoutAttributeLeft)
                                                            multiplier:1
                                                              constant:0],
-                               [NSLayoutConstraint constraintWithItem:self.searchResultTableView
+                               [NSLayoutConstraint constraintWithItem:self.searchResultListContactView
                                                             attribute:(NSLayoutAttributeRight)
                                                             relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.contactTableView
+                                                               toItem:self.listContactView
                                                             attribute:(NSLayoutAttributeRight)
                                                            multiplier:1
                                                              constant:0],
@@ -269,19 +254,19 @@ NSUInteger const kMaxContactSelect = 5;
     [self.emptySearchResultLabel setHidden:YES];
     
     self.emptySearchResultLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.searchResultTableView addSubview:self.emptySearchResultLabel];
+    [self.searchResultListContactView addSubview:self.emptySearchResultLabel];
     [self.view addConstraints:[NSArray arrayWithObjects:
                                [NSLayoutConstraint constraintWithItem:self.emptySearchResultLabel
                                                             attribute:(NSLayoutAttributeCenterX)
                                                             relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.searchResultTableView
+                                                               toItem:self.searchResultListContactView
                                                             attribute:(NSLayoutAttributeCenterX)
                                                            multiplier:1
                                                              constant:0],
                                [NSLayoutConstraint constraintWithItem:self.emptySearchResultLabel
                                                             attribute:(NSLayoutAttributeTop)
                                                             relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.searchResultTableView
+                                                               toItem:self.searchResultListContactView
                                                             attribute:(NSLayoutAttributeTop)
                                                            multiplier:1
                                                              constant:70],
@@ -306,14 +291,7 @@ NSUInteger const kMaxContactSelect = 5;
                 [weakSelf.listContactCellObjects addObject:[ContactCellObject objectFromContact:(ZAContactAdapterModel *)object]];
             }
         }
-        
-        weakSelf.contactTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:weakSelf.listContactCellObjects
-                                                                                 delegate:(id)[NICellFactory class]];
-        weakSelf.contactTableView.dataSource = weakSelf.contactTableViewModel;
-        [weakSelf.contactTableViewModel setSectionIndexType:(NITableViewModelSectionIndexDynamic)
-                                                showsSearch:YES
-                                               showsSummary:YES];
-        [weakSelf.contactTableView reloadData];
+        [weakSelf.listContactView setDataSourceWithSectionedArray:weakSelf.listContactCellObjects];
     } errorHandler:^(ZAContactError error) {
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Đồng ý" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
@@ -354,43 +332,28 @@ NSUInteger const kMaxContactSelect = 5;
     }
 }
 
-#pragma mark - UITableViewDelegate
+#pragma mark - ListContactViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *view = [UIView new];
-    view.frame = CGRectMake(0, 0, tableView.frame.size.width, 30);
-    view.backgroundColor = UIColor.whiteColor;
-    NSString *title = [self.contactTableViewModel tableView:tableView titleForHeaderInSection:section];
-    UILabel *label = [UILabel new];
-    label.text = title;
-    [label setFont:[UIFont systemFontOfSize:14]];
-    label.textColor = UIColorFromRGB(0x79848F);
-    label.frame = CGRectMake(6, 0, 100, 30);
-    [view addSubview:label];
-    return view;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)listContactView:(ListContactView *)listContactView didSelectRowAtIndexpath:(NSIndexPath *)indexPath {
     ContactCellObject *contactCellObject;
     NSIndexPath *contactIndexPath = indexPath;
     
-    if (tableView == self.contactTableView) {
-        contactCellObject = [self.contactTableViewModel objectAtIndexPath:indexPath];
-    } else if (tableView == self.searchResultTableView) {
-        contactCellObject = [self.searchResultTableViewModel objectAtIndexPath:indexPath];
-        contactIndexPath = [self.contactTableViewModel indexPathForObject:contactCellObject];
-        self.searchBar.text = @"";
-        [self.searchResultTableView setHidden:YES];
+    id object = [listContactView objectForIndexPath:indexPath];
+    if ([object isKindOfClass:ContactCellObject.class]) {
+        contactCellObject = (ContactCellObject *)object;
     } else {
         return;
+    }
+    
+    if (listContactView == self.searchResultListContactView) {
+        NSIndexPath *_indexPath = [self.listContactView indexPathForObject:contactCellObject];
+        if (_indexPath) {
+            contactIndexPath = _indexPath;
+        } else {
+            return;
+        }
+        self.searchBar.text = @"";
+        [self.searchResultListContactView setHidden:YES];
     }
     
     SelectedContactCellObject *selectContactObject = [SelectedContactCellObject objectWithContactCellObject:contactCellObject contactIndexPath:contactIndexPath];
@@ -401,16 +364,13 @@ NSUInteger const kMaxContactSelect = 5;
         [self.selectedContactCellObjects addObject:selectContactObject];
         contactCellObject.isSelected = YES;
     } else {
-        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        [listContactView deSelectRowAtIndexPath:indexPath animated:YES];
         NSString *message = [NSString stringWithFormat:@"%@ %lu %@", @"Bạn không được chọn quá", (unsigned long)kMaxContactSelect, @"người"];
         [self presentAlertWithTitle:@"Thông báo" message:message actions:nil];
         return;
     }
     
-    if (contactIndexPath) {
-        [self.contactTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:contactIndexPath]
-                                     withRowAnimation:UITableViewRowAnimationNone];
-    }
+    [self.listContactView reloadRowAtIndexPaths:[NSArray arrayWithObject:contactIndexPath]];
     [self.selectContactCollectionView reloadData];
     [self updateSendButtonState];
     [self performAnimateSelectedContactCollectionView];
@@ -421,18 +381,14 @@ NSUInteger const kMaxContactSelect = 5;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     SelectedContactCellObject *selectedContactCellObject = [self.selectedContactCollectionViewModel objectAtIndexPath:indexPath];
-    [self.contactTableView selectRowAtIndexPath:selectedContactCellObject.contactIndexPath
-                                       animated:NO
-                                 scrollPosition:UITableViewScrollPositionNone];
-    [self.contactTableView scrollToRowAtIndexPath:selectedContactCellObject.contactIndexPath
-                                 atScrollPosition:UITableViewScrollPositionTop
-                                         animated:YES];
+    [self.listContactView selectRowAtIndexPath:selectedContactCellObject.contactIndexPath animated:YES];
+    [self.listContactView scrollToItemAtIndexPath:selectedContactCellObject.contactIndexPath];
 }
 
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    [self.searchResultTableView setHidden:([searchText isEqualToString:@""])];
+    [self.searchResultListContactView setHidden:([searchText isEqualToString:@""])];
     if ([searchText isEqualToString:@""]) {
         return;
     }
@@ -446,9 +402,7 @@ NSUInteger const kMaxContactSelect = 5;
         }
     }]];
     
-    self.searchResultTableViewModel = [[NITableViewModel alloc] initWithSectionedArray:searchContactResults delegate:(id)[NICellFactory class]];
-    self.searchResultTableView.dataSource = self.searchResultTableViewModel;
-    [self.searchResultTableView reloadData];
+    [self.searchResultListContactView setDataSourceWithListArray:searchContactResults];
     [self.emptySearchResultLabel setHidden:(searchContactResults.count != 0)];
 }
 

@@ -86,6 +86,7 @@
 		A160ACC7228193150024BB49 /* NIActions.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AC12228193140024BB49 /* NIActions.m */; };
 		A160ACC8228193150024BB49 /* NISnapshotRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AC13228193140024BB49 /* NISnapshotRotation.m */; };
 		A160ACC9228193150024BB49 /* NISDKAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AC14228193140024BB49 /* NISDKAvailability.m */; };
+		A18293032290079300833523 /* ListContactView.m in Sources */ = {isa = PBXBuildFile; fileRef = A18293022290079300833523 /* ListContactView.m */; };
 		A183CC36228BB3F500E1F322 /* ZAContactAvatarCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A183CC35228BB3F500E1F322 /* ZAContactAvatarCache.m */; };
 		A183CC3C228C134400E1F322 /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A183CC3B228C134400E1F322 /* ContactTableViewCell.m */; };
 		A183CC3E228C13BB00E1F322 /* SelectedContactCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A183CC3D228C13BB00E1F322 /* SelectedContactCollectionViewCell.m */; };
@@ -323,6 +324,8 @@
 		A160AC15228193140024BB49 /* UIResponder+NimbusCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+NimbusCore.h"; sourceTree = "<group>"; };
 		A160AC16228193140024BB49 /* NIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIError.h; sourceTree = "<group>"; };
 		A160AC17228193140024BB49 /* NIActions+Subclassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NIActions+Subclassing.h"; sourceTree = "<group>"; };
+		A18293012290079300833523 /* ListContactView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListContactView.h; sourceTree = "<group>"; };
+		A18293022290079300833523 /* ListContactView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListContactView.m; sourceTree = "<group>"; };
 		A183CC34228BB3F500E1F322 /* ZAContactAvatarCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAContactAvatarCache.h; sourceTree = "<group>"; };
 		A183CC35228BB3F500E1F322 /* ZAContactAvatarCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAContactAvatarCache.m; sourceTree = "<group>"; };
 		A183CC3B228C134400E1F322 /* ContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCell.m; sourceTree = "<group>"; };
@@ -759,6 +762,19 @@
 			path = core;
 			sourceTree = "<group>";
 		};
+		A1829300229006DA00833523 /* ListContactView */ = {
+			isa = PBXGroup;
+			children = (
+				A18293012290079300833523 /* ListContactView.h */,
+				A18293022290079300833523 /* ListContactView.m */,
+				A1DBA1BF228297230036FD95 /* ContactTableViewCell.h */,
+				A183CC3B228C134400E1F322 /* ContactTableViewCell.m */,
+				A1DBA1BC228294960036FD95 /* ContactCellObject.h */,
+				A1DBA1BD228294960036FD95 /* ContactCellObject.m */,
+			);
+			path = ListContactView;
+			sourceTree = "<group>";
+		};
 		A183CC3A228BC1E300E1F322 /* ContactInvitation */ = {
 			isa = PBXGroup;
 			children = (
@@ -849,12 +865,9 @@
 		A1FAF68F228146DE006E024B /* ContactInvitationView */ = {
 			isa = PBXGroup;
 			children = (
+				A1829300229006DA00833523 /* ListContactView */,
 				A1FAF66D22814529006E024B /* ContactInvitationViewController.h */,
 				A1FAF66E22814529006E024B /* ContactInvitationViewController.m */,
-				A1DBA1BC228294960036FD95 /* ContactCellObject.h */,
-				A1DBA1BD228294960036FD95 /* ContactCellObject.m */,
-				A1DBA1BF228297230036FD95 /* ContactTableViewCell.h */,
-				A183CC3B228C134400E1F322 /* ContactTableViewCell.m */,
 				C56FBAF222831FAA007E8A0E /* SelectedContactCollectionViewCell.h */,
 				A183CC3D228C13BB00E1F322 /* SelectedContactCollectionViewCell.m */,
 				C56FBAF72283275D007E8A0E /* SelectedContactCellObject.h */,
@@ -1160,6 +1173,7 @@
 				A160AC47228193150024BB49 /* NIInterapp.m in Sources */,
 				A160AC93228193150024BB49 /* UISearchBar+NIStyleable.m in Sources */,
 				A160AC1C228193150024BB49 /* NIMutableCollectionViewModel.m in Sources */,
+				A18293032290079300833523 /* ListContactView.m in Sources */,
 				A160AC96228193150024BB49 /* CSSTokens.m in Sources */,
 				A160AC9E228193150024BB49 /* NIStylesheetCache.m in Sources */,
 				A160ACC1228193150024BB49 /* NIState.m in Sources */,
