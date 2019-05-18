@@ -11,6 +11,7 @@
 @interface ZAContactBusiness ()
 
 @property (nonatomic, readonly) ZAContactScanner *contactScanner;
+@property (nonatomic) dispatch_queue_t queue;
 
 @end
 
@@ -21,6 +22,7 @@
     if (self) {
         _delegate = delegate;
         _contactScanner = [[ZAContactScanner alloc] initWithDelegate:self.delegate];
+        _queue = dispatch_queue_create("getContactsAndMapTitles", nil);
     }
     return self;
 }
@@ -32,9 +34,7 @@
     __weak ZAContactBusiness *weakSelf = self;
     
     [self.contactScanner requestAccessContactWithAccessGranted:^{
-        dispatch_queue_t queue = dispatch_queue_create("getContactsAndMapTitles", nil);
-        
-        dispatch_async(queue, ^{
+        dispatch_async(weakSelf.queue, ^{
             NSMutableArray *contactBusinessModels = [NSMutableArray new];
             NSMutableArray *nonAlphabetContacts = [NSMutableArray new];
             NSPredicate *predA = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^[A-Z]$"];
