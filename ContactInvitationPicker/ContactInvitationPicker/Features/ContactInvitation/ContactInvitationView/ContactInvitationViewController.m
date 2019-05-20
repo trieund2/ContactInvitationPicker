@@ -30,7 +30,7 @@ NSUInteger const kMaxContactSelect = 5;
     self.view.backgroundColor = UIColorFromRGB(0xE9E9E9);
     _listContactCellObjects = [NSMutableArray new];
     _selectedContactCellObjects = [NSMutableArray new];
-    [[ZAContactAdapter sharedInstance] delegateTo:self];
+    [[ZAContactAdapter sharedInstance] addDelegate:self];
     
     [self addNavigationBarItems];
     [self initSelectContactCollectionView];
@@ -415,9 +415,6 @@ NSUInteger const kMaxContactSelect = 5;
 #pragma mark - ZAContactScannerDelegate
 
 - (void)contactDidChange {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Danh bạ của bạn thay đổi"
-                                                                             message:@"Bạn có muốn cập nhật danh sách bạn bè?"
-                                                                      preferredStyle:(UIAlertControllerStyleAlert)];
     __weak ContactInvitationViewController *weakSelf = self;
     UIAlertAction *okAlertAction = [UIAlertAction actionWithTitle:@"Đồng ý" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         [weakSelf.selectedContactCellObjects removeAllObjects];
@@ -425,13 +422,10 @@ NSUInteger const kMaxContactSelect = 5;
         [weakSelf performAnimateSelectedContactCollectionView];
         [weakSelf getAllContacts];
     }];
-    
-    UIAlertAction *cancelAlertAction = [UIAlertAction actionWithTitle:@"Huỷ" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
-        [alertController dismissViewControllerAnimated:YES completion:NULL];
-    }];
-    [alertController addAction:okAlertAction];
-    [alertController addAction:cancelAlertAction];
-    [self presentViewController:alertController animated:YES completion:NULL];
+    UIAlertAction *cancelAlertAction = [UIAlertAction actionWithTitle:@"Huỷ" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {}];
+    [self presentAlertWithTitle:@"Danh bạ của bạn thay đổi"
+                        message:@"Bạn có muốn cập nhật danh sách bạn bè?"
+                        actions:[NSArray arrayWithObjects:okAlertAction, cancelAlertAction, nil]];
 }
 
 @end

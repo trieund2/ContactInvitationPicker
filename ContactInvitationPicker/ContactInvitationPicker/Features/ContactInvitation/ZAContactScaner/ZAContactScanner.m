@@ -10,7 +10,7 @@
 
 @interface ZAContactScanner ()
 
-@property (nonatomic) NSMutableSet *forwardDelegates;
+@property (nonatomic) NSMutableSet *delegates;
 @property (nonatomic) dispatch_queue_t queue;
 
 @end
@@ -31,7 +31,7 @@
 {
     self = [super init];
     if (self) {
-        self.forwardDelegates = NICreateNonRetainingMutableSet();
+        self.delegates = NICreateNonRetainingMutableSet();
         self.queue = dispatch_queue_create("ZAContactScanner", DISPATCH_QUEUE_SERIAL);
         
         if (@available(iOS 9.0, *)) {
@@ -56,32 +56,35 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
 - (void)handleContactChangeCallback {
     __weak ZAContactScanner *weakSelf = self;
     dispatch_async(self.queue, ^{
-        for (id<ZAContactScannerDelegate> delegate in weakSelf.forwardDelegates) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [delegate contactDidChange];
-            });
+        for (id<ZAContactScannerDelegate> delegate in weakSelf.delegates) {
+            if ([delegate respondsToSelector:@selector(contactDidChange)]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [delegate contactDidChange];
+                });
+            }
         }
     });
 }
 
 #pragma mark Interface methods
 
-- (void)delegateTo:(id<ZAContactScannerDelegate>)forwardDelegate {
+- (void)addDelegate:(id<ZAContactScannerDelegate>)delegate {
+    if (!delegate || ![delegate conformsToProtocol:@protocol(ZAContactScannerDelegate)]) {
+        return;
+    }
     __weak ZAContactScanner *weakSelf = self;
     dispatch_async(self.queue, ^{
-        if (forwardDelegate) {
-            [weakSelf.forwardDelegates addObject:forwardDelegate];
-        }
+        [weakSelf.delegates addObject:delegate];
     });
-    
 }
 
-- (void)removeDelegate:(id<ZAContactScannerDelegate>)forwardDelegate {
+- (void)removeDelegate:(id<ZAContactScannerDelegate>)delegate {
+    if (!delegate || ![delegate conformsToProtocol:@protocol(ZAContactScannerDelegate)]) {
+        return;
+    }
     __weak ZAContactScanner *weakSelf = self;
     dispatch_async(self.queue, ^{
-        if (forwardDelegate) {
-            [weakSelf.forwardDelegates removeObject:forwardDelegate];
-        }
+        [weakSelf.delegates removeObject:delegate];
     });
 }
 

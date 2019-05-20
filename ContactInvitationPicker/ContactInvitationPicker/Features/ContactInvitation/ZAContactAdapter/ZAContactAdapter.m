@@ -38,8 +38,8 @@
 
 #pragma mark - Interface methods
 
-- (void)delegateTo:(id<ZAContactScannerDelegate>)forwardDelegate {
-    [[ZAContactScanner sharedInstance] delegateTo:forwardDelegate];
+- (void)addDelegate:(id<ZAContactScannerDelegate>)forwardDelegate {
+    [[ZAContactScanner sharedInstance] addDelegate:forwardDelegate];
 }
 
 - (void)removeDelegate:(id<ZAContactScannerDelegate>)forwardDelegate {

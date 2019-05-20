@@ -47,8 +47,8 @@ typedef NS_ENUM(NSInteger, ZAContactError) {
               completionHandler:(void (^)(ZAContact * contact))completionHandler
                    errorHandler:(void (^)(ZAContactError error)) errorHandler;
 
-- (void)delegateTo:(id<ZAContactScannerDelegate>)forwardDelegate;
-- (void)removeDelegate:(id<ZAContactScannerDelegate>)forwardDelegate;
+- (void)addDelegate:(id<ZAContactScannerDelegate>)delegate;
+- (void)removeDelegate:(id<ZAContactScannerDelegate>)delegate;
 
 @end
 

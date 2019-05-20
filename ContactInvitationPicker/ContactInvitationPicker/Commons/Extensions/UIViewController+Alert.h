@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (Alert)
 
+- (UIViewController *)topViewController;
+
 - (void)presentAlertWithTitle:(NSString *)title
                       message:(NSString * _Nullable)message
                       actions:(NSArray * _Nullable)actions;

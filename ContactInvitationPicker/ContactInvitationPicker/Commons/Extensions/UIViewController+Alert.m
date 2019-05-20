@@ -11,6 +11,12 @@
 
 @implementation UIViewController (Alert)
 
+#pragma mark - Interface methods
+
+- (UIViewController *)topViewController {
+    return [self topViewControllerWithRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
+}
+
 - (void)presentAlertWithTitle:(NSString *)title message:(NSString * _Nullable)message actions:(NSArray * _Nullable)actions {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
                                                                    message:message
@@ -27,7 +33,24 @@
             [alert addAction:action];
         }
     }
-    [self presentViewController:alert animated:YES completion:^{}];
+    [[self topViewController] presentViewController:alert animated:YES completion:^{}];
+}
+
+#pragma mark - Private
+
+- (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController {
+    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+        UITabBarController* tabBarController = (UITabBarController*)rootViewController;
+        return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
+    } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController* navigationController = (UINavigationController*)rootViewController;
+        return [self topViewControllerWithRootViewController:navigationController.visibleViewController];
+    } else if (rootViewController.presentedViewController) {
+        UIViewController* presentedViewController = rootViewController.presentedViewController;
+        return [self topViewControllerWithRootViewController:presentedViewController];
+    } else {
+        return rootViewController;
+    }
 }
 
 @end

@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedInstance;
 
-- (void)delegateTo:(id<ZAContactScannerDelegate>)forwardDelegate;
-- (void)removeDelegate:(id<ZAContactScannerDelegate>)forwardDelegate;
+- (void)addDelegate:(id<ZAContactScannerDelegate>)delegate;
+- (void)removeDelegate:(id<ZAContactScannerDelegate>)delegate;
 
 - (void)getOrderContactsWithSortType:(ZAContactSortType)sortType
                    completionHandler:(void (^)(NSArray* contacts)) completionHandler
