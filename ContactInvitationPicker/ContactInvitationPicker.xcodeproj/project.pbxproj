@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35E46660562C3A49B80657EA /* Pods_ContactInvitationPickerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD0CF92641251A2A7FD88B9 /* Pods_ContactInvitationPickerTests.framework */; };
 		415B122D192C42E64F993789 /* Pods_ContactInvitationPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70E88E72B63E1DB8BBBBBA3 /* Pods_ContactInvitationPicker.framework */; };
+		A138E0E6229259D4000A4BF2 /* AppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A138E0E5229259D4000A4BF2 /* AppInfo.m */; };
 		A14FF599228FF8FC00B435B7 /* ZAContactAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A14FF598228FF8FC00B435B7 /* ZAContactAdapter.m */; };
 		A15B47542282E87B0049BAC1 /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = A15B47532282E87B0049BAC1 /* UIViewController+Alert.m */; };
 		A160AC1C228193150024BB49 /* NIMutableCollectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AA692281930E0024BB49 /* NIMutableCollectionViewModel.m */; };
@@ -143,6 +144,8 @@
 		082EAB65DF099E82AD525937 /* Pods-ContactInvitationPickerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPickerTests.debug.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPickerTests/Pods-ContactInvitationPickerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6963FF30EFB8273DBDB9BA88 /* Pods-ContactInvitationPickerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPickerTests.release.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPickerTests/Pods-ContactInvitationPickerTests.release.xcconfig"; sourceTree = "<group>"; };
 		8FD0CF92641251A2A7FD88B9 /* Pods_ContactInvitationPickerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContactInvitationPickerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A138E0E4229259D4000A4BF2 /* AppInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppInfo.h; sourceTree = "<group>"; };
+		A138E0E5229259D4000A4BF2 /* AppInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppInfo.m; sourceTree = "<group>"; };
 		A14FF598228FF8FC00B435B7 /* ZAContactAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZAContactAdapter.m; sourceTree = "<group>"; };
 		A15B47522282E87B0049BAC1 /* UIViewController+Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
 		A15B47532282E87B0049BAC1 /* UIViewController+Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
@@ -896,6 +899,8 @@
 			children = (
 				A15B474F2282E8330049BAC1 /* Extensions */,
 				A1A837C122840A3A00C353C9 /* UIColorFromRGB.h */,
+				A138E0E4229259D4000A4BF2 /* AppInfo.h */,
+				A138E0E5229259D4000A4BF2 /* AppInfo.m */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -1203,6 +1208,7 @@
 				A160AC34228193150024BB49 /* NIMutableTableViewModel.m in Sources */,
 				A160AC39228193150024BB49 /* NITextField.m in Sources */,
 				A160ACC6228193150024BB49 /* NIInMemoryCache.m in Sources */,
+				A138E0E6229259D4000A4BF2 /* AppInfo.m in Sources */,
 				A160AC9D228193150024BB49 /* UIActivityIndicatorView+NIStyleable.m in Sources */,
 				A160AC26228193150024BB49 /* NIPhotoScrubberView.m in Sources */,
 				C5EEFA042281CAA100044ED9 /* UIAlertView+AFNetworking.m in Sources */,

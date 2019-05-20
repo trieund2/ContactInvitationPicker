@@ -10,14 +10,16 @@
 #import "ZAContactScanner.h"
 #import "ZAContactAdapterModel.h"
 #import "NSString+Extension.h"
+#import "AppInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZAContactAdapter : NSObject
 
-@property (weak, nonatomic) id<ZAContactScannerDelegate> delegate;
-
 + (instancetype)sharedInstance;
+
+- (void)forwardingTo:(id<ZAContactScannerDelegate>)forwardDelegate;
+- (void)removeForwarding:(id<ZAContactScannerDelegate>)forwardDelegate;
 
 - (void)getOrderContactsWithSortType:(ZAContactSortType)sortType
                    completionHandler:(void (^)(NSArray* contacts)) completionHandler

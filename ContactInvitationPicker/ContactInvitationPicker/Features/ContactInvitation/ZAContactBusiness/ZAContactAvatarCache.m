@@ -41,9 +41,10 @@
 }
 
 - (void)storeImage:(UIImage *)image withKey:(NSString *)key {
+    __weak ZAContactAvatarCache *weakSelf = self;
     dispatch_barrier_async(self.queue, ^{
-        if (![self.imageMemoryCache containsObjectWithName:key]) {
-            [self.imageMemoryCache storeObject:image withName:key];
+        if (![weakSelf.imageMemoryCache containsObjectWithName:key]) {
+            [weakSelf.imageMemoryCache storeObject:image withName:key];
         }
     });
 }

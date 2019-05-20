@@ -11,6 +11,8 @@
 #import <AddressBook/AddressBook.h>
 #import "ZAContact.h"
 #import "NSString+Extension.h"
+#import "NimbusCore.h"
+#import <objc/runtime.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,6 +27,8 @@ typedef NS_ENUM(NSInteger, ZAContactError) {
     ZAContactErrorNotPermitterByUser  = 1
 };
 
+@class ZAContactScanner;
+
 @protocol ZAContactScannerDelegate <NSObject>
 
 @required
@@ -34,8 +38,6 @@ typedef NS_ENUM(NSInteger, ZAContactError) {
 
 @interface ZAContactScanner : NSObject
 
-@property (weak, nonatomic) id<ZAContactScannerDelegate> delegate;
-
 + (instancetype)sharedInstance;
 
 - (void)requestAccessContactWithAccessGranted:(void (^)(void)) accessGranted
@@ -44,6 +46,9 @@ typedef NS_ENUM(NSInteger, ZAContactError) {
 - (void)getContactsWithSortType:(ZAContactSortType)sortType
               completionHandler:(void (^)(ZAContact * contact))completionHandler
                    errorHandler:(void (^)(ZAContactError error)) errorHandler;
+
+- (void)forwardingTo:(id<ZAContactScannerDelegate>)forwardDelegate;
+- (void)removeForwarding:(id<ZAContactScannerDelegate>)forwardDelegate;
 
 @end
 

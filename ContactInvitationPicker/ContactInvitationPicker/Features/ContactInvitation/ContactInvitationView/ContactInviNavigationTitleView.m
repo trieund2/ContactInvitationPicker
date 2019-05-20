@@ -70,7 +70,7 @@
 }
 
 - (void)updateSubTitleWithNumberSelecContacts:(NSUInteger)number {
-    NSString *title = [@"Đã chọn: " stringByAppendingString:[NSString stringWithFormat:@"%li", number]];
+    NSString *title = [@"Đã chọn: " stringByAppendingString:[NSString stringWithFormat:@"%lu", (unsigned long)number]];
     self.subTitleLabel.text = title;
     __weak ContactInviNavigationTitleView *weakSelf = self;
     

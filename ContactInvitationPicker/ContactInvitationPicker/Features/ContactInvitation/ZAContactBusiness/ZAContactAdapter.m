@@ -10,7 +10,7 @@
 
 @interface ZAContactAdapter ()
 
-@property (nonatomic, readonly) dispatch_queue_t queue;
+@property (nonatomic, readonly) dispatch_queue_t getContactsQueue;
 
 @end
 
@@ -31,28 +31,27 @@
 {
     self = [super init];
     if (self) {
-        _queue = dispatch_queue_create("getContactsAndMapTitles", nil);
+        _getContactsQueue = dispatch_queue_create("getContactsAndMapTitles", DISPATCH_QUEUE_SERIAL);
     }
     return self;
 }
 
-#pragma mark - Override
+#pragma mark - Interface methods
 
-- (void)setDelegate:(id<ZAContactScannerDelegate>)delegate {
-    _delegate = delegate;
-    [ZAContactScanner sharedInstance].delegate = self.delegate;
+- (void)forwardingTo:(id<ZAContactScannerDelegate>)forwardDelegate {
+    [[ZAContactScanner sharedInstance] forwardingTo:forwardDelegate];
 }
 
-#pragma mark - Interface methods
+- (void)removeForwarding:(id<ZAContactScannerDelegate>)forwardDelegate {
+    [[ZAContactScanner sharedInstance] removeForwarding:forwardDelegate];
+}
 
 - (void)getOrderContactsWithSortType:(ZAContactSortType)sortType
                    completionHandler:(void (^)(NSArray * _Nonnull))completionHandler
                         errorHandler:(void (^)(ZAContactError))errorHandler {
     
-    __weak ZAContactAdapter *weakSelf = self;
-    
-    [[ZAContactScanner sharedInstance] requestAccessContactWithAccessGranted:^{
-        dispatch_async(weakSelf.queue, ^{
+    dispatch_async(self.getContactsQueue, ^{
+        [[ZAContactScanner sharedInstance] requestAccessContactWithAccessGranted:^{
             NSMutableArray *contactAdapterModels = [NSMutableArray new];
             NSMutableArray *nonAlphabetContacts = [NSMutableArray new];
             NSPredicate *predA = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^[A-Z]$"];
@@ -93,10 +92,10 @@
                     completionHandler(contactAdapterModels);
                 });
             }
-        });
-    } accessDenied:^{
-        errorHandler(ZAContactErrorNotPermitterByUser);
-    }];
+        } accessDenied:^{
+            errorHandler(ZAContactErrorNotPermitterByUser);
+        }];
+    });
 }
 
 @end

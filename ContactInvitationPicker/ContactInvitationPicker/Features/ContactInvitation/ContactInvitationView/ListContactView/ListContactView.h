@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath;
 - (void)reloadRowAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths;
 
-// Get Cell object
+// Get cell object
 - (id)objectForIndexPath:(NSIndexPath *)indexPath;
 - (NSIndexPath *)indexPathForObject:(id)object;
 

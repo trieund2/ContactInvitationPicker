@@ -8,8 +8,14 @@
 
 #import "ZAContactScanner.h"
 
+@interface ZAContactScanner ()
+
+@property (nonatomic) NSMutableSet *forwardDelegates;
+@property (nonatomic) dispatch_queue_t queue;
+
+@end
+
 @implementation ZAContactScanner {
-    
 }
 
 + (instancetype)sharedInstance {
@@ -25,6 +31,9 @@
 {
     self = [super init];
     if (self) {
+        self.forwardDelegates = NICreateNonRetainingMutableSet();
+        self.queue = dispatch_queue_create("ZAContactScanner", DISPATCH_QUEUE_SERIAL);
+        
         if (@available(iOS 9.0, *)) {
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contactStoreDidChange:) name:CNContactStoreDidChangeNotification object:nil];
         } else {
@@ -36,15 +45,45 @@
 }
 
 - (void)contactStoreDidChange:(NSNotification *)notification {
-    [self.delegate contactDidChange];
+    [self handleContactChangeCallback];
 }
 
 void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDictionaryRef info,void *context) {
     ZAContactScanner *scanner = (__bridge ZAContactScanner *)context;
-    [scanner.delegate contactDidChange];
+    [scanner handleContactChangeCallback];
+}
+
+- (void)handleContactChangeCallback {
+    __weak ZAContactScanner *weakSelf = self;
+    dispatch_async(self.queue, ^{
+        for (id<ZAContactScannerDelegate> delegate in weakSelf.forwardDelegates) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [delegate contactDidChange];
+            });
+        }
+    });
 }
 
 #pragma mark Interface methods
+
+- (void)forwardingTo:(id<ZAContactScannerDelegate>)forwardDelegate {
+    __weak ZAContactScanner *weakSelf = self;
+    dispatch_async(self.queue, ^{
+        if (forwardDelegate) {
+            [weakSelf.forwardDelegates addObject:forwardDelegate];
+        }
+    });
+    
+}
+
+- (void)removeForwarding:(id<ZAContactScannerDelegate>)forwardDelegate {
+    __weak ZAContactScanner *weakSelf = self;
+    dispatch_async(self.queue, ^{
+        if (forwardDelegate) {
+            [weakSelf.forwardDelegates removeObject:forwardDelegate];
+        }
+    });
+}
 
 - (void)requestAccessContactWithAccessGranted:(void (^)(void))accessGranted
                                  accessDenied:(void (^)(void))accessDenied {
