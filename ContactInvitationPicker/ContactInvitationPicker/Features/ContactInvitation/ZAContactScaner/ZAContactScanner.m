@@ -66,7 +66,7 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
 
 #pragma mark Interface methods
 
-- (void)forwardingTo:(id<ZAContactScannerDelegate>)forwardDelegate {
+- (void)delegateTo:(id<ZAContactScannerDelegate>)forwardDelegate {
     __weak ZAContactScanner *weakSelf = self;
     dispatch_async(self.queue, ^{
         if (forwardDelegate) {
@@ -76,7 +76,7 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
     
 }
 
-- (void)removeForwarding:(id<ZAContactScannerDelegate>)forwardDelegate {
+- (void)removeDelegate:(id<ZAContactScannerDelegate>)forwardDelegate {
     __weak ZAContactScanner *weakSelf = self;
     dispatch_async(self.queue, ^{
         if (forwardDelegate) {

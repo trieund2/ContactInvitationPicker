@@ -30,7 +30,7 @@ NSUInteger const kMaxContactSelect = 5;
     self.view.backgroundColor = UIColorFromRGB(0xE9E9E9);
     _listContactCellObjects = [NSMutableArray new];
     _selectedContactCellObjects = [NSMutableArray new];
-    [[ZAContactAdapter sharedInstance] forwardingTo:self];
+    [[ZAContactAdapter sharedInstance] delegateTo:self];
     
     [self addNavigationBarItems];
     [self initSelectContactCollectionView];
