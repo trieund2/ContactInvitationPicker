@@ -15,6 +15,7 @@
 
 - (id)initFromContact:(ZAContactAdapterModel *)contact {
     if (self = [super initWithCellClass:[ContactTableViewCell class]]) {
+        self.identifier = contact.identifier;
         self.fullName = contact.fullName;
         self.fullNameRemoveDiacritics = contact.fullNameRemoveDiacritics;
         self.phoneNumber = contact.phoneNumbers.firstObject;

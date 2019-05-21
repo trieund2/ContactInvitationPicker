@@ -13,6 +13,7 @@
 
 - (id)initWithContactCellObject:(ContactCellObject *)contactCellObject contactIndexPath:(NSIndexPath*)contactIndexPath {
     if (self = [super initWithCellClass:[SelectedContactCollectionViewCell class]]) {
+        self.identifier = contactCellObject.identifier;
         self.fullNameRemoveDiacritics = contactCellObject.fullNameRemoveDiacritics;
         self.phoneNumber = contactCellObject.phoneNumber;
         self.contactIndexPath = contactIndexPath;

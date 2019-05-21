@@ -138,7 +138,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.delegate) {
+    if (self.delegate && [self.delegate conformsToProtocol:@protocol(ListContactViewDelegate)]) {
         [self.delegate listContactView:self didSelectRowAtIndexpath:indexPath];
     }
 }

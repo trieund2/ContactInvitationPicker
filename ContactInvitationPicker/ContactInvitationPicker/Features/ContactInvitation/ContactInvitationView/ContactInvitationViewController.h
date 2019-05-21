@@ -19,13 +19,24 @@
 #import "UIViewController+Alert.h"
 #import "NSString+Extension.h"
 #import "ListContactView.h"
+#import "ListSelectContactView.h"
 
 extern NSUInteger const kMaxContactSelect;
 
-@interface ContactInvitationViewController : UIViewController <UITableViewDelegate, UICollectionViewDelegate, UISearchBarDelegate, MFMessageComposeViewControllerDelegate, ZAContactScannerDelegate, ListContactViewDelegate>
+@class ContactInvitationViewController;
 
+@protocol ContactInvitationViewControllerDelegate <NSObject>
+
+@required
+- (void)didSelectSendContacts:(NSArray<SelectedContactCellObject*> *)contacts;
+
+@end
+
+@interface ContactInvitationViewController : UIViewController <UISearchBarDelegate, ZAContactScannerDelegate, ListContactViewDelegate, ListSelectContactViewDelegate>
+
+@property (nonatomic, weak) id<ContactInvitationViewControllerDelegate> delegate;
 @property (nonatomic, readonly) ContactInviNavigationTitleView *contactInvitationNavigationTitleView;
-@property (nonatomic, readonly) UICollectionView *selectContactCollectionView;
+@property (nonatomic, readonly) ListSelectContactView *selectedContactView;
 @property (nonatomic, readonly) UISearchBar *searchBar;
 @property (nonatomic, readonly) ListContactView *listContactView;
 @property (nonatomic, readonly) ListContactView *searchResultListContactView;

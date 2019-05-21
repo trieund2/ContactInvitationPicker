@@ -12,6 +12,7 @@
 
 - (id)initWithZaContact:(ZAContact *)zaContact {
     if (self = [super init]) {
+        _identifier = zaContact.identifier;
         _givenName = zaContact.givenName;
         _middleName = zaContact.middleName;
         _familyName = zaContact.familyName;

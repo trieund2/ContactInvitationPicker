@@ -14,7 +14,6 @@ NSUInteger const kMaxContactSelect = 5;
 
 @property (nonatomic) NSMutableArray<ContactCellObject *> *listContactCellObjects;
 @property (nonatomic) NSMutableArray<SelectedContactCellObject *> *selectedContactCellObjects;
-@property (nonatomic) NICollectionViewModel *selectedContactCollectionViewModel;
 @property (nonatomic) NSLayoutConstraint *selectContactCollectionViewHeightConst;
 @property (nonatomic) NSLayoutConstraint *searchBarTopConst;
 @property (nonatomic) UIButton *sendButton;
@@ -23,7 +22,7 @@ NSUInteger const kMaxContactSelect = 5;
 
 @implementation ContactInvitationViewController
 
-#pragma mark Lifecycle
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,7 +32,7 @@ NSUInteger const kMaxContactSelect = 5;
     [[ZAContactAdapter sharedInstance] addDelegate:self];
     
     [self addNavigationBarItems];
-    [self initSelectContactCollectionView];
+    [self initSelectedContactView];
     [self initSearchBar];
     [self initListContactView];
     [self initSearchResultTableView];
@@ -41,27 +40,22 @@ NSUInteger const kMaxContactSelect = 5;
     [self getAllContacts];
 }
 
-#pragma mark UI actions
+#pragma mark - UI actions
 
 - (void)touchInCancelButton {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)touchInSendButton {
-    NSMutableArray *recipients = [NSMutableArray new];
-    for (SelectedContactCellObject *object in self.selectedContactCellObjects) {
-        if (object.phoneNumber != NULL && [object.phoneNumber isKindOfClass:NSString.class]) {
-            [recipients addObject:object.phoneNumber];
-        }
+    if ([self.delegate conformsToProtocol:@protocol(ContactInvitationViewControllerDelegate)]) {
+        __weak ContactInvitationViewController *weakSelf = self;
+        [self dismissViewControllerAnimated:YES completion:^{
+            [weakSelf.delegate didSelectSendContacts:weakSelf.selectedContactCellObjects];
+        }];
     }
-    MFMessageComposeViewController *messageComposeViewController = [MFMessageComposeViewController new];
-    messageComposeViewController.messageComposeDelegate = self;
-    messageComposeViewController.recipients = recipients;
-    messageComposeViewController.body = @"Moi ban cai dat zalo mien phi";
-    [self presentViewController:messageComposeViewController animated:YES completion:^{}];
 }
 
-#pragma mark Init layouts
+#pragma mark - Init layouts
 
 - (void)addNavigationBarItems {
     UIButton *cancelButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -85,42 +79,34 @@ NSUInteger const kMaxContactSelect = 5;
     self.navigationItem.titleView = self.contactInvitationNavigationTitleView;
 }
 
-- (void)initSelectContactCollectionView {
-    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.itemSize = CGSizeMake(40, 40);
-    layout.minimumInteritemSpacing = 4;
-    _selectContactCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    self.selectContactCollectionView.backgroundColor = UIColor.clearColor;
-    _selectedContactCollectionViewModel = [[NICollectionViewModel alloc]
-                            initWithListArray:self.selectedContactCellObjects
-                            delegate:(id)[NICollectionViewCellFactory class]];
-    self.selectContactCollectionView.dataSource = self.selectedContactCollectionViewModel;
-    self.selectContactCollectionView.delegate = self;
+- (void)initSelectedContactView {
+    _selectedContactView = [ListSelectContactView new];
+    self.selectedContactView.backgroundColor = UIColor.clearColor;
+    self.selectedContactView.delegate = self;
     
-    self.selectContactCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:self.selectContactCollectionView];
+    self.selectedContactView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.selectedContactView];
     [self.view addConstraints:[NSArray arrayWithObjects:
-                               [NSLayoutConstraint constraintWithItem:self.selectContactCollectionView attribute:(NSLayoutAttributeTop)
+                               [NSLayoutConstraint constraintWithItem:self.selectedContactView attribute:(NSLayoutAttributeTop)
                                                             relatedBy:(NSLayoutRelationEqual)
                                                                toItem:self.topLayoutGuide
                                                             attribute:(NSLayoutAttributeBottom)
                                                            multiplier:1
                                                              constant:4],
-                               [NSLayoutConstraint constraintWithItem:self.selectContactCollectionView attribute:(NSLayoutAttributeLeft)
+                               [NSLayoutConstraint constraintWithItem:self.selectedContactView attribute:(NSLayoutAttributeLeft)
                                                             relatedBy:(NSLayoutRelationEqual)
                                                                toItem:self.view
                                                             attribute:(NSLayoutAttributeLeft)
                                                            multiplier:1
                                                              constant:8],
-                               [NSLayoutConstraint constraintWithItem:self.selectContactCollectionView attribute:(NSLayoutAttributeRight)
+                               [NSLayoutConstraint constraintWithItem:self.selectedContactView attribute:(NSLayoutAttributeRight)
                                                             relatedBy:(NSLayoutRelationEqual)
                                                                toItem:self.view
                                                             attribute:(NSLayoutAttributeRight)
                                                            multiplier:1
                                                              constant:0],
                                nil]];
-    self.selectContactCollectionViewHeightConst = [NSLayoutConstraint constraintWithItem:self.selectContactCollectionView attribute:(NSLayoutAttributeHeight)
+    self.selectContactCollectionViewHeightConst = [NSLayoutConstraint constraintWithItem:self.selectedContactView attribute:(NSLayoutAttributeHeight)
                                                                                relatedBy:(NSLayoutRelationEqual)
                                                                                   toItem:nil
                                                                                attribute:(NSLayoutAttributeHeight)
@@ -140,7 +126,7 @@ NSUInteger const kMaxContactSelect = 5;
     self.searchBarTopConst = [NSLayoutConstraint constraintWithItem:self.searchBar
                                                           attribute:(NSLayoutAttributeTop)
                                                           relatedBy:(NSLayoutRelationEqual)
-                                                             toItem:self.selectContactCollectionView
+                                                             toItem:self.selectedContactView
                                                           attribute:(NSLayoutAttributeBottom)
                                                          multiplier:1
                                                            constant:0];
@@ -273,7 +259,7 @@ NSUInteger const kMaxContactSelect = 5;
                                nil]];
 }
 
-#pragma mark Helper methods
+#pragma mark - Helper methods
 
 - (void)getAllContacts {
     __weak ContactInvitationViewController *weakSelf = self;
@@ -371,18 +357,21 @@ NSUInteger const kMaxContactSelect = 5;
     }
     
     [self.listContactView reloadRowAtIndexPaths:[NSArray arrayWithObject:contactIndexPath]];
-    [self.selectContactCollectionView reloadData];
+    [self.selectedContactView setDataSourceWithCellObjects:self.selectedContactCellObjects];
     [self updateSendButtonState];
     [self performAnimateSelectedContactCollectionView];
     [self.contactInvitationNavigationTitleView updateSubTitleWithNumberSelecContacts:self.selectedContactCellObjects.count];
 }
 
-#pragma mark - UICollectionViewDelegate
+#pragma mark - ListSelectContactViewDelegate
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    SelectedContactCellObject *selectedContactCellObject = [self.selectedContactCollectionViewModel objectAtIndexPath:indexPath];
-    [self.listContactView selectRowAtIndexPath:selectedContactCellObject.contactIndexPath animated:YES];
-    [self.listContactView scrollToItemAtIndexPath:selectedContactCellObject.contactIndexPath];
+- (void)listSelectContactView:(ListSelectContactView *)listSelectContactView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    id object = [self.selectedContactView objectForIndexPath:indexPath];
+    if (object && [object isKindOfClass:SelectedContactCellObject.class]) {
+        SelectedContactCellObject *selectedContactCellObject = (SelectedContactCellObject *)object;
+        [self.listContactView selectRowAtIndexPath:selectedContactCellObject.contactIndexPath animated:YES];
+        [self.listContactView scrollToItemAtIndexPath:selectedContactCellObject.contactIndexPath];
+    }
 }
 
 #pragma mark - UISearchBarDelegate
@@ -406,19 +395,14 @@ NSUInteger const kMaxContactSelect = 5;
     [self.emptySearchResultLabel setHidden:(searchContactResults.count != 0)];
 }
 
-#pragma mark - MFMessageComposeViewControllerDelegate
-
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
-    [controller dismissViewControllerAnimated:YES completion:^{}];
-}
-
 #pragma mark - ZAContactScannerDelegate
 
 - (void)contactDidChange {
     __weak ContactInvitationViewController *weakSelf = self;
     UIAlertAction *okAlertAction = [UIAlertAction actionWithTitle:@"Đồng ý" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         [weakSelf.selectedContactCellObjects removeAllObjects];
-        [weakSelf.selectContactCollectionView reloadData];
+        [weakSelf.selectedContactView reloadData];
+        [weakSelf updateSendButtonState];
         [weakSelf performAnimateSelectedContactCollectionView];
         [weakSelf getAllContacts];
     }];

@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RootViewController : UIViewController
+@interface RootViewController : UIViewController <MFMessageComposeViewControllerDelegate, ContactInvitationViewControllerDelegate>
 
 @property (nonatomic, readonly) UIButton *contactInvitationPickerButton;
 

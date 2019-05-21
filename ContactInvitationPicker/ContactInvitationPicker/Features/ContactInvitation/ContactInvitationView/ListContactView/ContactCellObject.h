@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ContactCellObject : NICellObject
 
+@property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *fullNameRemoveDiacritics;
 @property (nonatomic, copy) NSString *fullName;
 @property (nonatomic, copy) NSString *phoneNumber;

@@ -14,6 +14,8 @@
 
 @implementation RootViewController
 
+#pragma mark - View Lifecycles
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
@@ -59,10 +61,35 @@
                                nil]];
 }
 
+#pragma mark - UI Actions
+
 - (void)touchInContactInviationPickerButton {
     ContactInvitationViewController *contactInvitationViewController = [ContactInvitationViewController new];
+    contactInvitationViewController.delegate = self;
     UINavigationController *contactInviNavigationController = [[UINavigationController alloc] initWithRootViewController:contactInvitationViewController];
     [self presentViewController:contactInviNavigationController animated:YES completion:^{}];
+}
+
+#pragma mark - ContactInvitationViewControllerDelegate
+
+- (void)didSelectSendContacts:(NSArray<SelectedContactCellObject *> *)contacts {
+    NSMutableArray *recipients = [NSMutableArray new];
+    for (SelectedContactCellObject *object in contacts) {
+        if (object.phoneNumber != NULL && [object.phoneNumber isKindOfClass:NSString.class]) {
+            [recipients addObject:object.phoneNumber];
+        }
+    }
+    MFMessageComposeViewController *messageComposeViewController = [MFMessageComposeViewController new];
+    messageComposeViewController.messageComposeDelegate = self;
+    messageComposeViewController.recipients = recipients;
+    messageComposeViewController.body = @"Moi ban cai dat zalo mien phi";
+    [self presentViewController:messageComposeViewController animated:YES completion:^{}];
+}
+
+#pragma mark - MFMessageComposeViewControllerDelegate
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end
