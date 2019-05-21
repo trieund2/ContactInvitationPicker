@@ -16,7 +16,7 @@
 @protocol ListSelectedContactViewDelegate <NSObject>
 
 @required
-- (void)listSelectContactView:(ListSelectedContactView *)listSelectContactView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)listSelectedContactView:(ListSelectedContactView *)listSelectedContactView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

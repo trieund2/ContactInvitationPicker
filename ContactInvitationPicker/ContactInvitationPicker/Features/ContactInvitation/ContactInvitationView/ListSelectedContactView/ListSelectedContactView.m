@@ -89,7 +89,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.delegate && [self.delegate conformsToProtocol:@protocol(ListSelectedContactViewDelegate)]) {
-        [self.delegate listSelectContactView:self didSelectRowAtIndexPath:indexPath];
+        [self.delegate listSelectedContactView:self didSelectRowAtIndexPath:indexPath];
     }
 }
 

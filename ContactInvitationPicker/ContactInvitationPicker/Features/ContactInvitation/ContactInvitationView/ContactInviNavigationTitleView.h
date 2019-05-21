@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) UILabel *titleLabel;
 @property (nonatomic, readonly) UILabel *subTitleLabel;
 
-- (void)updateSubTitleWithNumberSelecContacts:(NSUInteger)number;
+- (void)updateSubTitleWithNumberSelectContacts:(NSUInteger)number;
 
 @end
 

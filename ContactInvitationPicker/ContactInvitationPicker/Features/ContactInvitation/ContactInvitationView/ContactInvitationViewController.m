@@ -14,7 +14,7 @@ NSUInteger const kMaxContactSelect = 5;
 
 @property (nonatomic) NSMutableArray<ContactCellObject *> *listContactCellObjects;
 @property (nonatomic) NSMutableArray<SelectedContactCellObject *> *selectedContactCellObjects;
-@property (nonatomic) NSLayoutConstraint *selectContactCollectionViewHeightConst;
+@property (nonatomic) NSLayoutConstraint *selectContactViewHeightConst;
 @property (nonatomic) NSLayoutConstraint *searchBarTopConst;
 @property (nonatomic) UIButton *sendButton;
 
@@ -44,7 +44,7 @@ NSUInteger const kMaxContactSelect = 5;
     [[ZAContactAdapter sharedInstance] removeDelegate:self];
 }
 
-#pragma mark - UI actions
+#pragma mark - Handle UI actions
 
 - (void)touchInCancelButton {
     [self dismissViewControllerAnimated:YES completion:NULL];
@@ -110,13 +110,13 @@ NSUInteger const kMaxContactSelect = 5;
                                                            multiplier:1
                                                              constant:0],
                                nil]];
-    self.selectContactCollectionViewHeightConst = [NSLayoutConstraint constraintWithItem:self.selectedContactView attribute:(NSLayoutAttributeHeight)
+    self.selectContactViewHeightConst = [NSLayoutConstraint constraintWithItem:self.selectedContactView attribute:(NSLayoutAttributeHeight)
                                                                                relatedBy:(NSLayoutRelationEqual)
                                                                                   toItem:nil
                                                                                attribute:(NSLayoutAttributeHeight)
                                                                               multiplier:1
                                                                                 constant:0];
-    [self.view addConstraint:self.selectContactCollectionViewHeightConst];
+    [self.view addConstraint:self.selectContactViewHeightConst];
 }
 
 - (void)initSearchBar {
@@ -286,9 +286,7 @@ NSUInteger const kMaxContactSelect = 5;
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Đồng ý" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         }];
-        UIAlertAction *remindLaterAction = [UIAlertAction actionWithTitle:@"Để sau" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
-            [self dismissViewControllerAnimated:YES completion:NULL];
-        }];
+        UIAlertAction *remindLaterAction = [UIAlertAction actionWithTitle:@"Để sau" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {}];
         [weakSelf presentAlertWithTitle:@"Ứng dụng không thể truy cập danh bạ"
                                 message:@"Chúng tôi cần truy cập danh bạ của bạn để tìm bạn qua danh bạ"
                                 actions:[NSArray arrayWithObjects:okAction, remindLaterAction, nil]];
@@ -296,17 +294,17 @@ NSUInteger const kMaxContactSelect = 5;
 }
 
 - (void)performAnimateSelectedContactCollectionView {
-    CGFloat selectedContactCollectionViewHeight = 0;
+    CGFloat selectedContactViewHeight = 0;
     CGFloat searchBarTopConstValue = 0;
-    if (self.selectedContactCellObjects.count != 0) {
-        selectedContactCollectionViewHeight = 40;
+    if (self.selectedContactCellObjects.count > 0) {
+        selectedContactViewHeight = 40;
         searchBarTopConstValue = 4;
     }
-    if (self.selectContactCollectionViewHeightConst.constant == selectedContactCollectionViewHeight) { return; }
-    self.selectContactCollectionViewHeightConst.constant = selectedContactCollectionViewHeight;
+    if (self.selectContactViewHeightConst.constant == selectedContactViewHeight) { return; }
+    self.selectContactViewHeightConst.constant = selectedContactViewHeight;
     self.searchBarTopConst.constant = searchBarTopConstValue;
     
-    __weak ContactInvitationViewController *weakSelf = self;
+    ContactInvitationViewController * __weak weakSelf = self;
     [UIView animateWithDuration:0.2 delay:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [weakSelf.view layoutIfNeeded];
     } completion:^(BOOL finished) {}];
@@ -339,19 +337,19 @@ NSUInteger const kMaxContactSelect = 5;
         NSIndexPath *_indexPath = [self.listContactView indexPathForObject:contactCellObject];
         if (_indexPath) {
             contactIndexPath = _indexPath;
+            self.searchBar.text = @"";
+            [self.searchResultListContactView setHidden:YES];
         } else {
             return;
         }
-        self.searchBar.text = @"";
-        [self.searchResultListContactView setHidden:YES];
     }
     
-    SelectedContactCellObject *selectContactObject = [SelectedContactCellObject objectWithContactCellObject:contactCellObject contactIndexPath:contactIndexPath];
-    if ([self.selectedContactCellObjects containsObject:selectContactObject]) {
-        [self.selectedContactCellObjects removeObject:selectContactObject];
+    SelectedContactCellObject *selectedContactObject = [SelectedContactCellObject objectWithContactCellObject:contactCellObject contactIndexPath:contactIndexPath];
+    if ([self.selectedContactCellObjects containsObject:selectedContactObject]) {
+        [self.selectedContactCellObjects removeObject:selectedContactObject];
         contactCellObject.isSelected = NO;
     } else if (self.selectedContactCellObjects.count < kMaxContactSelect) {
-        [self.selectedContactCellObjects addObject:selectContactObject];
+        [self.selectedContactCellObjects addObject:selectedContactObject];
         contactCellObject.isSelected = YES;
     } else {
         [listContactView deSelectRowAtIndexPath:indexPath animated:YES];
@@ -364,12 +362,12 @@ NSUInteger const kMaxContactSelect = 5;
     [self.selectedContactView setDataSourceWithCellObjects:self.selectedContactCellObjects];
     [self updateSendButtonState];
     [self performAnimateSelectedContactCollectionView];
-    [self.contactInvitationNavigationTitleView updateSubTitleWithNumberSelecContacts:self.selectedContactCellObjects.count];
+    [self.contactInvitationNavigationTitleView updateSubTitleWithNumberSelectContacts:self.selectedContactCellObjects.count];
 }
 
 #pragma mark - ListSelectContactViewDelegate
 
-- (void)listSelectContactView:(ListSelectedContactView *)listSelectContactView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)listSelectedContactView:(ListSelectedContactView *)listSelectedContactView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     id object = [self.selectedContactView objectForIndexPath:indexPath];
     if (object && [object isKindOfClass:SelectedContactCellObject.class]) {
         SelectedContactCellObject *selectedContactCellObject = (SelectedContactCellObject *)object;
@@ -382,19 +380,15 @@ NSUInteger const kMaxContactSelect = 5;
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     [self.searchResultListContactView setHidden:([searchText isEqualToString:@""])];
-    if ([searchText isEqualToString:@""]) {
-        return;
-    }
-    
+    if ([searchText isEqualToString:@""]) { return; }
     NSArray *searchContactResults = [self.listContactCellObjects filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-        if (evaluatedObject && [evaluatedObject isKindOfClass:ContactCellObject.class] && ![evaluatedObject isKindOfClass:NSString.class]) {
+        if (evaluatedObject && [evaluatedObject isKindOfClass:ContactCellObject.class]) {
             ContactCellObject *contactCellObject = (ContactCellObject *)evaluatedObject;
             return ([contactCellObject.fullNameRemoveDiacritics.lowercaseString containsString:[NSString stringRemoveDiacriticsFromString:searchText].lowercaseString]);
         } else {
             return NO;
         }
     }]];
-    
     [self.searchResultListContactView setDataSourceWithListArray:searchContactResults];
     [self.emptySearchResultLabel setHidden:(searchContactResults.count != 0)];
 }

@@ -119,7 +119,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30;
+    if (self.contactTableViewModel.sectionIndexType == NITableViewModelSectionIndexNone) {
+        return 0;
+    } else {
+        return 30;
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
