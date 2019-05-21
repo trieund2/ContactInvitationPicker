@@ -36,35 +36,10 @@
     _selectContactCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     self.selectContactCollectionView.backgroundColor = UIColor.clearColor;
     self.selectContactCollectionView.delegate = self;
-    
-    self.selectContactCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.selectContactCollectionView];
-    [self addConstraints:[NSArray arrayWithObjects:
-                          [NSLayoutConstraint constraintWithItem:self.selectContactCollectionView attribute:(NSLayoutAttributeTop)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeTop)
-                                                      multiplier:1
-                                                        constant:0],
-                          [NSLayoutConstraint constraintWithItem:self.selectContactCollectionView attribute:(NSLayoutAttributeLeft)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeLeft)
-                                                      multiplier:1
-                                                        constant:0],
-                          [NSLayoutConstraint constraintWithItem:self.selectContactCollectionView attribute:(NSLayoutAttributeRight)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeRight)
-                                                      multiplier:1
-                                                        constant:0],
-                          [NSLayoutConstraint constraintWithItem:self.selectContactCollectionView attribute:(NSLayoutAttributeHeight)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeHeight)
-                                                      multiplier:1
-                                                        constant:0],
-                          nil]];
+    [self.selectContactCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.equalTo(self);
+    }];
 }
 
 #pragma mark - Interface methods

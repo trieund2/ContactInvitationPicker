@@ -14,8 +14,6 @@ NSUInteger const kMaxContactSelect = 5;
 
 @property (nonatomic) NSMutableArray<ContactCellObject *> *listContactCellObjects;
 @property (nonatomic) NSMutableArray<SelectedContactCellObject *> *selectedContactCellObjects;
-@property (nonatomic) NSLayoutConstraint *selectContactViewHeightConst;
-@property (nonatomic) NSLayoutConstraint *searchBarTopConst;
 @property (nonatomic) UIButton *sendButton;
 
 @end
@@ -87,36 +85,14 @@ NSUInteger const kMaxContactSelect = 5;
     _selectedContactView = [ListSelectedContactView new];
     self.selectedContactView.backgroundColor = UIColor.clearColor;
     self.selectedContactView.delegate = self;
-    
-    self.selectedContactView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.selectedContactView];
-    [self.view addConstraints:[NSArray arrayWithObjects:
-                               [NSLayoutConstraint constraintWithItem:self.selectedContactView attribute:(NSLayoutAttributeTop)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.topLayoutGuide
-                                                            attribute:(NSLayoutAttributeBottom)
-                                                           multiplier:1
-                                                             constant:4],
-                               [NSLayoutConstraint constraintWithItem:self.selectedContactView attribute:(NSLayoutAttributeLeft)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.view
-                                                            attribute:(NSLayoutAttributeLeft)
-                                                           multiplier:1
-                                                             constant:8],
-                               [NSLayoutConstraint constraintWithItem:self.selectedContactView attribute:(NSLayoutAttributeRight)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.view
-                                                            attribute:(NSLayoutAttributeRight)
-                                                           multiplier:1
-                                                             constant:0],
-                               nil]];
-    self.selectContactViewHeightConst = [NSLayoutConstraint constraintWithItem:self.selectedContactView attribute:(NSLayoutAttributeHeight)
-                                                                               relatedBy:(NSLayoutRelationEqual)
-                                                                                  toItem:nil
-                                                                               attribute:(NSLayoutAttributeHeight)
-                                                                              multiplier:1
-                                                                                constant:0];
-    [self.view addConstraint:self.selectContactViewHeightConst];
+    
+    [self.selectedContactView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.mas_topLayoutGuide).offset(4);
+        make.left.equalTo(self.view).offset(8);
+        make.right.equalTo(self.view);
+        make.height.mas_equalTo(0);
+    }];
 }
 
 - (void)initSearchBar {
@@ -124,117 +100,32 @@ NSUInteger const kMaxContactSelect = 5;
     self.searchBar.delegate = self;
     self.searchBar.placeholder = @"Nhập tên bạn bè";
     [self.searchBar setBackgroundImage:[UIImage new]];
-    
-    self.searchBar.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.searchBar];
-    self.searchBarTopConst = [NSLayoutConstraint constraintWithItem:self.searchBar
-                                                          attribute:(NSLayoutAttributeTop)
-                                                          relatedBy:(NSLayoutRelationEqual)
-                                                             toItem:self.selectedContactView
-                                                          attribute:(NSLayoutAttributeBottom)
-                                                         multiplier:1
-                                                           constant:0];
-    [self.view addConstraint:self.searchBarTopConst];
-    [self.view addConstraints:[NSArray arrayWithObjects:
-                               [NSLayoutConstraint constraintWithItem:self.searchBar
-                                                            attribute:(NSLayoutAttributeLeft)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.view
-                                                            attribute:(NSLayoutAttributeLeft)
-                                                           multiplier:1
-                                                             constant:0],
-                               [NSLayoutConstraint constraintWithItem:self.searchBar
-                                                            attribute:(NSLayoutAttributeRight)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.view
-                                                            attribute:(NSLayoutAttributeRight)
-                                                           multiplier:1
-                                                             constant:0],
-                               [NSLayoutConstraint constraintWithItem:self.searchBar
-                                                            attribute:(NSLayoutAttributeHeight)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:nil
-                                                            attribute:(NSLayoutAttributeHeight)
-                                                           multiplier:1
-                                                             constant:40],
-                               nil]];
+    [self.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.selectedContactView.mas_bottom);
+        make.height.mas_equalTo(40);
+    }];
 }
 
 - (void)initListContactView {
     _listContactView = [ListContactView new];
     self.listContactView.delegate = self;
-    
-    self.listContactView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.listContactView];
-    [self.view addConstraints:[NSArray arrayWithObjects:
-                               [NSLayoutConstraint constraintWithItem:self.listContactView
-                                                            attribute:(NSLayoutAttributeTop)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.searchBar
-                                                            attribute:(NSLayoutAttributeBottom)
-                                                           multiplier:1
-                                                             constant:4],
-                               [NSLayoutConstraint constraintWithItem:self.listContactView
-                                                            attribute:(NSLayoutAttributeRight)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.view
-                                                            attribute:(NSLayoutAttributeRight)
-                                                           multiplier:1
-                                                             constant:0],
-                               [NSLayoutConstraint constraintWithItem:self.listContactView
-                                                            attribute:(NSLayoutAttributeLeft)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.view
-                                                            attribute:(NSLayoutAttributeLeft)
-                                                           multiplier:1
-                                                             constant:0],
-                               [NSLayoutConstraint constraintWithItem:self.listContactView
-                                                            attribute:(NSLayoutAttributeBottom)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.view
-                                                            attribute:(NSLayoutAttributeBottom)
-                                                           multiplier:1
-                                                             constant:0],
-                               nil]];
+    [self.listContactView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.searchBar.mas_bottom).offset(4);
+        make.left.right.bottom.equalTo(self.view);
+    }];
 }
 
 - (void)initSearchResultTableView {
     _searchResultListContactView = [ListContactView new];
     self.searchResultListContactView.delegate = self;
     [self.searchResultListContactView setHidden:YES];
-    
-    self.searchResultListContactView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.searchResultListContactView];
-    [self.view addConstraints:[NSArray arrayWithObjects:
-                               [NSLayoutConstraint constraintWithItem:self.searchResultListContactView
-                                                            attribute:(NSLayoutAttributeTop)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.listContactView
-                                                            attribute:(NSLayoutAttributeTop)
-                                                           multiplier:1
-                                                             constant:0],
-                               [NSLayoutConstraint constraintWithItem:self.searchResultListContactView
-                                                            attribute:(NSLayoutAttributeBottom)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.listContactView
-                                                            attribute:(NSLayoutAttributeBottom)
-                                                           multiplier:1
-                                                             constant:0],
-                               [NSLayoutConstraint constraintWithItem:self.searchResultListContactView
-                                                            attribute:(NSLayoutAttributeLeft)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.listContactView
-                                                            attribute:(NSLayoutAttributeLeft)
-                                                           multiplier:1
-                                                             constant:0],
-                               [NSLayoutConstraint constraintWithItem:self.searchResultListContactView
-                                                            attribute:(NSLayoutAttributeRight)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.listContactView
-                                                            attribute:(NSLayoutAttributeRight)
-                                                           multiplier:1
-                                                             constant:0],
-                               nil]];
+    [self.searchResultListContactView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.equalTo(self.listContactView);
+    }];
 }
 
 - (void)initEmptySearchResultLabel {
@@ -242,25 +133,11 @@ NSUInteger const kMaxContactSelect = 5;
     self.emptySearchResultLabel.text = @"Không tìm thấy kết quả phù hợp";
     [self.emptySearchResultLabel setFont:[UIFont systemFontOfSize:15]];
     [self.emptySearchResultLabel setHidden:YES];
-    
-    self.emptySearchResultLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.searchResultListContactView addSubview:self.emptySearchResultLabel];
-    [self.view addConstraints:[NSArray arrayWithObjects:
-                               [NSLayoutConstraint constraintWithItem:self.emptySearchResultLabel
-                                                            attribute:(NSLayoutAttributeCenterX)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.searchResultListContactView
-                                                            attribute:(NSLayoutAttributeCenterX)
-                                                           multiplier:1
-                                                             constant:0],
-                               [NSLayoutConstraint constraintWithItem:self.emptySearchResultLabel
-                                                            attribute:(NSLayoutAttributeTop)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.searchResultListContactView
-                                                            attribute:(NSLayoutAttributeTop)
-                                                           multiplier:1
-                                                             constant:70],
-                               nil]];
+    [self.emptySearchResultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.searchResultListContactView).offset(70);
+    }];
 }
 
 #pragma mark - Helper methods
@@ -294,16 +171,25 @@ NSUInteger const kMaxContactSelect = 5;
 }
 
 - (void)performAnimateSelectedContactCollectionView {
-    CGFloat selectedContactViewHeight = 0;
-    CGFloat searchBarTopConstValue = 0;
-    if (self.selectedContactCellObjects.count > 0) {
-        selectedContactViewHeight = 40;
-        searchBarTopConstValue = 4;
+    BOOL needUpdateConstraint = NO;
+    if (self.selectedContactCellObjects.count > 0 && self.selectedContactView.frame.size.height == 0) {
+        needUpdateConstraint = YES;
+        [self.selectedContactView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(40);
+        }];
+        [self.searchBar mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.selectedContactView.mas_bottom).offset(4);
+        }];
+    } else if (self.selectedContactCellObjects.count == 0 && self.selectedContactView.frame.size.height == 40) {
+        needUpdateConstraint = YES;
+        [self.selectedContactView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(0);
+        }];
+        [self.searchBar mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.selectedContactView.mas_bottom);
+        }];
     }
-    if (self.selectContactViewHeightConst.constant == selectedContactViewHeight) { return; }
-    self.selectContactViewHeightConst.constant = selectedContactViewHeight;
-    self.searchBarTopConst.constant = searchBarTopConstValue;
-    
+    if (!needUpdateConstraint) { return; }
     ContactInvitationViewController * __weak weakSelf = self;
     [UIView animateWithDuration:0.2 delay:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [weakSelf.view layoutIfNeeded];

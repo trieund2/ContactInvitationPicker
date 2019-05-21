@@ -10,6 +10,7 @@
 #import "NICollectionViewModel.h"
 #import "NICollectionViewCellFactory.h"
 #import "SelectedContactCellObject.h"
+#import "Masonry.h"
 
 @class ListSelectedContactView;
 

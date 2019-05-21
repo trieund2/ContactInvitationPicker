@@ -7,12 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		290FD6AAE53004BE517E926E769743DC /* Pods-ContactInvitationPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE2EABF0ADB2C7001D487706C32F655 /* Pods-ContactInvitationPicker-dummy.m */; };
-		4FC2AC161CD43CC14C053C0F735C53D7 /* Pods-ContactInvitationPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D1AB68FD5DCE4704ACBC8AB8EBE870D /* Pods-ContactInvitationPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6A794DD426DF484B2C87EF92D352207B /* Pods-ContactInvitationPickerTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BF81DD901EC306F6A80EC52AB569BCDB /* Pods-ContactInvitationPickerTests-dummy.m */; };
-		8519BFD638BD418296C9FFEFA8A02B06 /* Pods-ContactInvitationPickerTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 52951AE4B84B629E64427C0E2DDA8CF7 /* Pods-ContactInvitationPickerTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A2C172364E21C2562FFC20AE425F0D58 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		B1B45A32CF58EE66B9F3F8E105890001 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		07818F5781210B4DD5E5D0E0E77CE532 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB0B11795C1B40153A1A6792AD8430 /* MASViewAttribute.m */; };
+		13CF24549FA862851C8ADF5CFE22FEFD /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = A0EE7F78B3BD7C286ECD8E89FBD08EA3 /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1E4C2B7E07259DD5B60C4FE6A8A70C6F /* NSArray+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C6624EA0EDFA9F72CF6A18E889D0D25 /* NSArray+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27F1DAFCBA43BFC893AAB8D70B811B04 /* NSArray+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C1B818D35C86765A99363DC0270CC55E /* NSArray+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2FBE88AB6732B2F224FCEA7F490757EB /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = EC6F744A3DA1C0EE12D10CB82411B05E /* MASConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		357FF480909B78B01A5BBA13263779DE /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = CE1F404471E734FD2E91B9AA72EE50D7 /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4FDED973490EB6A8908D2671154FDB89 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 78526D2C8FDDA6A9A4034A969422E45B /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		519EF96256FE1396483FEA6B20ED0C04 /* Pods-ContactInvitationPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 618B7DD9FA8821FB9E85073965F6BE6E /* Pods-ContactInvitationPicker-dummy.m */; };
+		57DFE313C53DA21975AD94A81F166BD1 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = D98729D388525C1741E1AF5083C0B910 /* MASConstraintMaker.m */; };
+		5DC505CDC390743412CDF47214AB7218 /* Pods-ContactInvitationPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C13A54F3C90315663000392AACE3C64 /* Pods-ContactInvitationPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		62449CA0C38A2DC85B0982B25394E90E /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 31BA2CDBF46DCD8CA514150C57E64824 /* MASConstraint.m */; };
+		626B143296611EBC98F20F738CFB4AA8 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A25616029B4FC5676B044BBD02C54C2 /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64F37F59EC050CBCB383870F07328DAA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
+		67843D6939DCFB92F851C88AD853EB8B /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6C501769E2DA3CE22CE4BA9B61BD90 /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6A794DD426DF484B2C87EF92D352207B /* Pods-ContactInvitationPickerTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B72FC01390E9CD138CBBFBFA7012F6A /* Pods-ContactInvitationPickerTests-dummy.m */; };
+		73300003438DC542B9D0546D73877707 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FFE47506B20F92B135A335E50B6E9F /* MASViewConstraint.m */; };
+		75C5B6C21E0CC4898AE48E52DDA91375 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F958E9E8CA5C5F1DD8F53FFAEDFDF /* View+MASAdditions.m */; };
+		8519BFD638BD418296C9FFEFA8A02B06 /* Pods-ContactInvitationPickerTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D8060F0ABA0709B27FF0840A1045E1D6 /* Pods-ContactInvitationPickerTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9269E802D3E20C338BDDFF5DA07029E5 /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EF30F780E2BD14DF24481BDC5498546 /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94C1561BC701BB0EA90A7DD26B5D2D4F /* MASConstraint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B2E90708D5E58877A06F2A402BF8FC16 /* MASConstraint+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		978EA5FDF1F0E3A34D00E2EBC9A9019D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		A2C172364E21C2562FFC20AE425F0D58 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		A98413C6607F08050A4E1E4D4DBADD94 /* Masonry-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E145DFF9033B5609061BCCC32A734C7 /* Masonry-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC9D138592743C6138E5EEBDCF679053 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD4286E9402BFCF1A5042CBA515863 /* MASLayoutConstraint.m */; };
+		C5305C30EF88CDEFD1BFDE547F0B0932 /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = BA1930EA5A0D0E7DC87664879DB6D032 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C58C96ECEB8DA48FD48BF98210048834 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9B2014C24ADA03537F3B21DB6735E4 /* ViewController+MASAdditions.m */; };
+		C8B2C44773021FE52AE8D492B90F5787 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B4B23715DFE401486641D6284C1C47 /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0FE394E692A30796B0B8260680542A7 /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 3015FEEEE50C4FE51F845C11D4154A84 /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D892D5CB8E1711B1FE8FCA30D5D1713F /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0487C2E59D05FB9BCF1F1600C8809C2B /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		DADF5150B678D8FAB699D940DED2C71D /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 89286B607043EF52DC1580A838A8D2F4 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDA0C9910C0F791259FCB4E0E85F3DBD /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 266270F46FD6D8E798173DEC66BEECE4 /* Masonry-dummy.m */; };
+		DDC5DE76CA3AC9073FB5C6BFBA026AFE /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FA2F422D817FCC200276FEE81A8466 /* NSArray+MASAdditions.m */; };
+		F50920C2026473CF11E5C635750F12EE /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C7DE6E4FB2607791F1E38E82B0550F /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5C9CAD634744DFE373DA45B0CD1806C /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C55901E770E7D3DF78180E0F7B2F4D /* MASCompositeConstraint.m */; };
+		FFD5BF61B424EBD4A831804037A372E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,35 +49,85 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D1FBDDBD0FB4D3538239D205FBB503B3;
+			remoteGlobalIDString = 9B8969C59A61D2DCAB9C8E9DDCE15D67;
 			remoteInfo = "Pods-ContactInvitationPicker";
+		};
+		D419036CD49E7EFFD2B0734016638DA5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64908377FC47CBE2E0EA0FA3CC30D3C1;
+			remoteInfo = Masonry;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2CED743AD5BD126C9F2EAA6AFCD0D232 /* Pods-ContactInvitationPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ContactInvitationPicker.modulemap"; sourceTree = "<group>"; };
-		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		3348FED5BD61A27298CF00F9C856AC98 /* Pods-ContactInvitationPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactInvitationPicker.debug.xcconfig"; sourceTree = "<group>"; };
-		47B73B5B2336D8FA53160BB70A857A2D /* Pods_ContactInvitationPickerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ContactInvitationPickerTests.framework; path = "Pods-ContactInvitationPickerTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4AFBEDBC28EF4D88E3A7104373425786 /* Pods-ContactInvitationPicker-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactInvitationPicker-acknowledgements.plist"; sourceTree = "<group>"; };
-		4C6CDAD7BAA7DCC952A5A9F7BE5227D0 /* Pods-ContactInvitationPickerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactInvitationPickerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		52951AE4B84B629E64427C0E2DDA8CF7 /* Pods-ContactInvitationPickerTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ContactInvitationPickerTests-umbrella.h"; sourceTree = "<group>"; };
-		69B88EBC8A392A889BEB8EA81ECE5F33 /* Pods-ContactInvitationPickerTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactInvitationPickerTests-Info.plist"; sourceTree = "<group>"; };
-		797DA4597CC2827A67AD6DCEA3966F9B /* Pods-ContactInvitationPickerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactInvitationPickerTests.release.xcconfig"; sourceTree = "<group>"; };
-		7D1AB68FD5DCE4704ACBC8AB8EBE870D /* Pods-ContactInvitationPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ContactInvitationPicker-umbrella.h"; sourceTree = "<group>"; };
-		81B5BA451CCE05972929C93C3184C2C7 /* Pods-ContactInvitationPickerTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactInvitationPickerTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		847B63B1925242C211FD218C51FEBAFE /* Pods-ContactInvitationPickerTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ContactInvitationPickerTests.modulemap"; sourceTree = "<group>"; };
-		8CE2EABF0ADB2C7001D487706C32F655 /* Pods-ContactInvitationPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ContactInvitationPicker-dummy.m"; sourceTree = "<group>"; };
-		9021962740876DE22496B3E6EE9E0924 /* Pods-ContactInvitationPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactInvitationPicker.release.xcconfig"; sourceTree = "<group>"; };
-		97D5C97BB1D6D68284541B4FF809ED5D /* Pods-ContactInvitationPicker-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ContactInvitationPicker-acknowledgements.markdown"; sourceTree = "<group>"; };
+		01FA2F422D817FCC200276FEE81A8466 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MASAdditions.m"; path = "Masonry/NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		02B4B23715DFE401486641D6284C1C47 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+		0487C2E59D05FB9BCF1F1600C8809C2B /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		133293249FF63A0EAD2E334999A2386E /* Pods-ContactInvitationPicker-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ContactInvitationPicker-acknowledgements.markdown"; sourceTree = "<group>"; };
+		14F4FBDB090427E59C4E213C603F0668 /* Pods-ContactInvitationPickerTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactInvitationPickerTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		180124D6EC9281085AA0A6260CD15F27 /* Pods-ContactInvitationPickerTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactInvitationPickerTests-Info.plist"; sourceTree = "<group>"; };
+		1BFB0B11795C1B40153A1A6792AD8430 /* MASViewAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewAttribute.m; path = Masonry/MASViewAttribute.m; sourceTree = "<group>"; };
+		2175539CAE2C7715C4FB7E44D8537522 /* Pods-ContactInvitationPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ContactInvitationPicker.modulemap"; sourceTree = "<group>"; };
+		21C55901E770E7D3DF78180E0F7B2F4D /* MASCompositeConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASCompositeConstraint.m; path = Masonry/MASCompositeConstraint.m; sourceTree = "<group>"; };
+		266270F46FD6D8E798173DEC66BEECE4 /* Masonry-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Masonry-dummy.m"; sourceTree = "<group>"; };
+		2A25616029B4FC5676B044BBD02C54C2 /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
+		2E9C3CD0C87A4BC046B80B3F1A6939B1 /* Masonry.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.xcconfig; sourceTree = "<group>"; };
+		2F1F958E9E8CA5C5F1DD8F53FFAEDFDF /* View+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "View+MASAdditions.m"; path = "Masonry/View+MASAdditions.m"; sourceTree = "<group>"; };
+		2F3390ACDFE812A920C3CA3B536C8306 /* Pods-ContactInvitationPicker-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactInvitationPicker-acknowledgements.plist"; sourceTree = "<group>"; };
+		3015FEEEE50C4FE51F845C11D4154A84 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
+		312B988EF117AE4DE76A268D970131FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		31BA2CDBF46DCD8CA514150C57E64824 /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
+		416F82560717B53CCBD880BF0388DFAA /* Pods-ContactInvitationPicker-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ContactInvitationPicker-frameworks.sh"; sourceTree = "<group>"; };
+		436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		43BA56A061873718EC06171526FE1A00 /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
+		4C9B2014C24ADA03537F3B21DB6735E4 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		5C6C501769E2DA3CE22CE4BA9B61BD90 /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
+		618B7DD9FA8821FB9E85073965F6BE6E /* Pods-ContactInvitationPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ContactInvitationPicker-dummy.m"; sourceTree = "<group>"; };
+		683DAA4EF113A009129AEA7BBD583871 /* Pods-ContactInvitationPickerTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ContactInvitationPickerTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6C6624EA0EDFA9F72CF6A18E889D0D25 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASShorthandAdditions.h"; path = "Masonry/NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		78526D2C8FDDA6A9A4034A969422E45B /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		7B72FC01390E9CD138CBBFBFA7012F6A /* Pods-ContactInvitationPickerTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ContactInvitationPickerTests-dummy.m"; sourceTree = "<group>"; };
+		7E145DFF9033B5609061BCCC32A734C7 /* Masonry-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-umbrella.h"; sourceTree = "<group>"; };
+		84D23002A6D95E505A8E2C7471580C36 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Masonry.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89286B607043EF52DC1580A838A8D2F4 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		8C13A54F3C90315663000392AACE3C64 /* Pods-ContactInvitationPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ContactInvitationPicker-umbrella.h"; sourceTree = "<group>"; };
+		8EF30F780E2BD14DF24481BDC5498546 /* MASViewAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewAttribute.h; path = Masonry/MASViewAttribute.h; sourceTree = "<group>"; };
+		96F7D544E21A3CEB6AA27C3E6FF34848 /* Pods-ContactInvitationPickerTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ContactInvitationPickerTests.modulemap"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BF81DD901EC306F6A80EC52AB569BCDB /* Pods-ContactInvitationPickerTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ContactInvitationPickerTests-dummy.m"; sourceTree = "<group>"; };
-		E425ED9991A027848D1764CCF5DE292F /* Pods-ContactInvitationPicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactInvitationPicker-Info.plist"; sourceTree = "<group>"; };
-		F1D24B45219487279C15AC4328E800DC /* Pods-ContactInvitationPickerTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ContactInvitationPickerTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F8C7DF3C600F6999946D1225D04C8B1F /* Pods_ContactInvitationPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ContactInvitationPicker.framework; path = "Pods-ContactInvitationPicker.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DFD4286E9402BFCF1A5042CBA515863 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
+		A0EE7F78B3BD7C286ECD8E89FBD08EA3 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
+		A3EC0121FDBC530599046D1A12C9E879 /* Masonry.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Masonry.modulemap; sourceTree = "<group>"; };
+		B2E90708D5E58877A06F2A402BF8FC16 /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
+		BA1930EA5A0D0E7DC87664879DB6D032 /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
+		C1B818D35C86765A99363DC0270CC55E /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		C5073412CE8210F48BDD51262D02BFED /* Pods-ContactInvitationPicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactInvitationPicker-Info.plist"; sourceTree = "<group>"; };
+		CE1F404471E734FD2E91B9AA72EE50D7 /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
+		D8060F0ABA0709B27FF0840A1045E1D6 /* Pods-ContactInvitationPickerTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ContactInvitationPickerTests-umbrella.h"; sourceTree = "<group>"; };
+		D98729D388525C1741E1AF5083C0B910 /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
+		E155685E173C9B0D1489EB88D1BCB724 /* Pods-ContactInvitationPickerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactInvitationPickerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E88CE0710092D1FC813EA89CE7BFA026 /* Pods-ContactInvitationPickerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactInvitationPickerTests.release.xcconfig"; sourceTree = "<group>"; };
+		EC55634CF80A592E90A4BAE972E58E28 /* Pods_ContactInvitationPickerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ContactInvitationPickerTests.framework; path = "Pods-ContactInvitationPickerTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC6F744A3DA1C0EE12D10CB82411B05E /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
+		F165EAB937E9234F13CBC7FAFB8D175E /* Pods_ContactInvitationPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ContactInvitationPicker.framework; path = "Pods-ContactInvitationPicker.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C7DE6E4FB2607791F1E38E82B0550F /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
+		F6FFE47506B20F92B135A335E50B6E9F /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
+		F82B234F4F5BFC90ADFC13F2FCF6192E /* Masonry-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Masonry-Info.plist"; sourceTree = "<group>"; };
+		FAA949794520604E7D15E4E5A8DD420F /* Pods-ContactInvitationPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactInvitationPicker.debug.xcconfig"; sourceTree = "<group>"; };
+		FFB0F244C8A043BE93F43516199A2244 /* Pods-ContactInvitationPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactInvitationPicker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3C1E3A95E883FDFBDFCB23330263203F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFD5BF61B424EBD4A831804037A372E6 /* Foundation.framework in Frameworks */,
+				64F37F59EC050CBCB383870F07328DAA /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6EB2B60956C9264BC9159B1DE85EF60C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,104 +136,156 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D5996D86FDEB337D09DE0E293431384B /* Frameworks */ = {
+		B4C44B0D0CF63F1761D4217B3886BB54 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1B45A32CF58EE66B9F3F8E105890001 /* Foundation.framework in Frameworks */,
+				978EA5FDF1F0E3A34D00E2EBC9A9019D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08E7976B438567A048EED3E13F8C81E5 /* Pods-ContactInvitationPickerTests */ = {
+		0A9BEED905A5740428777B502518EFAD /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				847B63B1925242C211FD218C51FEBAFE /* Pods-ContactInvitationPickerTests.modulemap */,
-				F1D24B45219487279C15AC4328E800DC /* Pods-ContactInvitationPickerTests-acknowledgements.markdown */,
-				81B5BA451CCE05972929C93C3184C2C7 /* Pods-ContactInvitationPickerTests-acknowledgements.plist */,
-				BF81DD901EC306F6A80EC52AB569BCDB /* Pods-ContactInvitationPickerTests-dummy.m */,
-				69B88EBC8A392A889BEB8EA81ECE5F33 /* Pods-ContactInvitationPickerTests-Info.plist */,
-				52951AE4B84B629E64427C0E2DDA8CF7 /* Pods-ContactInvitationPickerTests-umbrella.h */,
-				4C6CDAD7BAA7DCC952A5A9F7BE5227D0 /* Pods-ContactInvitationPickerTests.debug.xcconfig */,
-				797DA4597CC2827A67AD6DCEA3966F9B /* Pods-ContactInvitationPickerTests.release.xcconfig */,
+				4BE94B91D0C5024F0F8754EFE873A7F0 /* Pods-ContactInvitationPicker */,
+				1F79ADD5BE48B1768A022D4171ACAEA5 /* Pods-ContactInvitationPickerTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2983683FD097A93297E2F5D4E382B36 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F79ADD5BE48B1768A022D4171ACAEA5 /* Pods-ContactInvitationPickerTests */ = {
+			isa = PBXGroup;
+			children = (
+				96F7D544E21A3CEB6AA27C3E6FF34848 /* Pods-ContactInvitationPickerTests.modulemap */,
+				683DAA4EF113A009129AEA7BBD583871 /* Pods-ContactInvitationPickerTests-acknowledgements.markdown */,
+				14F4FBDB090427E59C4E213C603F0668 /* Pods-ContactInvitationPickerTests-acknowledgements.plist */,
+				7B72FC01390E9CD138CBBFBFA7012F6A /* Pods-ContactInvitationPickerTests-dummy.m */,
+				180124D6EC9281085AA0A6260CD15F27 /* Pods-ContactInvitationPickerTests-Info.plist */,
+				D8060F0ABA0709B27FF0840A1045E1D6 /* Pods-ContactInvitationPickerTests-umbrella.h */,
+				E155685E173C9B0D1489EB88D1BCB724 /* Pods-ContactInvitationPickerTests.debug.xcconfig */,
+				E88CE0710092D1FC813EA89CE7BFA026 /* Pods-ContactInvitationPickerTests.release.xcconfig */,
 			);
 			name = "Pods-ContactInvitationPickerTests";
 			path = "Target Support Files/Pods-ContactInvitationPickerTests";
 			sourceTree = "<group>";
 		};
-		6106F0B32DDEE65C35EE1122F9171524 /* Targets Support Files */ = {
+		3383BD59F0CA45F38B2C4285AD319AC1 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				C3CE919E1595857731CFE0C7C5A79CDA /* Pods-ContactInvitationPicker */,
-				08E7976B438567A048EED3E13F8C81E5 /* Pods-ContactInvitationPickerTests */,
+				A3EC0121FDBC530599046D1A12C9E879 /* Masonry.modulemap */,
+				2E9C3CD0C87A4BC046B80B3F1A6939B1 /* Masonry.xcconfig */,
+				266270F46FD6D8E798173DEC66BEECE4 /* Masonry-dummy.m */,
+				F82B234F4F5BFC90ADFC13F2FCF6192E /* Masonry-Info.plist */,
+				43BA56A061873718EC06171526FE1A00 /* Masonry-prefix.pch */,
+				7E145DFF9033B5609061BCCC32A734C7 /* Masonry-umbrella.h */,
 			);
-			name = "Targets Support Files";
+			name = "Support Files";
+			path = "../Target Support Files/Masonry";
 			sourceTree = "<group>";
 		};
-		B6124C175670800247C68363BF36DCAC /* Products */ = {
+		4BE94B91D0C5024F0F8754EFE873A7F0 /* Pods-ContactInvitationPicker */ = {
 			isa = PBXGroup;
 			children = (
-				F8C7DF3C600F6999946D1225D04C8B1F /* Pods_ContactInvitationPicker.framework */,
-				47B73B5B2336D8FA53160BB70A857A2D /* Pods_ContactInvitationPickerTests.framework */,
+				2175539CAE2C7715C4FB7E44D8537522 /* Pods-ContactInvitationPicker.modulemap */,
+				133293249FF63A0EAD2E334999A2386E /* Pods-ContactInvitationPicker-acknowledgements.markdown */,
+				2F3390ACDFE812A920C3CA3B536C8306 /* Pods-ContactInvitationPicker-acknowledgements.plist */,
+				618B7DD9FA8821FB9E85073965F6BE6E /* Pods-ContactInvitationPicker-dummy.m */,
+				416F82560717B53CCBD880BF0388DFAA /* Pods-ContactInvitationPicker-frameworks.sh */,
+				C5073412CE8210F48BDD51262D02BFED /* Pods-ContactInvitationPicker-Info.plist */,
+				8C13A54F3C90315663000392AACE3C64 /* Pods-ContactInvitationPicker-umbrella.h */,
+				FAA949794520604E7D15E4E5A8DD420F /* Pods-ContactInvitationPicker.debug.xcconfig */,
+				FFB0F244C8A043BE93F43516199A2244 /* Pods-ContactInvitationPicker.release.xcconfig */,
+			);
+			name = "Pods-ContactInvitationPicker";
+			path = "Target Support Files/Pods-ContactInvitationPicker";
+			sourceTree = "<group>";
+		};
+		6C0FCD76EBCC03F29A07E32A7432FA52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84D23002A6D95E505A8E2C7471580C36 /* Masonry.framework */,
+				F165EAB937E9234F13CBC7FAFB8D175E /* Pods_ContactInvitationPicker.framework */,
+				EC55634CF80A592E90A4BAE972E58E28 /* Pods_ContactInvitationPickerTests.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+		7529FD53BCE26816CCD46658378AAF1B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+				8E50BF0E4E86F38E1773098A5EDB39F2 /* Masonry */,
 			);
-			name = iOS;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		C3CE919E1595857731CFE0C7C5A79CDA /* Pods-ContactInvitationPicker */ = {
+		8E50BF0E4E86F38E1773098A5EDB39F2 /* Masonry */ = {
 			isa = PBXGroup;
 			children = (
-				2CED743AD5BD126C9F2EAA6AFCD0D232 /* Pods-ContactInvitationPicker.modulemap */,
-				97D5C97BB1D6D68284541B4FF809ED5D /* Pods-ContactInvitationPicker-acknowledgements.markdown */,
-				4AFBEDBC28EF4D88E3A7104373425786 /* Pods-ContactInvitationPicker-acknowledgements.plist */,
-				8CE2EABF0ADB2C7001D487706C32F655 /* Pods-ContactInvitationPicker-dummy.m */,
-				E425ED9991A027848D1764CCF5DE292F /* Pods-ContactInvitationPicker-Info.plist */,
-				7D1AB68FD5DCE4704ACBC8AB8EBE870D /* Pods-ContactInvitationPicker-umbrella.h */,
-				3348FED5BD61A27298CF00F9C856AC98 /* Pods-ContactInvitationPicker.debug.xcconfig */,
-				9021962740876DE22496B3E6EE9E0924 /* Pods-ContactInvitationPicker.release.xcconfig */,
+				3015FEEEE50C4FE51F845C11D4154A84 /* MASCompositeConstraint.h */,
+				21C55901E770E7D3DF78180E0F7B2F4D /* MASCompositeConstraint.m */,
+				EC6F744A3DA1C0EE12D10CB82411B05E /* MASConstraint.h */,
+				31BA2CDBF46DCD8CA514150C57E64824 /* MASConstraint.m */,
+				B2E90708D5E58877A06F2A402BF8FC16 /* MASConstraint+Private.h */,
+				BA1930EA5A0D0E7DC87664879DB6D032 /* MASConstraintMaker.h */,
+				D98729D388525C1741E1AF5083C0B910 /* MASConstraintMaker.m */,
+				A0EE7F78B3BD7C286ECD8E89FBD08EA3 /* MASLayoutConstraint.h */,
+				9DFD4286E9402BFCF1A5042CBA515863 /* MASLayoutConstraint.m */,
+				F4C7DE6E4FB2607791F1E38E82B0550F /* Masonry.h */,
+				5C6C501769E2DA3CE22CE4BA9B61BD90 /* MASUtilities.h */,
+				8EF30F780E2BD14DF24481BDC5498546 /* MASViewAttribute.h */,
+				1BFB0B11795C1B40153A1A6792AD8430 /* MASViewAttribute.m */,
+				2A25616029B4FC5676B044BBD02C54C2 /* MASViewConstraint.h */,
+				F6FFE47506B20F92B135A335E50B6E9F /* MASViewConstraint.m */,
+				C1B818D35C86765A99363DC0270CC55E /* NSArray+MASAdditions.h */,
+				01FA2F422D817FCC200276FEE81A8466 /* NSArray+MASAdditions.m */,
+				6C6624EA0EDFA9F72CF6A18E889D0D25 /* NSArray+MASShorthandAdditions.h */,
+				89286B607043EF52DC1580A838A8D2F4 /* NSLayoutConstraint+MASDebugAdditions.h */,
+				0487C2E59D05FB9BCF1F1600C8809C2B /* NSLayoutConstraint+MASDebugAdditions.m */,
+				CE1F404471E734FD2E91B9AA72EE50D7 /* View+MASAdditions.h */,
+				2F1F958E9E8CA5C5F1DD8F53FFAEDFDF /* View+MASAdditions.m */,
+				78526D2C8FDDA6A9A4034A969422E45B /* View+MASShorthandAdditions.h */,
+				02B4B23715DFE401486641D6284C1C47 /* ViewController+MASAdditions.h */,
+				4C9B2014C24ADA03537F3B21DB6735E4 /* ViewController+MASAdditions.m */,
+				3383BD59F0CA45F38B2C4285AD319AC1 /* Support Files */,
 			);
-			name = "Pods-ContactInvitationPicker";
-			path = "Target Support Files/Pods-ContactInvitationPicker";
+			name = Masonry;
+			path = Masonry;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				B6124C175670800247C68363BF36DCAC /* Products */,
-				6106F0B32DDEE65C35EE1122F9171524 /* Targets Support Files */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				7529FD53BCE26816CCD46658378AAF1B /* Pods */,
+				6C0FCD76EBCC03F29A07E32A7432FA52 /* Products */,
+				0A9BEED905A5740428777B502518EFAD /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+		E2983683FD097A93297E2F5D4E382B36 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+				436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */,
+				312B988EF117AE4DE76A268D970131FE /* UIKit.framework */,
 			);
-			name = Frameworks;
+			name = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		4892A984DFADD1F3058D80918D863D22 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4FC2AC161CD43CC14C053C0F735C53D7 /* Pods-ContactInvitationPicker-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A85EF4D51F21AD667C3A22ACC05EDEC3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -163,9 +294,58 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AEEF42D310945EF524479BE261E401C3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0FE394E692A30796B0B8260680542A7 /* MASCompositeConstraint.h in Headers */,
+				94C1561BC701BB0EA90A7DD26B5D2D4F /* MASConstraint+Private.h in Headers */,
+				2FBE88AB6732B2F224FCEA7F490757EB /* MASConstraint.h in Headers */,
+				C5305C30EF88CDEFD1BFDE547F0B0932 /* MASConstraintMaker.h in Headers */,
+				13CF24549FA862851C8ADF5CFE22FEFD /* MASLayoutConstraint.h in Headers */,
+				A98413C6607F08050A4E1E4D4DBADD94 /* Masonry-umbrella.h in Headers */,
+				F50920C2026473CF11E5C635750F12EE /* Masonry.h in Headers */,
+				67843D6939DCFB92F851C88AD853EB8B /* MASUtilities.h in Headers */,
+				9269E802D3E20C338BDDFF5DA07029E5 /* MASViewAttribute.h in Headers */,
+				626B143296611EBC98F20F738CFB4AA8 /* MASViewConstraint.h in Headers */,
+				27F1DAFCBA43BFC893AAB8D70B811B04 /* NSArray+MASAdditions.h in Headers */,
+				1E4C2B7E07259DD5B60C4FE6A8A70C6F /* NSArray+MASShorthandAdditions.h in Headers */,
+				DADF5150B678D8FAB699D940DED2C71D /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
+				357FF480909B78B01A5BBA13263779DE /* View+MASAdditions.h in Headers */,
+				4FDED973490EB6A8908D2671154FDB89 /* View+MASShorthandAdditions.h in Headers */,
+				C8B2C44773021FE52AE8D492B90F5787 /* ViewController+MASAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B06C1CE58E3010F3437B0AF89F130BBA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DC505CDC390743412CDF47214AB7218 /* Pods-ContactInvitationPicker-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		64908377FC47CBE2E0EA0FA3CC30D3C1 /* Masonry */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7964FEECC30DBE46B643F8DD34A835C /* Build configuration list for PBXNativeTarget "Masonry" */;
+			buildPhases = (
+				AEEF42D310945EF524479BE261E401C3 /* Headers */,
+				AC6071752917EDD9CA03308E10664ED0 /* Sources */,
+				3C1E3A95E883FDFBDFCB23330263203F /* Frameworks */,
+				94F1D38151CB787DCDF119BD0454392E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Masonry;
+			productName = Masonry;
+			productReference = 84D23002A6D95E505A8E2C7471580C36 /* Masonry.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		82D0C1FCAC3532780E17E5BEC3732580 /* Pods-ContactInvitationPickerTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 012EAD2654FC9772929B093993B208DC /* Build configuration list for PBXNativeTarget "Pods-ContactInvitationPickerTests" */;
@@ -182,25 +362,26 @@
 			);
 			name = "Pods-ContactInvitationPickerTests";
 			productName = "Pods-ContactInvitationPickerTests";
-			productReference = 47B73B5B2336D8FA53160BB70A857A2D /* Pods_ContactInvitationPickerTests.framework */;
+			productReference = EC55634CF80A592E90A4BAE972E58E28 /* Pods_ContactInvitationPickerTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D1FBDDBD0FB4D3538239D205FBB503B3 /* Pods-ContactInvitationPicker */ = {
+		9B8969C59A61D2DCAB9C8E9DDCE15D67 /* Pods-ContactInvitationPicker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DA0356162521B739CDD809E096C162F4 /* Build configuration list for PBXNativeTarget "Pods-ContactInvitationPicker" */;
+			buildConfigurationList = 29A4E2AC666EF4D27447FEFE3130D14B /* Build configuration list for PBXNativeTarget "Pods-ContactInvitationPicker" */;
 			buildPhases = (
-				4892A984DFADD1F3058D80918D863D22 /* Headers */,
-				ED961CDB5EF2ACF209B02926F4552EC7 /* Sources */,
-				D5996D86FDEB337D09DE0E293431384B /* Frameworks */,
-				0CA120D38291C569CCEA401445F1D812 /* Resources */,
+				B06C1CE58E3010F3437B0AF89F130BBA /* Headers */,
+				E6F046FAE32B8967505D9BFCB266C077 /* Sources */,
+				B4C44B0D0CF63F1761D4217B3886BB54 /* Frameworks */,
+				86ED97D159CDB44E1F4AAFA0338B7012 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				566E409B6AF00DFA0E9962FDC1F9E7B9 /* PBXTargetDependency */,
 			);
 			name = "Pods-ContactInvitationPicker";
 			productName = "Pods-ContactInvitationPicker";
-			productReference = F8C7DF3C600F6999946D1225D04C8B1F /* Pods_ContactInvitationPicker.framework */;
+			productReference = F165EAB937E9234F13CBC7FAFB8D175E /* Pods_ContactInvitationPicker.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -220,18 +401,26 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = B6124C175670800247C68363BF36DCAC /* Products */;
+			productRefGroup = 6C0FCD76EBCC03F29A07E32A7432FA52 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D1FBDDBD0FB4D3538239D205FBB503B3 /* Pods-ContactInvitationPicker */,
+				64908377FC47CBE2E0EA0FA3CC30D3C1 /* Masonry */,
+				9B8969C59A61D2DCAB9C8E9DDCE15D67 /* Pods-ContactInvitationPicker */,
 				82D0C1FCAC3532780E17E5BEC3732580 /* Pods-ContactInvitationPickerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0CA120D38291C569CCEA401445F1D812 /* Resources */ = {
+		86ED97D159CDB44E1F4AAFA0338B7012 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94F1D38151CB787DCDF119BD0454392E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -256,29 +445,90 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ED961CDB5EF2ACF209B02926F4552EC7 /* Sources */ = {
+		AC6071752917EDD9CA03308E10664ED0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				290FD6AAE53004BE517E926E769743DC /* Pods-ContactInvitationPicker-dummy.m in Sources */,
+				F5C9CAD634744DFE373DA45B0CD1806C /* MASCompositeConstraint.m in Sources */,
+				62449CA0C38A2DC85B0982B25394E90E /* MASConstraint.m in Sources */,
+				57DFE313C53DA21975AD94A81F166BD1 /* MASConstraintMaker.m in Sources */,
+				BC9D138592743C6138E5EEBDCF679053 /* MASLayoutConstraint.m in Sources */,
+				DDA0C9910C0F791259FCB4E0E85F3DBD /* Masonry-dummy.m in Sources */,
+				07818F5781210B4DD5E5D0E0E77CE532 /* MASViewAttribute.m in Sources */,
+				73300003438DC542B9D0546D73877707 /* MASViewConstraint.m in Sources */,
+				DDC5DE76CA3AC9073FB5C6BFBA026AFE /* NSArray+MASAdditions.m in Sources */,
+				D892D5CB8E1711B1FE8FCA30D5D1713F /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				75C5B6C21E0CC4898AE48E52DDA91375 /* View+MASAdditions.m in Sources */,
+				C58C96ECEB8DA48FD48BF98210048834 /* ViewController+MASAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6F046FAE32B8967505D9BFCB266C077 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				519EF96256FE1396483FEA6B20ED0C04 /* Pods-ContactInvitationPicker-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		566E409B6AF00DFA0E9962FDC1F9E7B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Masonry;
+			target = 64908377FC47CBE2E0EA0FA3CC30D3C1 /* Masonry */;
+			targetProxy = D419036CD49E7EFFD2B0734016638DA5 /* PBXContainerItemProxy */;
+		};
 		A344E5B40F24233B4F3E272F015590B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-ContactInvitationPicker";
-			target = D1FBDDBD0FB4D3538239D205FBB503B3 /* Pods-ContactInvitationPicker */;
+			target = 9B8969C59A61D2DCAB9C8E9DDCE15D67 /* Pods-ContactInvitationPicker */;
 			targetProxy = 35E07E7CC1B971D57A1263ED2E44A292 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		00E93903F98F0D395E0922F8E2CA7161 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAA949794520604E7D15E4E5A8DD420F /* Pods-ContactInvitationPicker.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		01EB8AAFD86EAE8C123CCD041C1C608F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 797DA4597CC2827A67AD6DCEA3966F9B /* Pods-ContactInvitationPickerTests.release.xcconfig */;
+			baseConfigurationReference = E88CE0710092D1FC813EA89CE7BFA026 /* Pods-ContactInvitationPickerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -313,43 +563,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		2D5DED96F0E135DADF4A874102A31442 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3348FED5BD61A27298CF00F9C856AC98 /* Pods-ContactInvitationPicker.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		4BE66A09A74FD25164AAB3C2645B9B93 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -475,9 +688,9 @@
 			};
 			name = Debug;
 		};
-		993AFFD7D96923DC666F8A9C97DE7368 /* Release */ = {
+		85F2ED5C0B3100FD46CD3ED8F9630C7F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9021962740876DE22496B3E6EE9E0924 /* Pods-ContactInvitationPicker.release.xcconfig */;
+			baseConfigurationReference = FFB0F244C8A043BE93F43516199A2244 /* Pods-ContactInvitationPicker.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -513,9 +726,80 @@
 			};
 			name = Release;
 		};
+		A5885077BD6F38D67C9AC1FFBFA99692 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E9C3CD0C87A4BC046B80B3F1A6939B1 /* Masonry.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Masonry/Masonry-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Masonry/Masonry-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Masonry/Masonry.modulemap";
+				PRODUCT_MODULE_NAME = Masonry;
+				PRODUCT_NAME = Masonry;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C0F484D5A35F95435FD5B25DB3C4F27C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E9C3CD0C87A4BC046B80B3F1A6939B1 /* Masonry.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Masonry/Masonry-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Masonry/Masonry-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Masonry/Masonry.modulemap";
+				PRODUCT_MODULE_NAME = Masonry;
+				PRODUCT_NAME = Masonry;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		FC1DA1436314F0EE56E02F5E69A234F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C6CDAD7BAA7DCC952A5A9F7BE5227D0 /* Pods-ContactInvitationPickerTests.debug.xcconfig */;
+			baseConfigurationReference = E155685E173C9B0D1489EB88D1BCB724 /* Pods-ContactInvitationPickerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -562,6 +846,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		29A4E2AC666EF4D27447FEFE3130D14B /* Build configuration list for PBXNativeTarget "Pods-ContactInvitationPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E93903F98F0D395E0922F8E2CA7161 /* Debug */,
+				85F2ED5C0B3100FD46CD3ED8F9630C7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -571,11 +864,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DA0356162521B739CDD809E096C162F4 /* Build configuration list for PBXNativeTarget "Pods-ContactInvitationPicker" */ = {
+		D7964FEECC30DBE46B643F8DD34A835C /* Build configuration list for PBXNativeTarget "Masonry" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2D5DED96F0E135DADF4A874102A31442 /* Debug */,
-				993AFFD7D96923DC666F8A9C97DE7368 /* Release */,
+				A5885077BD6F38D67C9AC1FFBFA99692 /* Debug */,
+				C0F484D5A35F95435FD5B25DB3C4F27C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NimbusModels.h"
 #import "UIColorFromRGB.h"
+#import "Masonry.h"
 
 @class ListContactView;
 

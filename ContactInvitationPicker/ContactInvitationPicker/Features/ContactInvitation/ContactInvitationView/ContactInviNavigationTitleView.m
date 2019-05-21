@@ -24,49 +24,23 @@
 - (void)initTitleLabel {
     _titleLabel = [UILabel new];
     self.titleLabel.text = @"Chọn bạn";
-    self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.titleLabel];
-    [self addConstraints:[NSArray arrayWithObjects:
-                          [NSLayoutConstraint constraintWithItem:self.titleLabel
-                                                       attribute:(NSLayoutAttributeTop)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeTop)
-                                                      multiplier:1
-                                                        constant:2],
-                          [NSLayoutConstraint constraintWithItem:self.titleLabel
-                                                       attribute:(NSLayoutAttributeCenterX)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeCenterX)
-                                                      multiplier:1
-                                                        constant:0],
-                          nil]];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self).offset(2);
+        make.centerX.equalTo(self);
+    }];
 }
 
 - (void)initSubTitleLabel {
     _subTitleLabel = [UILabel new];
     self.subTitleLabel.text = @"Đã chọn: 0";
-    self.subTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.subTitleLabel setFont:[UIFont systemFontOfSize:11]];
     self.subTitleLabel.textColor = UIColorFromRGB(0x9AA5AC);
     [self addSubview:self.subTitleLabel];
-    [self addConstraints:[NSArray arrayWithObjects:
-                          [NSLayoutConstraint constraintWithItem:self.subTitleLabel
-                                                       attribute:(NSLayoutAttributeTop)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self.titleLabel
-                                                       attribute:(NSLayoutAttributeBottom)
-                                                      multiplier:1
-                                                        constant:0],
-                          [NSLayoutConstraint constraintWithItem:self.subTitleLabel
-                                                       attribute:(NSLayoutAttributeCenterX)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeCenterX)
-                                                      multiplier:1
-                                                        constant:0],
-                          nil]];
+    [self.subTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self);
+        make.top.equalTo(self.titleLabel.mas_bottom);
+    }];
 }
 
 - (void)updateSubTitleWithNumberSelectContacts:(NSUInteger)number {

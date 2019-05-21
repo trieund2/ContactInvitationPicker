@@ -18,6 +18,7 @@
 #import "NSString+Extension.h"
 #import "ListContactView.h"
 #import "ListSelectedContactView.h"
+#import "Masonry.h"
 
 extern NSUInteger const kMaxContactSelect;
 

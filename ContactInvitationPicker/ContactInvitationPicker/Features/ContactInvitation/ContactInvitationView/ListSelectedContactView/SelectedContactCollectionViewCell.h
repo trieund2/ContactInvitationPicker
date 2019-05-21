@@ -10,6 +10,7 @@
 #import "NICellFactory.h"
 #import "UIImageView+Letters.h"
 #import "ZAContactAvatarCache.h"
+#import "Masonry.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

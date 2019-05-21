@@ -46,38 +46,9 @@
     _avatarImageView = [UIImageView new];
     [self.avatarImageView setContentMode:(UIViewContentModeScaleAspectFit)];
     [self addSubview:self.avatarImageView];
-    self.avatarImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [self addConstraints:[NSArray arrayWithObjects:
-                          [NSLayoutConstraint constraintWithItem:self.avatarImageView
-                                                       attribute:(NSLayoutAttributeCenterX)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeCenterX)
-                                                      multiplier:1
-                                                        constant:0],
-                          [NSLayoutConstraint constraintWithItem:self.avatarImageView
-                                                       attribute:(NSLayoutAttributeCenterY)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeCenterY)
-                                                      multiplier:1
-                                                        constant:0],
-                          [NSLayoutConstraint constraintWithItem:self.avatarImageView
-                                                       attribute:(NSLayoutAttributeWidth)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeWidth)
-                                                      multiplier:1
-                                                        constant:0],
-                          [NSLayoutConstraint constraintWithItem:self.avatarImageView
-                                                       attribute:(NSLayoutAttributeHeight)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeHeight)
-                                                      multiplier:1
-                                                        constant:0],
-                          nil]];
+    [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.centerY.width.height.equalTo(self);
+    }];
 }
 
 @end

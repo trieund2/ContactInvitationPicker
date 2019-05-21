@@ -3,7 +3,7 @@ platform :ios, '8.0'
 
 target 'ContactInvitationPicker' do
   
-  # Pods for ContactInvitationPicker
+  pod 'Masonry'
 
   target 'ContactInvitationPickerTests' do
     inherit! :search_paths

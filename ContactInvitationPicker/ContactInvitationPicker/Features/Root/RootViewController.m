@@ -26,39 +26,12 @@
                                  forControlEvents:(UIControlEventTouchUpInside)];
     [self.contactInvitationPickerButton setTitle:@"Giới thiệu Zalo cho bạn bè" forState:(UIControlStateNormal)];
     [self.contactInvitationPickerButton setTitleColor:UIColor.whiteColor forState:(UIControlStateNormal)];
-    self.contactInvitationPickerButton.translatesAutoresizingMaskIntoConstraints = NO;
-    
     [self.view addSubview:self.contactInvitationPickerButton];
-    [self.view addConstraints:[NSArray arrayWithObjects:
-                               [NSLayoutConstraint constraintWithItem:self.contactInvitationPickerButton
-                                                            attribute:(NSLayoutAttributeWidth)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:nil
-                                                            attribute:(NSLayoutAttributeWidth)
-                                                           multiplier:1
-                                                             constant:250],
-                               [NSLayoutConstraint constraintWithItem:self.contactInvitationPickerButton
-                                                            attribute:(NSLayoutAttributeHeight)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:nil
-                                                            attribute:(NSLayoutAttributeHeight)
-                                                           multiplier:1
-                                                             constant:46],
-                               [NSLayoutConstraint constraintWithItem:self.contactInvitationPickerButton
-                                                            attribute:(NSLayoutAttributeCenterX)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.view
-                                                            attribute:(NSLayoutAttributeCenterX)
-                                                           multiplier:1
-                                                             constant:0],
-                               [NSLayoutConstraint constraintWithItem:self.contactInvitationPickerButton
-                                                            attribute:(NSLayoutAttributeCenterY)
-                                                            relatedBy:(NSLayoutRelationEqual)
-                                                               toItem:self.view
-                                                            attribute:(NSLayoutAttributeCenterY)
-                                                           multiplier:1
-                                                             constant:0],
-                               nil]];
+    [self.contactInvitationPickerButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(250);
+        make.height.mas_equalTo(46);
+        make.centerX.centerY.equalTo(self.view);
+    }];
 }
 
 #pragma mark - UI Actions

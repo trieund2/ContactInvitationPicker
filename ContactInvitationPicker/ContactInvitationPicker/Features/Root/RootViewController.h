@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIColorFromRGB.h"
 #import "ContactInvitationViewController.h"
+#import "Masonry.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

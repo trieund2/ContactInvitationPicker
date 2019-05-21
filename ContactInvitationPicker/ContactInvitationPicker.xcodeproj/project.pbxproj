@@ -997,6 +997,7 @@
 				A1FAF66322814529006E024B /* Sources */,
 				A1FAF66422814529006E024B /* Frameworks */,
 				A1FAF66522814529006E024B /* Resources */,
+				31F8CCCA61BDC225CC75CE45 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1084,6 +1085,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		31F8CCCA61BDC225CC75CE45 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ContactInvitationPicker/Pods-ContactInvitationPicker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		613729A2EB5C121051562D7E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

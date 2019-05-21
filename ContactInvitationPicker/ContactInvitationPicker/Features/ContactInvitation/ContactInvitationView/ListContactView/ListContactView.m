@@ -32,39 +32,10 @@
     self.contactTableView.delegate = self;
     self.contactTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.contactTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    self.contactTableView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.contactTableView];
-    [self addConstraints:[NSArray arrayWithObjects:
-                          [NSLayoutConstraint constraintWithItem:self.contactTableView
-                                                       attribute:(NSLayoutAttributeTop)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeTop)
-                                                      multiplier:1
-                                                        constant:0],
-                          [NSLayoutConstraint constraintWithItem:self.contactTableView
-                                                       attribute:(NSLayoutAttributeRight)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeRight)
-                                                      multiplier:1
-                                                        constant:0],
-                          [NSLayoutConstraint constraintWithItem:self.contactTableView
-                                                       attribute:(NSLayoutAttributeLeft)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeLeft)
-                                                      multiplier:1
-                                                        constant:0],
-                          [NSLayoutConstraint constraintWithItem:self.contactTableView
-                                                       attribute:(NSLayoutAttributeBottom)
-                                                       relatedBy:(NSLayoutRelationEqual)
-                                                          toItem:self
-                                                       attribute:(NSLayoutAttributeBottom)
-                                                      multiplier:1
-                                                        constant:0],
-                          nil]];
+    [self.contactTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.equalTo(self);
+    }];
 }
 
 #pragma mark - Interface methods
