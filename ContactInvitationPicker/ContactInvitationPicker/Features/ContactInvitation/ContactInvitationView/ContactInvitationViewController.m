@@ -197,12 +197,12 @@ NSUInteger const kMaxContactSelect = 5;
 }
 
 - (void)updateSendButtonState {
-    if (self.selectedContactCellObjects.count == 0) {
-        [self.sendButton setImage:[UIImage imageNamed:@"SendDisable"] forState:(UIControlStateNormal)];
-        [self.sendButton setUserInteractionEnabled:NO];
-    } else {
+    if (self.selectedContactCellObjects.count > 0) {
         [self.sendButton setImage:[UIImage imageNamed:@"Send"] forState:(UIControlStateNormal)];
         [self.sendButton setUserInteractionEnabled:YES];
+    } else {
+        [self.sendButton setImage:[UIImage imageNamed:@"SendDisable"] forState:(UIControlStateNormal)];
+        [self.sendButton setUserInteractionEnabled:NO];
     }
 }
 

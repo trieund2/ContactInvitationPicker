@@ -31,7 +31,7 @@
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    UIImage *avatarImage = [[ZAContactAvatarCache sharedInstance] getImageWithKey:contactCellObject.fullNameRemoveDiacritics];
+    UIImage *avatarImage = [[ZAContactAvatarCache sharedInstance] getImageWithKey:contactCellObject.identifier];
     if (avatarImage) {
         [self.avatarImageView setImage:avatarImage];
     } else if (contactCellObject) {
@@ -43,7 +43,7 @@
                                         circular:YES
                                   textAttributes:textAttributes
                                             size:CGSizeMake(46, 46)];
-        [[ZAContactAvatarCache sharedInstance] storeImage:self.avatarImageView.image withKey:contactCellObject.fullNameRemoveDiacritics];
+        [[ZAContactAvatarCache sharedInstance] storeImage:self.avatarImageView.image withKey:contactCellObject.identifier];
     }
 }
 

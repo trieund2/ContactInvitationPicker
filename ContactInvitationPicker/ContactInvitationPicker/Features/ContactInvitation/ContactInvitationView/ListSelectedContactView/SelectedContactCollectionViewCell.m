@@ -21,14 +21,14 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    UIImage *avatarImage = [[ZAContactAvatarCache sharedInstance] getImageWithKey:selectedContactCellObject.fullNameRemoveDiacritics];
+    UIImage *avatarImage = [[ZAContactAvatarCache sharedInstance] getImageWithKey:selectedContactCellObject.identifier];
     if (avatarImage) {
         [self.avatarImageView setImage:avatarImage];
     } else if (selectedContactCellObject) {
         NSDictionary *textAttributes = @{NSForegroundColorAttributeName: UIColor.whiteColor,
                                          NSFontAttributeName: [UIFont systemFontOfSize:16]
                                          };
-        [self.avatarImageView setImageWithString:selectedContactCellObject.fullNameRemoveDiacritics
+        [self.avatarImageView setImageWithString:selectedContactCellObject.identifier
                                            color:selectedContactCellObject.color
                                         circular:YES
                                   textAttributes:textAttributes
