@@ -90,7 +90,7 @@
 		A183CC36228BB3F500E1F322 /* ZAContactAvatarCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A183CC35228BB3F500E1F322 /* ZAContactAvatarCache.m */; };
 		A183CC3C228C134400E1F322 /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A183CC3B228C134400E1F322 /* ContactTableViewCell.m */; };
 		A183CC3E228C13BB00E1F322 /* SelectedContactCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A183CC3D228C13BB00E1F322 /* SelectedContactCollectionViewCell.m */; };
-		A18BA4AB22939DF400409341 /* ListSelectContactView.m in Sources */ = {isa = PBXBuildFile; fileRef = A18BA4AA22939DF400409341 /* ListSelectContactView.m */; };
+		A18BA4AB22939DF400409341 /* ListSelectedContactView.m in Sources */ = {isa = PBXBuildFile; fileRef = A18BA4AA22939DF400409341 /* ListSelectedContactView.m */; };
 		A1A837C9228418F900C353C9 /* ContactInviNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */; };
 		A1A8382F228434D200C353C9 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A8382E228434D200C353C9 /* NSString+Extension.m */; };
 		A1B863E522857AF2001DA0C1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B863E422857AF2001DA0C1 /* RootViewController.m */; };
@@ -331,8 +331,8 @@
 		A183CC35228BB3F500E1F322 /* ZAContactAvatarCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAContactAvatarCache.m; sourceTree = "<group>"; };
 		A183CC3B228C134400E1F322 /* ContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCell.m; sourceTree = "<group>"; };
 		A183CC3D228C13BB00E1F322 /* SelectedContactCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedContactCollectionViewCell.m; sourceTree = "<group>"; };
-		A18BA4A922939DF400409341 /* ListSelectContactView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListSelectContactView.h; sourceTree = "<group>"; };
-		A18BA4AA22939DF400409341 /* ListSelectContactView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListSelectContactView.m; sourceTree = "<group>"; };
+		A18BA4A922939DF400409341 /* ListSelectedContactView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListSelectedContactView.h; sourceTree = "<group>"; };
+		A18BA4AA22939DF400409341 /* ListSelectedContactView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListSelectedContactView.m; sourceTree = "<group>"; };
 		A1A837C122840A3A00C353C9 /* UIColorFromRGB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIColorFromRGB.h; sourceTree = "<group>"; };
 		A1A837C7228418F900C353C9 /* ContactInviNavigationTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactInviNavigationTitleView.h; sourceTree = "<group>"; };
 		A1A837C8228418F900C353C9 /* ContactInviNavigationTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactInviNavigationTitleView.m; sourceTree = "<group>"; };
@@ -788,17 +788,17 @@
 			path = ContactInvitation;
 			sourceTree = "<group>";
 		};
-		A18BA4A822939DC600409341 /* ListSelectContactView */ = {
+		A18BA4A822939DC600409341 /* ListSelectedContactView */ = {
 			isa = PBXGroup;
 			children = (
-				A18BA4A922939DF400409341 /* ListSelectContactView.h */,
-				A18BA4AA22939DF400409341 /* ListSelectContactView.m */,
+				A18BA4A922939DF400409341 /* ListSelectedContactView.h */,
+				A18BA4AA22939DF400409341 /* ListSelectedContactView.m */,
 				C56FBAF222831FAA007E8A0E /* SelectedContactCollectionViewCell.h */,
 				A183CC3D228C13BB00E1F322 /* SelectedContactCollectionViewCell.m */,
 				C56FBAF72283275D007E8A0E /* SelectedContactCellObject.h */,
 				C56FBAF82283275D007E8A0E /* SelectedContactCellObject.m */,
 			);
-			path = ListSelectContactView;
+			path = ListSelectedContactView;
 			sourceTree = "<group>";
 		};
 		A1B863E222857ADA001DA0C1 /* Root */ = {
@@ -882,7 +882,7 @@
 			isa = PBXGroup;
 			children = (
 				A1829300229006DA00833523 /* ListContactView */,
-				A18BA4A822939DC600409341 /* ListSelectContactView */,
+				A18BA4A822939DC600409341 /* ListSelectedContactView */,
 				A1FAF66D22814529006E024B /* ContactInvitationViewController.h */,
 				A1FAF66E22814529006E024B /* ContactInvitationViewController.m */,
 				A1A837C7228418F900C353C9 /* ContactInviNavigationTitleView.h */,
@@ -1238,7 +1238,7 @@
 				A160AC64228193150024BB49 /* NILauncherPageView.m in Sources */,
 				A160AC76228193150024BB49 /* NIWebController.m in Sources */,
 				C5EEFA072281CAA100044ED9 /* UIButton+AFNetworking.m in Sources */,
-				A18BA4AB22939DF400409341 /* ListSelectContactView.m in Sources */,
+				A18BA4AB22939DF400409341 /* ListSelectedContactView.m in Sources */,
 				A160AC9A228193150024BB49 /* NIChameleonObserver.m in Sources */,
 				A160AC99228193150024BB49 /* UILabel+NIStyleable.m in Sources */,
 				A160ACC9228193150024BB49 /* NISDKAvailability.m in Sources */,

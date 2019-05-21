@@ -1,20 +1,20 @@
 //
-//  ListSelectContactView.m
+//  ListSelectedContactView.m
 //  ContactInvitationPicker
 //
 //  Created by CPU12202 on 5/21/19.
 //  Copyright © 2019 com.trieund. All rights reserved.
 //
 
-#import "ListSelectContactView.h"
+#import "ListSelectedContactView.h"
 
-@interface ListSelectContactView ()
+@interface ListSelectedContactView ()
 
 @property (nonatomic) NICollectionViewModel *selectedContactCollectionViewModel;
 
 @end
 
-@implementation ListSelectContactView
+@implementation ListSelectedContactView
 
 
 #pragma mark - Init
@@ -88,7 +88,7 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.delegate && [self.delegate conformsToProtocol:@protocol(ListSelectContactViewDelegate)]) {
+    if (self.delegate && [self.delegate conformsToProtocol:@protocol(ListSelectedContactViewDelegate)]) {
         [self.delegate listSelectContactView:self didSelectRowAtIndexPath:indexPath];
     }
 }

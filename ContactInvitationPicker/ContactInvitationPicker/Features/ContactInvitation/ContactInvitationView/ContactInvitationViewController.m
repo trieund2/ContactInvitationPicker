@@ -80,7 +80,7 @@ NSUInteger const kMaxContactSelect = 5;
 }
 
 - (void)initSelectedContactView {
-    _selectedContactView = [ListSelectContactView new];
+    _selectedContactView = [ListSelectedContactView new];
     self.selectedContactView.backgroundColor = UIColor.clearColor;
     self.selectedContactView.delegate = self;
     
@@ -365,7 +365,7 @@ NSUInteger const kMaxContactSelect = 5;
 
 #pragma mark - ListSelectContactViewDelegate
 
-- (void)listSelectContactView:(ListSelectContactView *)listSelectContactView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)listSelectContactView:(ListSelectedContactView *)listSelectContactView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     id object = [self.selectedContactView objectForIndexPath:indexPath];
     if (object && [object isKindOfClass:SelectedContactCellObject.class]) {
         SelectedContactCellObject *selectedContactCellObject = (SelectedContactCellObject *)object;

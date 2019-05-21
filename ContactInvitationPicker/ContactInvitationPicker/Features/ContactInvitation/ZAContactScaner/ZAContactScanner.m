@@ -66,7 +66,7 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
     });
 }
 
-#pragma mark Interface methods
+#pragma mark - Interface methods
 
 - (void)addDelegate:(id<ZAContactScannerDelegate>)delegate {
     if (!delegate || ![delegate conformsToProtocol:@protocol(ZAContactScannerDelegate)]) {

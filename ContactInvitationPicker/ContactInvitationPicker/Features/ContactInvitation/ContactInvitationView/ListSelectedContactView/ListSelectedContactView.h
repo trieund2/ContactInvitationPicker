@@ -1,5 +1,5 @@
 //
-//  ListSelectContactView.h
+//  ListSelectedContactView.h
 //  ContactInvitationPicker
 //
 //  Created by CPU12202 on 5/21/19.
@@ -11,20 +11,20 @@
 #import "NICollectionViewCellFactory.h"
 #import "SelectedContactCellObject.h"
 
-@class ListSelectContactView;
+@class ListSelectedContactView;
 
-@protocol ListSelectContactViewDelegate <NSObject>
+@protocol ListSelectedContactViewDelegate <NSObject>
 
 @required
-- (void)listSelectContactView:(ListSelectContactView *)listSelectContactView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)listSelectContactView:(ListSelectedContactView *)listSelectContactView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ListSelectContactView : UIView <UICollectionViewDelegate>
+@interface ListSelectedContactView : UIView <UICollectionViewDelegate>
 
-@property (nonatomic, weak) id<ListSelectContactViewDelegate> delegate;
+@property (nonatomic, weak) id<ListSelectedContactViewDelegate> delegate;
 @property (nonatomic, readonly) UICollectionView *selectContactCollectionView;
 
 - (void)reloadData;
