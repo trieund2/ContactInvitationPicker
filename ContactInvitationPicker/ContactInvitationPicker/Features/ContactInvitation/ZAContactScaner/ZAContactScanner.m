@@ -82,8 +82,8 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
     if (!delegate || ![delegate conformsToProtocol:@protocol(ZAContactScannerDelegate)]) {
         return;
     }
-    __weak ZAContactScanner *weakSelf = self;
-    dispatch_async(self.queue, ^{
+    ZAContactScanner * __weak weakSelf = self;
+    dispatch_sync(self.queue, ^{
         [weakSelf.delegates removeObject:delegate];
     });
 }

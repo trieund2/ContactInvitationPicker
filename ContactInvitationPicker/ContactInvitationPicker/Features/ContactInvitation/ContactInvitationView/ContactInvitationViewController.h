@@ -12,8 +12,6 @@
 #import "ZAContactAdapter.h"
 #import "NimbusModels.h"
 #import "ContactCellObject.h"
-#import "NICollectionViewModel.h"
-#import "NICollectionViewCellFactory.h"
 #import "SelectedContactCellObject.h"
 #import "UIColorFromRGB.h"
 #import "UIViewController+Alert.h"

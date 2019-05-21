@@ -40,6 +40,10 @@ NSUInteger const kMaxContactSelect = 5;
     [self getAllContacts];
 }
 
+- (void)dealloc {
+    [[ZAContactAdapter sharedInstance] removeDelegate:self];
+}
+
 #pragma mark - UI actions
 
 - (void)touchInCancelButton {
