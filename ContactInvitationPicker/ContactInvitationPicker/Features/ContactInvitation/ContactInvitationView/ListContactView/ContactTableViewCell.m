@@ -36,8 +36,7 @@
         [self.avatarImageView setImage:avatarImage];
     } else if (contactCellObject) {
         NSDictionary *textAttributes = @{NSForegroundColorAttributeName: UIColor.whiteColor,
-                                         NSFontAttributeName: [UIFont systemFontOfSize:20]
-                                         };
+                                         NSFontAttributeName: [UIFont systemFontOfSize:20]};
         [self.avatarImageView setImageWithString:contactCellObject.fullNameRemoveDiacritics
                                            color:contactCellObject.shortNameBackgroundColor
                                         circular:YES

@@ -33,11 +33,11 @@
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.itemSize = CGSizeMake(40, 40);
     layout.minimumInteritemSpacing = 4;
-    _selectContactCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    self.selectContactCollectionView.backgroundColor = UIColor.clearColor;
-    self.selectContactCollectionView.delegate = self;
-    [self addSubview:self.selectContactCollectionView];
-    [self.selectContactCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _selectedContactsCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    self.selectedContactsCollectionView.backgroundColor = UIColor.clearColor;
+    self.selectedContactsCollectionView.delegate = self;
+    [self addSubview:self.selectedContactsCollectionView];
+    [self.selectedContactsCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.bottom.equalTo(self);
     }];
 }
@@ -45,15 +45,15 @@
 #pragma mark - Interface methods
 
 - (void)reloadData {
-    [self.selectContactCollectionView reloadData];
+    [self.selectedContactsCollectionView reloadData];
 }
 
 - (void)setDataSourceWithCellObjects:(NSArray<SelectedContactCellObject *> *)cellObjects {
     _selectedContactCollectionViewModel = [[NICollectionViewModel alloc]
                                            initWithListArray:cellObjects
                                            delegate:(id)[NICollectionViewCellFactory class]];
-    self.selectContactCollectionView.dataSource = self.selectedContactCollectionViewModel;
-    [self.selectContactCollectionView reloadData];
+    self.selectedContactsCollectionView.dataSource = self.selectedContactCollectionViewModel;
+    [self.selectedContactsCollectionView reloadData];
 }
 
 - (id)objectForIndexPath:(NSIndexPath *)indexPath {

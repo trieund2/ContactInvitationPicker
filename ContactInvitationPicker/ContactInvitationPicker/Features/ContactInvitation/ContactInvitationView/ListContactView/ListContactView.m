@@ -58,7 +58,7 @@
 }
 
 - (void)selectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
-    [self.contactTableView selectRowAtIndexPath:indexPath animated:animated scrollPosition:(UITableViewScrollPositionNone)];
+    [self.contactTableView selectRowAtIndexPath:indexPath animated:animated scrollPosition:(UITableViewScrollPositionTop)];
 }
 
 - (void)deSelectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {

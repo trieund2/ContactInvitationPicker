@@ -258,7 +258,6 @@ NSUInteger const kMaxContactSelect = 5;
     if (object && [object isKindOfClass:SelectedContactCellObject.class]) {
         SelectedContactCellObject *selectedContactCellObject = (SelectedContactCellObject *)object;
         [self.listContactView selectRowAtIndexPath:selectedContactCellObject.contactIndexPath animated:YES];
-        [self.listContactView scrollToItemAtIndexPath:selectedContactCellObject.contactIndexPath];
     }
 }
 

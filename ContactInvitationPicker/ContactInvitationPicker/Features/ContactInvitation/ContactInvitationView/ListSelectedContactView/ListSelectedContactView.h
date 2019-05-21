@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ListSelectedContactView : UIView <UICollectionViewDelegate>
 
 @property (nonatomic, weak) id<ListSelectedContactViewDelegate> delegate;
-@property (nonatomic, readonly) UICollectionView *selectContactCollectionView;
+@property (nonatomic, readonly) UICollectionView *selectedContactsCollectionView;
 
 - (void)reloadData;
 - (void)setDataSourceWithCellObjects:(NSArray<SelectedContactCellObject *> *)cellObjects;
