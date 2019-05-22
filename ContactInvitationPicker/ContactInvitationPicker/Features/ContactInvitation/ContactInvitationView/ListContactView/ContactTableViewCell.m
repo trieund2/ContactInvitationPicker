@@ -26,6 +26,7 @@
         [self initFullNameLabel];
         [self initSeparatorView];
     }
+    
     return self;
 }
 
@@ -57,6 +58,7 @@
     } else {
         self.checkBoxImageView.image = [UIImage imageNamed:@"UnCheck"];
     }
+    
     return YES;
 }
 

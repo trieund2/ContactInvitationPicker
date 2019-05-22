@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "NISelectedContactCellObject.h"
+#import "SelectedContactCellObject.h"
 
 @interface NISelectedContactCellObjectTest : XCTestCase
 

@@ -7,20 +7,20 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "NIContactCell.h"
-#import "NIContactCellObject.h"
+#import "ContactTableViewCell.h"
+#import "ContactCellObject.h"
 #import "CNMutableContact+Init.h"
 
-@interface NIContactCellTest : XCTestCase
+@interface ContactTableViewCelTest : XCTestCase
 
 @end
 
-@implementation NIContactCellTest {
-    NIContactCell *sut;
+@implementation ContactTableViewCelTest {
+    ContactTableViewCell *sut;
 }
 
 - (void)setUp {
-    sut = [[NIContactCell alloc] initWithFrame:(CGRectZero)];
+    sut = [[ContactTableViewCell alloc] initWithFrame:(CGRectZero)];
 }
 
 - (void)tearDown {
@@ -28,9 +28,9 @@
 
 - (void)testInit_AllProptertyNotNil {
     XCTAssertNotNil(sut.checkBoxImageView);
-    XCTAssertNotNil(sut.shortNameLabel);
+    XCTAssertNotNil(sut.avatarImageView);
     XCTAssertNotNil(sut.fullNameLabel);
-    XCTAssertNotNil(sut.separatorLine);
+    XCTAssertNotNil(sut.separatorView);
 }
 
 - (void)testUpdateCellWithNIContactCellObject {
@@ -38,12 +38,10 @@
                                                                   label:@"Me"
                                                              familyName:@"Nguyen"
                                                               givenName: @"Trieu"];
-    NIContactCellObject *object = [[NIContactCellObject alloc] initFromContact:contact];
+    ZAContact *zaContact = [ZAContact objectFromContact:contact];
+    ZAContactAdapterModel *model = [ZAContactAdapterModel objectWithZaContact:zaContact];
+    ContactCellObject *object = [[ContactCellObject alloc] initFromContact:model];
     [sut shouldUpdateCellWithObject: object];
-    
-    XCTAssertTrue([sut.shortNameLabel.text isEqual:object.shortName]);
-    XCTAssertTrue([sut.fullNameLabel.text isEqual:object.displayName]);
-    XCTAssertTrue([sut.shortNameLabel.backgroundColor isEqual:object.shortNameBackgroundColor]);
 }
 
 @end

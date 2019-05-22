@@ -15,8 +15,7 @@
 
 @end
 
-@implementation ZAContactScanner {
-}
+@implementation ZAContactScanner
 
 + (instancetype)sharedInstance {
     static ZAContactScanner *contactScanner;
@@ -35,12 +34,16 @@
         self.queue = dispatch_queue_create("ZAContactScanner", DISPATCH_QUEUE_SERIAL);
         
         if (@available(iOS 9.0, *)) {
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contactStoreDidChange:) name:CNContactStoreDidChangeNotification object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(contactStoreDidChange:)
+                                                         name:CNContactStoreDidChangeNotification
+                                                       object:nil];
         } else {
             ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
             ABAddressBookRegisterExternalChangeCallback(addressBook, addressBookContactsExtenalChangeCallback, (__bridge void *)(self));
         }
     }
+    
     return self;
 }
 
@@ -72,6 +75,7 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
     if (!delegate || ![delegate conformsToProtocol:@protocol(ZAContactScannerDelegate)]) {
         return;
     }
+    
     __weak ZAContactScanner *weakSelf = self;
     dispatch_async(self.queue, ^{
         [weakSelf.delegates addObject:delegate];
@@ -82,6 +86,7 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
     if (!delegate || ![delegate conformsToProtocol:@protocol(ZAContactScannerDelegate)]) {
         return;
     }
+    
     ZAContactScanner * __weak weakSelf = self;
     dispatch_sync(self.queue, ^{
         [weakSelf.delegates removeObject:delegate];

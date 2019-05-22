@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35E46660562C3A49B80657EA /* Pods_ContactInvitationPickerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD0CF92641251A2A7FD88B9 /* Pods_ContactInvitationPickerTests.framework */; };
 		415B122D192C42E64F993789 /* Pods_ContactInvitationPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70E88E72B63E1DB8BBBBBA3 /* Pods_ContactInvitationPicker.framework */; };
+		A12EE548229500E3003B1D5F /* CNContactStoreMock.m in Sources */ = {isa = PBXBuildFile; fileRef = A12EE547229500E3003B1D5F /* CNContactStoreMock.m */; };
 		A14FF599228FF8FC00B435B7 /* ZAContactAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A14FF598228FF8FC00B435B7 /* ZAContactAdapter.m */; };
 		A15B47542282E87B0049BAC1 /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = A15B47532282E87B0049BAC1 /* UIViewController+Alert.m */; };
 		A160AC1C228193150024BB49 /* NIMutableCollectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A160AA692281930E0024BB49 /* NIMutableCollectionViewModel.m */; };
@@ -112,7 +113,7 @@
 		A1FAF69222816304006E024B /* ZAContactScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FAF69122816304006E024B /* ZAContactScanner.m */; };
 		C51D5A0222847A3700C09868 /* CNMutableContact+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = C51D5A0122847A3700C09868 /* CNMutableContact+Init.m */; };
 		C53AA8162287D54D00A1AA22 /* ZAContactAdapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C53AA8152287D54D00A1AA22 /* ZAContactAdapterModel.m */; };
-		C55A3E502284729200E8CC55 /* NIContactCellTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */; };
+		C55A3E502284729200E8CC55 /* ContactTableViewCelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A3E4F2284729200E8CC55 /* ContactTableViewCelTest.m */; };
 		C55A3E522284782F00E8CC55 /* NIContactCellObjectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A3E512284782F00E8CC55 /* NIContactCellObjectTest.m */; };
 		C56FBAF92283275D007E8A0E /* SelectedContactCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C56FBAF82283275D007E8A0E /* SelectedContactCellObject.m */; };
 		C57B52E8228AB5F500F21ADC /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = C57B52E7228AB5F500F21ADC /* UIImageView+Letters.m */; };
@@ -144,6 +145,8 @@
 		082EAB65DF099E82AD525937 /* Pods-ContactInvitationPickerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPickerTests.debug.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPickerTests/Pods-ContactInvitationPickerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6963FF30EFB8273DBDB9BA88 /* Pods-ContactInvitationPickerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactInvitationPickerTests.release.xcconfig"; path = "Target Support Files/Pods-ContactInvitationPickerTests/Pods-ContactInvitationPickerTests.release.xcconfig"; sourceTree = "<group>"; };
 		8FD0CF92641251A2A7FD88B9 /* Pods_ContactInvitationPickerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContactInvitationPickerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A12EE546229500E3003B1D5F /* CNContactStoreMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNContactStoreMock.h; sourceTree = "<group>"; };
+		A12EE547229500E3003B1D5F /* CNContactStoreMock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CNContactStoreMock.m; sourceTree = "<group>"; };
 		A14FF598228FF8FC00B435B7 /* ZAContactAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZAContactAdapter.m; sourceTree = "<group>"; };
 		A15B47522282E87B0049BAC1 /* UIViewController+Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
 		A15B47532282E87B0049BAC1 /* UIViewController+Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
@@ -382,7 +385,7 @@
 		C53AA8112287C56700A1AA22 /* ZAContactAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAContactAdapter.h; sourceTree = "<group>"; };
 		C53AA8142287D54D00A1AA22 /* ZAContactAdapterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAContactAdapterModel.h; sourceTree = "<group>"; };
 		C53AA8152287D54D00A1AA22 /* ZAContactAdapterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAContactAdapterModel.m; sourceTree = "<group>"; };
-		C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCellTest.m; sourceTree = "<group>"; };
+		C55A3E4F2284729200E8CC55 /* ContactTableViewCelTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCelTest.m; sourceTree = "<group>"; };
 		C55A3E512284782F00E8CC55 /* NIContactCellObjectTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIContactCellObjectTest.m; sourceTree = "<group>"; };
 		C56FBAF222831FAA007E8A0E /* SelectedContactCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedContactCollectionViewCell.h; sourceTree = "<group>"; };
 		C56FBAF72283275D007E8A0E /* SelectedContactCellObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedContactCellObject.h; sourceTree = "<group>"; };
@@ -859,7 +862,9 @@
 				A1FAF6852281452B006E024B /* Info.plist */,
 				C51D5A0022847A3700C09868 /* CNMutableContact+Init.h */,
 				C51D5A0122847A3700C09868 /* CNMutableContact+Init.m */,
-				C55A3E4F2284729200E8CC55 /* NIContactCellTest.m */,
+				A12EE546229500E3003B1D5F /* CNContactStoreMock.h */,
+				A12EE547229500E3003B1D5F /* CNContactStoreMock.m */,
+				C55A3E4F2284729200E8CC55 /* ContactTableViewCelTest.m */,
 				C55A3E512284782F00E8CC55 /* NIContactCellObjectTest.m */,
 				C5990513228480320033F7C5 /* ContactInviNavigationTitleViewTest.m */,
 				C5B9D7B12284839A00CB70AD /* NISelectedContactCellTest.m */,
@@ -1277,8 +1282,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C55A3E522284782F00E8CC55 /* NIContactCellObjectTest.m in Sources */,
-				C55A3E502284729200E8CC55 /* NIContactCellTest.m in Sources */,
+				C55A3E502284729200E8CC55 /* ContactTableViewCelTest.m in Sources */,
 				C5990514228480320033F7C5 /* ContactInviNavigationTitleViewTest.m in Sources */,
+				A12EE548229500E3003B1D5F /* CNContactStoreMock.m in Sources */,
 				C51D5A0222847A3700C09868 /* CNMutableContact+Init.m in Sources */,
 				C5B9D7B22284839A00CB70AD /* NISelectedContactCellTest.m in Sources */,
 				C5B9D7B42284841600CB70AD /* NISelectedContactCellObjectTest.m in Sources */,

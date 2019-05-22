@@ -15,10 +15,10 @@
 
 - (id)initFromContact:(ZAContactAdapterModel *)contact {
     if (self = [super initWithCellClass:[ContactTableViewCell class]]) {
-        self.identifier = contact.identifier;
-        self.fullName = contact.fullName;
-        self.fullNameRemoveDiacritics = contact.fullNameRemoveDiacritics;
-        self.phoneNumber = contact.phoneNumbers.firstObject;
+        _identifier = contact.identifier;
+        _fullName = contact.fullName;
+        _fullNameRemoveDiacritics = contact.fullNameRemoveDiacritics;
+        _phoneNumber = contact.phoneNumbers.firstObject;
         
         NSArray *colors = [NSArray arrayWithObjects:
                            UIColorFromRGB(0xB6B8EA),
@@ -27,10 +27,12 @@
                            UIColorFromRGB(0xB4B9C8),
                            UIColorFromRGB(0xF1A5A5),
                            UIColorFromRGB(0xA2C8DA),
-                           UIColorFromRGB(0x85CBDD), nil];
-        int index = (int)([self.fullNameRemoveDiacritics length] % colors.count);
-        self.shortNameBackgroundColor = [colors objectAtIndex:index];
+                           UIColorFromRGB(0x85CBDD),
+                           nil];
+        int index = (int)([_fullNameRemoveDiacritics length] % colors.count);
+        _shortNameBackgroundColor = [colors objectAtIndex:index];
     }
+    
     return self;
 }
 
