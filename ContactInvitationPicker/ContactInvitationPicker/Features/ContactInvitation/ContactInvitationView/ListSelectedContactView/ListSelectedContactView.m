@@ -16,7 +16,6 @@
 
 @implementation ListSelectedContactView
 
-
 #pragma mark - Init
 
 - (instancetype)init
@@ -25,6 +24,7 @@
     if (self) {
         [self initSelectedContactCollectionView];
     }
+    
     return self;
 }
 
@@ -49,9 +49,8 @@
 }
 
 - (void)setDataSourceWithCellObjects:(NSArray<SelectedContactCellObject *> *)cellObjects {
-    _selectedContactCollectionViewModel = [[NICollectionViewModel alloc]
-                                           initWithListArray:cellObjects
-                                           delegate:(id)[NICollectionViewCellFactory class]];
+    _selectedContactCollectionViewModel = [[NICollectionViewModel alloc] initWithListArray:cellObjects
+                                                                                  delegate:(id)[NICollectionViewCellFactory class]];
     self.selectedContactsCollectionView.dataSource = self.selectedContactCollectionViewModel;
     [self.selectedContactsCollectionView reloadData];
 }
@@ -63,7 +62,7 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.delegate && [self.delegate conformsToProtocol:@protocol(ListSelectedContactViewDelegate)]) {
+    if ([self.delegate conformsToProtocol:@protocol(ListSelectedContactViewDelegate)]) {
         [self.delegate listSelectedContactView:self didSelectRowAtIndexPath:indexPath];
     }
 }

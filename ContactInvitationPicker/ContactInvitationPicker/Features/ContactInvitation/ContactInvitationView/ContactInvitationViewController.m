@@ -25,8 +25,8 @@ NSUInteger const kMaxContactSelect = 5;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = UIColorFromRGB(0xE9E9E9);
-    _listContactCellObjects = [NSMutableArray new];
-    _selectedContactCellObjects = [NSMutableArray new];
+    _listContactCellObjects = [[NSMutableArray alloc] init];
+    _selectedContactCellObjects = [[NSMutableArray alloc] init];
     [[ZAContactAdapter sharedInstance] addDelegate:self];
     
     [self addNavigationBarItems];
@@ -50,7 +50,7 @@ NSUInteger const kMaxContactSelect = 5;
 
 - (void)touchInSendButton {
     if ([self.delegate conformsToProtocol:@protocol(ContactInvitationViewControllerDelegate)]) {
-        __weak ContactInvitationViewController *weakSelf = self;
+        __weak typeof(self) weakSelf = self;
         [self dismissViewControllerAnimated:YES completion:^{
             [weakSelf.delegate didSelectSendContacts:weakSelf.selectedContactCellObjects];
         }];
@@ -86,7 +86,6 @@ NSUInteger const kMaxContactSelect = 5;
     self.selectedContactView.backgroundColor = UIColor.clearColor;
     self.selectedContactView.delegate = self;
     [self.view addSubview:self.selectedContactView];
-    
     [self.selectedContactView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_topLayoutGuide).offset(4);
         make.left.equalTo(self.view).offset(8);
@@ -158,12 +157,14 @@ NSUInteger const kMaxContactSelect = 5;
                 [weakSelf.listContactCellObjects addObject:[ContactCellObject objectFromContact:(ZAContactAdapterModel *)object]];
             }
         }
+        
         [weakSelf.listContactView setDataSourceWithSectionedArray:weakSelf.listContactCellObjects];
     } errorHandler:^(ZAContactError error) {
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Đồng ý" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         }];
-        UIAlertAction *remindLaterAction = [UIAlertAction actionWithTitle:@"Để sau" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {}];
+        UIAlertAction *remindLaterAction = [UIAlertAction actionWithTitle:@"Để sau" style:(UIAlertActionStyleCancel)
+                                                                  handler:^(UIAlertAction * _Nonnull action) {}];
         [weakSelf presentAlertWithTitle:@"Ứng dụng không thể truy cập danh bạ"
                                 message:@"Chúng tôi cần truy cập danh bạ của bạn để tìm bạn qua danh bạ"
                                 actions:[NSArray arrayWithObjects:okAction, remindLaterAction, nil]];
@@ -189,8 +190,10 @@ NSUInteger const kMaxContactSelect = 5;
             make.top.equalTo(self.selectedContactView.mas_bottom);
         }];
     }
+    
     if (!needUpdateConstraint) { return; }
-    ContactInvitationViewController * __weak weakSelf = self;
+    
+    __weak typeof(self) weakSelf = self;;
     [UIView animateWithDuration:0.2 delay:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [weakSelf.view layoutIfNeeded];
     } completion:^(BOOL finished) {}];
@@ -211,8 +214,8 @@ NSUInteger const kMaxContactSelect = 5;
 - (void)listContactView:(ListContactView *)listContactView didSelectRowAtIndexpath:(NSIndexPath *)indexPath {
     ContactCellObject *contactCellObject;
     NSIndexPath *contactIndexPath = indexPath;
-    
     id object = [listContactView objectForIndexPath:indexPath];
+    
     if ([object isKindOfClass:ContactCellObject.class]) {
         contactCellObject = (ContactCellObject *)object;
     } else {
@@ -266,6 +269,7 @@ NSUInteger const kMaxContactSelect = 5;
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     [self.searchResultListContactView setHidden:([searchText isEqualToString:@""])];
     if ([searchText isEqualToString:@""]) { return; }
+    
     NSArray *searchContactResults = [self.listContactCellObjects filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
         if (evaluatedObject && [evaluatedObject isKindOfClass:ContactCellObject.class]) {
             ContactCellObject *contactCellObject = (ContactCellObject *)evaluatedObject;
@@ -281,7 +285,7 @@ NSUInteger const kMaxContactSelect = 5;
 #pragma mark - ZAContactScannerDelegate
 
 - (void)contactDidChange {
-    __weak ContactInvitationViewController *weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     UIAlertAction *okAlertAction = [UIAlertAction actionWithTitle:@"Đồng ý" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         [weakSelf.selectedContactCellObjects removeAllObjects];
         [weakSelf.selectedContactView reloadData];

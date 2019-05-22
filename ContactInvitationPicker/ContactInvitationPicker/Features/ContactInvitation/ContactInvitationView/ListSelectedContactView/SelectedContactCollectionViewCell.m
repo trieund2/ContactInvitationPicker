@@ -17,6 +17,7 @@
     if (self = [super initWithFrame:frame]) {
         [self initAvatarImageView];
     }
+    
     return self;
 }
 

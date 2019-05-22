@@ -57,7 +57,7 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
 }
 
 - (void)handleContactChangeCallback {
-    __weak ZAContactScanner *weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     dispatch_async(self.queue, ^{
         for (id<ZAContactScannerDelegate> delegate in weakSelf.delegates) {
             if ([delegate respondsToSelector:@selector(contactDidChange)]) {
@@ -72,22 +72,22 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
 #pragma mark - Interface methods
 
 - (void)addDelegate:(id<ZAContactScannerDelegate>)delegate {
-    if (!delegate || ![delegate conformsToProtocol:@protocol(ZAContactScannerDelegate)]) {
+    if (![delegate conformsToProtocol:@protocol(ZAContactScannerDelegate)]) {
         return;
     }
     
-    __weak ZAContactScanner *weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     dispatch_async(self.queue, ^{
         [weakSelf.delegates addObject:delegate];
     });
 }
 
 - (void)removeDelegate:(id<ZAContactScannerDelegate>)delegate {
-    if (!delegate || ![delegate conformsToProtocol:@protocol(ZAContactScannerDelegate)]) {
+    if (![delegate conformsToProtocol:@protocol(ZAContactScannerDelegate)]) {
         return;
     }
     
-    ZAContactScanner * __weak weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     dispatch_sync(self.queue, ^{
         [weakSelf.delegates removeObject:delegate];
     });

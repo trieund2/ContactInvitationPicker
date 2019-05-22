@@ -33,6 +33,7 @@
     if (self) {
         _getContactsQueue = dispatch_queue_create("getContactsAndMapTitles", DISPATCH_QUEUE_SERIAL);
     }
+    
     return self;
 }
 

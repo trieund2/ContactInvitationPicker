@@ -34,14 +34,14 @@
         long cacheSize = 20 * 1024 * 1024 * 8;
         int numberBitColor = 32;
         [self.imageMemoryCache setMaxNumberOfPixels:cacheSize/numberBitColor];
-        
         _queue = dispatch_queue_create("ZAContactAvatarCache", DISPATCH_QUEUE_CONCURRENT);
     }
+    
     return self;
 }
 
 - (void)storeImage:(UIImage *)image withKey:(NSString *)key {
-    __weak ZAContactAvatarCache *weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     dispatch_barrier_async(self.queue, ^{
         if (![weakSelf.imageMemoryCache containsObjectWithName:key]) {
             [weakSelf.imageMemoryCache storeObject:image withName:key];
@@ -50,7 +50,7 @@
 }
 
 - (UIImage *)getImageWithKey:(NSString *)key {
-    __weak ZAContactAvatarCache *weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     __block UIImage *cacheResult;
     dispatch_sync(self.queue, ^{
         cacheResult = [weakSelf.imageMemoryCache objectWithName:key];
