@@ -10,7 +10,7 @@
 
 @interface ZAContactScanner ()
 
-@property (nonatomic) NSMutableSet *delegates;
+@property (nonatomic, readonly) NSMutableSet *delegates;
 @property (nonatomic) dispatch_queue_t queue;
 
 @end
@@ -30,9 +30,8 @@
 {
     self = [super init];
     if (self) {
-        self.delegates = NICreateNonRetainingMutableSet();
+        _delegates = NICreateNonRetainingMutableSet();
         self.queue = dispatch_queue_create("ZAContactScanner", DISPATCH_QUEUE_SERIAL);
-        
         if (@available(iOS 9.0, *)) {
             [[NSNotificationCenter defaultCenter] addObserver:self
                                                      selector:@selector(contactStoreDidChange:)
@@ -93,6 +92,28 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
     });
 }
 
+- (BOOL)containDelegate:(id<ZAContactScannerDelegate>)delegate {
+    if (delegate) {
+        __block BOOL isContain = NO;
+        __weak typeof(self) weakSelf = self;
+        dispatch_sync(self.queue, ^{
+            isContain = [weakSelf.delegates containsObject:delegate];
+        });
+        return isContain;
+    } else {
+        return NO;
+    }
+}
+
+- (NSUInteger)numberOfDelegates {
+    __block NSUInteger count = 0;
+    __weak typeof(self) weakSelf = self;
+    dispatch_sync(self.queue, ^{
+        count = weakSelf.delegates.count;
+    });
+    return count;
+}
+
 - (void)requestAccessContactWithAccessGranted:(void (^)(void))accessGranted
                                  accessDenied:(void (^)(void))accessDenied {
     if (@available(iOS 9.0, *)) {
@@ -101,8 +122,7 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
         
         if (authorizationStatus == CNAuthorizationStatusNotDetermined) {
             CNContactStore *contactStore = [CNContactStore new];
-            [contactStore requestAccessForEntityType:entityType completionHandler:^(BOOL granted,
-                                                                                    NSError * _Nullable error) {
+            [contactStore requestAccessForEntityType:entityType completionHandler:^(BOOL granted, NSError * _Nullable error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (error == NULL && granted) {
                         accessGranted();
@@ -136,9 +156,9 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
     }
 }
 
-- (void)getContactsWithSortType:(ZAContactSortType)sortType
-              completionHandler:(void (^)(ZAContact * _Nonnull))completionHandler
-                   errorHandler:(void (^)(ZAContactError))errorHandler {
+- (void)enumrateContactWithSortType:(ZAContactSortType)sortType
+                  completionHandler:(void (^)(ZAContact * _Nonnull))completionHandler
+                       errorHandler:(void (^)(ZAContactError))errorHandler {
     
     if (@available(iOS 9.0,*)) {
         NSError *contactError;
@@ -212,7 +232,7 @@ void addressBookContactsExtenalChangeCallback(ABAddressBookRef addressbook,CFDic
             for (NSUInteger i = 0; i < [allContacts count]; i++) {
                 ABRecordRef recordRef = (__bridge ABRecordRef)([allContacts objectAtIndex:i]);
                 ZAContact *contact = [ZAContact objectFromABRecordRef:recordRef];
-                if (contact != NULL) {
+                if (contact) {
                     completionHandler(contact);
                 }
             }

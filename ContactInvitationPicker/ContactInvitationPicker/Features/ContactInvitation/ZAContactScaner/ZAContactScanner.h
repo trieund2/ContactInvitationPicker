@@ -43,12 +43,14 @@ typedef NS_ENUM(NSInteger, ZAContactError) {
 - (void)requestAccessContactWithAccessGranted:(void (^)(void)) accessGranted
                                  accessDenied:(void (^)(void)) accessDenied;
 
-- (void)getContactsWithSortType:(ZAContactSortType)sortType
-              completionHandler:(void (^)(ZAContact * contact))completionHandler
-                   errorHandler:(void (^)(ZAContactError error)) errorHandler;
+- (void)enumrateContactWithSortType:(ZAContactSortType)sortType
+                  completionHandler:(void (^)(ZAContact * contact))completionHandler
+                       errorHandler:(void (^)(ZAContactError error)) errorHandler;
 
 - (void)addDelegate:(id<ZAContactScannerDelegate>)delegate;
 - (void)removeDelegate:(id<ZAContactScannerDelegate>)delegate;
+- (BOOL)containDelegate:(id<ZAContactScannerDelegate>)delegate;
+- (NSUInteger)numberOfDelegates;
 
 @end
 

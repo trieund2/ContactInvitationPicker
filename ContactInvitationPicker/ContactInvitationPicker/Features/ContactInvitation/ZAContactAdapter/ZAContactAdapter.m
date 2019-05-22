@@ -58,7 +58,7 @@
             NSPredicate *predA = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^[A-Z]$"];
             __block NSString *previousTitle;
             
-            [[ZAContactScanner sharedInstance] getContactsWithSortType:sortType completionHandler:^(ZAContact * _Nonnull contact) {
+            [[ZAContactScanner sharedInstance] enumrateContactWithSortType:sortType completionHandler:^(ZAContact * _Nonnull contact) {
                 ZAContactAdapterModel *contactAdapterModel = [ZAContactAdapterModel objectWithZaContact:contact];
                 if (contactAdapterModel) {
                     if ([contactAdapterModel.fullNameRemoveDiacritics length] > 0) {
