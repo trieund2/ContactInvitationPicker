@@ -33,15 +33,4 @@
     XCTAssertNotNil(sut.separatorView);
 }
 
-- (void)testUpdateCellWithNIContactCellObject {
-    CNMutableContact *contact = [CNMutableContact objectFromPhoneNumber:@"0386616446"
-                                                                  label:@"Me"
-                                                             familyName:@"Nguyen"
-                                                              givenName: @"Trieu"];
-    ZAContact *zaContact = [ZAContact objectFromContact:contact];
-    ZAContactAdapterModel *model = [ZAContactAdapterModel objectWithZaContact:zaContact];
-    ContactCellObject *object = [[ContactCellObject alloc] initFromContact:model];
-    [sut shouldUpdateCellWithObject: object];
-}
-
 @end

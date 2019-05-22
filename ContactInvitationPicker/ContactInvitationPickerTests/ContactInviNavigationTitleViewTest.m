@@ -30,7 +30,7 @@
 }
 
 - (void)testUpdateSubTitleSetCorrectValue {
-    [sut updateSubTitleWithNumberSelecContacts:2];
+    [sut updateSubTitleWithNumberSelectContacts:2];
     XCTAssertTrue([sut.subTitleLabel.text isEqualToString:@"Đã chọn: 2"]);
 }
 
